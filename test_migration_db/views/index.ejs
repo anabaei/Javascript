@@ -1,0 +1,52 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="tableexport.js"></script>
+<link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script src="https://rawgit.com/unconditional/jquery-table2excel/master/src/jquery.table2excel.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.6.0/jszip.min.js"></script>
+<script src="https://unpkg.com/xlsx@0.14.0/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.12/xlsx.min.js"></script>
+<script src="https://fastcdn.org/FileSaver.js/1.1.20151003/FileSaver.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/TableExport/5.0.3/js/tableexport.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<h1> Hit Endpoint </h1>
+
+<form action="/call" method="post">
+    <label for="endpoint">Enter End Point: </label>
+    <input id="endpoint" type="text" name="endpoint" value="" placeholder="url">
+    <input id="token" type="text" name="token" value="" placeholder="token">
+    <input type="submit" value="Submit">
+</form>
+
+ <% if (data != 0) { %>
+ 
+   <table class="table table-striped" id="table">
+    <thead>
+       <tr class="alert-info">
+          <th>Date</th>
+          <th>Participations</th>
+          <th>Views</th>
+       </tr>   
+    <thead>
+    <tbody>
+            <% data.forEach((item) => { %>
+            
+            <tr class="alert-info">
+                <td><%= item.date %></td>
+                <td><%= item.participations %></td>
+                <td><%= item.views %></td>
+            </tr>    
+            <% }) %>
+
+      </tbody>
+   </table>         
+ <% } %>
