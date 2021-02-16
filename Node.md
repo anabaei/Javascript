@@ -328,8 +328,12 @@ server.listen(8084, () => {
 * Now on the client side
 ```javascript
 let ws = new WebSocket("ws://localhost:8090");
-// send request from client to server
+// send request from client to server 
 ws.send("SSS");
+
+// then with having clients.send inside server this message is broadcast to all clients, now we need to define get it in other clients as
+
+ws.onmessage = message => console.log("from server", message.data);
 ```
 </details>
 <details>
