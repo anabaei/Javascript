@@ -42,6 +42,25 @@ app.get('/', function (req, res) {
 var fs = require('fs')
 fs.readFileSync('./package.json') // the out put is a buffer, we can use toString as well
 ```
+* Routing without using express
+```javascript
+const server = http.createServer((req, res) => {
+  res.on("error", err => {
+    console.error(err);
+    // Handle error...
+  });
+  if (req.url === "/" && req.method === "GET") {
+    res.setHeader("Content-Type", "application/json");
+    res.writeHead(200);
+    res.end(`{"message": "This is a JSON response"}`);
+  } else if (req.url === "/tcs" && req.method === "GET") {
+    res.end("HI RCSer");
+  } else {
+    res.statusCode = 404;
+    res.end("404: File Not Found");
+  }
+});
+```
 *  [Use import](https://timonweb.com/posts/how-to-enable-es6-imports-in-nodejs/)
 #### Setting up Express
  * nodejs is server side render javascript, and simply is a way to run javascript and it is not a sever framework. Nodejs uses the same `v8` that google Chrome use it and outside of the browser.  in Concole type `node` you get into `repo` javascript.
@@ -264,7 +283,54 @@ describe("Filter function", () => {
    });
 ```
 </details>
+<details>
+          <summary>web socket ws</summary>
 
+* Create a web socket connection
+```javascript
+// on tcp connection
+const server = http.createServer((req, res) => {
+  res.on("error", err => {
+    console.error(err);
+    // Handle error...
+  });
+ if (req.url === "/" && req.method === "GET") {
+    res.setHeader("Content-Type", "application/json");
+    res.writeHead(200);
+    res.end(`{"message": "This is a JSON response"}`);
+  } else {
+    res.statusCode = 404;
+    res.end("404: File Not Found");
+  }
+});
+// then create a websocket on any port or the same port
+const wss = new WebSocket.Server({ server, port: 8090 });
+wss.on("connection", function connection(ws) {
+  ws.on("onopen", () => {
+    console.log("opened");
+  });
+  ws.on("onclose", () => {
+    console.log("closed");
+  });
+  ws.on("message", function incoming(message) {
+    console.log("******", message);
+    wss.clients.forEach(function each(client) {
+      client.send(message);
+    });
+  });
+});
+// listen to server 
+server.listen(8084, () => {
+  console.log("Example app listening on port 8084!");
+});
+```
+* Now on the client side
+```javascript
+let ws = new WebSocket("ws://localhost:8090");
+// send request from client to server
+ws.send("SSS");
+```
+</details>
 <details>
           <summary>config</summary>
 
