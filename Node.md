@@ -5,7 +5,17 @@
 <details>
 	<summary> Start Nodejs</summary>
 
+### Easy start
+```javascript
+npm init -y
+"start": node -r esm index.js // to run es6
+```
+* make index.js and run it on any port
+### Easy debug 
+*  on vs code select `node.js` and `node.js attach to process` then run it locally then click on `debug` to attach debug to the current process you are running (the best)
+
 #### VS code debug
+* Easy way is select node debug on vs code and define `debug` on package.json
 * A Good Resource to handl errors [vscode](https://code.visualstudio.com/docs/supporting/errors)
 ```javascript
 {
@@ -19,6 +29,12 @@
     }
   ]
 }
+```
+* also to render html
+```javascript
+app.get('/', function (req, res) {
+     res.sendFile(path.join(__dirname+'/index.html'));
+   });
 ```
 * [TUTORIAL](https://fem-node-api.netlify.com/)
 * `fs` is a module to read/write files and the output of that is buffer
