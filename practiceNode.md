@@ -5,6 +5,7 @@
 ```
 * It means there is no local database for that service, so go and create database in postgres
 
+* Create Image and Container and run a node js fron docker file [LINK](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 <details>
  <summary>Testing</summary>
 
@@ -279,6 +280,7 @@ required: true   // inner join
 <details>
   <summary>Docker</summary>
 
+* Create Image and Container and run a node js fron docker file [LINK](https://nodejs.org/en/docs/guides/nodejs-docker-webapp/)
 ### What is Docker
 * Docker in fact is a shipping container system for codes in any environment.
 * It runs natively on Linux server, but If you have windows or mac you need to run it on virtual machine.
@@ -388,6 +390,18 @@ GET /
 
 * 
 </details>
+<details>
+        <summary> Create Websocket Connection </summary>
+
+* When we need to update clients without asking server then we can use it
+* It is Http compatible because of upgrade header. If we start creating a socket and sending binding information the fire wall start blocking it. 
+* Because it started with a legit `http` request then we upgrade to a websocket and it should work with anything. 
+* We create http server and then make handshake to have websocket connection
+
+* Then make websocket connection
+
+* 
+</details>        
 
 ### ERRORS
 * Because of not assiging `content-type` to `application-json`
