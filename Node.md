@@ -286,6 +286,7 @@ describe("Filter function", () => {
 <details>
           <summary>web socket ws</summary>
 
+
 * Create a web socket connection
 ```javascript
 // on tcp connection
