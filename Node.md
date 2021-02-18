@@ -328,9 +328,35 @@ server.listen(8084, () => {
 * Now on the client side
 ```javascript
 let ws = new WebSocket("ws://localhost:8090");
-// send request from client to server
+// send request from client to server 
 ws.send("SSS");
+
+// then with having clients.send inside server this message is broadcast to all clients, now we need to define get it in other clients as
+
+ws.onmessage = message => console.log("from server", message.data);
 ```
+* Limitness: WebSockets support sending and receiving: `strings`, `typed arrays` (ArrayBuffer) and `Blobs`
+* Send and receive string
+```javascript
+jsonObject = {topic:'handshake', data:'sdf487rgiuh7'};
+// convert obj to string and send
+ws.send(JSON.stringify(jsonObject));
+```
+* Then inside server convert string to json and parse it
+```javascript
+ ws.on("message", function incoming(message) {
+    console.log("******", JSON.parse(message))
+    wss.clients.forEach(function each(client) {
+     client.send(message);
+    });
+  });
+```
+* the on open event is only for the client not for the server. 
+* Assign id to each connection
+```javascript
+
+```
+* 
 </details>
 <details>
           <summary>config</summary>
