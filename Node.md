@@ -31,11 +31,18 @@ npm init -y
 }
 ```
 * also to render html
+
+
+
 ```javascript
 app.get('/', function (req, res) {
      res.sendFile(path.join(__dirname+'/index.html'));
+    // or if you don't want to define dirname
+     res.sendFile('index.html', { root: '.' })
    });
+
 ```
+
 * [TUTORIAL](https://fem-node-api.netlify.com/)
 * `fs` is a module to read/write files and the output of that is buffer
 ```javascript
@@ -357,6 +364,27 @@ ws.send(JSON.stringify(jsonObject));
 
 ```
 * 
+</details>
+<details>
+        <summary> setTimeout and SetInterval </summary>
+
+* print each 1 seconds
+```javascript
+setInterval(function() {
+
+  console.log("1 seconds");
+
+}, 1000);
+```
+* same above but using setTimeOut
+```javascript
+  function doSomething() {
+    console.log("10 seconds");
+    setTimeout(doSomething, 1000);
+}
+
+setTimeout(doSomething, 100);
+```
 </details>
 <details>
           <summary>config</summary>
