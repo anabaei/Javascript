@@ -295,6 +295,58 @@ describe("Filter function", () => {
 
 
 * Create a web socket connection
+
+```javascript
+// establish connection
+const websocketConnection = new WebSocket.Server({
+  app,
+  port: 8090,
+  clientTracking: true
+});
+// set a global variable to use it later 
+app.set('websocketConnection ', websocketConnection ); 
+// now we have it in each request 
+const websocketConnection = req.app.get('websocketConnection');
+```
+* Then inside routes we have
+```javascript
+router.get('/', async (req, res, next) => {
+  const { requestId } = req.locals;
+  const websocketConnection = req.app.get('websocketConnection');
+wss.on("connection", function connection(ws, req, verifyClient, ...args) {
+
+    
+     console.log(req.socket.remoteAddress);
+     // on message event
+     ws.on("data", data => {
+       console.log(data.toString());
+     });
+   
+     ws.on("message", function incoming(message) {
+       wss.clients.forEach(function each(client) {
+         // Redis comes here
+         // make https just look
+         // update janus
+         // find unique connection id like each tab
+         // add userId for each user
+         // register subsrciption wiht redis
+         // userId,clientdId
+         // disconnection, heartbeat live or not like ping,
+         if (client !== ws && client.readyState) {
+           client.send(message);
+         }
+         if (process.env.NODE_ENV !== "test") {
+          // publisher.publish("livechat", message);
+         }
+         user[userId] = {
+           method: "connect"
+         };
+       });
+     });
+     ws.send(JSON.stringify(user));
+   });
+```
+* Or not using express as below
 ```javascript
 // on tcp connection
 const server = http.createServer((req, res) => {
@@ -384,6 +436,45 @@ setInterval(function() {
 }
 
 setTimeout(doSomething, 100);
+```
+</details>
+<details>
+          <summary>Redis</summary>
+
+* List of services running in background
+```javascript
+brew services list
+// to run any service
+brew services start redis
+// connect to cli
+redis-cli
+127.0.0.1:6379> ping
+npm i response-time nodemon // to know how much time takes for response
+// response-time add one header 
+```
+* Use RestClient to ease hit endpoints
+* `Redis` is a fast in memory
+
+```javascript
+redisClient.set("foo", "bar");
+redisClient.get("foo", function(err, reply) {
+  // reply is null when the key is missing
+  console.log(reply);
+});
+```
+### sub/pub 
+* To have publisher and subscription on each client you may create two tcp connection for each with redis
+* 
+* Client can subscribe to any number of channels
+```javascript
+redis-cli 
+127.0.0.1:6379> subscribe myChannel
+// on another tab
+127.0.0.1:6379> publish myChannel hi
+```
+```javascript
+// publish on any channel starts with m
+publish m* hi
 ```
 </details>
 <details>
