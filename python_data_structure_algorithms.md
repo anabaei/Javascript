@@ -4,6 +4,7 @@
 *  Current jobs don't utilize complex algorithms.  So our skills as software developer degrade over time and we forget data structures and algorithms
 * Coding is not a talent - it is pure skill acquired through practice and repetition
 * link to [facebook discussion](https://www.facebook.com/groups/techinterviewpro)
+* link to [course](https://www.techseries.dev/login)
 * use python3 and code runner to run python in vs code
 </details>
 
