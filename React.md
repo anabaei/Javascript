@@ -28,7 +28,10 @@ npx create-next-app my-app --template bootstrap // use bootstrap template
 npm run dev // run in dev
 npm run build 
 npm start 
+// to update port running on another port  
+// "dev": " next -p 1500 dev",
  ```
+ 
  * delete `components` and `pages` folders 
  
  ### Static Routes
@@ -261,7 +264,6 @@ return (
   </>
 )
 ```
-
 
 
 #### state
