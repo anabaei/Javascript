@@ -291,7 +291,7 @@ describe("Filter function", () => {
 ```
 </details>
 <details>
-          <summary>web socket ws</summary>
+          <summary>websocket ws</summary>
 
 
 * Create a web socket connection
@@ -415,6 +415,15 @@ ws.send(JSON.stringify(jsonObject));
 ```javascript
 
 ```
+* 
+## Kong Connection
+* To connect to kong
+### Add service
+* point to the port that websocket is running using http protocol
+* On Route only assign a path and use http, https protocol the rest are default
+* Then you need to make export to db to have it in local exports. If you want to make changes and submit you need to add it to each env you think is desire like local or test
+
+ToDos
 * 
 </details>
 <details>
@@ -3181,7 +3190,7 @@ npm publish
 ```
 </details>
 <details>
-	<summary> Docker Mircorservice </summary>
+	<summary> Docker & Containers</summary>
 
 * Node is single threat so we can securly use it as microservice and it would callback let us know when it is done. Remember create a thread for each application depletes or consume resources.
 * Why microsersices: slice applications into logical services. One microservice should do only one task like fethcing a customer from backend. Micorservices should comunication using HTTP methods like in safe id one microservice provides records from thousands users
@@ -3192,10 +3201,12 @@ docker -d -p 27010:27010 mongo // it maps all processes on mongo db. You find it
 docker ps // returns our machine and our containers maps
 ```
 * To stop docker
-```
+```javascript
 docker ps // returns the id and more datils of all containers
 docker stop ..partialidofContainer
 docker-compose up -d // spin all containers up
+
+docker container ls --format ‘table {{.Names}}\t{{.Status}}’
 ```
 * Check if a variable is definded already with value
 ```javascript
