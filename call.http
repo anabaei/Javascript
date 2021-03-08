@@ -1,0 +1,12 @@
+
+# Connection: upgrade
+# Upgrade: WebSocket
+
+
+GET http://localhost:1001/
+
+# create new service to route to mockbin
+# curl -i -X POST \
+# --url http://localhost:1001/services/ \
+# --data 'name=my-example-name' \
+# --data 'url=mockbin.org'
