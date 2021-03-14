@@ -175,13 +175,9 @@ router.get('/', async (req, res, next) => {
 router.post('/uploadFile', upload.single('nameOfThekey'), async (req, res, next) => {
     console.log(req.file)
 ```
-<<<<<<< Updated upstream
-#### React & Upload
-* Here is one snipet of React.
-=======
+
 ## An upload on React
-*
->>>>>>> Stashed changes
+
 ```javascript
 const User = {
 	createNew(attributes, userId, pictureFiles) {

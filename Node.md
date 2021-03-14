@@ -2357,6 +2357,13 @@ fs.readFileSync('./package.json') // returns numbers .toString() gets actual fil
 *
 </details>
 <details>
+	<summary> Image Upload </summary>
+
+* Node can't work with binary data so it save it into buffer
+
+* Sharp is npm to resize  
+</details>
+<details>
 	<summary> Testing </summary>
 
   * `unit testing` is testing functions to check what we expect the results are of functions or objects
@@ -3941,6 +3948,14 @@ font-size: 8px;
 <details>
 	<summary> Start Nodejs</summary>
 
+## Express Start
+```javascript
+mkdir myNewApp
+cd myNewApp
+npx express-generator
+// Done
+```
+* [Express link](https://expressjs.com/en/starter/generator.html)
 
 #### Setting up Express
  * nodejs is server side render javascript, and simply is a way to run javascript and it is not a sever framework. Nodejs uses the same `v8` that google Chrome use it and outside of the browser.  in Concole type `node` you get into `repo` javascript.
