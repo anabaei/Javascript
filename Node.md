@@ -2435,7 +2435,7 @@ this.db.collection("myMongoCollectionName").updateOne({ _id: id }, { $set: json 
 ### Stream  to S3
 * 
 ```javascript
- const uploadS3 = () => {
+ const uploadToawsS3 = () => {
 const file = fs.createReadStream(localPathToFile or the actal file or destination)); 
 // or const file = fs.readdirSync(localPathToFile or the actal file);
 s3AWS.upload(pathIns3AWS, mimeForContentType, file, (error, info) => {
@@ -2455,14 +2455,14 @@ s3AWS.upload(pathIns3AWS, mimeForContentType, file, (error, info) => {
 
 ###  Resize 
 * Sharp is npm to resize  
-* Beore uploading to s3 we could resize it as below then call uploadS3. 
+* Beore uploading to s3 we could resize it as below then call uploadToawsS3. 
 ```javascript
    const pipe = sharp(file);
       pipe.resize(400).toFile(destination, err => {
           if (err) {
             reject(err);
           } else {
-            uploadS3();
+            uploadToawsS3();
           }
         });
 ```
