@@ -2357,11 +2357,150 @@ fs.readFileSync('./package.json') // returns numbers .toString() gets actual fil
 *
 </details>
 <details>
-	<summary> Image Upload </summary>
+	<summary> Image Upload , File streaming</summary>
 
-* Node can't work with binary data so it save it into buffer
+* Node can't work with binary data so it save it into buffer. 
+* One problem with reading from buffer and wrting is buffer takes a lot of memory and it could
+creash our service. The solution is using `stream pipe`
+* if you use Express, body-parser handles only json. To handle multipart you need muler, connect-busboy or connect-multiparty. 
+```javascript
+var fileupload = require("express-fileupload");
+app.use(fileupload());
 
+
+app.post("/upload", function(req, res)
+{
+    var file;
+
+    if(!req.files)
+    {
+        res.send("File was not found");
+        return;
+    }
+
+    file = req.files.FormFieldName;  // here is the field name of the form
+
+    res.send("File Uploaded");
+});
+```
+* or use `multer` with more filters like imageSize and define destination of uploads
+
+```html
+<form method="post" enctype="multipart/form-data" action="/upload">
+    <input type="hidden" name="msgtype" value="2"/>
+    <input type="file" name="avatar" />
+    <input type="submit" value="Upload" />
+</form>
+```
+```javascript
+var express = require('express');
+var multer = require('multer');
+var app = express();
+var server = require('http').createServer(app);
+var port = process.env.PORT || 3000;
+var upload = multer({ dest: 'uploads/' });
+//  fileSize: 10MB,
+//  dest: ...
+//  fileFilter: ....
+
+server.listen(port, function () {
+  console.log('Server successfully running at:-', port);
+});
+
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/public/file-upload.html');
+})
+
+app.post('/upload2', upload.any(),  function(req, res) {
+  console.log(req.files); // JSON Object
+});
+
+// app.post('/upload', upload.single('avatar'),  function(req, res) {
+//   console.log(req.files); // JSON Object
+// });
+```
+### Save into Mongo
+```javascript
+json = {  
+        ...info,
+        id,
+        more: {
+          path: thePathOnS3,
+        }
+}
+      
+this.db.collection("entries").updateOne({ _id: id }, { $set: json }, { upsert: true });
+```
+
+### Stream  to S3
+* 
+```javascript
+ const uploadS3 = () => {
+const file = fs.createReadStream(localPathToFile or the actal file or destination)); 
+// or const file = fs.readdirSync(localPathToFile or the actal file);
+s3.upload(pathInS3, mimeForContentType, file, (error, data) => {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(data);
+        }
+      });
+ };
+
+// S3 class define upload function as below
+  async upload(key, mimeForContentType, stream, callback) {
+    this.s3.upload({ Bucket, Key, Body: stream, ContentType: mimeForContentType }, cb);
+  }
+```
+
+###  Resize 
 * Sharp is npm to resize  
+* Beore uploading to s3 we could resize it as below then call uploadS3. 
+```javascript
+   const pipe = sharp(file);
+      pipe.resize(400).toFile(destination, err => {
+          if (err) {
+            reject(err);
+          } else {
+            uploadS3();
+          }
+        });
+```
+### File Systems
+* Remove a file 
+```javascript
+ fs.unlinkSync(`path to the file`);
+ // create folder
+  fs.mkdirSync('///');
+// exist?
+fs.existsSync("///")
+```
+</details>
+<details>
+      <summary> Work Thread and sub Threads</summary>
+
+```javascript
+import { Worker } from "worker_threads";
+```
+
+```javascript
+ this.resizeWorker = new Worker("location of our engine.js", {
+        workerData: {
+          var1: someInfo,
+          var2: moreInfo,
+          var3: an id like uuid.v4(),
+        },
+      });
+```
+* Then inside engine.js we have
+```javascript
+import { workerData } from "worker_threads";
+
+const { var1, var2, var3 } = workerData;
+// everything run here as sub thread 
+
+```
+* [resource](https://www.youtube.com/watch?v=wT4lg9oiMvI)
 </details>
 <details>
 	<summary> Testing </summary>
