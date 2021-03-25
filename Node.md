@@ -2453,6 +2453,14 @@ s3AWS.upload(pathIns3AWS, mimeForContentType, file, (error, info) => {
   }
 ```
 
+```javascript
+var s = fs.createReadStream(file);
+s.on('open', function () {
+    res.set('Content-Type', type);
+    s.pipe(res);
+});
+```
+
 ###  Resize 
 * Sharp is npm to resize  
 * Beore uploading to s3 we could resize it as below then call uploadToawsS3. 
