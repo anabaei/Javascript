@@ -2438,18 +2438,18 @@ this.db.collection("myMongoCollectionName").updateOne({ _id: id }, { $set: json 
  const uploadS3 = () => {
 const file = fs.createReadStream(localPathToFile or the actal file or destination)); 
 // or const file = fs.readdirSync(localPathToFile or the actal file);
-s3.upload(pathInS3, mimeForContentType, file, (error, data) => {
-        if (error) {
-          reject(error);
+s3AWS.upload(pathIns3AWS, mimeForContentType, file, (error, info) => {
+        if (err) {
+          reject(err);
         } else {
-          resolve(data);
+          resolve(info);
         }
       });
  };
 
 // S3 class define upload function as below
   async upload(key, mimeForContentType, stream, callback) {
-    this.s3.upload({ Bucket, Key, Body: stream, ContentType: mimeForContentType }, cb);
+    this.s3AWS.upload({ Bucket, Key, Body: stream, ContentType: mimeForContentType }, cb);
   }
 ```
 
