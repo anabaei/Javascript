@@ -2429,7 +2429,7 @@ json = {
         }
 }
       
-this.db.collection("entries").updateOne({ _id: id }, { $set: json }, { upsert: true });
+this.db.collection("myMongoCollectionName").updateOne({ _id: id }, { $set: json }, { upsert: true });
 ```
 
 ### Stream  to S3
