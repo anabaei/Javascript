@@ -17,14 +17,17 @@ b['q']= 3
 b['a']= 2
 {'q': 3, 'a': 2}
 
+'q' in b # return true
 To have dictionary with list 
 import collections
 groups= collections.defaultdict(list)
       groups["key"].append(word)
 {'key': [word]}
 
-
-
+# len(string) return length 
+array = ["a","b","c"]
+for index, item in enumerate(array):
+    q[index] = item
 
 class Node:
   def __init__(self, x):
@@ -47,3 +50,33 @@ input_word = raw_input('input your word')
 l1 = 4 if condition else 2
 
 number // digit return with no 
+
+
+# best search on sorted array is binary search recursive and iterative
+        first = self.bst(arr, 0, len(arr), target)
+        second = self.bstIterative(arr, 0, len(arr), target)
+    
+    def bst(self, arr, low, high, target):
+        print(low, high)
+        if low > high:
+            return -1
+        mid = low + (high - low) // 2
+        if target == arr[mid]:
+            return mid
+        if target > arr[mid]:
+            return self.bst(arr, mid+1, high, target)
+        else: 
+            return self.bst(arr, low, mid-1, target)     
+
+    def bstIterative(self, arr, low, high, target):
+        while True:
+            print(low, high)
+            if low > high:
+                return -1
+            mid = low + (high - low) // 2
+            if target == arr[mid]:
+                return mid
+            if target > arr[mid]:
+                low = mid +1
+            else: 
+                high = mid -1  
