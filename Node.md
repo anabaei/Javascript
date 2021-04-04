@@ -2453,6 +2453,14 @@ s3AWS.upload(pathIns3AWS, mimeForContentType, file, (error, info) => {
   }
 ```
 
+```javascript
+var s = fs.createReadStream(file);
+s.on('open', function () {
+    res.set('Content-Type', type);
+    s.pipe(res);
+});
+```
+
 ###  Resize 
 * Sharp is npm to resize  
 * Beore uploading to s3 we could resize it as below then call uploadToawsS3. 
@@ -3640,6 +3648,26 @@ stream.on("end", function() {
 
 <details>
 	<summary> Security </summary>
+
+```javascript
+Devaraj, [Mar 29, 2021 at 9:58:07 AM]:
+Injection occurs when an attacker is able to insert malicious code or commands into a program, usually where ordinary user input (such as a username or password) is expected. SQL injection is a specific type of injection attack, enabling an attacker to gain control of an SQL database.
+
+Cross-site scripting (XSS) is a type of injection attack that occurs when a vulnerability enables an attacker to insert a malicious script (often JavaScript) into the code of a web app or webpage.
+
+Distributed denial-of-service (DDoS) attacks make a network, system, or website unavailable to intended users, typically by flooding it with more traffic than it can handle. API endpoints are among the growing list of DDoS targets.
+
+Man-in-the-middle (MitM) attacks occur when an attacker intercepts traffic between two communicating systems and impersonates each to the other, acting as an invisible proxy between the two. With APIs, MitM attacks can occur between the client (app) and the API, or between the API and its endpoint.
+
+Credential stuffing is the use of stolen credentials on API authentication endpoints to gain unauthorized access.
+
+These are important concepts in API designing
+
+so try to add something from this
+
+For Injection - We need to validate and sanitize all the params
+```
+
 
 * Need a certificate from [here](https://timonweb.com/posts/running-expressjs-server-over-https/)
 * `Symethric` encryption method is faster.

@@ -41,3 +41,9 @@ fileObj = open('./dictionary.txt', 'r')
 dictionary = fileObj.read().splitlines()
 fileObj.close()
 input_word = raw_input('input your word')
+
+
+# ternary
+l1 = 4 if condition else 2
+
+number // digit return with no 
