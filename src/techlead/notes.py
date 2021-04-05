@@ -80,3 +80,18 @@ number // digit return with no
                 low = mid +1
             else: 
                 high = mid -1  
+
+  
+  # PERMUTATION
+  * make recursive inside a for loop then increment the start of for loop give you permutation
+
+base case: 
+if start == len(arr)-1 
+  return arr
+
+  for i in range(start, len(arr)):
+    # do something like swap
+    self.callitSlef(start+1, arr)
+
+if arr = ['a', 'b', 'c'] 3! posibilites of combinations
+3 * 2 * 1 
