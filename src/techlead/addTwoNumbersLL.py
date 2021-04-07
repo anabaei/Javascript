@@ -55,7 +55,6 @@ class Solution:
       ret.next = Node(c)
     print(l1.val , l2.val , val3)
     return ret
-   
 
 # [2,4,3], l2 = [5,6,4]
 #  342 + 465 = 807.
