@@ -9,35 +9,37 @@ class Solution:
         result = []
         i = 0
         j = 0
-        a = len(num1)
-        b = len(num2)
+        a = len(nums1)
+        b = len(nums2)
         odd = False
         if(a+b)%2 == 0:
-            odd = True
+            odd = False
       
         while True:
-            if i > len(num1)  and j > len(num2):
+            if i > len(nums1)  and j > len(nums2):
                 print(i, j)
                 break
-            elif i > len(num1) -1:
-                result = result + num2[j:]
+            elif i > len(nums1) -1:
+                result = result + nums2[j:]
                 break
-            elif j > len(num2) -1:
-                result = result + num1[i:]
+            elif j > len(nums2) -1:
+                result = result + nums1[i:]
                 break
-            elif num1[i] < num2[j]:
-                result.append(num1[i])
+            elif nums1[i] < nums2[j]:
+                result.append(nums1[i])
                 i +=  1
             else:
-                result.append(num2[j])
+                result.append(nums2[j])
                 j +=  1 
                 
         if(odd):
-            res = result[(a+b)/2] + result[(a+b)/2+1] 
-        return result
+            res = result[(a+b)//2]
+        else: 
+            res = (result[(a+b)//2] + result[(a+b)//2+1])/2
+        return res
 
 
-num1 = [1,2]
-num2 = [0,3,4]
-print(Solution().findMedianSortedArrays(num1, num2))
+nums1 = [1,3]
+nums2 = [2]
+print(Solution().findMedianSortedArrays(nums1, nums2))
 
