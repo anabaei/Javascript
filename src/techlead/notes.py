@@ -29,6 +29,20 @@ array = ["a","b","c"]
 for index, item in enumerate(array):
     q[index] = item
 
+
+# Count number of repeatations
+    occurrence = {}
+    for n in nums:
+      occurrence[n] = occurrence.get(n, 0) + 1 
+
+# check key and value of a hash dictionary
+ for key, value in occurrence.items():
+      if value == 1:
+        return key
+
+# XOR 
+unique = unique ^ n
+
 class Node:
   def __init__(self, x):
     self.val = x
