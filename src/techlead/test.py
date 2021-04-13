@@ -1,53 +1,46 @@
-# # Input: nums1 = [1,3], nums2 = [2]
-# # Output: 2.00000
-# # Merge two sorted array
-# # Input: nums1 = [1,2], nums2 = [3,4]
-# # Output: 2.50000
+# class Solution():
+#     def pal(self, num):
+#         if(len(num)<2):
+#             return num
+#         start = 0
+#         end = len(num) - 1
+#         accurance = {}
+#         for index, item in enumerate(num):
+#            if item in accurance:
+#                start = accurance[item] + 1
+#                ind = index -1
+#                # check one by one from index to start
+#                while True: 
 
-# class Solution:
-#     def findMedianSortedArrays(self, nums1, nums2):
-#         result = []
-#         i = 0
-#         j = 0
-#         a = len(nums1)
-#         b = len(nums2)
-#         odd = False
-#         if(a+b)%2 == 0:
-#             odd = False
-      
-#         while True:
-#             if i > len(nums1)  and j > len(nums2):
-#                 print(i, j)
-#                 break
-#             elif i > len(nums1) -1:
-#                 result = result + nums2[j:]
-#                 break
-#             elif j > len(nums2) -1:
-#                 result = result + nums1[i:]
-#                 break
-#             elif nums1[i] < nums2[j]:
-#                 result.append(nums1[i])
-#                 i +=  1
-#             else:
-#                 result.append(nums2[j])
-#                 j +=  1 
-                
-#         if(odd):
-#             res = result[(a+b)//2]
-#         else: 
-#             res = (result[(a+b)//2] + result[(a+b)//2+1])/2
-#         return res
+#                    if(num[start] != num[ind]):
+#                        continue
+#                    if( start == ind):
+#                        return (accurance[item] , index)
+#                    else:
+#                     start +=1 
+#                     ind = index -1
+                    
+#            accurance[item] = index
 
 
-# nums1 = [1,3]
-# nums2 = [2]
-# print(Solution().findMedianSortedArrays(nums1, nums2))
+#         return accurance  
 
-def a():
-    i = 1
-    for a in [2, 4]:
-        print(a,i , a^i)
-        i ^= a
-    return i
 
-print(a())
+
+
+
+# print(Solution().pal(["a","b","c","b","a"]))
+
+
+
+
+def rec(a):
+    if (len(a) < 2 ):
+        return a
+    c = a.pop()
+    
+    rec(a)
+    print(c)
+
+
+rec([1,2,3,4,5])
