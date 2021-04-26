@@ -33,14 +33,20 @@
 
 
 
+def permute2Iterative(nums):
+    results = []
+    stack = [(nums, [])]
+    r = True
+    while r:
+        nums, values = stack.pop()
+       
+        if not nums:
+         results += [values]
+        for i in range(len(nums)):
+            print(i, values, nums[:i]+nums[i+1:] )
+            stack.append((nums[:i]+nums[i+1:], values+[nums[i]]))
+            r = False
+    return results
 
-def rec(a):
-    if (len(a) < 2 ):
-        return a
-    c = a.pop()
-    
-    rec(a)
-    print(c)
 
-
-rec([1,2,3,4,5])
+print(permute2Iterative([1,2,3]))
