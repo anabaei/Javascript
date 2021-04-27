@@ -2068,6 +2068,8 @@ db.toys.find() // query everything inside
 // userModel.js
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/dialuge'); //dialuge is name of database
+// if running inside docker then 
+mongoose.connect('mongodb://docker.for.mac.localhost:27017/databaseName')
 // CREATE SCHEMA:
 var TodoSchema = new mongoose.Schema({
   completed: Boolean,
@@ -2076,7 +2078,7 @@ var TodoSchema = new mongoose.Schema({
 var TodoModel = mongoose.model('Todo', TodoSchema); // first argument is name of the collection mongo makes it lowercase and pluralize
 module.exports = TodoModel;
 ```
-* Then try to hit the route.
+* Then try to hit the route and make new instance
 ```javascript
 // userRoutes.js
 var TodoModel = require('./userModel');
@@ -2091,6 +2093,14 @@ router.route('/').get(function(req, res){
       res.send({ok: true});
     });
 module.exports = router;
+```
+* We could use `save` when creating models instead of `create` as
+```javascript
+ const re = new TodoModel({ content: "new one", completed: true });
+    re.save(function (err, book) {
+      if (err) return console.error(err);
+      console.log(`saved to bookstore collection.`);
+    });
 ```
 * Use this router anywhere as
 ```javascript
