@@ -2071,14 +2071,34 @@ mongoose.connect('mongodb://localhost/dialuge'); //dialuge is name of database
 // if running inside docker then 
 mongoose.connect('mongodb://docker.for.mac.localhost:27017/databaseName')
 // CREATE SCHEMA:
-var TodoSchema = new mongoose.Schema({
-  completed: Boolean,
+import mongoose from "mongoose";
+
+const { Schema } = mongoose;
+
+const ownerSchema = new Schema({
   name: String,
+  email: String,
+  password: String,
+  phone: Number,
+  _enabled: Boolean,
 });
-var TodoModel = mongoose.model('Todo', TodoSchema); // first argument is name of the collection mongo makes it lowercase and pluralize
-module.exports = TodoModel;
+export default mongoose.model("user", ownerSchema);
 ```
-* Then try to hit the route and make new instance
+* It creates `users` collection
+```javascript
+import User from "./owner_model.js";
+
+ const newUser = new User({
+      name: "ASS",
+      email: "amir@gmail.com",
+    });
+  
+  newUser.save(function (err, book) {
+      if (err) return console.error(err);
+      console.log(`saved to bookstore collection.`);
+    });
+```
+* Or try to hit the route and make new instance 
 ```javascript
 // userRoutes.js
 var TodoModel = require('./userModel');

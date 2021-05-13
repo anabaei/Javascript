@@ -19,6 +19,7 @@
 
 # 'q' in b # return true
 # To have dictionary with list 
+
 # import collections
 # groups= collections.defaultdict(list)
 #       groups["key"].append(word)
