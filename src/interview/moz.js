@@ -23,10 +23,10 @@ accessObj(a,'a.b.c')
 
 
 /// Likewise
-// write fib
+// write fibonachi Recursive vs Iterative 
 
 function fib(n){
-    if(n===1){
+    if(n===1 || n==2){
         return 1
     }
     if(n===0){
@@ -37,17 +37,33 @@ function fib(n){
 }
 
 function fibite(n){
-    res = 1
-    cnt = 1
-    prv = 1
-    while(cnt<=n){
-    res = prv + res
-    
+    let current=0
+    if(n===0)
+    {
+        return current;
     }
-    return cnt;
+    else if(n===1)
+    {
+        current = 1;
+        return current;
+    }
+    // n = 2, current =1, prev = 1 next = prev + current
+  
+    current = 1
+    prev = 1
+    next = 1
+    while(n> 1)
+    {
+        prev = current
+        current = next
+        next = current + prev
+        n -=1
+    }
+   return current;
 }
 
-console.log(fibite(5))
+// console.log(fibite(8))
+// console.log(fib(8))
     
 
 
