@@ -11,8 +11,33 @@ function accessObj(obj, val){
    // var json = '{"name": "Peter", "age": 22, "country": "United States", "new":{"a":"lll"}}';
     var json = '{name: "Peter", "age": 22, "country": "United States", "new":{"a":"lll"}}';
     // https://softwareengineering.stackexchange.com/questions/389927/json-without-quotes-for-keys
+    
+
+    // JSON format and javascript obejct are formats are different. 
+    
+    // stringify convert object to JSON text. 
+    // json.parse convert string(json) to a javascript object
+
+    // JavaScript object
     const object1 = { a: 'foo', b: 42, c: {} };  
-    console.log(object1.a);
+    console.log(obj.a.b.c)
+    
+    // JSON format, string format
+    var string = '{"name": "Peter", "age": 22, "country": "United States", "new":{"a":"lll"}}';
+
+    // obj-> string -> json
+    const a = JSON.stringify(object1);
+    console.log(a)
+    const b = JSON.parse(a)
+    console.log(b.b)
+
+
+
+    // console.log(JSON.stringify(json));
+    // console.log(json);
+    // console.log( typeof json)
+    // console.log(typeof a)
+    // console.log(JSON.parse(object1))
    // var ob = JSON5.parse(json)
     // Converting JSON-encoded string to JS object
 //    var ob = JSON.parse(json);
