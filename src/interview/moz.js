@@ -1,4 +1,5 @@
 
+const JSON5 = require('json5')
 
 /// This is input { a: {b: 'leap'}}
 // define functions (obj, a.b) to return leap
@@ -7,7 +8,18 @@
 // https://www.codecademy.com/learn/introduction-to-javascript/modules/learn-javascript-objects/cheatsheet
 
 function accessObj(obj, val){
-   const arr = val.split('.');
+   // var json = '{"name": "Peter", "age": 22, "country": "United States", "new":{"a":"lll"}}';
+    var json = '{name: "Peter", "age": 22, "country": "United States", "new":{"a":"lll"}}';
+    // https://softwareengineering.stackexchange.com/questions/389927/json-without-quotes-for-keys
+    const object1 = { a: 'foo', b: 42, c: {} };  
+    console.log(object1.a);
+   // var ob = JSON5.parse(json)
+    // Converting JSON-encoded string to JS object
+//    var ob = JSON.parse(json);
+//    console.log(ob.name);
+//    console.log(ob.new.a);
+
+    const arr = val.split('.');
 //    console.log(obj['a']['b'])
    let item;
    let res;
