@@ -118,7 +118,14 @@
 let myArray = ['value1', 'value2', 'value3']
 
 // Use the regular Set constructor to transform an Array into a Set
-let mySet = new Set(myArray)
+let mySet = new Set(myArray) // returns { 'value1', 'value2', 'value3' }
+
 
 console.log(mySet)
-console.log([...mySet])
+console.log([...mySet]) // returns array 
+
+
+let a = {}
+a["S"] = true
+a["B"] = [1,2,3]
+console.log(a["B"].push(8), a) // this is what you want

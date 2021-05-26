@@ -2389,27 +2389,22 @@ fs.readFileSync('./package.json') // returns numbers .toString() gets actual fil
 <details>
 	<summary> Image Upload , File streaming</summary>
 
-* Node can't work with binary data so it save it into buffer. 
+* Node can't work with binary data so it saves binary data into buffer. 
 * One problem with reading from buffer and wrting is buffer takes a lot of memory and it could
 creash our service. The solution is using `stream pipe`
-* if you use Express, body-parser handles only json. To handle multipart you need muler, connect-busboy or connect-multiparty. 
+* if you use Express, `body-parser` handles only json. To handle multipart you need muler, connect-busboy or connect-multiparty. 
 ```javascript
 var fileupload = require("express-fileupload");
 app.use(fileupload());
-
-
 app.post("/upload", function(req, res)
 {
     var file;
-
     if(!req.files)
     {
         res.send("File was not found");
         return;
     }
-
     file = req.files.FormFieldName;  // here is the field name of the form
-
     res.send("File Uploaded");
 });
 ```
