@@ -2,6 +2,8 @@
 // // Array functions 
 // // https://ultimatecourses.com/blog/array-find-javascript
 
+const { parse } = require("json5")
+
 // // valid ipv4 
 
 // function isValidIP(str) {
@@ -129,3 +131,16 @@ let a = {}
 a["S"] = true
 a["B"] = [1,2,3]
 console.log(a["B"].push(8), a) // this is what you want
+
+
+// const jsona = "{type:'ValidationError', b: {c: {d: 'fool'}}}";
+// const jj = '{name: "Peter"}';
+// const aa = JSON.stringify(jsona)
+// const bb = JSON.parse(JSON.parse(aa))
+// console.log( typeof bb)
+var obj = {name: "Martin", age: 30, country: "United States"};
+    
+// Converting JS object to JSON string
+var json = JSON.stringify(obj);
+    
+console.log(json[0]);

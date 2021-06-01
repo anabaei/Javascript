@@ -105,3 +105,25 @@ function fibite(n){
 
 
 
+// input: [1, [ 2, 3, [ 4, [ 5 ] ], 6, 7, [ 8, 9 ]]]
+
+// output [1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+
+console.log("SS")
+
+function solution(arr)
+{
+if(arr.length < 1)
+let result = []
+arr.forEach( item =>{
+    if(typeof item !== "object")
+    result.push(item)
+    else
+    solution(item)
+ })
+ return result
+}
+const input = [1, [ 2, 3, [ 4, [ 5 ] ], 6, 7, [ 8, 9 ]]]
+console.log(solution(input))
+
