@@ -3373,8 +3373,25 @@ npm publish
 
 * Node is single threat so we can securly use it as microservice and it would callback let us know when it is done. Remember create a thread for each application depletes or consume resources.
 * Why microsersices: slice applications into logical services. One microservice should do only one task like fethcing a customer from backend. Micorservices should comunication using HTTP methods like in safe id one microservice provides records from thousands users
-* Microservices are good for big projects.
+* Microservices are good for big projects
+
+## Docker
+* [link](https://www.youtube.com/watch?v=4EqysCR3mjo&t=8s)
+* `Docker build` creates an image using the `dockerfile` located in the same directory
+* To get images, we can pull them from ecr instead of building them
+```javascript
+
 ```
+* After an image is created or pull from ecr, then we need to run it to create a running container
+```javascript
+// to build image without using cache, v7 is the tage
+docker build --no-cache --build-arg  TOKEN=anynumner -t dude9/man9:v7 .
+
+// to run container on port 5000 and exposed it to 5003
+docker run  -p5003:5000 dude9/man9:v7
+```
+* `docker-compose` allows us to run serveral containers in one command. docker use a `yml` file to know what image, in what network and volume(directory) in what name needs to run. Those name allows containers which run on the same `network` find each other.  
+
 docker ps  // list all available docker lists
 docker -d -p 27010:27010 mongo // it maps all processes on mongo db. You find it runs on your laptop on port 27010 and maps to your container on the same port
 docker ps // returns our machine and our containers maps

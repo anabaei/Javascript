@@ -210,3 +210,65 @@ Solution2().permute2Iterative(arr)
 
 
 
+
+
+
+const _ = require('lodash');
+
+// Write an efficient program to find the sum of contiguous subarray within a one-dimensional array of numbers that has the largest sum. 
+// For array [-2, -3, 4, -1, -2, 1, 5, -3] the max contiguous sum is 7 (4 + -1 + -2 + 1 + 5)
+
+function maxSubArraySum(a)
+{
+  if(!a)
+    return undefined
+  else if(a.length === 1)
+    return a[0]
+  else if(a.length === 0)
+    return 0
+   
+  else{
+    let globalMax=0;
+    let singleMax;
+    let maxNumber;
+    let sumSubArray=0
+       for(let num of  a){ 
+       sumSubArray += num
+      
+      if(num < 0)
+      {
+        if(!singleMax)
+        {
+          singleMax = num
+        }
+        else if (num >  singleMax){
+        singleMax = num 
+        }
+      }
+      if( sumSubArray < 0)
+      {
+       sumSubArray=0
+      }
+      
+      else  {
+
+       if(sumSubArray > globalMax)
+       {
+        globalMax = sumSubArray
+       }
+      }
+    }
+      return   globalMax ||  singleMax
+  } 
+    
+}
+
+let a = [-2, -3, 4, -1, -2, 1, 5, -3];
+let b = [-2, -3, -4, -1, -2, -1, -5, -3];
+console.debug(maxSubArraySum(a))
+console.debug(maxSubArraySum(b))
+if (maxSubArraySum(a) === 7){
+  console.log("Well done!!!")
+} else {
+  console.error("Got some error in the solution.")
+}
