@@ -12,6 +12,12 @@ csrf vs xss Cross-site Request forgery vs Cross site scripting
   <details>
      <summary> Interviews </summary>
  
+ * What is `react`?
+ * `JSX` is a syntax extention to javascript allow us to write javascript code with HTML structure
+ * Only `javascript` can be used inside browser for execution. In `HTML` files we can't have any third party libraries so JSX requires `babel compiler` to convert to javascript. create-react-app` internally use `babel` to convert jsx to javascript
+ * `DOM` is `Document Object Model` is representation of HTML elements in a balanced tree structure. Updating `real dom` tree is taking time. It needs to update tree then use new css which takes time. So React provides `Virtual Dom` and it updates only that tree. There is a diff algorithms between real and virtual dom which update real dom based on virtual dom  
+
+
  * Difference between function and class components
  * Difference between state and props 
  * She got it from [this](https://medium.com/@vigowebs/frequently-asked-react-js-interview-questions-and-answers-36f3dd99f486)
