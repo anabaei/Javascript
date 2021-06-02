@@ -16,6 +16,30 @@ csrf vs xss Cross-site Request forgery vs Cross site scripting
  * `JSX` is a syntax extention to javascript allow us to write javascript code with HTML structure
  * Only `javascript` can be used inside browser for execution. In `HTML` files we can't have any third party libraries so JSX requires `babel compiler` to convert to javascript. create-react-app` internally use `babel` to convert jsx to javascript
  * `DOM` is `Document Object Model` is representation of HTML elements in a balanced tree structure. Updating `real dom` tree is taking time. It needs to update tree then use new css which takes time. So React provides `Virtual Dom` and it updates only that tree. There is a diff algorithms between real and virtual dom which update real dom based on virtual dom  
+ * Each components update one part and they are reuseable
+ * One way data binding allows app to reduce heavy lifting remembering processes on entity or classes changing. Also one way binding makes it easier to debug
+ ```javascript
+// es5 
+module.exports = Component
+
+// es6
+export default Component
+ ```
+ ## Simple Code
+ * A good resource for [react](https://www.youtube.com/watch?v=-dS9pvGqlX8&t=134s)
+ ```javascript
+ class Simple extends React.Component{
+   work(){
+     alert("nice work")
+   }
+   render(){
+     return(
+       <button onClick={this.work}> Do Test  </button>
+     );
+   }
+ }
+ ```
+* We could define it 
 
 
  * Difference between function and class components
