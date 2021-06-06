@@ -56,7 +56,7 @@ function accessObj(obj, val){
  console.log(obj)
 }
 const a = { a: {b: {c: 'leap'}}}
-accessObj(a,'a.b.c')
+//accessObj(a,'a.b.c')
 
 
 /// Likewise
@@ -105,25 +105,112 @@ function fibite(n){
 
 
 
+// Ava
 // input: [1, [ 2, 3, [ 4, [ 5 ] ], 6, 7, [ 8, 9 ]]]
-
 // output [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-
-console.log("SS")
-
-function solution(arr)
+function solution(arr, result)
 {
-if(arr.length < 1)
-let result = []
 arr.forEach( item =>{
     if(typeof item !== "object")
-    result.push(item)
+    {
+        result.push(item)
+    }
     else
-    solution(item)
+    solution(item, result)
  })
  return result
 }
 const input = [1, [ 2, 3, [ 4, [ 5 ] ], 6, 7, [ 8, 9 ]]]
-console.log(solution(input))
+//console.log(solution(input, []))
 
+
+// find a number in sorted array 
+const arr = [1,2,3,4,5,5,6,7,8,9,9,9,10,11,12,13,17]
+
+function _helper(arr, num, pivot){
+    
+   
+    
+    if (arr.length === 2)
+     {
+        if(arr[0] === num || arr[1] === num )
+        console.log(num)
+        else
+        return false
+     }
+
+     if (arr.length < 2)
+     return false
+    
+    pivot = Math.round(arr.length/2);
+    const upper = arr.splice(pivot) 
+
+    if(arr[pivot] === num)
+     return {num, pivot}
+
+    if(arr[pivot] > num)
+    _helper(arr, num, pivot)   
+    else
+    _helper(upper, num, pivot)
+ 
+}
+
+function solution(arr, num)
+{
+    const pivot = Math.round(arr.length/2);
+    if(arr[pivot] === num)
+      return num, pivot
+    if (arr.length <2)
+     return false
+    
+    _helper(arr, num, pivot);
+}
+
+
+// solution(arr,13)
+
+
+
+
+
+// x = ["a", "b", "c", "d", "e", "f", "g"];
+// y = x.splice(3);
+// console.log(x); // ["a", "b", "c"]
+// console.log(y); // ["d", "e", "f", "g"]
+
+
+/// GOOGLE
+//  Input: {
+//   'a': 1,
+//   'b': {
+//     'c': 2,
+//     'd': {
+//       'e': 3
+//     }
+//   }
+// }
+// Output: {
+//   'a': 1,
+//   'b.c': 2,
+//   'b.d.e': 3
+// }
+
+function flattern(inn){
+   const res = {}
+   for(let i in inn){
+       if(typeof inn[i] !== "object")
+        res[i] = inn[i]
+       let temp;
+        while(true)
+        {
+         temp = inn[i]+ "."
+         
+        }
+    
+   } 
+  return inn;
+};
+
+const inn = { 'a': 1, 'b':{ 'c': 2, 'd':{ 'e': 3 } } };
+console.log(flattern(inn))

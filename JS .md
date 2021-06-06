@@ -15,7 +15,7 @@ console.log(a)
 var a = 5;
 // the value is undefined, because of 
 ```
-* And beucase of histing this returns error
+* And beucase of hoisting this returns error
 ```javascript
 a = 10;
 console.log(a);
