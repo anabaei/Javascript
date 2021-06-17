@@ -2,7 +2,18 @@
 ## Amazon
 
 <details>
-         <summary>Deploy to AWS amplify</summary>
+         <summary> EC2 instance </summary>
+
+* Login to aws console and create new EC2 instance. Use ssh to connect [Tutorial](https://www.youtube.com/watch?v=J8sdi-JtTlE&list=PLyesZnaOymnyF7jiHjQkcXJINmtXXG1rt&index=8)
+* Install Node js using this [link](https://ourcodeworld.com/articles/read/977/how-to-deploy-a-node-js-application-on-aws-ec2-server)
+* Create  RDS in aws and connect it to EC2 [tutorial](https://www.youtube.com/watch?v=muuLF4jrAXk)
+* Install postgres on your EC2 [link](https://betterprogramming.pub/how-to-provision-a-cheap-postgresql-database-in-aws-ec2-9984ff3ddaea)
+*  
+
+</details>
+
+<details>
+         <summary>Deploy Next.js to AWS amplify</summary>
 
 * it is easy way to host an app on aws. [link](https://dev.to/dabit3/5-minute-tutorial-deploying-a-next-app-with-aws-amplify-hosting-5199)
 

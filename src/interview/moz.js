@@ -198,18 +198,25 @@ function solution(arr, num)
 
 function flattern(inn){
    const res = {}
+   let temp;
    for(let i in inn){
+    let t = inn[i]
        if(typeof inn[i] !== "object")
-        res[i] = inn[i]
-       let temp;
-        while(true)
-        {
-         temp = inn[i]+ "."
-         
-        }
-    
+       
+          if(typeof inn[i] === "object" )  
+            console.log(inn[i])
+          
+          while(true)
+          {
+            if(typeof t !== "object" )  
+              break;
+            temp = t+ ".";
+            console.log(t)
+            t = t[0]
+          }      
+     res[i] = t
    } 
-  return inn;
+  return res;
 };
 
 const inn = { 'a': 1, 'b':{ 'c': 2, 'd':{ 'e': 3 } } };

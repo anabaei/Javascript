@@ -25,11 +25,7 @@ def solution(a):
 
     h = a
      #return solution(a-1) 
-    print(GEEK,groups)
+    #print(GEEK,groups)
 
-print(solution([1,2,3,4,5]))
-
-
-
-
+#print(solution([1,2,3,4,5]))
 

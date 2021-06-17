@@ -182,6 +182,18 @@ this.delaygreeting = function() {
 * Everytime we call done, it means we are out of callbacks, so we should `return` it. 
 ### Promises 
 * Promises extract callbacks 
+* Return `Hi` when promise resolve after a certain of time passed and return `bye` if promise rejected
+```javascript
+function sayHiToPerson(name) {
+    return new Promise((res, rej)=> {
+       setTimeout(() => { // Can't remove the timeout
+       res(`Hi, ${name}!`);
+    }, Math.floor(Math.random() * (5000 - 1000) + 1000)); // random number between 1000 and 5000
+      rej('Bye');
+    }) 
+  }
+```
+* 
 ```javascript
 function asyncMethod(message, calbak){
   setTimeout(function() {
