@@ -5,12 +5,34 @@
 <details>
 	<summary> Start Nodejs</summary>
 
-### Easy start
+# Quick start
 ```javascript
-npm init -y
-"start": node -r esm index.js // to run es6
+npm init // manual
+npm init -y // automatic
+npm i express body-parser esm 
+"start": nodemon -r esm index.js // to run es6
+
 ```
-* make index.js and run it on any port
+* make `index.js` and run it on any port
+```javascript
+import Express from 'express';
+import bodyParser from 'body-parser';
+
+///////////////////////////////////////////////////
+////////// Allow to parse bodies in json //////////
+///////////////////////////////////////////////////
+const app = Express()
+app.use(bodyParser.json()); // help us to handle json in body
+app.use(bodyParser.urlencoded({ extended: false})); // help us to have req.body in callbacks and reads what is inside body
+
+app.get('/', (request, response) => { response.json(`Hello, World!`) })
+const port = process.env.port || 3000;
+app.listen(
+port, ()=>console.log('server is running')
+)
+```
+
+
 ### Easy debug 
 *  on vs code select `node.js` and `node.js attach to process` then run it locally then click on `debug` to attach debug to the current process you are running (the best)
 
@@ -31,8 +53,6 @@ npm init -y
 }
 ```
 * also to render html
-
-
 
 ```javascript
 app.get('/', function (req, res) {
@@ -134,6 +154,7 @@ PORT, ()=>console.log('server is running')
  ```javascript
  listen(port: number, hostname: string, callback func)
  ```
+ * `morgan` is a Node. js and Express middleware to log HTTP requests and errors
  * Then install
  ```
  npm i body-parser cookie-parser morgan esm express babel-polyfill nodemon
@@ -1478,8 +1499,9 @@ transport.sendMail(From,to,subbject,content)
 	<summary> postgres </summary>
 
 ### Start From Sratch
+* [Tutorial link](https://www.youtube.com/watch?v=ExTZYpyAn6s)
 * run below to have a basic npm package installed in empty folder
-* Sequelize is promise based ORM. A promise is the eventual completion of an async operation.
+* Sequelize is promise based ORM (object relational mapping). A promise is the eventual completion of an async operation.
 * Sequelize uses `bluebird` a promise library. So we can use any of the methods you find on `bluebird` website. Two mains one are `catch` and `then`. Then chain down 
 success of an object.
 for example
@@ -1517,6 +1539,9 @@ app.listen(port, () => { console.log('running server on port 8001')})
 ### Define Connection
 * Move to sequelize by adding connection
 ```javascript
+// inside database.js we would have below
+// on index.js we could have import sequelize from './database.js' & it should print connection is establish 
+import Sequelize from "sequelize";
 /// first is for heroku
 sequelize = null;
 if (process.env.HEROKU_POSTGRESQL_BRONZE_URL) {
@@ -1535,25 +1560,36 @@ if (process.env.HEROKU_POSTGRESQL_BRONZE_URL) {
 sequelize.authenticate().then(() => {
 	console.log('Connection to db established successfully');
 });
+
+export default sequelize;
+```
+* if needed more info like 
+```javascript
 // If your database has password or stuff then it means
 // where above could be meanings: 
 const connection = new Sequelize('databasename', 'username', 'password',{
-host: '', port, dialect: 'postgres', storage, logging
+host: '', port: '5432', dialect: 'postgres', storage, logging
 });
 ```
 ### Define Model
-* Connect to models. Model are singulare but the table they create is plurals.
+* Connect to models. Model are singulare but the table they create are plurals.
 ```javascript
 const User = connection.define('User',{
   name: Sequelize.STRING,
   bio: Sequelize.TEXT
 });
+// then you only need to import sequelize and sync it 
+import sequelize from './utils/database.js';
+sequelize.sync() // creates tables if not exist 
+```
 
+#### Extras on models 
+```javascript
 // OR use migrate cli to create model as sequelize model:create --name User --attributes "name:string, bio:text" and association you can define below model inside it as:
 // associate: function(models){ Post.belongsTo(User)} // add FK user inside post model
 // or you can run npx sequelize-cli init and replace above with connection.
 //npx sequelize-cli model:generate --name User --attributes firstName:string,lastName:string,email:string,loginId:string,imageUrl:string,ip:string,location:string
-const User = require('./user.js')
+import User from './user.js'
 ///// this actuall connect model with sequelize and create table
 let user = User(sequelize, Sequelize); // it does above
 ```
@@ -1563,6 +1599,8 @@ let user = User(sequelize, Sequelize); // it does above
 connection.sync(); // you can connection.sync({ logging: console.log, force: true}) it drops table and create new one everytime we run.
 ```
 ### Action
+
+
 * Need just chain it to model.
 ```javascript
 connection.sync({ logging: console.log}).then( ()=>{
@@ -3429,6 +3467,10 @@ CMD npm start   // how to run
 const a = await todo();
 ```
 * Could be totally data driven apis.
+
+
+## Run mongo with Node & Docker
+* [Tutorial](https://www.digitalocean.com/community/tutorials/containerizing-a-node-js-application-for-development-with-docker-compose)
 </details>
 
 
