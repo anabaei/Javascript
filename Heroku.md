@@ -5,6 +5,46 @@
 
 * Connect heroku to [go daddy](https://www.youtube.com/watch?v=kKGSGT7mSnQ)         
 * Run nodejs simple on heroku like [sfucall](https://github.com/anabaei/JavaScript_Notes/tree/master/sfucall)
+* Key: name app.js to server.js then vola!
+</details>
+<details> 
+  <summary> Heroku connect to PostgrSQL</summary>
+
+* First download it
+```javascript
+brew tap heroku/brew && brew install heroku
+```
+* First make sure you already created postgres in your app on heroku then it goes to find it at `process.env.DATABASE_URL` 
+```javascript
+// connection.js 
+
+import Sequelize from 'sequelize';
+
+let connection = null;
+// postgres exist?
+ if(process.env.DATABASE_URL){
+	connection =  new Sequelize(`${process.env.DATABASE_URI}?sslmode=require`, null, null, {
+		url: process.env.DATABASE_URI,
+		dialect: 'postgres',
+		logging: false,
+		dialectOptions: {
+		  ssl: {
+			require: true,
+			rejectUnauthorized: false, // very important
+		  }
+		}
+	  });
+}
+else {
+	// the application is executed on the local machine
+	connection= new Sequelize('postgres://localhost:5432/aaa', { dialect: 'postgres' });
+}
+connection.authenticate().then(() => {
+	console.log('Connection to db established successfully');
+});
+export default connection;
+```
+
 </details>
 <details> 
   <summary> Heroku connect to MySQL </summary>
