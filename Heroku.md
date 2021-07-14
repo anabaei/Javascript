@@ -22,18 +22,17 @@ import Sequelize from 'sequelize';
 
 let connection = null;
 // postgres exist?
- if(process.env.DATABASE_URL){
-	connection =  new Sequelize(`${process.env.DATABASE_URI}?sslmode=require`, null, null, {
-		url: process.env.DATABASE_URI,
+  if(process.env.DATABASE_URL){
+	connection =  new Sequelize(process.env.DATABASE_URL, {
 		dialect: 'postgres',
 		logging: false,
 		dialectOptions: {
 		  ssl: {
 			require: true,
-			rejectUnauthorized: false, // very important
+			rejectUnauthorized: false
 		  }
 		}
-	  });
+	  })
 }
 else {
 	// the application is executed on the local machine
@@ -44,6 +43,13 @@ connection.authenticate().then(() => {
 });
 export default connection;
 ```
+* To connect heroku postgres
+```javascript
+heroku pg:psql
+\c  // connect to db
+\d  // get list of tables
+```
+
 
 </details>
 <details> 

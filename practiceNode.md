@@ -182,6 +182,25 @@ select distinct p."patch"->0->>'path' from public.patches as p where p."projectI
 <details>
    <summary> git </summary>
 
+* GitHub to clone from a repo use
+```javascript
+git clone https://username@github.com/path_to/repository.git
+```
+* more config issues:
+```javascript
+~/.gitconfig // keeps configurations
+~/.ssh  // keeps rds public and private keys you may use in github
+ssh-keygen -t rsa // generate ssh keys 
+```
+* Also you can set/add remote -v 
+```javascript
+git config --list // returns list of configs
+git remote set-url origin https://sfu4amir@github.com/sfu4amir/testGit2.git
+git remote add origin ....
+git remote -v 
+```
+
+
 ```javascript
 ./dev-release -d ALSANDRa
 Dev-deploy -d release // to release it
