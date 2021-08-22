@@ -27,7 +27,7 @@ yarn add next react react-dom
   },
 ```
 ## routes
-* Create index.js inside `pages folder` and default would be this. For more you can have nested folders
+* Create index.js inside  `pages folder` and default would be this. For more you can have nested folders
 
 * Below is a functionional component, which renders a function but a class component requires you actully render the funciton.
 
