@@ -29,10 +29,11 @@ yarn add next react react-dom
 ## routes
 * Create index.js inside `pages folder` and default would be this. For more you can have nested folders
 
-* Below is a functionional component, which renders a function. But a class component requires you to render the funciton
-Use react hook
+* Below is a functionional component, which renders a function but a class component requires you actully render the funciton.
+
 ```javascript
 // [id].jsx
+// Use react hook, if it was class then instead of useRoutes should use withRouter 
 import React from 'react';
 import { useRoutes} from 'next/routes';
 
