@@ -2744,7 +2744,31 @@ post.hasMany(Comment, {as: 'All_Comments'});
 </details>
 
 <details>
-	<summary> Callbacks </summary>
+	<summary> Callbacks or cb() </summary>
+
+* `cb` is how a vanilla callback function is passed into a asynchronous function (sometimes labeld next) 
+* Typically the first argument is an `error` which is usually false if everything goes fine, second argument is usually data of some form. 
+```javascript
+function myAsyncFunction(arg1, arg2, cb) {
+    // console.log(arg1, arg2)
+    // console.log("Async")
+    // async things
+    cb(false, { data: 123 });
+}
+```
+* How to use it 
+```javascript
+myAsyncFunction(10, 99, function onComplete(error, data) {
+    if (!error) {
+        console.log(data)
+    } else {
+        console.log("error")
+        // disaster - retry / respond with an error etc
+    }
+});
+```
+Alternative solution is returning promises then in myfunction you can use then and catch as this [link](https://stackoverflow.com/questions/31780872/what-is-cb-in-node#)
+
 
 * Mentality JavaScript is a bunch of nested programs.
 * `call back` is a piece of code that we pass along when we invocing a `function`, and it would be invoked after function is `done`
