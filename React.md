@@ -2,6 +2,12 @@
 [regulare expression](http://www.rexegg.com/regex-quickstart.html), [git](https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things)
 csrf vs xss Cross-site Request forgery vs Cross site scripting
 
+
+```javascript
+// if react is in bad state to start fresh
+rm -rf .cache dist
+```
+
 * React, in its simplest form is a way to write modular, reusable code. A good example of [React](https://medium.com/@gwen_faraday/converting-a-react-app-to-react-native-d7df17968fc6) explanation
  * A good resource for beginner [promises](https://github.com/mattdesl/promise-cookbook)
  * A resource for JavaScript [Algoritms](https://github.com/trekhleb/javascript-algorithms)
@@ -1381,7 +1387,17 @@ we define a funciton as
   
  </details>
  
+  # React LifeCycle 
   
+  * Class Component have `Life Cycle` Methods like `ComponentDidMount` etc...
+  * `ComponentDidMount` gets called as soon as the react component is rendered for the first time
+  * The equevlaent of componentDidMount is useEffect. It runs when component renders for the first time 
+  as 
+  ```
+  useEffect (()=>{
+     doAFunction();
+  },[])
+  ```
 
    ### LifeCycle Call-back 
    
