@@ -1068,6 +1068,7 @@ function outer(){
 }
 outer()
 ```
+Steps JS Compiler runs:
 * Line 1: declare a function outer, store it in Global Memory
 * Line 8: execute function outer
 In memory it creates a brand new Execution Context and thread goes inside function (thread goes from global memory to local memory) line by line. It stores any function or variable inside local memory inside execution context.
@@ -1089,9 +1090,23 @@ function outer(){
   }
   return incrementCounter
 }
-
 var myNewFunction = outer();
+myNewFunction()
 ```
+Steps JS Compiler runs:
+* Line 1: declare a function outer, store it in Global Memory
+* Line 8: declare myNewFunction, it would be undefined for now until we get whatever comes of calling outer with return it would be inside it.
+It is execution, so it create a new execution context 
+* Line 2: Inside execution context declare counter and set it to 0, add one row on stack
+* Line 3: Declare and store incrementFunction inside local memory  
+* Line 6: Return the function and store it inside myNewFunction
+Now stack pops, and only global remains 
+* Line 8: execute myNewFunction which is infact incrementCounter. Create executional context then increment counter. There is no counter anymore since it is wiped out from memory. 
+Notice:
+When we declare a function in memory, behind the scene javascript does very special. It determines also what data will be available when we end up calling that function. It is smart enough and determine what are souronding data needed in function. So counter is inside that souronded data and is attached to function declaraion
+* Line 8: increment orange box one -> counter = 1, then pops up from stack
+* Line 9: create executional context, push code to callstack, run counter ++, then add one to  box one -> counter = 2, even before checking lower stacks 
+So Every function has its own memory which stays with it and it is persist. Most beatiful conceptional and empowering in javascript
 
 
 
