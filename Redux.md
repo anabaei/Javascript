@@ -210,3 +210,119 @@ const nextState = allskidays(state, action)
 }
 ```
 
+
+# Redux 2
+
+* is State management tools.  It can be used even in node
+
+Redux has 5 main apis
+* ApplyMiddleware
+* compose 
+* combineReducers
+* bindActionCreators
+* createStrore (which has 4)
+
+```javascript
+import {
+,ApplyMiddleware
+,compose 
+,combineReducers
+,bindActionCreators
+,createStrore } form "redux"
+
+```
+
+<detail>
+    <summary> compose </summary>
+
+* Compose is  function to execute functions in order 
+```javascript
+func1  // add 1 to the left
+func2 // add A 
+func3 // add <>
+
+func1(func2(func3("O"))) // returns 1A<>O
+comose(func1, func2, func3)
+```
+
+</detail>
+<detail>
+   <summary> create store (reducer) and action </summary>
+
+* Create store requires reducer as input. Reducer in general takses two arguments and return one results. 
+Here we can define a reducer as 
+```javascript
+
+const ADD5 = (amount) => ({ type: ADD, payload: 5})
+
+const reducer = (state = initialState, action)=>{
+  if (action.type === ADD5)
+  {
+    const newValue = state.value + state.payload
+    return ({value : newValue}) 
+  }
+  return value
+}
+
+
+//const store = createStore(reducer, initialState)
+const store = createStore(reducer)
+
+// with dispatch we put action into reducer 
+state.dispatch(something())
+
+// get state
+console.log(state.getState())
+```
+
+* Example: if we have an object and wanted to only update location we could define updateName, updateCity, etc actions .
+```javascript
+const angrybird = {
+  name: "angry",
+  email: "angry@gmail.com",
+  author: {
+    firtname: "name",
+    lastname: "",
+    location: {
+      city: "vancouver"
+    }
+  }
+}
+
+```
+* To change city 
+```javascript
+if( action.type === "CITY_CHANGE")
+{
+  return {
+    ...state,
+    author: {
+      ...state.author,
+      location :{
+        city: action.payload
+      }
+    }
+  }
+}
+```
+
+</detail>
+<detail>
+  <summary> subscribe </summary>
+
+* It is equal to event lister in DOM, and emit listenr in node.
+* Here is when state change please call this function
+
+```javascript
+const subscriber = () => console.log("", store.getState())
+
+// in this way everytime state changed, this console log is triggered
+store.subscribe(subscriber);
+
+```
+</detail>
+
+
+
+
+
