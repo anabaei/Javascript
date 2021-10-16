@@ -1058,6 +1058,9 @@ To have metrics running live into kubernetes:
 
 # (no closure) Same Level Execution context 
 
+	
+<img width="1429" alt="no closure, same context " src="https://user-images.githubusercontent.com/7471619/137572836-01526e46-5659-42c4-b449-7aee822cb1fb.png">
+	
 ```javascript
 function outer(){
   const counter=0
@@ -1081,6 +1084,9 @@ It creates brand new execution context with its own variable environment. Then i
 * Line 4: increment counter. To find it first it looks at its own env variables, can't find it then it goes one level down stack to find it. If it doesn't exist inside lower stacks and not in global memory it is closure when it is in upper stacks.
 
 # Closure
+
+	<img width="1440" alt="Screen Shot 2021-10-15 at 5 58 50 PM" src="https://user-images.githubusercontent.com/7471619/137572896-e4ea1dc9-e543-4f95-a1a1-2adb0a67f409.png">
+
 
 ```javascript
 function outer(){
