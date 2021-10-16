@@ -1085,7 +1085,8 @@ It creates brand new execution context with its own variable environment. Then i
 
 # Closure
 
-	<img width="1440" alt="Screen Shot 2021-10-15 at 5 58 50 PM" src="https://user-images.githubusercontent.com/7471619/137572896-e4ea1dc9-e543-4f95-a1a1-2adb0a67f409.png">
+
+<img width="1440" alt="Screen Shot 2021-10-15 at 5 58 50 PM" src="https://user-images.githubusercontent.com/7471619/137573002-16431628-572b-4e35-b68f-8ae09cd4c005.png">
 
 
 ```javascript
