@@ -327,6 +327,8 @@ const IndexPage = () => {// jsx }
 export default IndexPage
 
 export async function getStaticProps(context) {
+  const response = await fetch("https://something.ca")\
+  const data = await response.json()
   return {
     props: {}
   }

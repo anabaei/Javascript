@@ -1053,9 +1053,54 @@ To have metrics running live into kubernetes:
 * `operationId`: is controllername + '_'+ function to call like `PeopleList_peopleGet` in fact it represent what method in what controller should be called to implement this url
 *
 </details>
-
 <details>
-       <summary> Promises </summary>
+       <summary> Execution Context & Closure</summary>
+
+# (no closure) Same Level Execution context 
+
+```javascript
+function outer(){
+  const counter=0
+  function incrementCounter(){
+   counter ++; 
+  }
+  incrementCounter()
+}
+outer()
+```
+* Line 1: declare a function outer, store it in Global Memory
+* Line 8: execute function outer
+In memory it creates a brand new Execution Context and thread goes inside function (thread goes from global memory to local memory) line by line. It stores any function or variable inside local memory inside execution context.
+How JS trace it? It push outer into stack memory while it is inside execution context
+
+* Line 2: Declare label counter and assign it to 0
+* Line 3: Declare function incrementCounter 
+* Line 6: execute incrementCounter 
+It creates brand new execution context with its own variable environment. Then it push on incrementCounter to stack on top of outer and global. 
+* Line 4: increment counter. To find it first it looks at its own env variables, can't find it then it goes one level down stack to find it. If it doesn't exist inside lower stacks and not in global memory it is closure when it is in upper stacks.
+
+# Closure
+
+```javascript
+function outer(){
+  const counter=0
+  function incrementCounter(){
+   counter ++; 
+  }
+  return incrementCounter
+}
+
+var myNewFunction = outer();
+```
+
+
+
+
+
+
+</details>
+<details>
+       <summary> Promises, async await </summary>
 
 * When I was node develop I always concern about performance issue but main concern was about debug ability.
 * 
