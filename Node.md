@@ -1106,7 +1106,19 @@ Notice:
 When we declare a function in memory, behind the scene javascript does very special. It determines also what data will be available when we end up calling that function. It is smart enough and determine what are souronding data needed in function. So counter is inside that souronded data and is attached to function declaraion
 * Line 8: increment orange box one -> counter = 1, then pops up from stack
 * Line 9: create executional context, push code to callstack, run counter ++, then add one to  box one -> counter = 2, even before checking lower stacks 
-So Every function has its own memory which stays with it and it is persist. Most beatiful conceptional and empowering in javascript
+*  Every function has its own memory which stays with it and it is persist like a back pack. So after looking for variables insides local memory it is checking its own back pack which we call that back pack CLOUSER. Most beatiful conceptional and empowering in javascript
+
+### Advantages of Lexical Scope, closed environment variable or just closure
+
+* Allows us to have functions that allow us to remember previouse time they were run
+* Functions aren't just functions with static text in it, they have persistent store of data on their back
+* Remember if we had counter globally, or we had counter inside incrementCounter function it never reached out to its back pack 
+* We don't want to pollute global memory, To use closure memory we call it Module pattern. 
+## Module Pattern
+
+* If I store data inside my function, whenever function runs the data is gone, also store in global is not good, so we store data inside back pack. Then for the life of our application, we have data around and persisted. We use our lexical scope or our closed environmental variables. 
+
+
 
 
 
