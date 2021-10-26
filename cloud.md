@@ -1,275 +1,17 @@
+## Kubernetes
 
-## Amazon
+* Kubernetes are orchestering containers which are running instances of applications that are defined in image
+* Registeries use to share container images, a famous registery is `docker` hub. Mayn people think container as docker container
+* `LXC` is linux native container and has been along for long time and docker is based on LXC container
 
-<details>
-         <summary> EC2 instance </summary>
+## k8 projects status
 
-* Login to aws console and create new EC2 instance. Use ssh to connect [Tutorial](https://www.youtube.com/watch?v=J8sdi-JtTlE&list=PLyesZnaOymnyF7jiHjQkcXJINmtXXG1rt&index=8)
-* Install Node js using this [link](https://ourcodeworld.com/articles/read/977/how-to-deploy-a-node-js-application-on-aws-ec2-server)
-* Create  RDS in aws and connect it to EC2 [tutorial](https://www.youtube.com/watch?v=muuLF4jrAXk)
-* Install postgres on your EC2 [link](https://betterprogramming.pub/how-to-provision-a-cheap-postgresql-database-in-aws-ec2-9984ff3ddaea)
+* K8 is also called a CNCF project and K8 includes projects. 
 *  
 
-</details>
-
-<details>
-         <summary>Deploy Next.js to AWS amplify</summary>
-
-* it is easy way to host an app on aws. [link](https://dev.to/dabit3/5-minute-tutorial-deploying-a-next-app-with-aws-amplify-hosting-5199)
-
-```javascript
-amplify publish
-```
-</details>
-
-<details>
-         <summary>S3</summary>
-
-#### FIRST
-* Create `upload.js` file as
-```javascript
-var aws = require('aws-sdk');
-var multer = require('multer');
-var multerS3 = require('multer-s3');
-const config = require('../config/config.json');
-
-aws.config.update({
-	secretAccessKey: config.Secret_Access_Key_S3,
-	accessKeyId: config.Access_Key_ID_S3,
-	region: config.REGION_S3
-});
-
-var s3 = new aws.S3();
-
-var upload = multer({
-	storage: multerS3({
-		s3: s3,
-		bucket: 'youBucketName',
-		metadata: function(req, file, cb) {
-			cb(null, { fieldName: file.fieldname });
-		},
-		key: function(req, file, cb) {
-			cb(null, Date.now().toString());
-		}
-	})
-});
-module.exports = upload;
-```
-* Alternatively if you want to save into folder `amirkhan`
-```javascript
-	key: function(req, file, cb) {
-			cb(null, 'amirkhan/'+Date.now().toString());
-```
-* you can use `req.params.postid` to make folders for postids
-### Second
-* on rout level define this
-* make `formData` with `file` name
-```javascript
-const upload = require('../../services/upload.js');
-
-router.post('/uploadFile', upload.single('file'), async (req, res, next) => {
-	singleUpload(req, res, function(err) {
-		return res.json({ imgUrl: req.file.location });
-	});
-```
-##### OR
-* make `formData` with `image` name file attach
-```javascript
-const upload = require('../../services/upload.js');
-const singleUpload = upload.single('image');
-
-router.post('/uploadFile', async (req, res, next) => {
-	singleUpload(req, res, function(err) {
-		return res.json({ imgUrl: req.file.location });
-	});
-```
-### Third
-* Also make sure your bodyparser is set as
-```javascript
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-```
-
-* Here is a [tutorial](https://www.youtube.com/watch?time_continue=636&v=ASuU4km3VHE&feature=emb_title)
-* To save images. Need `s3` as storage and `IAM` to keep credentials
-* Create bucket
-* Create IAM: IAM -> USERS -> AddUSER -> check programming access -> continue press next ->get accesss UID and secret Id
-* copy bitbucket policy as [source](https://github.com/keithweaver/python-aws-s3) and change the `AWS` iam with what you find at `console login-> users -> user ARN`
-* Change resouce with what we have on top
-```javascript
-{
-    "Version": "2012-10-17",
-    "Id": "Policy1488494182833",
-    "Statement": [
-        {
-            "Sid": "Stmt1488493308547",
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::281979644754:user/sample-user"
-            },
-            "Action": [
-                "s3:ListBucket",
-                "s3:ListBucketVersions",
-                "s3:GetBucketLocation",
-                "s3:Get*",
-                "s3:Put*"
-            ],
-            "Resource": "arn:aws:s3:::img-bucket-00123"
-        }
-    ]
-}
-```
-* Paste above after changing the ARN to `s3->bucket->permission-> policy`
-* Change `resource` with what we have on top of bucket at  `Bucket policy editor ARN: ar`
-### Set Cors
-* Copy from below and pased in `s3-> bitbucket-> permissions->cors configuration`
-```javascript
-<?xml version="1.0" encoding="UTF-8"?>
-<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
-  <CORSRule>
-    <AllowedOrigin>*</AllowedOrigin>
-    <AllowedMethod>GET</AllowedMethod>
-    <AllowedMethod>POST</AllowedMethod>
-    <AllowedMethod>PUT</AllowedMethod>
-    <MaxAgeSeconds>3000</MaxAgeSeconds>
-    <AllowedHeader>Authorization</AllowedHeader>
-  </CORSRule>
-</CORSConfiguration>
-```
-### User Policy
-* Go to `IAM -> User -> permissions -> Add inline plicy` and pasete below
-```javascript
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "s3:ListAllMyBuckets",
-                "s3:PutObject",
-                "s3:GetObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::*"
-            ]
-        }
-    ]
-}
-```
-* it is pretty loose ploicy. By changing resouce we can define access to specific resource
-### TEST Connection
-* You should be able to see the connection as
-```javascript
-const AWS = require('aws-sdk');
-router.get('/', async (req, res, next) => {
-	let s3bucket = new AWS.S3({
-		accessKeyId: 'A****************L',
-		secretAccessKey: 's*********************',
-		Bucket: 'your-bucket-name'
-	});
-	s3bucket.listBuckets(function(err, data) {
-		if (err) {
-			console.log('Error', err);
-		} else {
-			res.json(data);
-		}
-	});
-});
-```
-</details>
-<details>
-<summary> Upload File</summary>
-
-* You need to get `multer` package to have a file attachment in your request as [here](https://github.com/expressjs/multer#readme)
-* Then use it as a middleware for a single file as
-```javascript
-router.post('/uploadFile', upload.single('nameOfThekey'), async (req, res, next) => {
-    console.log(req.file)
-```
-
-## An upload on React
-
-```javascript
-const User = {
-	createNew(attributes, userId, pictureFiles) {
-		let data = new FormData();
-		data.append('file', pictureFiles[0]);
-		console.log(pictureFiles);
-		return fetch(`https://cors-anywhere.herokuapp.com/${DOMAIN}/uploadFile/${userId}`, {
-			headers: { 'Access-Control-Allow-Origin': '*' },
-			method: 'POST',
-			body: data
-		})
-			.then((res) => res.json())
-			.catch((error) => console.log('Error= ' + error.message));
-	},
-  getAll() {
-		return fetch(`${DOMAIN}/user`, {
-  ....
-        }}
-}
-export { User };
-```
-* Where you call above utilities with on drop as using `ImageUploader`
-```javascript
-import ImageUploader from 'react-images-upload';
-
-	onDrop(pictureFiles, pictureDataURLs) {
-		this.setState({
-			pictures: this.state.pictures.concat(pictureFiles)
-		});
-		let formData = new FormData();
-		formData.append('file', pictureFiles);
-		User.createNew({}, 3, pictureFiles)
-			.then((res) => {
-				console.log(res + 'saved!!');
-			})
-			.catch((error) => console.log('Failed: ' + error.message));
-		console.log(this.props);
-	}
-    	render() {
-		return (
-			<div>
-				{this.state.postId}
-				<ImageUploader withIcon={true} buttonText="Choose images" onChange={this.onDrop} />
-			</div>
-		);
-	}
-```
-</details>
-<details>
-       <summary>AWS Command lines</summary>
-
-* Here is basic [required](https://czak.pl/2015/09/15/s3-rest-api-with-curl.html)
-#### Get
-* To get a file or image from s3
-```javascript
- curl -o GET https://bucketName.s3.amazonaws.com/imageName.jpg
-```
 
 
-#### ACL
-* Returns the access control list ([ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html)) of an object [here](https://czak.pl/2015/09/15/s3-rest-api-with-curl.html)
-```javascript
-curl -v https://bucketName.s3.amazonaws.com&acl
 
-```
-#### ls s3
-* To see list of buckets we can have
-```javascript
-aws s3 ls s3://bucketName
-```
-
-### Partial retrieves
-* This is how you can get partial of files
-```javascript
-curl -r  0-100000  https://myBucketAddress.s3.amazonaws.com/img.jpg  -o part4.jpg
-```
-
-</details>
-
-
-## Kubernetes
 
 * Never delete deployment files. When server is down or wrong remove `pods` files
 * `Elasticsearch cluster` is a group of one or more Elasticsearch nodes instances that are connected together. The power of an Elasticsearch cluster lies in the distribution of tasks, searching and indexing, across all the nodes in the cluster.
@@ -567,7 +309,274 @@ POST http://namofcluster/knowledge_base
 ```
 *
 </details>
+## Amazon
 
+<details>
+         <summary> EC2 instance </summary>
+
+* Login to aws console and create new EC2 instance. Use ssh to connect [Tutorial](https://www.youtube.com/watch?v=J8sdi-JtTlE&list=PLyesZnaOymnyF7jiHjQkcXJINmtXXG1rt&index=8)
+* Install Node js using this [link](https://ourcodeworld.com/articles/read/977/how-to-deploy-a-node-js-application-on-aws-ec2-server)
+* Create  RDS in aws and connect it to EC2 [tutorial](https://www.youtube.com/watch?v=muuLF4jrAXk)
+* Install postgres on your EC2 [link](https://betterprogramming.pub/how-to-provision-a-cheap-postgresql-database-in-aws-ec2-9984ff3ddaea)
+*  
+
+</details>
+
+<details>
+         <summary>Deploy Next.js to AWS amplify</summary>
+
+* it is easy way to host an app on aws. [link](https://dev.to/dabit3/5-minute-tutorial-deploying-a-next-app-with-aws-amplify-hosting-5199)
+
+```javascript
+amplify publish
+```
+</details>
+
+<details>
+         <summary>S3</summary>
+
+#### FIRST
+* Create `upload.js` file as
+```javascript
+var aws = require('aws-sdk');
+var multer = require('multer');
+var multerS3 = require('multer-s3');
+const config = require('../config/config.json');
+
+aws.config.update({
+	secretAccessKey: config.Secret_Access_Key_S3,
+	accessKeyId: config.Access_Key_ID_S3,
+	region: config.REGION_S3
+});
+
+var s3 = new aws.S3();
+
+var upload = multer({
+	storage: multerS3({
+		s3: s3,
+		bucket: 'youBucketName',
+		metadata: function(req, file, cb) {
+			cb(null, { fieldName: file.fieldname });
+		},
+		key: function(req, file, cb) {
+			cb(null, Date.now().toString());
+		}
+	})
+});
+module.exports = upload;
+```
+* Alternatively if you want to save into folder `amirkhan`
+```javascript
+	key: function(req, file, cb) {
+			cb(null, 'amirkhan/'+Date.now().toString());
+```
+* you can use `req.params.postid` to make folders for postids
+### Second
+* on rout level define this
+* make `formData` with `file` name
+```javascript
+const upload = require('../../services/upload.js');
+
+router.post('/uploadFile', upload.single('file'), async (req, res, next) => {
+	singleUpload(req, res, function(err) {
+		return res.json({ imgUrl: req.file.location });
+	});
+```
+##### OR
+* make `formData` with `image` name file attach
+```javascript
+const upload = require('../../services/upload.js');
+const singleUpload = upload.single('image');
+
+router.post('/uploadFile', async (req, res, next) => {
+	singleUpload(req, res, function(err) {
+		return res.json({ imgUrl: req.file.location });
+	});
+```
+### Third
+* Also make sure your bodyparser is set as
+```javascript
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+```
+
+* Here is a [tutorial](https://www.youtube.com/watch?time_continue=636&v=ASuU4km3VHE&feature=emb_title)
+* To save images. Need `s3` as storage and `IAM` to keep credentials
+* Create bucket
+* Create IAM: IAM -> USERS -> AddUSER -> check programming access -> continue press next ->get accesss UID and secret Id
+* copy bitbucket policy as [source](https://github.com/keithweaver/python-aws-s3) and change the `AWS` iam with what you find at `console login-> users -> user ARN`
+* Change resouce with what we have on top
+```javascript
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1488494182833",
+    "Statement": [
+        {
+            "Sid": "Stmt1488493308547",
+            "Effect": "Allow",
+            "Principal": {
+                "AWS": "arn:aws:iam::281979644754:user/sample-user"
+            },
+            "Action": [
+                "s3:ListBucket",
+                "s3:ListBucketVersions",
+                "s3:GetBucketLocation",
+                "s3:Get*",
+                "s3:Put*"
+            ],
+            "Resource": "arn:aws:s3:::img-bucket-00123"
+        }
+    ]
+}
+```
+* Paste above after changing the ARN to `s3->bucket->permission-> policy`
+* Change `resource` with what we have on top of bucket at  `Bucket policy editor ARN: ar`
+### Set Cors
+* Copy from below and pased in `s3-> bitbucket-> permissions->cors configuration`
+```javascript
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+  <CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>GET</AllowedMethod>
+    <AllowedMethod>POST</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <AllowedHeader>Authorization</AllowedHeader>
+  </CORSRule>
+</CORSConfiguration>
+```
+### User Policy
+* Go to `IAM -> User -> permissions -> Add inline plicy` and pasete below
+```javascript
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListAllMyBuckets",
+                "s3:PutObject",
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::*"
+            ]
+        }
+    ]
+}
+```
+* it is pretty loose ploicy. By changing resouce we can define access to specific resource
+### TEST Connection
+* You should be able to see the connection as
+```javascript
+const AWS = require('aws-sdk');
+router.get('/', async (req, res, next) => {
+	let s3bucket = new AWS.S3({
+		accessKeyId: 'A****************L',
+		secretAccessKey: 's*********************',
+		Bucket: 'your-bucket-name'
+	});
+	s3bucket.listBuckets(function(err, data) {
+		if (err) {
+			console.log('Error', err);
+		} else {
+			res.json(data);
+		}
+	});
+});
+```
+</details>
+<details>
+<summary> Upload File</summary>
+
+* You need to get `multer` package to have a file attachment in your request as [here](https://github.com/expressjs/multer#readme)
+* Then use it as a middleware for a single file as
+```javascript
+router.post('/uploadFile', upload.single('nameOfThekey'), async (req, res, next) => {
+    console.log(req.file)
+```
+
+## An upload on React
+
+```javascript
+const User = {
+	createNew(attributes, userId, pictureFiles) {
+		let data = new FormData();
+		data.append('file', pictureFiles[0]);
+		console.log(pictureFiles);
+		return fetch(`https://cors-anywhere.herokuapp.com/${DOMAIN}/uploadFile/${userId}`, {
+			headers: { 'Access-Control-Allow-Origin': '*' },
+			method: 'POST',
+			body: data
+		})
+			.then((res) => res.json())
+			.catch((error) => console.log('Error= ' + error.message));
+	},
+  getAll() {
+		return fetch(`${DOMAIN}/user`, {
+  ....
+        }}
+}
+export { User };
+```
+* Where you call above utilities with on drop as using `ImageUploader`
+```javascript
+import ImageUploader from 'react-images-upload';
+
+	onDrop(pictureFiles, pictureDataURLs) {
+		this.setState({
+			pictures: this.state.pictures.concat(pictureFiles)
+		});
+		let formData = new FormData();
+		formData.append('file', pictureFiles);
+		User.createNew({}, 3, pictureFiles)
+			.then((res) => {
+				console.log(res + 'saved!!');
+			})
+			.catch((error) => console.log('Failed: ' + error.message));
+		console.log(this.props);
+	}
+    	render() {
+		return (
+			<div>
+				{this.state.postId}
+				<ImageUploader withIcon={true} buttonText="Choose images" onChange={this.onDrop} />
+			</div>
+		);
+	}
+```
+</details>
+<details>
+       <summary>AWS Command lines</summary>
+
+* Here is basic [required](https://czak.pl/2015/09/15/s3-rest-api-with-curl.html)
+#### Get
+* To get a file or image from s3
+```javascript
+ curl -o GET https://bucketName.s3.amazonaws.com/imageName.jpg
+```
+
+
+#### ACL
+* Returns the access control list ([ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_GetObjectAcl.html)) of an object [here](https://czak.pl/2015/09/15/s3-rest-api-with-curl.html)
+```javascript
+curl -v https://bucketName.s3.amazonaws.com&acl
+
+```
+#### ls s3
+* To see list of buckets we can have
+```javascript
+aws s3 ls s3://bucketName
+```
+
+### Partial retrieves
+* This is how you can get partial of files
+```javascript
+curl -r  0-100000  https://myBucketAddress.s3.amazonaws.com/img.jpg  -o part4.jpg
+```
+
+</details>
 
 ```javascript
 ls -lh filename //gives the size of the file
