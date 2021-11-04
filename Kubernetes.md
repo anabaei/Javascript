@@ -189,4 +189,23 @@ kubctl create deployment g-nginx --image=nginx
 
 ```
 ### Workloads
-* To manage gcp environment, 
+* To manage gcp environment<img width="841" alt="Screen Shot 2021-10-31 at 11 36 44 PM" src="https://user-images.githubusercontent.com/7471619/140380612-ce209d91-40f1-4a4b-a13d-8e5f282b64e8.png">
+, 
+
+Commands:
+```javascript
+gcloud container clusters update Name
+
+```
+
+### Docker 0
+
+<img width="430" alt="Screen Shot 2021-11-01 at 4 51 38 PM" src="https://user-images.githubusercontent.com/7471619/140378704-1a519ccd-59c9-4352-82b3-8201032e0580.png">
+
+
+
+# Data Migration
+<img width="835" alt="Screen Shot 2021-11-04 at 11 50 14 AM" src="https://user-images.githubusercontent.com/7471619/140375750-88de951a-6f09-4945-ba6b-57f19608dafa.png">
+
+
+
