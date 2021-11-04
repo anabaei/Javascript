@@ -192,11 +192,59 @@ kubctl create deployment g-nginx --image=nginx
 * To manage gcp environment<img width="841" alt="Screen Shot 2021-10-31 at 11 36 44 PM" src="https://user-images.githubusercontent.com/7471619/140380612-ce209d91-40f1-4a4b-a13d-8e5f282b64e8.png">
 , 
 
-Commands:
+## Data Migration
+
+* Move all data from one cluster to another one. So all user generated data should move to new cluster. And we should not have any user's data in public cluster anymore (that is the key). User's data is exception but all the other generated data needs to move to new cluster.
+* When migrating data, data temorary store in google storage, 
+```
+1- lock the information
+2- move data to new cluster
+3- users use data, if there is no issue then it finalize
+3.1 - if there is any issue, there is rollback workflow which can remove data from target cluster
+4- remove data from first place
+```
+
+state diagram
+
+sequence diagram
+
+## Terraform 
+
+* Comapre existed implenetation . 
+* State is like a file that can be on gs or locally.  like we defined in Backend "gcs" bucket where we can store it with prefix. 
+* it can be lock file as safety feature on terraform 
+
+```
+gcloud auth login default
+terraform state list // need to be in the folder when main.tf and variable.tf are
+```
+* Add subnet
+```javascript
+sit -> prod-ds -> vpc -> variable.tf 
+open terminal here to add new subnet here ////esna-terraform-state-staging  
+
+gcloud projects list
+gcloud config set project onesnastaging 
+ gcloud config list
+ gsutil ls gs://esna-terraform-state-staging   
+ 
+terraform init -upgrade
+
+terraform plan // shows current configuration is different with what is deployed and changed. 
+terraform apply // make those changes 
+
+```
+
+* Define new variables, define service google at here: modules- > gcp -> vcp-components -> subnets 
+
+
+# Commands:
 ```javascript
 gcloud container clusters update Name
 
 ```
+
+
 
 ### Docker 0
 
