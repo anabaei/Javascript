@@ -228,15 +228,41 @@ gcloud config set project onesnastaging
  gcloud config list
  gsutil ls gs://esna-terraform-state-staging   
  
-terraform init -upgrade
+terraform init -upgrade //terraform init --upgrade //
 
 terraform plan // shows current configuration is different with what is deployed and changed. 
 terraform apply // make those changes 
+gsutil ls gs://esna-terraform-state-staging  
+
+terraform plan
+terraform apply
+terraform destroy
 
 ```
+# Terragrunt
+
+* Terragrunt is a wrapper for terraform, isntead of calling terraform directly we can put them inside a terragrunt function. 
+```javascript
+staging -> env-1 ->flavor-global -> vars.yml 
+    staging -> env-1 ->gke-> terragrunt.hcl  //run the module and also pass these variables to it
+```
+* define variables and assign them to run 
+* We never call modules directly, there is under projects/spaces/gke define variables and main can actually call other modules
+* In order to not go to each individual to change things, ionstead of going to eevery single one we can use modules
+
 
 * Define new variables, define service google at here: modules- > gcp -> vcp-components -> subnets 
 
+# Google Cloud create VPC
+```javascript
+gclloud compute network create vpc-2 --subnet-mod custom
+gclloud compute networks subnets create vpc-2-euroe-west --network vpc-2 --region europe-west --range 10.10.1.0/24
+
+gcloud compute networks delete vpc-2
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete nemeoffirewall
+
+```
 
 # Commands:
 ```javascript
