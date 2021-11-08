@@ -2,6 +2,86 @@
 
 
 [Resource](https://learning.oreilly.com/videos/getting-started-with/9780136787709/9780136787709-GSK2_01_04_06/)
+* K8 is a portable, extensible, open-source, platform for managing conainerized workloads and services, that facilates both declarative configuration and automation, letting you run distributed system resiliently, with scalling and failover for your application.
+* K8 is a container orchestrated to make sure each container is where it's supposed to be and containers can work togather
+
+#### Use case
+* There are many applications we call `monolithics` means put all functionality like all transactions and third party inegration into a single deployable artifact. 
+```
+deployment: may take long time since everything needs to rollout togather 
+and scalling has issue
+
+```
+* So we have `microservices` each piece of functionality split into smaller individual artifacts. If there is an update, only that serviec has to be replaced
+```
+scalling is easier, each part can be scale to match traffic.
+```
+* That is where `containers` are usefull. We can package up our services neatly. 
+
+## Cluster 
+
+* `Kubernetes` is all about managing containers on `virtual machines` or `nodes`. The nodes and containers they run are group togather as a `cluster`.
+* Each cluster can have many VM or nodes, each node can have many pods and each pod can include containers
+* Each `container` has `endpoints`, `DNS`, `Storage` and scalability. 
+* Developer tells K8 what cluster need to be look like and K8 create it
+
+## Containers
+ 
+* Contianers are built to deploy smaller services with isolation and consistency. Containers are based on underlying concent from `linux kernel` Namespaces and Cgroups. 
+
+### Namespaces
+* namespaces make sure that individual processes can't see the details of other processes and cgroups control how much resources a process can use like cpu, memory
+* Container host platform can be a linux distribution, but also a minimal distribution such as Fedora Atomic or CoreOS like what we have in clouds 
+* Containers are linux and run on container engine. Engine runs on top of Linux Kernal. Like you run app in smartphone. They are self-contained and never offer dependency problem
+
+#### Container run times (Docker)
+* There are few containers run time, one of them is `Docker`. Docker built APIs that help app developer build containers and a platform to run them sameway regardless of which machine they run on. 
+* A docker file is like
+```javascript
+MAIN PARTS OF DOCKERFILE
+
+// from which image to make container environment
+FROM ubunto:16.04 
+
+// Run some commands to download node or python 
+RUN apth update && apt install python -y
+RUN app install python-pip -y
+RUN pip install flask
+
+// Copy files from your local environment and put them into the container, then container can have our app files
+COPY app.py /opt/app.py
+
+//entrypoint command: run app
+ENTRYPOINT FLASK_APP=/opt/app.py flask run --host=0.0.0.0
+```
+
+## Desired State
+* Same as docekr file explain a container what to do, we configure k8 to manage whole cluster to do which we call it `Desired State`
+* `POD` is a collection of multiple containers. It could be one or multiple applications (usually one app). How to create pods in a node? below example
+```javascript
+// a yaml file that tells desired state to create pod
+apiVersion: V1
+kind: pod
+metadata: 
+  name:static-web
+  labels:
+    role:myrole
+spec:
+  containers:
+    - name: web
+      image: nginx
+      ports:
+        -name: web
+         containerPort: 80
+         protocol: TCP
+
+```
+* `Metadata` section gives K8 to group pods and other resources togather
+*  `spec` here first we name a pod, tell what image needs to run. Define ports through default port number 80. 
+*  When we put it on K8, k8 make sure our actual state match with our `desired state` 
+
+## Node
+* Node is virtual or physical machine where you run your workloads on.
 
 ## Kubernetes Project Status
 * Project status is determined by the CNCF
@@ -14,10 +94,7 @@
 * Kubernetes can be used on-premise, but also as a managed solution in public cloud like Azure Kubernetes Service, EKS Amazon Kubernetes Platform, GKE Google Kubernetes public cloud 
 * CKAD is basic, then CKA, 
 
-## Understanding Containers
- 
-* Container host platform can be a linux distribution, but also a minimal distribution such as Fedora Atomic or CoreOS like what we have in clouds 
-* Containers are linux and run on container engine. Engine runs on top of Linux Kernal. Like you run app in smartphone. They are self-contained and never offer dependency problem
+
 
 ### VMs 
 * Many containers can run on top of the same host kernel
@@ -117,6 +194,19 @@ brew install --cask docker // Then launch the Docker app
 // Because docker is a system-level package you need --cask 
 brew install docker-machine docker
 ```
+
+## Namespaces:
+
+* Namespace is great to divide resources across various cluster and teams and give control to what you can access within a given cluster. 
+```javascript
+kubens // show all namesapce in your cluster, as well as which one your k8 context currently is configured to interact with
+kubectl auth can-i defineVerb Resource
+kubectl auth can-i create pods
+kubectl describe namespace NameOfNameSpace // to look for constraints that define in namespace level
+
+
+```
+
 
 ## Kubernetes Cluster
 
