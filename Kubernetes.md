@@ -20,8 +20,8 @@ scalling is easier, each part can be scale to match traffic.
 
 ## Cluster 
 
-* `Kubernetes` is all about managing containers on `virtual machines` or `nodes`. The nodes and containers they run are group togather as a `cluster`.
-* Each cluster can have many VM or nodes, each node can have many pods and each pod can include containers
+* `Kubernetes` is all about managing containers on `virtual machines` or `nodes`. The nodes and containers running a group togather as a `cluster`.
+* Each cluster can have many VM or nodes where you run your workloads on. Each node can have many pods and each pod can include containers
 * Each `container` has `endpoints`, `DNS`, `Storage` and scalability. 
 * Developer tells K8 what cluster need to be look like and K8 create it
 
@@ -80,8 +80,30 @@ spec:
 *  `spec` here first we name a pod, tell what image needs to run. Define ports through default port number 80. 
 *  When we put it on K8, k8 make sure our actual state match with our `desired state` 
 
-## Node
-* Node is virtual or physical machine where you run your workloads on.
+
+## Nodes details
+* Each nodes contains the service necessary to run pods. A container run time for running containers, a kubelet make sure everything is running and kub proxy for handling networking. 
+
+<img width="457" alt="Screen Shot 2021-11-08 at 2 11 03 PM" src="https://user-images.githubusercontent.com/7471619/140826411-415732d5-5755-4e7c-a644-5ee91d7bbc20.png">
+* `kubelet` on nodes are watching what's going on on the node itself, so when control plane schedual a pod on that node, both the control plane and the node have enough information to make sure it works 
+* If a pod runs into issue, control plane works with kubele to remove unhealth pod and replace it with ne
+* 
+
+## K8 Control plane
+* Each cluster has one control plane, the way k8 manages pods it through whats called `control plane`. Inside we have
+```javascript
+API Server: handles data validations and configuration for all api objects, 
+etcd: a key-value store for holding onto all the important data that k8 uses
+schedualer: it makes decision where exactly a pod needs to run, it look at available resources for all the nodes and assign a pod to a node that can handle it.
+controller manager: core k8 logic happens. 
+cloud controller: allows k8 to hook into cloud providers
+```
+
+![Image 2021-11-08 at 2 38 PM](https://user-images.githubusercontent.com/7471619/140829341-d768ca40-8150-4dd3-8360-2669d2f78ba0.jpg)
+
+* How we actually declare details ? here is we need k8 apis
+
+
 
 ## Kubernetes Project Status
 * Project status is determined by the CNCF
