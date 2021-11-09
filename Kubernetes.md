@@ -116,6 +116,8 @@ kubectl expose deployment dbd \ --port 80 --type LoadBalancer
 
 # Imperatively vs Declaratively
 * So far we create cluster imperatively, it means we told K8 what we want to do. In real world we use declaratively by having a file that describe or declares what we want things to be like. Having our state defined declaratively in files allow us to track changes through source control.
+* [linke for tutorial](https://www.youtube.com/watch?v=LYcHaDDcCYo) 
+
 
 ## K8 Control plane
 * Each cluster has one control plane, the way k8 manages pods it through whats called `control plane`. Inside we have
