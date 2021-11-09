@@ -29,7 +29,7 @@ scalling is easier, each part can be scale to match traffic.
  
 * Contianers are built to deploy smaller services with isolation and consistency. Containers are based on underlying concent from `linux kernel` Namespaces and Cgroups. 
 
-### Namespaces
+#### Namespaces
 * namespaces make sure that individual processes can't see the details of other processes and cgroups control how much resources a process can use like cpu, memory
 * Container host platform can be a linux distribution, but also a minimal distribution such as Fedora Atomic or CoreOS like what we have in clouds 
 * Containers are linux and run on container engine. Engine runs on top of Linux Kernal. Like you run app in smartphone. They are self-contained and never offer dependency problem
@@ -87,7 +87,34 @@ spec:
 <img width="457" alt="Screen Shot 2021-11-08 at 2 11 03 PM" src="https://user-images.githubusercontent.com/7471619/140826411-415732d5-5755-4e7c-a644-5ee91d7bbc20.png">
 * `kubelet` on nodes are watching what's going on on the node itself, so when control plane schedual a pod on that node, both the control plane and the node have enough information to make sure it works 
 * If a pod runs into issue, control plane works with kubele to remove unhealth pod and replace it with ne
-* 
+
+## Kubernates API
+* Makes managing cloud native applications easier. We already talked about few API objects like pods, nodes, but there are also services, deployments, secrets and more.. 
+
+# START with K8
+
+* Have an app to run hello world on port 8080. First We need a VM or Node to run our app
+
+```javascript
+gcloud container clusters create hello-cluster
+```
+* This command creates a cluster and by default 3 nodes. Now how to run my app inside them? use `kubectl` to interact with node to create a kubernetes api object called `deployment`.  
+```javascript
+kubectl run dbd --image \ askcarter/example-db:1.0.0 --record
+```
+### Deployment
+* Deployment is an abstraction that manages the life cycle of an application. We can set specific numbers of instances or replica for `deployement` to manage and then it makes sure the correct number are running
+* Now my app is running on these nodes, how to access it? To that we have to create a `service` 
+
+### Service
+* Service create an endpoint to access the running app instances 
+```javascript
+kubectl expose deployment dbd \ --port 80 --type LoadBalancer
+```
+![Image 2021-11-08 at 4 26 PM](https://user-images.githubusercontent.com/7471619/140839934-ccb2666e-8b6a-4080-a63c-288952904bc4.jpg)
+* So this service load balance between two running pods. For any container inside cluster they can connect using the service name. Also service keep tracks of wherever pods is running
+
+
 
 ## K8 Control plane
 * Each cluster has one control plane, the way k8 manages pods it through whats called `control plane`. Inside we have
