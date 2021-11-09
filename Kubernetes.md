@@ -114,7 +114,8 @@ kubectl expose deployment dbd \ --port 80 --type LoadBalancer
 ![Image 2021-11-08 at 4 26 PM](https://user-images.githubusercontent.com/7471619/140839934-ccb2666e-8b6a-4080-a63c-288952904bc4.jpg)
 * So this service load balance between two running pods. For any container inside cluster they can connect using the service name. Also service keep tracks of wherever pods is running
 
-
+# Imperatively vs Declaratively
+* So far we create cluster imperatively, it means we told K8 what we want to do. In real world we use declaratively by having a file that describe or declares what we want things to be like. Having our state defined declaratively in files allow us to track changes through source control.
 
 ## K8 Control plane
 * Each cluster has one control plane, the way k8 manages pods it through whats called `control plane`. Inside we have
