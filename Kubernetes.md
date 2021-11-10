@@ -7,7 +7,7 @@
  
  * Clone from repository 
 
- ## main.tf
+ #### main.tf
  * Has google container cluster and have settings, we don't use basic auth
  * preemtible indicates to not to allow remove nodes due to change in pricing, in test should be false in production true
  * on google_container_node_pool define how many nodes we want, name of project, location we want this project, the cluster it belongs to and machine type as some apis at the bottom for monitoring and loging.
@@ -52,6 +52,7 @@
  
  * You can see pods logs -> logging -> select the container -> we can see requests from load balancers 
  
+ ________________________________________________________________________
  </details>
 
 
