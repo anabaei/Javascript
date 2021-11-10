@@ -1,9 +1,56 @@
 
 <details>
- <summary> Start a Kubernetes </summary>
+ <summary> Create a cluster on GKE  with Terraform </summary>
  
  
  * Get from [this tutorial](https://www.youtube.com/watch?v=Vcv6GapxUCI)
+ 
+ * Clone from repository 
+
+ ## main.tf
+ * Has google container cluster and have settings, we don't use basic auth
+ * preemtible indicates to not to allow remove nodes due to change in pricing, in test should be false in production true
+ * on google_container_node_pool define how many nodes we want, name of project, location we want this project, the cluster it belongs to and machine type as some apis at the bottom for monitoring and loging.
+ * In variables update to your project and machine type and intiial node count which are optional
+ * output gonna have some endpoints for master version and ip address for cluster
+ 
+ ```javascript
+ gcloud auth application-default loging
+ terraform init 
+ terraform plan // create cluster and node pool
+ terraform apply
+ ```
+ * Now in googl console -> kubernetes cluster -> connect -> copy/paste to terminal 
+ 
+ ```javascript
+ kubectl get ns // get namespaces
+ 
+ //add application to our cluster 
+ kubectl apply -f development.yaml
+ kubectl apply -f service.yaml
+ kubectl get pods
+ 
+ kubectl apply -f ingress.yaml // to create google cloud load balancer
+ 
+ 
+ ```
+ ```javascript
+ arch -arm64 brew install terraform  //install terraform
+ ```
+ 
+ #### development
+ * live in default namespace 
+ * Set a container pull nginx image if not there and run it on port 80
+ 
+#### Service
+ * Assign target port, node port because we gonna need ingress to work with it
+ 
+ #### Ingress
+ * Gonna launch cloud load balancer, need to define above servie name and service port gonna be 80 which also we define it in service above the port
+ 
+ * Now if you go to services/ingress on GKE, you see ingress endpoint which you can click and see nginx service
+ 
+ * You can see pods logs -> logging -> select the container -> we can see requests from load balancers 
  
  </details>
 
