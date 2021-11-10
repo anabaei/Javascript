@@ -1,3 +1,16 @@
+
+<details>
+ <summary> Start a Kubernetes </summary>
+ 
+ 
+ * Get from [this tutorial](https://www.youtube.com/watch?v=Vcv6GapxUCI)
+ 
+ </details>
+
+
+
+
+
 # Kubernetes 
 
 
@@ -423,12 +436,4 @@ gcloud container clusters update Name
 # Data Migration
 <img width="835" alt="Screen Shot 2021-11-04 at 11 50 14 AM" src="https://user-images.githubusercontent.com/7471619/140375750-88de951a-6f09-4945-ba6b-57f19608dafa.png">
 
-
-<details>
- <summary> Start a Kubernetes </summary>
- 
- 
- * Get from [this tutorial](https://www.youtube.com/watch?v=Vcv6GapxUCI)
- 
- </details>
 
