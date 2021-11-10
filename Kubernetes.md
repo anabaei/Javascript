@@ -15,6 +15,13 @@
  * output gonna have some endpoints for master version and ip address for cluster
  
  ```javascript
+gcloud auth application-default login   
+gcloud projects list
+gcloud config set project onesnastaging 
+ 
+ ```
+ 
+ ```javascript
  gcloud auth application-default loging
  terraform init 
  terraform plan // create cluster and node pool
