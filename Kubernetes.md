@@ -31,6 +31,7 @@ gcloud config list
  * Now in googl console -> kubernetes cluster -> connect -> copy/paste to terminal 
  
  ```javascript
+ kubectl describe nodes
  kubectl get ns // get namespaces
  
  //add application to our cluster 
