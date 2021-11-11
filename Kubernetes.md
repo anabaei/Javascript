@@ -80,6 +80,7 @@ resource "google_compute_network" "main" {
  
  </details>
 
+[cluster architecture](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture)
 
 # Kubernetes 
 
