@@ -85,7 +85,7 @@ resource "google_compute_network" "main" {
 
 # Kubernetes 
 
-* In GKE, a cluster consists of at least one control plane and multiple worker machines called nodes. These control plane and node machines run the Kubernetes cluster orchestration system.
+* A cluster is the foundation of Google Kubernetes Engine. In GKE, a cluster consists of at least one control plane and multiple worker machines called nodes. These control plane and node machines run the Kubernetes cluster orchestration system.
 
 [Resource](https://learning.oreilly.com/videos/getting-started-with/9780136787709/9780136787709-GSK2_01_04_06/)
 * K8 is a portable, extensible, open-source, platform for managing conainerized workloads and services, that facilates both declarative configuration and automation, letting you run distributed system resiliently, with scalling and failover for your application.
