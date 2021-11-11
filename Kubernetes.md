@@ -93,7 +93,7 @@ resource "google_compute_network" "main" {
 * Pod IP addresses are natively routable within the cluster's VPC network and other [VPC networks](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets) connected to it by VPC Network Peerin
 * Pod IP addresses are reserved in the VPC network before the Pods are created in cluster. This prevents conflict with other resources in the VPC network
 * VPC-native cluster have ip ranges, and each ip address is associated with a subnet. Each subnet is for a region. A network must have at least one subnet before you can use it. Auto mode VPC networks create subnets in each region automatically. Custom mode VPC networks start with no subnets, giving you full control over subnet creation. You can create more than one subnet per region
-* Subnet ranage: When you create a subnet, you must define its primary[IP address range](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges)
+* Subnet ranage: When you create a subnet, you must define its primary [IP address range](https://cloud.google.com/vpc/docs/vpc#manually_created_subnet_ip_ranges)
 
 
 #### Control plane and node interaction
