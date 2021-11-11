@@ -81,11 +81,23 @@ resource "google_compute_network" "main" {
  </details>
 
 
-
-
 # Kubernetes 
 
-* A cluster is the foundation of Google Kubernetes Engine. In GKE, a cluster consists of at least one control plane and multiple worker machines called nodes. These control plane and node machines run the Kubernetes cluster orchestration system.
+* A cluster is the foundation of Google Kubernetes Engine. In GKE, a cluster consists of at least one control plane and multiple worker machines called nodes. These control plane and node machines run the Kubernetes cluster orchestration system. 
+* When we create cluster, gke creates nodes.
+
+#### Control plane and node interaction
+
+* The control plane is the unified endpoint for your cluster. We interact with the cluster through Kubernetes API calls and the control plane runs the Kubernetes API  to handle our requests
+* We can hit kubernetes api with http/grpc, kubectl or gcp dashboard
+* The control plane decides what runs on all of the cluster's nodes. The control plane schedules workloads, like containerized applications, and manages the workloads' lifecycle, scaling, and upgrades. The control plane also manages network and storage resources for those workloads
+* Control plane pull images from [container registry or gcr.io](https://cloud.google.com/container-registry/docs/overview) 
+
+#### Node
+* A node runs the services necessary to support the containers and build cluster's workloads. These includes (kubectl), which communicates with the control plane and is responsible for starting and running containers scheduled on the node
+* Each node has OS to run containers which is usually linux but we can specify it
+* allocate [node resource](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture)
+
 
 [Resource](https://learning.oreilly.com/videos/getting-started-with/9780136787709/9780136787709-GSK2_01_04_06/)
 * K8 is a portable, extensible, open-source, platform for managing conainerized workloads and services, that facilates both declarative configuration and automation, letting you run distributed system resiliently, with scalling and failover for your application.
