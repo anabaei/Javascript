@@ -18,6 +18,7 @@
 gcloud auth application-default login   
 gcloud projects list
 gcloud config set project onesnastaging 
+gcloud config list 
  
  ```
  
@@ -62,6 +63,22 @@ gcloud config set project onesnastaging
  ________________________________________________________________________
  </details>
 
+<details>
+ <summary> Create VPC </summary>
+ 
+ ```javascript
+ #create vpc
+resource "google_compute_network" "main" {
+    name = "vpc-testonly"
+    project = "prodigy-dev-1"
+    auto_create_subnetworks = true
+    routing_mode = "REGIONAL" # these two are default value
+    mtu = 1500
+}
+ 
+ ```
+ 
+ </details>
 
 
 
