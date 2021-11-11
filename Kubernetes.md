@@ -87,6 +87,14 @@ resource "google_compute_network" "main" {
 
 * A cluster is the foundation of Google Kubernetes Engine. In GKE, a cluster consists of at least one control plane and multiple worker machines called nodes. These control plane and node machines run the Kubernetes cluster orchestration system. 
 * When we create cluster, gke creates nodes.
+* A cluster that uses alias IP address ranges is called a VPC-native cluster. A cluster that uses custom static routes in a VPC network is called a routes-based cluster.
+
+#### Benefits of VPC-native clusters
+* Pod IP addresses are natively routable within the cluster's VPC network and other [VPC networks](https://cloud.google.com/vpc/docs/vpc#vpc_networks_and_subnets) connected to it by VPC Network Peerin
+* Pod IP addresses are reserved in the VPC network before the Pods are created in cluster. This prevents conflict with other resources in the VPC network
+* VPC-native cluster have ip ranges, and each ip address is associated with a subnet. Each subnet is for a region. A network must have at least one subnet before you can use it. Auto mode VPC networks create subnets in each region automatically. Custom mode VPC networks start with no subnets, giving you full control over subnet creation. You can create more than one subnet per region
+* 
+
 
 #### Control plane and node interaction
 
