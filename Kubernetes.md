@@ -64,6 +64,19 @@ gcloud config list
  
  ________________________________________________________________________
  </details>
+ 
+ * create cluster 
+ * login to google shell 
+ * connect with the cluster 
+ * add image to cluster 
+```javascript
+kubectl create deployement nameofourservice  --image=imageNameWhichAlreadyDeployedToRegistry:tagNameIfExist
+kubectl get deployment // check the instance is ready
+// expose to the world using load balancer
+kubectl expose deployment nameofourservice 
+```
+* gcloud -> work with cluster, kubectl -> deploy or expose something 
+* 
 
 <details>
  <summary> Create VPC </summary>
