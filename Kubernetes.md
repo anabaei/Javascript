@@ -79,6 +79,9 @@ resource "google_compute_network" "main" {
  
  ```
  
+ ### share vpc
+ * [link](https://www.youtube.com/watch?v=XTcos7s0iDo)
+ 
  </details>
 
 [cluster architecture](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture)
