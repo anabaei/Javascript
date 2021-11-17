@@ -24,7 +24,7 @@ gcloud config list
  ```
  
  ```javascript
- gcloud auth application-default loging
+ gcloud auth application-default login
  terraform init 
  terraform plan // create cluster and node pool
  terraform apply
