@@ -15,14 +15,26 @@
  * In variables update to your project and machine type and intiial node count which are optional
  * output gonna have some endpoints for master version and ip address for cluster
  
+ ## Google Cloud SDK gcloud
+ 
  ```javascript
-gcloud auth application-default login   
+gcloud auth application-default login 
+gcloud config configurations list // which one is true if you run 
+  gcloud info // shows current active which project or account we are connected to 
+  gcloud components list // list all components that are available 
+ 
 gcloud projects list
 gcloud config set project onesnastaging 
 gcloud config list 
  
+ // to rm and install again
+ sudo snap remove google-cloud-sdk
+ rm -rf ~/.config/gcloud
+ which gcloud 
+ sudo snap install google-cloud-sdk --classic
+ gcloud auth list 
  ```
- 
+ * 
  ```javascript
  gcloud auth application-default login
  terraform init 
