@@ -108,7 +108,9 @@ kubectl expose deployment nameofourservice
  ![Image 2021-11-17 at 3 54 PM](https://user-images.githubusercontent.com/7471619/142300992-7769e72f-7654-4370-b554-e307ab6b24b4.jpg)
 * Each google account has one `default` VPC network (we can delete it). It has 23 regions with subnets in each. 
 * When we create VPC, we can create subnets. If select automatically it is going to create subnets for each region and assign ip range. The if these ip-range already were in used in `on-perm` network then we may not be able to set up peering connections. 
-* To have full control we define our subnets also specify which region we want that subnet. 
+ 
+* These ip range are reserved before pods are creaetd. To have full control we define our subnets also specify which region we want that subnet. We can create firewal rule that apply only on that ip address.
+* These pods/subnet address are accessible from cloud routes. 
 * Each subne name should be unique in even different VPC. Better to use VPCname+region-version on each subnet
 *  In short subnets are like networks we have on each VPC for each Region
 
@@ -140,7 +142,10 @@ gcloud compute networks subnets list --network nameOfAVPC
 
  ```
  
- ## Create VPC Via Terraform
+ ### Nodes in Cluster are VMs
+ * When you create a cluster, it has Nodes. In K8s Nodes are VMs. Unlike VMs we don't ssh to them, we don't install applications on them, all we need to write a K8s manifest and k8s would scheduale somewhere on these nodes. We just need to containerzie our apps with a docker file to let them know how to build the image into a container. So when these containers are built, k8s implement them based on our manifest. 
+ 
+  ## Create VPC Via Terraform
  ```javascript
  #create vpc
 resource "google_compute_network" "main" {
@@ -152,8 +157,81 @@ resource "google_compute_network" "main" {
 }
  
  ```
- ### Nodes in Cluster are VMs
- * When you create a cluster, it has Nodes. In K8s Nodes are VMs. Unlike VMs we don't ssh to them, we don't install applications on them, all we need to write a K8s manifest and k8s would scheduale somewhere on these nodes. We just need to containerzie our apps with a docker file to let them know how to build the image into a container. So when these containers are built, k8s implement them based on our manifest. 
+ * 
+ 
+ ```javascript
+ 
+ provider "google" {
+  project = "prodigy-dev-1"
+}
+
+module "vpc" {
+    source  = "terraform-google-modules/network/google"
+    version = "~> 3.0"
+
+    project_id   = "prodigy-dev-1"
+    network_name = "example-vpc"
+    routing_mode = "GLOBAL"
+
+    delete_default_internet_gateway_routes = "true"
+
+    subnets = [
+        {
+            subnet_name           = "subnet-01"
+            subnet_ip             = "10.10.10.0/24"
+            subnet_region         = "us-west1"
+        },
+        {
+            subnet_name           = "subnet-02"
+            subnet_ip             = "10.10.20.0/24"
+            subnet_region         = "us-west1"
+            subnet_private_access = "true"
+            subnet_flow_logs      = "true"
+            description           = "This subnet has a description"
+        },
+        {
+            subnet_name               = "subnet-03"
+            subnet_ip                 = "10.10.30.0/24"
+            subnet_region             = "us-west1"
+            subnet_flow_logs          = "true"
+            subnet_flow_logs_interval = "INTERVAL_10_MIN"
+            subnet_flow_logs_sampling = 0.7
+            subnet_flow_logs_metadata = "INCLUDE_ALL_METADATA"
+        }
+    ]
+
+    secondary_ranges = {
+        subnet-01 = [
+            {
+                range_name    = "subnet-01-secondary-01"
+                ip_cidr_range = "192.168.64.0/24"
+            },
+        ]
+
+        subnet-02 = []
+    }
+
+    routes = [
+        {
+            name                   = "egress-internet"
+            description            = "default route through IGW to access internet"
+            destination_range      = "0.0.0.0/0"
+            tags                   = "egress-inet"
+            next_hop_internet      = "true"
+        }
+    ]
+}
+
+ ```
+
+ 
+ ## primary vs secondary subnets 
+ * primary uses to address all node IP address 
+ * one secondary for all pod addresses unless you specify maximum number of pods per node (1 - 110 pods) 
+ * another secondry for service addresses (cluster IP), on a cluster running 3000 service, we need 3000 cluster ip address so secondary range should be 2^12 or /20
+  * Remove default route and create exactly the same one
+ 
+ 
  
  ### k8s manifest desired state
  * is yaml file service and deployment. 
