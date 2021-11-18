@@ -101,8 +101,9 @@ kubectl expose deployment nameofourservice
 * 
 
 <details>
- <summary> Create VPC & subnets </summary>
  
+ <summary> Create VPC & subnets </summary>
+
  * VPC is global so we don't need to use vpc peering. Subnets are regional specific and different zones. So with two nodes on different region they can talk each other without needing vpc peering. 
  ![Image 2021-11-17 at 3 54 PM](https://user-images.githubusercontent.com/7471619/142300992-7769e72f-7654-4370-b554-e307ab6b24b4.jpg)
 * Each google account has one `default` VPC network (we can delete it). It has 23 regions with subnets in each. 
@@ -111,6 +112,18 @@ kubectl expose deployment nameofourservice
 * Each subne name should be unique in even different VPC. Better to use VPCname+region-version on each subnet
 *  In short subnets are like networks we have on each VPC for each Region
 
+ 
+ ### VMs 
+ * ssh -> open in browser
+ ```
+hostname
+lsblk  /// machine  
+ cat /etc/os-release // this is not a service, it helps docker 
+ ```
+ * NAME="Container-Optimized OS" Container-Optimized OS is an operating system image for your Compute Engine VMs that is optimized for running Docker containers.
+ * Check connect with gcloud then connect to machine 
+ 
+ 
 ## CLI Create VPC
 ```javascript
  // list available vpcs 
