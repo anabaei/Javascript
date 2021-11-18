@@ -158,6 +158,16 @@ resource "google_compute_network" "main" {
  ```
  * GKE in BE provision load balancer to front our pods and also provisioning an external ip address to access our app.
  
+ so far 
+ ```
+ - had gke cluster
+ - connect to cluster 
+ - build our app and containers
+ - declaretily deploy them to k8s
+ - expose container behind load balancer and siplay on brower
+ ```
+ 
+ * 
 
  * After creating a cluster via terraform or google cloud we can connect to it then get list of nodes 
  ```javascript
