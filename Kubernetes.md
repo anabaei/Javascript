@@ -197,7 +197,8 @@ module "vpc" {
             subnet_flow_logs_interval = "INTERVAL_10_MIN"
             subnet_flow_logs_sampling = 0.7
             subnet_flow_logs_metadata = "INCLUDE_ALL_METADATA"
-        }
+        },
+         
     ]
 
     secondary_ranges = {
@@ -230,7 +231,34 @@ module "vpc" {
  * one secondary for all pod addresses unless you specify maximum number of pods per node (1 - 110 pods) 
  * another secondry for service addresses (cluster IP), on a cluster running 3000 service, we need 3000 cluster ip address so secondary range should be 2^12 or /20
   * Remove default route and create exactly the same one
+  * Subnet private require cloud router and `nat` gateway to access.But for the public ones we don't need to do anything because we have our route internet gateway whihc is map to all subnets. We can asign some tags to access certain nodes 
  
+ ### cloud router 
+ 
+ ```javascript
+ # https://github.com/terraform-google-modules/terraform-google-cloud-router
+module "cloud_router" {
+  source  = "terraform-google-modules/cloud-router/google"
+  version = "~> 0.4"
+
+  name    = "example-router"
+  project = "prodigy-dev-1"
+  region  = "us-central1"
+  network = module.vpc.network_name
+#   network = "vpc-testonly"
+  nats = [{
+      name = "nat"
+      nat_ip_allocation_option = "AUTO_ONLY"
+      source_subnetwork_ip_ranges_to_nat = "LIST_OF_SOMETHINGS"
+      subnetworks = [{
+          name = "subnet-02"
+          source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
+      }]
+  }]
+}
+ 
+ ```
+ * it provides blocks whihc calls `nat` 
  
  
  ### k8s manifest desired state
