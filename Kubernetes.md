@@ -38,9 +38,7 @@ gcloud config set account AccountName
 gcloud config set project onesnastaging 
 gcloud config list 
  
- 
- 
- // to rm and install again
+ // to rm google sdk and install again
  sudo snap remove google-cloud-sdk
  rm -rf ~/.config/gcloud
  which gcloud 
@@ -66,7 +64,6 @@ gcloud config list
  kubectl get pods
  
  kubectl apply -f ingress.yaml // to create google cloud load balancer
- 
  
  ```
  ```javascript
@@ -141,6 +138,30 @@ resource "google_compute_network" "main" {
     mtu = 1500
 }
  
+ ```
+ ### Nodes in Cluster are VMs
+ * When you create a cluster, it has Nodes. In K8s Nodes are VMs. Unlike VMs we don't ssh to them, we don't install applications on them, all we need to write a K8s manifest and k8s would scheduale somewhere on these nodes. We just need to containerzie our apps with a docker file to let them know how to build the image into a container. So when these containers are built, k8s implement them based on our manifest. 
+ 
+ ### k8s manifest desired state
+ * is yaml file service and deployment. 
+ * In service: we tell we want a load balancer to front pods that is based on template. here our pod has two containers one is ui another is api source from images. 
+ * K8s then run and execute it with desired states that we have here 
+ 
+ ![Image 2021-11-18 at 3 36 AM](https://user-images.githubusercontent.com/7471619/142408260-94490946-879a-4fc8-8665-892fd8744cbf.jpg)
+ 
+ * Then we need only run it to kick out them. K8s implement and observer it all time to have onserverd state wih this desired state 
+ * Next is build image and apply manifest to our cluster
+ * after that we can see list of pods
+ ```
+ kubectl get pods
+ kubectl get services // it allows us to look at load balancers 
+ ```
+ * GKE in BE provision load balancer to front our pods and also provisioning an external ip address to access our app.
+ 
+
+ * After creating a cluster via terraform or google cloud we can connect to it then get list of nodes 
+ ```javascript
+ kubectl get nodes
  ```
  
  ### share vpc
