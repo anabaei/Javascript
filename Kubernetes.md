@@ -19,13 +19,26 @@
  
  ```javascript
 gcloud auth application-default login 
-gcloud config configurations list // which one is true if you run 
+gcloud config configurations list // which one is true if you run
+gcloud config configurations avtivate // switch between accounts configName
   gcloud info // shows current active which project or account we are connected to 
   gcloud components list // list all components that are available 
- 
+
+ls ~/.config/gcloud/configuration
+
+# add new account
+ gcloud init // select 2 to add new configuration with a name
+             // 2 brower login ..
+gcloud config configurations list  // now it should be active
 gcloud projects list
+ 
+gcloud config get-value project  // to see which one you connected to
+ 
+gcloud config set account AccountName
 gcloud config set project onesnastaging 
 gcloud config list 
+ 
+ 
  
  // to rm and install again
  sudo snap remove google-cloud-sdk
@@ -91,8 +104,33 @@ kubectl expose deployment nameofourservice
 * 
 
 <details>
- <summary> Create VPC </summary>
+ <summary> Create VPC & subnets </summary>
  
+ * VPC is global so we don't need to use vpc peering. Subnets are regional specific and different zones. So with two nodes on different region they can talk each other without needing vpc peering. 
+ ![Image 2021-11-17 at 3 54 PM](https://user-images.githubusercontent.com/7471619/142300992-7769e72f-7654-4370-b554-e307ab6b24b4.jpg)
+* Each google account has one `default` VPC network (we can delete it). It has 23 regions with subnets in each. 
+* When we create VPC, we can create subnets. If select automatically it is going to create subnets for each region and assign ip range. The if these ip-range already were in used in `on-perm` network then we may not be able to set up peering connections. 
+* To have full control we define our subnets also specify which region we want that subnet. 
+* Each subne name should be unique in even different VPC. Better to use VPCname+region-version on each subnet
+*  In short subnets are like networks we have on each VPC for each Region
+
+## CLI Create VPC
+```javascript
+ // list available vpcs 
+gcloud compute networks list
+gcloud compute networks subnets list // list all subnets of all VPCs
+gcloud compute networks subnets list --network nameOfSpecificVPC 
+
+gcloud compute networks create NameOFVPC --subnet-mode custom // create custom subnet
+gcloud compute firewall-rules create NameOfFireWall --network nameOfVPC --allow tcp:22
+gcloud compute networks subnets create nameOfSubnet --network whichVPC --region nameOfRegion --range 10.10.1.0/24
+ 
+gcloud compute networks subnets list
+gcloud compute networks subnets list --network nameOfAVPC
+
+ ```
+ 
+ ## Create VPC Via Terraform
  ```javascript
  #create vpc
 resource "google_compute_network" "main" {
