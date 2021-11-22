@@ -15,6 +15,19 @@
 
  * K8s doesn't interact directly with containers. It uses high-level entities refered to as objects like (replicaset, deployment, service, ingresss) 
  * Ip addresses for each pod can be expose to external endpoints.  
+ 
+ ### Deployment
+ * Once you create a cluster and specifed how many replica of pods you need, then you need deployment. 
+ * Deployment provides versioning and rollbacks functionality
+ * When you deploy containerized workload on Google Kubernetes Engine, you work directly with deployment which allows you to push new version of container. This is versioning support that deployment support
+
+### Services
+ * To expose your containerized app to external or to  load balancer to distribute traffic. Service connect them to backend pods. It is service object responsibilty to ensure FE IP address exposed to client are unchanged and only BE changed if pods are down or traffic changed
+
+### 
+
+
+ 
 </details>
 
 <details>
