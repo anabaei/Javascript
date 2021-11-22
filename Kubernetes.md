@@ -1,5 +1,23 @@
 
 <details>
+ <summary> GKE </summary>
+ 
+ * K8s manage and orchereyed containers and has specific relation with gcp because both are on google
+ * GKE sevice uses Google Compute Engine instance under the hood and Kubernetes runs on GCE VM instances
+ * K8s Clusters follow master worker paradigm. Each cluster has one master if we run in High Availability configuration we can have multiple master nodes. This adds additional level of fault tolerance in cluster.
+ * Master nodes responsible to manage cluster.  We always interact with masters nodes when using glclud or webconsole terminal or apiserices.   
+ * When we interact with master nodes and master nodes spin up containers that will run on worker nodes.
+ * Node referes to a machine that runs various k8s services and host our container. Nodes can be on-premise VM or cloud VM. Subset of nodes instances which have same configuration are called node pool. Also we can have configuration more than default node pool, like high memory node pool to run containers which have additional memory requirements. 
+ * When you instantiates k8s cluster nodes on GCP, then GCP offers specialize operating system images to run containers. Below you see containers (docker cotainers) inside each node run. A container is wrapped in pod and each pod could have more than one container. 
+ 
+<img width="987" alt="Screen Shot 2021-11-21 at 3 34 05 PM" src="https://user-images.githubusercontent.com/7471619/142783419-04404cd9-16ec-47bb-97f3-c715faf279ff.png">
+
+
+ * K8s doesn't interact directly with containers. It uses high-level entities refered to as objects like (replicaset, deployment, service, ingresss) 
+ * Ip addresses for each pod can be expose to external endpoints.  
+</details>
+
+<details>
  <summary> Create a cluster on GKE  with Terraform </summary>
  
  
