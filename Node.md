@@ -215,6 +215,32 @@ npm i morgan
 <details>
 	<summary> Setup Jest in Nodejs and Test VS Code Launch</summary>
 
+* unit testing: test a function or a simple unit of code, mock the rest of peices if needed 
+* integration testing: test pieces work togather correctly, we still can mock database and http calls
+* functional testing: or black box testing we test input and outputs and don't care about inside
+* Mocha, jest jasmin are all test runners
+	
+# Mocha
+* 40 times is faster than jest, but requires some configurations
+```
+npm init
+npm i -g mocha // install global then local
+npm i --save mocha
+mocha //look into test directory and run all tests
+	
+it('do sth', function () {
+	try {
+	 assert.equal(2,3)
+	}
+	catch(e) {
+	 console.log(e)
+	 }
+	}
+```
+* Assert checks something, if it fails it throw and error	
+* above passes, because we catch the error correctly. 
+* 	
+	
 ## Jest
 * To use ES6 in tests add `npm i @babel/preset-env` and in `.babelrc` add
 ```javascript
