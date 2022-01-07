@@ -64,6 +64,25 @@ app.get('/', function (req, res) {
 ```
 
 * [TUTORIAL](https://fem-node-api.netlify.com/)
+
+### Quick Start without Express
+```javascript
+const http = require('http')
+const websocket = require('ws')
+const fs = require('fs')
+
+const server = http.createServer((req, res) =>{
+  console.log("connected")
+    var html = fs.readFileSync('./somehtml.html', 'utf8')
+    res.setHeader('Content-Type', 'text/html')
+    res.write(html);
+    res.end();
+})
+
+const wss = new websocket.Server({server: server})
+
+server.listen(8000)
+```
 * `fs` is a module to read/write files and the output of that is buffer
 ```javascript
 var fs = require('fs')
