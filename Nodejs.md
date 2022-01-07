@@ -234,6 +234,32 @@ npm i morgan
 <details>
 	<summary> Setup Jest in Nodejs and Test VS Code Launch</summary>
 
+* unit testing: test a function or a simple unit of code, mock the rest of peices if needed 
+* integration testing: test pieces work togather correctly, we still can mock database and http calls
+* functional testing: or black box testing we test input and outputs and don't care about inside
+* Mocha, jest jasmin are all test runners
+	
+# Mocha
+* 40 times is faster than jest, but requires some configurations
+```
+npm init
+npm i -g mocha // install global then local
+npm i --save mocha
+mocha //look into test directory and run all tests
+	
+it('do sth', function () {
+	try {
+	 assert.equal(2,3)
+	}
+	catch(e) {
+	 console.log(e)
+	 }
+	}
+```
+* Assert checks something, if it fails it throw and error	
+* above passes, because we catch the error correctly. 
+* 	
+	
 ## Jest
 * To use ES6 in tests add `npm i @babel/preset-env` and in `.babelrc` add
 ```javascript
@@ -1077,6 +1103,9 @@ To have metrics running live into kubernetes:
 
 # (no closure) Same Level Execution context 
 
+	
+<img width="1429" alt="no closure, same context " src="https://user-images.githubusercontent.com/7471619/137572836-01526e46-5659-42c4-b449-7aee822cb1fb.png">
+	
 ```javascript
 function outer(){
   const counter=0
@@ -1100,6 +1129,10 @@ It creates brand new execution context with its own variable environment. Then i
 * Line 4: increment counter. To find it first it looks at its own env variables, can't find it then it goes one level down stack to find it. If it doesn't exist inside lower stacks and not in global memory it is closure when it is in upper stacks.
 
 # Closure
+
+
+<img width="1440" alt="Screen Shot 2021-10-15 at 5 58 50 PM" src="https://user-images.githubusercontent.com/7471619/137573002-16431628-572b-4e35-b68f-8ae09cd4c005.png">
+
 
 ```javascript
 function outer(){
@@ -1657,7 +1690,7 @@ export default sequelize;
 * if needed more info like 
 ```javascript
 // If your database has password or stuff then it means
-// where above could be meanings: 
+// where above could be meanings: 
 const connection = new Sequelize('databasename', 'username', 'password',{
 host: '', port: '5432', dialect: 'postgres', storage, logging
 });
