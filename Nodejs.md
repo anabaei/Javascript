@@ -1170,13 +1170,6 @@ When we declare a function in memory, behind the scene javascript does very spec
 
 * If I store data inside my function, whenever function runs the data is gone, also store in global is not good, so we store data inside back pack. Then for the life of our application, we have data around and persisted. We use our lexical scope or our closed environmental variables. 
 
-
-
-
-
-
-
-
 </details>
 <details>
        <summary> Promises, async await </summary>
@@ -3952,6 +3945,41 @@ For Injection - We need to validate and sanitize all the params
  [source](https://jwt.io/introduction/)
 
 </details>
+<details>
+	<summary> Axios, Fetch and HTTPS</summary>
+
+* There are 3 ways to make REST connections. 
+
+### Axios
+* On Axios we can send message as [here](https://jsfiddle.net/anabaei/ge3rasu2/17/)
+```javascript
+(async () => {
+const res = await axios.get('https://api.github.com/zen')
+console.log(res.data)
+})() 	
+```
+* Notice if you return a value inside async, it returns promise
+```javascript
+const a = (async () => {
+return "ss"
+})() 
+console.log(a)	
+```
+### Fetch
+* [FETCH](https://javascript.info/fetch) JavaScript can send network requests to the server and load new information whenever it’s needed.
+
+```javascript
+const a = (async () => {
+let url = 'https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits';
+let response = await fetch(url);
+console.log(response)
+let commits = await response.json()
+console.log(commits) 
+})() 
+```
+	
+</details>
+	
 <details>
 	<summary> HTTP Module</summary>
 
