@@ -41,16 +41,19 @@ port, ()=>console.log('server is running')
 * A Good Resource to handl errors [vscode](https://code.visualstudio.com/docs/supporting/errors)
 ```javascript
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "type": "node",
-      "request": "launch",
-      "name": "Launch Program",
-      "program": "${workspaceFolder}/app.js"
-    }
-  ]
-}
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Program",
+        "runtimeExecutable": "yarn", //to resemble yarn start
+        "runtimeArgs": [
+            "start"
+        ]
+      }
+    ]
+  }
 ```
 * also to render html
 
