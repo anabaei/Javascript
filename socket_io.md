@@ -207,8 +207,165 @@ server.listen(8001);
 </html>
 ```
 </details>
+<details>  
+        <summary> Events and handlers on socket.io </summary>
+
+* `socket.conn` you can mess with TCP/IP to deal with transport layer. There are two main APIs. One for server and another one for client
+
+# Server API
+* [link](https://socket.io/docs/v4/server-instance/)
+* chat.js craete public folder and add chat.html in it
+```javascript
+const express = require('express')
+const socketio = require('socket.io')
+const app = express()
+
+app.use(express.static('public'))
+
+const expressServer = app.listen(9000)
+const io = socketio(expressServer)
+// define a listener. 
+// Connection is specific socket io event we don't need to create that
+io.on("connection", (socket)=>{
+  // when connected, define an event 
+  socket.emit('messageFromServer',{data: 'welcome to socket io from back end'})
+
+  // define a listener
+  socket.on('messageToServer', (msg)=>{
+      console.log(msg)
+  })
+})
+```
+### socket.emit(anyEventName, dataYouWantToSend, ack)
+* You don't need usually send data, it could be a callback to say hey something happend to let other side which has listener knows.
+* `ack` is optional and it would be call when client answer. But `socket.on` does the ack job.
+
+### socket.on(eventName, callBack)
+* It register a handler for the given event.
+
+#### connect, disconnect, error
+* Reserved events which we don't need to define them. Only need to add listener to catch them whenever they fire
+* Event `connect` or `connection` are protected. We handed a callback and that callback fires an upon connection from client. The parameter comes with call back is socket or just client that has been connected. Here is actual [socket](https://socket.io/docs/v4/server-api/#socket) we can access. 
+```javascript
+io.on('connect', (socket)=>{
+  //...
+})
+```
+#### attach(httpServer)/attach(port) 
+* you can make socket server then attach it to any http service. `listen` is identical
+```javascript
+const io = socketio(app.listen(9000))
+
+//equivalent
+const io = socketio()
+io.attach(9000)
+```
+
+# client API
+* [link](https://socket.io/docs/v4/client-socket-instance/)
+```html
+    chat
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+   const socket = io('http://localhost:9000')
+   // add a listener 
+   socket.on('messageFromServer', (data)=>{
+       console.log(data)
+      // define an event
+       socket.emit('messageToServer', {data: "This is from client"})
+   })
+
+</script>
+```
+* url is our server, it returns `socket` object on FE. We have all properties for socket available as [here](https://socket.io/docs/v4/server-api/#socket) some examples:
+* `socket.connected` or `socket.disconnected` lets client know whether it is connected or not
+* `socket.emit(eventName, args)` to define an event on client by passing args/data to server
+* `socket.on(eventName, callback)` add listener when it happened trigger callback. Callback `params` are all whatever is sent from `other side` or server
+
+</details>
+
+<details>  
+        <summary>  socket.io  </summary>
+
+### Namespaces 
+* [Namespaces](https://socket.io/docs/v4/rooms/) are a way to name to group a bunch of sockets. Usually it uses for different `urls`. There is no communication between different namespaces. Each socket then are totally different
+
+```javascript
+// default is root so they are the same
+// io.on = io.of("/").on
+```
+* Define two connection in BE, two different channels. one is `/` another is `/admin`. they are seperate of each other. In FE define correct event handlers after that
+```javascript
+const express = require('express')
+const socketio = require('socket.io')
+const app = express()
+// every html files are in the public folder, so when we run the .js it knows where to find theNameOfJs.html file which here is chat.html
+app.use(express.static('public'))
 
 
+const expressServer = app.listen(9000)
+// below we hand it express server to have a socket.io server
+const io = socketio(expressServer)
+// define a listener. 
+// from socket server, when we connect we get socket object as call back associated with that connection
+io.on("connection", (socket)=>{
+  socket.emit('messageFromServer',{data: 'welcome to socket io from back end'})
+})
+// it is like above we only applies connection handler/listener 
+io.of('/admin').on('connection', (socket)=>{
+  socket.emit('messageFromServerAdmin',{data: 'admin welcome to socket io from back end'})
+  // we can cross namespaces from server side
+  io.of('/anyotherNameSpace').emit('messageFromServerForOthers', {data: 'some data'})
+})
+```
+* FrontEnd is like chat.html
+```html
+    chat
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+   const socket = io('http://localhost:9000')
+   const socket2 = io('http://localhost:9000/admin')
+
+   socket.on('connect', ()=>{
+       console.log(socket.id)
+   })
+   socket2.on('connect', ()=>{
+       console.log(socket2.id)
+   })
+   // add a listener 
+   socket.on('messageFromServer', (data)=>{
+       console.log(data)
+   })
+
+   socket2.on('messageFromServerAdmin', (data)=>{
+       console.log(data)
+   })
+
+</script>
+```
+* Each event
+
+### Rooms
+
+* `Rooms` within  each namespace, we can define channels that users can `join/leave` . We can broadcast to a group of people. 
+* `Client` has never know it is in room. Client can just listen to a namespace and it knows it got that from the event
+```javascript
+// it only emits on the socket on that room only
+socket.to('roomName').emit(' Event', {data: 'some data'})
+socket.to('room1').socket.to('room2').emit(' Event 2', {data: 'some data'})
+```
+
+### Pass Query
+
+* you can pass [query](https://socket.io/docs/v4/client-options/#query) from front end as second params. To see it in the BE you need to 
+```javascript
+io.on('connection', socket=>{
+  socket.handshake
+})
+```
+
+
+</details>
 
 
 
