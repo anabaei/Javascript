@@ -784,10 +784,16 @@ gcloud container clusters create k1
 ```
 kubectk run NGINX  --image=nginx:1.15.7
 ```
-* <font color=blue> how to expose pods to internet </font> run kubectl expose command. k8 creates a service with a fixed ip address on top of our pods. A service infact is load balancing. So others outside cluster can access to pods via Load balancer. This is called network load balancer. Compute engines makes it available to VMs. 
+* <font color=blue> how to expose pods to internet </font> run kubectl expose command. k8 creates a service with a fixed ip address on top of our pods. A service infact is load balancing. So others outside cluster can access to pods via Load balancer. This is called network load balancer. Compute engines makes it available to VMs. in fact a public address manage by network load balancer on top of service.
   
+<img width="374" alt="Screen Shot 2022-04-08 at 11 33 29 AM" src="https://user-images.githubusercontent.com/7471619/162501063-1bb0b74f-fff0-48b0-b9a8-a2c415983ff7.png">
+	
+* <font color=blue>  why do we need services? can FE directly hit pod ip address </font> yes in theory but whenever deployment has done, new pod created and old pods destroy then we miss ip address of those pods. 
 
-
+```javascript
+kubectl get services // display clusters with public ip addresses, clients can use these address to hit our service remotely	
+```
+	
 </details>
 
 <details>
