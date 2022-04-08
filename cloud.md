@@ -752,6 +752,7 @@ Cloud Storage
 * How to turn on object versioning and  history of modifications. If we don't do that new always override old one. Cloud storage has object cycling example, tell delete obj more than 365 days old never used.
 
 </details>
+<details>
 <summary>
 K8
 </summary>
@@ -773,6 +774,432 @@ Then build container and store in local system as runable image with below code.
 * K8 provides apis to control operations through several utilities like kubectl.
 * k8 allows you deploy containers on a set of nodes called a cluster
 *  <font color=blue> what is cluster </font> A set of master components that control system as a whole and a set of nodes that run containers. In k8 node is a computing instance. In Google Cloud nodes are VM running in compute engine
-* 
+* <font color=blue> how we get a cluster </font> GKE is there for help us to create cluster. We can create k8 cluster with k8 engine (GKE), using gcp console or gcloud command. GKE can be cosutomize and support different network and machine type. Here is sample command to create cluster using gke:
+```javascript
+gcloud container clusters create k1
+```
+* When above message complete we have a cluster created and complete and ready to go.
+*  <font color=blue> what is pod </font> pod is the smallest part of k8, when ever k8 wants to deploy a container it does it inside pod. Think of pod as a process in app. Each container in pod has a unique address and set of ports locally. 
+*  <font color=blue> how to run container in pod </font> is this command start deployment with an image of NGINX open source server. kubectl is smart enough to fetch the image from `container registry` 
+```
+kubectk run NGINX  --image=nginx:1.15.7
+```
+* <font color=blue> how to expose pods to internet </font> run kubectl expose command. k8 creates a service with a fixed ip address on top of our pods. A service infact is load balancing. So others outside cluster can access to pods via Load balancer. This is called network load balancer. Compute engines makes it available to VMs. 
+  
+
 
 </details>
+
+<details>
+<summary>
+Kubectl
+</summary>
+
+
+```javascript
+kubectl config view
+```
+</details>
+
+ 
+[Resource](https://learning.oreilly.com/videos/getting-started-with/9780136787709/9780136787709-GSK2_01_04_06/)
+ 
+# K8s
+ 
+* Old IT, you needed servers which they require OS like linux and apps run  on them with their dependencies. To escale up you need to add another server in vertical and manage them by a load balancer.
+* New IT, we have containers which includes apps and its dependencies like an on cellphone. To run a container we need a `server` or `cloud`. On the server or cloud we need `container engine` which is an abstraction layer takes away old OS system. Containers doesn't care about it they just talk with engine which can be docker or another container solution. It can escale up on the cloud by creating more containers. To orchestred and automate containers we need `kubernetes`
+image ....
+*
+ 
+## Some common names and What K8 brigns
+yaml
+containers: running instances of the apps that is defined in the image. By using Namespaces containers can be strictly isolated
+Image: contains all that is needed to start an app, they are read only environments that contain runtime environment that include application and all libraries it requires. Images needs default command other wise container immediately stop
+Registries: use to store images like docker also private registry is provided by all cloud providers
+* All below are not available in container solution so we need something else like k8 to deal with
+yaml
+Automated rollouts and rollback: Which makes containers automatically created when they needed and can be rolled back.
+Container Orchestration: that containers are running in the data center where they should be running
+Storage Orchestration: if in scalability more storage is needed you want to automatically allocate storage
+Loand Balancing or Service Discovery: in big environment you don't want to create DNS record for every new container thats added, we want it automated
+self-healing: if container crashed automatically recreate it
+High-availability: Make sure system critical component are always protectd
+Batch Execution:
+ 
+ 
+## Understanding Containers
+* Apps need runtime environment, old it runtime environment were physical/virtual host which apps is installed with all dependencies. When we need to update dependencies it could be a problem like node version
+* As complete runtime environment that is isolated a container is solution
+* Containers are linux, run on top of container engine(like docker) and don't offer any platform requirement
+* without specifing any application the container will start and stop as it doesn't know what to do
+
+
+
+### VMs
+* Many containers can run on top of the same host kernel
+* One difference between VMs and containers is that containers have a defautl app that must start
+* We have a kernel. With hypervisor (a virtualization process) it creates many VM. Each one has one an Operating System kernel that could run our apps with its dependencies.
+Kernel is a program that have control on everything in system and reside in memory. It facilate interaction between hardware and software components
+* Advantage of VM is we don't need physical machines since they are virtual but still we need to manage all dependencies and also we have a kernel that runs on each single machine compared with containers that runs all with one kernel
+img ...
+ 
+### Container Architecture
+* Containers are linux and built on top of Linux kernel. They have their own security and internal process isolated from outside. Two main feature:
+* `Namespaces` provide strict isolation at a linux kernel level, share among containers
+* `CGroup` provide resource allocation to guarantee dedicated resources are available
+* `SELinux` is about security and can enforce security in a containerized environment. SELinux is like a bubble around each container which moving from kernel to each container require a key
+javascript
+ps aux //see all container processes
+* We can't move from one container to another, but we can move from kernel to container
+image ...
+ 
+* `Docker Registry` is an online platform where container images could be exchanged by anybody
+* Docker in 2013 brought docker registry hub which companies could publish their containers
+* OCI Open Containers Initiative standardizes use of container images and run time. This ensure that you can run one image on different container engine environment. It means if you take one Docker cotainer, you can run it in Podman environment for Refhats.`podman` is `docker` alternative for `Redhat` but commands are almost identical
+ 
+#### Docker Architecture
+* Docker daemon is responsible for building, running and downloading container images and Docker client is responsible for communicating with Docker server
+* Docker hub is a common registry, but there are some other private registries
+* Container Engine is our docker environment.
+* To install you can install docker-ce (free version of docker) or from distrobution repositories
+*  To start container first enable Docker daemon then you need to pull an image from a regitry and run it
+ 
+* To create repository in docker
+javascript
+wget https://download.docker.com/linux/centos/docker-ce.repo
+// connet to docker
+cat docker-ce.repo // to see all repositories
+yum repolist // to verify docekr-ce stable repo
+yum install docker-ce -y 
+// now after download Run docker daemon
+systemctl enable --now docker
+// on red hat ent it is better to use podman instead of docker
+systemctl status docker  //check status of docker daemon is running or not
+ 
+// make it useable for users
+grep docker /etc/group // to see which groups exist
+usermod -aG docker student // make default user to run Docker commands, student is our default user and this user is able to run Docker commands
+exit // to exist root shell
+ 
+// one time running command to make user
+ newgrp docker // new member of docker .. one time run command
+ docker --version
+ docker run hello-world // to run first container in our environment which it says i can't find the image so i pull it from docker registry
+ 
+### Images
+* Images are read-only environment that contain the runtime environment that includes application and dependencies
+* Docker hubs hosts many images `https://hub.docker.com`
+* Docker images are immutable, each modification adds an extra layer to the pre-existing layers and container sees it as a single virtual file system
+* So when you save a new image, only a new layer stored
+### create image
+ 
+#### running container
+ 
+* use `running container`, container is
+started and moidifcation is applied to the container. From the container, docker commands are used to write modifications, docker commands like docker commits
+ 
+####  Dockerfile`
+*  `Dockerfile` contains structures for building an image. Each instruction adds a new layer to the image which offers more control over which files are added to which layer. Benefit is you don't have to distribute images, just distribute dockerfile.
+* The user of dockerfile will use `docker build .` command to build the image based on the Dockerfile in current directory. Images would be stored locally but you can direct the image to to be stored in repository as well.
+ 
+javascript
+docker build --no-cache -t nameOfDockerFile . // Create image in current directory from current dockerfile
+// nameOfDockerFile is what we are gonna be build
+ 
+docker run nameOfDockerFile // to run the image which is already created
+docker run -it nameOfDockerFile /bin/bash //trouble shooting
+* `nameofDockerFile` example to generate new image
+javascript
+FROM centos  // main image going to downlod from docker hub as a container
+MAINTAINER Sander <mail@sandervanvugt.nl>
+ 
+# Add repo file
+ADD ./sander.repo /etc/yum.repos.d/
+ 
+# Install cool software
+RUN yum --assumeyes update && \ //commands are capital
+yum --assumeyes install bash nmap iproute && \
+yum clean all
+ 
+// ENTRYPOINT ["/usr/bin/nmap"]
+CMD ["/usr/bin/nmap", "-sn", "172.17.0.0/24"]  // this is default command. A task that container does. This command is nmap command with sn option to scan network
+ 
+## Docker Commands
+ 
+* Simple commands on running docekr [in ECS](https://docs.aws.amazon.com/AmazonECS/latest/userguide/docker-basics.html)
+ 
+javascript
+docker --help
+docker run // run a command in a new container
+docker start // start an or more already stopped container
+docker ps // show all processes
+ 
+### Inside container environment
+ 
+javascript
+docker run -it ubuntu
+// then inside container check current processes
+// it interactive terminal
+ps
+control ->p control ->q // to exit
+docker ps
+// manage contianer with id or names
+docker inspect name_of_container | less // to see details of container
+docker inspect --format='{{.NetworkSettings.IPAddress}}' container_name // use filter to check container
+ 
+docker images // list of images (the latest version)
+ 
+docker stop name_of_container // stop container
+ 
+docker rmi image_name // to remove image
+docker rm container_name // remove container
+*
+javascript
+sudo find / .name "hello"  // fine hello from directory
+ 
+
+##  Docker Networking
+ 
+* If we have multiple container running on Docker host, and we need to reach each ofcontainers we need something to reach these containers and thats called IP address. Docker Networking define by drivers. One driver is `bridge` which is default network deriver. `overlay` use to connect multiple Docker daemons togather.  External network derivers are available by third parties. In K8 we have `overlay` driving.
+* Container network is `172.17.0.0/16` if using docker. This network connect to bridge which is `docker 0` and it connect to container network. This `docker 0` has IP address `172.17.0.1`. All C1, C2, C3 containers connect to the the network with ip addresses like  `172.17.0.2`, `172.17.0.3`, `172.17.0.4`.
+* `virthual ethernet` interfaces connect our `bridge` or `docker 0` to each container via veth1, veth2 ... . They make sure that containers can put their trafic on the bridge and bridge to connected to actual network. `Bridge` put traffic of all containers into physical device using `Network Address Translation` tool. `docker 0` has a public ip address to recognize itself
+* `bridge` drive is a default network driver that runs applications inside containers. On a single `node` all containers communicate with docker bridge. And docker bridge communicate with actual network `162.158.9.0`
+javascript
+docker run -d nginx // run a container, d means daeminize runing in background
+docker images // show images
+docker run nmap // nmap container scan what is happening on network
+ 
+// to see host OS, and we don't see containers IP addresses here so we can see only interface
+ip a // u see docker 0 interface, and the ip address associated with it like 172.18.0.1/16
+ 
+// go to inside a container
+docker exec -it nameOfContainerGetFromDocekrPS /bin/bash
+// ip a not working inside contaienr
+// inside container you can find info about network
+cd /proc/net/ 
+cat fib_trie // to see ip address seen by container
+ 
+javascript
+kubectl get nodes // see cluster's nodes
+gcloud container clusters create hello-cluster // create a cluster
+ 
+
+
+
+* `host` drive is only in Docker swarm, container connects to host network directly
+* `overlay` drive, used in Docker swarm to connect multiple Docker Daemons togather
+* `macvlan` used for legacy apps, where a MAC address can be assigned to a container to appear as a physical device on network
+ 
+* In kubernates it defines a real overlay network
+ 
+* To monitor [network use nmap](https://hub.docker.com/r/instrumentisto/nmap)
+javascript
+docker run -d nginx // run nginx container demonize means run in background
+ 
+brew install iproute2mac
+ip a
+ 
+ 
+* On macOS the docker binary is only a client and you cannot use it to run the docker daemon, because Docker daemon uses Linux-specific kernel features, therefore you can't run Docker natively in OS X. So you have to install docker-machine in order to create VM and attach to it.
+javascript
+brew install --cask docker // Then launch the Docker app 
+// Because docker is a system-level package you need --cask
+brew install docker-machine docker
+ 
+## Kubernetes Cluster
+ 
+* In kubernetes are `control nodes` which run vital services for cluster. You make sure when one is down another work fine. Also there are `worker nodes`
+* To build this cluster you need to run `kubeadm` command and is called `on-premise` solution. It means you run it locally on your hardware. On cloud we have EKS, AKS and GCP Google Cloud platform to give us cubernetes cluster
+ 
+* K8 is all about managing pods, a pod can have one or more containers. Usally there is only one pod. in pod we have volume which makes sure files can be stored. Replicate helps if any pods fail, it create a new one also it takes care of scalability as well. In order to have it, kubernetes indroduces Replica set. Replica set take care of replication. All these are inside deployment (application).
+* When we create Deployemnt or app, deployment monitors the replica set. The replica monitors the right amount of pods. 
+* Kubernetes try to keep running pods. After they down it restart it
+ 
+## K8 config files
+* It stored in the Etcd database in JSON format. JSON format is not easy to edit that is why YAML is the current format to define kubernetes resources. YAML files need indentation to keep correct format and two spaces and not tab to define parent and child
+ * When you create YAML file use below to create the resource
+javascript
+kubctl create -f myfile.yaml
+... delete ...
+// to generate
+kubctl get <resource> -o yaml > myresource.yaml // append file to yaml file
+ 
+## Create a Naked POD
+javascript
+git clone https://github.com/sandervanvugt/kubernetes
+ 
+// create a pod from one yaml
+kubctl create -f busybox.yaml
+kubctl get all // to see all running containers
+ 
+* Now we created a naked pod because it is not managed by anything. So if you delete the pod, then it is going to create it again because nothing is around it
+ 
+javascript
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox2
+  namespace: default // if we remove it would be still namespace to default
+spec: //most important part, define what are things inside pod
+  containers: // one container
+  - name: busy
+    image: busybox
+    command: // define array of commands to run our
+      - sleep
+      - "3600"
+ 
+### K8 APIs
+ 
+* APIs are updated each 3 months, so to we need keep eye on them because we use K8 APIs in YAML files
+javascript
+kubctl api-resources //shows a list of resources that is defined in the API
+kubctl api-versions // shows resource versions
+kubctl explain // give details
+ 
+
+### Pods
+ 
+* Each pod has its own ip address, pods internal ip address is that might be one of the Docker ip addresses like`172.17.0.XXX` but we can't address users to them direcly. That is why we have `service` object which is connected to deployment using `label` and deployment is what insides have pods. So we can see `service object` as load balancer.
+If you have big and many `service objects` you can have one `ingress` on top of it and it load balance the traffice to different services.
+*
+ 
+### Setup K8 in GCP
+ 
+* Login and create a cluster, Select zone, then select static version and leave node location empty -> click create -> then you see amount of cpu, ram available to this cluster
+* Click on connect -> click on Run in Cloud Shell -> then it provides google cloud shell machine,
+javascript
+kubctl get all // inside the shell, then you see current k8 , replica set and pods if exist
+kubctl create deployment g-nginx --image=nginx
+ 
+### Workloads
+* To manage gcp environment,
+ 
+
+## How the application knows where is current
+* From current instance the inside loganesnatesting application knows
+ 
+* triggers check development.json file
+* cluster
+kubctl get all // to see all running containers
+// connect to cluster and run ip a
+ 
+`virthual ethernet` interfaces connect our `bridge` or `docker 0` to each container via veth1, veth2 ... . They make sure that containers can put their trafic on the bridge and bridge to connected to actual network. `Bridge` put traffic of all containers into physical device using `Network Address Translation` tool. `docker 0` has a public ip address to recognize itself
+ 
+* Containers are ephemeral so it's storage. It means when we start a container it goes away and it is gone
+* We can use bind mount mechanism within docker container.
+
+
+
+# Terraform
+ 
+# VPC
+ 
+* We can use tags  to specific VM or container. Each company policy can be added to firewall so make sure
+* VPC is virtual global resouce
+* Cloud routes helps to connect to other region if it goes down other region
+* By subnet we can assign which service can access to what subnets which gives us security
+* Subnets gives native support for load balancing, GKE when we use ingress load balancer make sure FE reach to the pods.
+* Aliance ips create primary and secondary ranges.
+ 
+
+* VPC we have three different types of subnets. Subnet range first is your network, second is your gateway, last is your broadcast ip
+* Primary and secondary IP range in case of faulirs
+* VPC can access internally to all common google APIS like storages
+* and subnet can be available on different zone under one region
+* VPC Network
+* Is IoC Infrastructure as Code software that provide resources an application requires to run
+ 
+javascript
+terraform plan    // it is going to create a resource but not commiting 
+terraform apply // commiting the resource to cloud
+terraform delete
+ 
+
+# Gcloud
+javascript
+gcloud config configurations list  // list of accounts
+gcloud config configurations activate default // active default account
+gcloud config get-value project
+gcloud info
+gcloud compute networks list // list of connected vpc
+gcloud compute subnets list --network <vpcName>
+ 
+gclloud compute network create vpc-2 --subnet-mod custom
+// subnets are regional
+gclloud compute networks subnets create vpc-2-euroe-west --network vpc-2 --region europe-west --range 10.10.1.0/24
+gcloud compute networks delete vpc-2
+gcloud compute firewall-rules list
+gcloud compute firewall-rules delete nemeoffirewall
+ 
+
+gcloud auth application-default login
+cd /terraform/environments/staging/loganstaging/vpc
+terraform state list
+gcloud projects list
+gcloud config set project onesnatesting
+terraform plan
+gsutil ls gs://esna-terraform-state-staging 
+terraform init --upgrade //
+terraform plan
+terraform apply
+terraform destroy
+ 
+// spaces/5fa958773f48c60af520c089
+//  triggers -> spacesstaging -> RUN -> sit-ds-terraform
+//  cluster_group_vpc  = vpc
+//  env_path = sit/prod-ds
+//             sit/prod-ds/flavors/ca/gke
+//
+//   cluster_flavor_compone =  gke                  
+//   apply_plan = yes
+//
+//   OR
+//  
+//   _cluster_flavor_name = flavor/all
+//   _ENV_PATH = sit/prod-ds/flavors
+//    cluster_flavor_compone =  gke 
+
+
+
+Working agenda for KTs:
+Day 1
+Database model
+Terraform/terragrunt
+Flavours
+ 
+Day 2
+Data migration
+ 
+Load balancer
+Type of LB - global
+How it used to be created
+How we do it now with NEGs
+In HA environment how are NEGs configured to provide HA
+How NEGs interact with LB
+ 
+HA
+How it's configured
+How to swtich over
+Switch back
+GCS buckets syncing
+Primary bucket -> secondary happens automatically
+Secondary to primary is manual after primary comes back and we switched to secondary
+Check with Vlad before he leaves
+VPCs/Subnets
+How they are set up
+Why we set them up with a small CIDR range?
+Why did we abandon the shared VPC?
+MPaaS/CPaaS dial-in numbers
+How to generate MPaaS token
+What are MPaaS callbacks
+How do they work with DR
+MPaaS conf token used for recording
+Adding new dial-in numbers
+Unit tests
+Mocha
+Jest
+Use of in-memory MongoDB
+Remaining tasks
+React upgrade
+ 
+
