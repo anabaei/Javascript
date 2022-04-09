@@ -771,6 +771,7 @@ Then build container and store in local system as runable image with below code.
 
 # How K8 helps us 
 
+### Imperative Commands
 * K8 provides apis to control operations through several utilities like kubectl.
 * k8 allows you deploy containers on a set of nodes called a cluster
 *  <font color=blue> what is cluster </font> A set of master components that control system as a whole and a set of nodes that run containers. In k8 node is a computing instance. In Google Cloud nodes are VM running in compute engine
@@ -788,11 +789,29 @@ kubectk run NGINX  --image=nginx:1.15.7
   
 <img width="374" alt="Screen Shot 2022-04-08 at 11 33 29 AM" src="https://user-images.githubusercontent.com/7471619/162501063-1bb0b74f-fff0-48b0-b9a8-a2c415983ff7.png">
 	
-* <font color=blue>  why do we need services? can FE directly hit pod ip address </font> yes in theory but whenever deployment has done, new pod created and old pods destroy then we miss ip address of those pods. 
+* <font color=blue>  why do we need services? can FE directly hit pod ip address </font> yes in theory but whenever deployment has done, new pod created and old pods destroy then we miss ip address of those pods. Serives or network load balancers keeps fixed ip address on top of pods
 
 ```javascript
 kubectl get services // display clusters with public ip addresses, clients can use these address to hit our service remotely	
 ```
+##### More power
+* <font color=blue> Scale number of pods ? </font> yes create 3 web service. They all behind the service and behind one available fixed ip address. 
+```javascript
+kubectl scale nginx(nameofCluster) --replicas=3 
+
+// autoscale :min number of pods and max and the criteria to scale up if reach that point which is cpu 80%
+kubectl autoscale nginx --min=10 --max=15 --cpu=80 
+```
+### Declarative commands (Configuration files)
+* Aove works when we learn and test k8 step by step, but real strength comes when we use declarative commands.
+* These configuration files becomes management tools, edit change and present it to k8.
+* We can get starting point from one of the files as 
+```javascript
+kubectl get pods -l "app=nginx" -o yaml
+```
+* Then it would create one yaml as 
+
+
 	
 </details>
 
