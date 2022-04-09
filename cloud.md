@@ -811,8 +811,8 @@ kubectl get pods -l "app=nginx" -o yaml
 ```
 * Then it would create one yaml as 
 
+	<img width="379" alt="Screen Shot 2022-04-09 at 2 05 59 PM" src="https://user-images.githubusercontent.com/7471619/162591701-e33d1b72-063c-4af3-a694-280c2b15fe1e.png">
 
-	
 </details>
 
 <details>
