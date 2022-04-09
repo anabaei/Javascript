@@ -802,6 +802,16 @@ kubectl scale nginx(nameofCluster) --replicas=3
 // autoscale :min number of pods and max and the criteria to scale up if reach that point which is cpu 80%
 kubectl autoscale nginx --min=10 --max=15 --cpu=80 
 ```
+* Check replicas
+```javascript
+kubectl get replicasets // to view your replicas
+```
+* Check pods 
+```javascript
+kubectl get pods 
+kubectl get deployments 
+```
+* 
 ### Declarative commands (Configuration files)
 * Aove works when we learn and test k8 step by step, but real strength comes when we use declarative commands.
 * These configuration files becomes management tools, edit change and present it to k8.
@@ -812,6 +822,13 @@ kubectl get pods -l "app=nginx" -o yaml
 * Then it would create one yaml as 
 
 	<img width="379" alt="Screen Shot 2022-04-09 at 2 05 59 PM" src="https://user-images.githubusercontent.com/7471619/162591701-e33d1b72-063c-4af3-a694-280c2b15fe1e.png">
+* All 3 replica above tagged as NGINX. 
+* We can save them in our version control system to keep track of infrastructures. 
+* You can edit above yampl file and deploy it as 
+```javascript
+kubectl apply -f nginx-deployment.yaml
+```
+
 
 </details>
 
