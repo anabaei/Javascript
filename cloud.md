@@ -1144,6 +1144,15 @@ kubctl get all // to see all running containers
  
 <img width="330" alt="Screen Shot 2022-06-05 at 1 01 30 PM" src="https://user-images.githubusercontent.com/7471619/172068368-a52b2238-84b0-419d-a4eb-3f2502b4fa36.png">
 
+### Providers
+
+* There are two providers, one google and another is google beta
+* <img width="496" alt="Screen Shot 2022-06-05 at 1 03 57 PM" src="https://user-images.githubusercontent.com/7471619/172068459-1ceb7c9c-2fd1-4e16-9511-470ee8a3fae6.png">
+
+### Spin Compute Engine in GCP using Terraform
+
+* 
+	
 # VPC
  
 * We can use tags  to specific VM or container. Each company policy can be added to firewall so make sure
