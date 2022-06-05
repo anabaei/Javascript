@@ -1132,7 +1132,15 @@ kubctl get all // to see all running containers
 
 
 
+
+
+## Projects in GCP
+* Any resource you create is part of a project. Each project needs to associate with billing account. 
+* Use projects as hierarchy to determine permisions and roles. Organazation, folders and then projects. Then you can manage 
+
+
 # Terraform
+
  
 # VPC
  
