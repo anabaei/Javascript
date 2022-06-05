@@ -1158,9 +1158,16 @@ link for tutorial references:
 #### Enable Compute Engine API
 ```javascript
 gcloud services enable compute.googleapis.com
+```
+### Standard Starts
+```javascript
+terraform init
+terraform validate
+terraform plan -var gcp_project='something' -out ex.tfplan // create a plan to execute
+// once it generates plan apply it
+terraform apply ex.tfplan
 
 ```
-
 	
 * 
 	
