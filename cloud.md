@@ -1149,8 +1149,19 @@ kubctl get all // to see all running containers
 * There are two providers, one google and another is google beta
 * <img width="496" alt="Screen Shot 2022-06-05 at 1 03 57 PM" src="https://user-images.githubusercontent.com/7471619/172068459-1ceb7c9c-2fd1-4e16-9511-470ee8a3fae6.png">
 
+link for tutorial references:
+* https://github.com/ned1313/terraform-tuesdays/tree/main/2021-07-20-Getting-Started-GCP
+* https://www.youtube.com/watch?v=JQYgFSYFi-o
+	
 ### Spin Compute Engine in GCP using Terraform
 
+#### Enable Compute Engine API
+```javascript
+gcloud services enable compute.googleapis.com
+
+```
+
+	
 * 
 	
 # VPC
