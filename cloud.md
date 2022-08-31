@@ -739,6 +739,13 @@ cloud shell
 * Quicklabs helps you to learn for free
  
 </details>
+
+<details>
+<summary>
+quick labs links in google cloud
+</summary>
+
+* here is the link for quicklabs https://sathishvj.medium.com/qwiklabs-free-codes-gcp-and-aws-e40f3855ffdb
 <details>
 <summary>
 Cloud Storage
