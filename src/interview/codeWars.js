@@ -144,3 +144,5 @@ var obj = {name: "Martin", age: 30, country: "United States"};
 var json = JSON.stringify(obj);
     
 console.log(json[0]);
+
+

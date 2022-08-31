@@ -59,9 +59,11 @@ const a = { a: {b: {c: 'leap'}}}
 //accessObj(a,'a.b.c')
 
 
+// ***************************** fibonachi Recursive vs Iterative ***************** //
 /// Likewise
 // write fibonachi Recursive vs Iterative 
 
+// ****** Recursive
 function fib(n){
     if(n===1 || n==2){
         return 1
@@ -73,6 +75,7 @@ function fib(n){
 
 }
 
+// ****** Iterative
 function fibite(n){
     let current=0
     if(n===0)
@@ -105,7 +108,9 @@ function fibite(n){
 
 
 
-// Ava
+
+// ************** Flattern an array ****************//
+// Avaya
 // input: [1, [ 2, 3, [ 4, [ 5 ] ], 6, 7, [ 8, 9 ]]]
 // output [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -124,13 +129,10 @@ arr.forEach( item =>{
 const input = [1, [ 2, 3, [ 4, [ 5 ] ], 6, 7, [ 8, 9 ]]]
 //console.log(solution(input, []))
 
-
-// find a number in sorted array 
+// ******************** find a number in sorted array ********************************//
 const arr = [1,2,3,4,5,5,6,7,8,9,9,9,10,11,12,13,17]
 
 function _helper(arr, num, pivot){
-    
-   
     
     if (arr.length === 2)
      {
@@ -169,9 +171,7 @@ function solution(arr, num)
 
 
 // solution(arr,13)
-
-
-
+// ****** //
 
 
 // x = ["a", "b", "c", "d", "e", "f", "g"];
@@ -195,7 +195,7 @@ function solution(arr, num)
 //   'b.c': 2,
 //   'b.d.e': 3
 // }
-
+// ******************** flattern an hash map key ***********//
 function flattern(inn){
    const res = {}
    let temp;
@@ -221,3 +221,5 @@ function flattern(inn){
 
 const inn = { 'a': 1, 'b':{ 'c': 2, 'd':{ 'e': 3 } } };
 console.log(flattern(inn))
+
+// ************
