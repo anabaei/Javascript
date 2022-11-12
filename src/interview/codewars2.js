@@ -77,4 +77,7 @@ function ipsBetween(start, end){
 // good solution
 // https://www.codewars.com/kata/526989a41034285187000de4/solutions/javascript
 //   ipsBetween("10.11.12.13", "10.11.12.13");
-ipsBetween("1.2.3.4", "5.6.7.8");
+//ipsBetween("1.2.3.4", "5.6.7.8");
+
+const a = [1,2,3,4,5,6]
+
