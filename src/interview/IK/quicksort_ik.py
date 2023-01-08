@@ -66,3 +66,11 @@ arr1 = [3,2,1]
 #Solution().quickSort(arr)
 quick_sort(arr);
 #print(partion(arr, 0, len(arr)-1))
+
+
+# Time Complexity (example of an asymytric tree since one path is with 25% and another 75% )
+# T(n) = Cn + T(n/4) + T(n/3/4)
+# Cn: partitioning work
+# T(n/4): time to sort n/4 of the array
+# each level needs Cn to parition, one hieght is L and another is H. 
+# 7:00 min reference https://uplevel.interviewkickstart.com/resource/rc-video-400205-735588-230-4352-4097617
