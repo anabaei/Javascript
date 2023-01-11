@@ -11,7 +11,8 @@
 // https://zellwk.com/blog/async-await-in-loops/
 
 
-// Filter map reduce all returns a promise, but remmeber promises are always truthy so filter will never filter out anything it would be like
+// Filter map reduce all returns a promise, but remmeber promises are always 
+// truthy so filter will never filter out anything it would be like
 // Everything passes the filter...
 const filtered = array.filter(() => true)
 

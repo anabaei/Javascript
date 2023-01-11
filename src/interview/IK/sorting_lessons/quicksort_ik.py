@@ -34,9 +34,6 @@ class Solution:
         self.quicksortHelper(0, end, arr)
         print(arr)
         
-
-
-
 def partion(arr, left, right):
     pivot = left 
     leftMostBiggestIndex = left + 1
