@@ -48,14 +48,14 @@ class Solution:
         return result
     
     # better solution is to merge and make one then run it
-    # better is using 3 pointers, 
+    # better in place is using 3 pointers, 
     # one from the end of second array
     # one from the middle of second array
     # one from the last item in array on
     # then decrement, compare and put it into second array
     # at the end like merge sort add two loops to fill the rest
     # we may don't need the second loop since already in place if array one is exuast before array second
-    
+
     def merge_one_into_another(first, second):
         result = []
         inf=0

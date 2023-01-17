@@ -11,8 +11,5 @@ class Solution:
         print(10 in set1)
         
 
-
-
-
 arr = [10, 3, -4, 1, -6, 9]
 Solution.magic3(arr)
