@@ -95,6 +95,12 @@ class Solution:
 
 
 # BruteForce Insertion: 
+# Insertion has two pointer:
+# One regular travers the whole array i and starts from 1
+# Another starts from 0, i-1 and always check all previeows values to the first
+# to replace smallest value, 
+# we have a key = a[i], because need to shift one to right, and duplicate a[j+1] = a[j]
+
 #########################################################################
 
     def insert(arr):
