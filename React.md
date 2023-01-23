@@ -443,7 +443,73 @@ return(
 ```
 
 
+
   </details>
+<details>
+  <summary> Include CSS</summary>
+
+* Add into HTML
+```javascript
+<link rel="stylesheet" type="text/css" href="mystyles.css" />
+```
+#### Inline 
+* Inline CSS in `react`. Write CSS as JavaScript objects, which should be in camelCase
+```javascript
+class MyHeader extends React.Component {
+  render() {
+    return (
+      <div>
+      <h1 style={{backgroundColor: "lightblue"}}>Hello Style!</h1>
+      <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+```
+#### Object
+* Create an object with styling information, and refer to it in the style attribute.
+```javascript
+class MyHeader extends React.Component {
+  render() {
+    const mystyle = {
+      color: "white",
+      backgroundColor: "DodgerBlue",
+      padding: "10px",
+      fontFamily: "Arial"
+    };
+    return (
+      <div>
+      <h1 style={mystyle}>Hello Style!</h1>
+      <p>Add a little style!</p>
+      </div>
+    );
+  }
+}
+```
+#### File & Module
+* create App.css and mystyle.css as
+```css
+body {
+  background-color: #282c34;
+}
+.bigblue {
+  color: white;
+  padding: 40px;
+}
+```
+* Then import it as 
+```javascript
+import './App.css';
+```
+* Module is like 
+```javascript
+import styles from './mystyle.css'; 
+...
+return <h1 className={styles.bigblue}>Hello Car!</h1>;
+```
+
+
+</details>
  
 ## Virtudal DOM 
 * Virtual Dom is a programming concept where virtual representative of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM 
