@@ -26,20 +26,21 @@ a.right.right = BinaryTreeNode(6)
 
 ### Level order traversal
 # BFS 
+# len(queue) is outside of the while loop which pops one by one, so
+# it means regardless of how many we append into queue, the len decreases one by one based on first len which it started
+# for example:
+#  [1],
+#  [2,3],
+#  [4,5,6,7]
+# first len of queue is 1 -> currSize =1 -> it pops value, insert into currList, insert left and child into queue, decreases currSize by one end while
+# second len of queue is 2 -> currSize = 2 -> it pops two values and added them into currList, added their childs into queueu 
+# third len of queue is 4 -> currSize = 4 -> ....
 def levelOrder(root):
-    
-    if root is None:
-        return None 
-    node = root 
     result = []
-    finalResult = []
     queue = []
-    
     queue.append(root)
-    level = 0
-    index = 0
     while queue:
-        currSize = len(queue)
+        currSize = len(queue) # always one step behind 
         currList = []
         while currSize > 0:
             currNode = queue.pop(0)
@@ -51,5 +52,6 @@ def levelOrder(root):
     print(result) 
 
 levelOrder(a)
+
 
 
