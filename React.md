@@ -510,6 +510,157 @@ return <h1 className={styles.bigblue}>Hello Car!</h1>;
 
 
 </details>
+
+<details> 
+   <summary> ES6 </summary>
+
+* React uses ES6. ES6 stands as ECMAScript 6. It has some features as
+```javascript
+Classes
+Hook
+Arrow Functions
+Variables (let, const, var)
+Array Methods like .map()
+Destructuring
+Modules
+Ternary Operator
+Spread Operator
+```
+
+#### Classes
+* A class is a type of function, but instead of using the keyword function to initiate it, we use the keyword class, and the properties are assigned inside a constructor() method
+```javascript
+class Car {
+  constructor(name) {
+    this.brand = name;
+  }
+   present() {
+    return 'I have a ' + this.brand;
+  }
+}
+```
+* Inherited in class
+```javascript
+class Model extends Car {
+  constructor(name, mod) {
+    super(name);
+    this.model = mod;
+  }
+   show() {
+      return this.present() + ', it is a ' + this.model
+  }  
+const mycar = new Model("Ford", "Mustang");  
+mycar.show();
+```
+#### Arrow Functions
+*  function
+```javascript
+hello = function() {
+  return "Hello World!";
+}
+```
+* Arrow 
+```javascript
+hello = () => { return "Hello World!"; }
+hello = () => "Hello World!";
+hello = (val) => "Hello " + val;
+hello = val => "Hello " + val;
+```
+* `This` in arrow refers to parent object
+
+#### Destructuring
+* We may have an array or object, we only need some of the items contained in these
+```javascript
+const vehicles = ['mustang', 'f-150', 'expedition'];
+
+const [car, truck, suv] = vehicles;
+const [car,, suv] = vehicles;
+
+```
+* Destructuring Objects
+```javascript
+const vehicleOne = {
+  brand: 'Ford',
+  model: 'Mustang',
+  registration: {
+  city: 'Houston',
+  state: 'Texas',
+  country: 'USA'
+}
+}
+myVehicle(vehicleOne);
+
+function myVehicle({ brand, model, registration: { state } }) {
+  const message = 'My ' + brand + model + ' is in ' + state
+}
+```
+#### Spread Operator
+* Spread operator (...) allows to copy all or part of an array/object into another array/object.
+```javascript
+const numbersOne = [1, 2, 3];
+const numbersTwo = [4, 5, 6];
+const numbersCombined = [...numbersOne, ...numbersTwo];
+```
+* Combine with destructuring 
+```javascript
+const numbers = [1, 2, 3, 4, 5, 6];
+const [one, two, ...rest] = numbers;
+```
+#### Module
+* A
+```javascript
+const message = () => {
+  const name = "Jesse";
+  const age = 40;
+  return name + ' is ' + age + 'years old.';
+};
+
+export default message;
+
+```
+
+#### Component
+* Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return HTML
+* Component in component
+```javascript
+function Car() {
+  return <h2>I am a Car!</h2>;
+}
+
+function Garage() {
+  return (
+    <>
+      <h1>Who lives in my Garage?</h1>
+      <Car />
+    </>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<Garage />);
+```
+
+#### React Event
+* onClick instead of onclick.
+* Event handlers inside curly braces
+`onClick={shoot}  instead of onClick="shoot()"`
+```javascript
+// React
+<button onClick={shoot}>Take the Shot!</button>
+
+// Html
+<button onclick="shoot()">Take the Shot!</button>
+```
+
+
+</details>  
+
+<details> 
+   <summary> Mongo </summary>
+
+* MongoDB represents JSON documents in binary-encoded format so we call it BSON behind the scenes
+* 
+</details>
  
 ## Virtudal DOM 
 * Virtual Dom is a programming concept where virtual representative of a UI is kept in memory and synced with the “real” DOM by a library such as ReactDOM 
