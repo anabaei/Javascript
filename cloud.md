@@ -1054,7 +1054,147 @@ javascript
 brew install --cask docker // Then launch the Docker app 
 // Because docker is a system-level package you need --cask
 brew install docker-machine docker
- 
+
+### Dockerfile
+```docker
+FROM node:latest  // it says what we our base container has to have
+copy . /src       // look at current directory and copy everything into it, it tells where we should be when running build
+workdir /src      // tells all the command below where they run
+npm install --production   // first we start npm install
+expose 3000        // means this container opens port 3000, because our server in nodejs here run on that port
+so other containers can comunicate with this one on this port
+CMD npm start   // how to run
+```
+* `From` tells which image you aim to use
+* `Copy` copies we need to the destination locaiton we run code
+* `Run` executes commands in conainer environment
+* `Expose` expose the port
+
+#### Commands to Run Docker
+* docker build . converts your Dockerfile into an image.
+* docker create your-image creates a container from your image from step 1.
+* docker start container_id starts the container from step 2.
+* docker run image is a shortcut for 2. and 3. (docker create image and docker start container_id)
+
+
+#### Connect Node to Container 
+```
+mongoose.connect('mongodb://docker.for.mac.localhost:27017/databaseName')
+``` 
+
+#### Publish on Dockerhub
+* Docker login
+* docker tag app_image infroger/app_image:1
+* docker push infroger/app_image:1
+
+
+### S3
+* Is an object storage service, that provides scalability and reliability. It can use as data backup and archiving data
+* `aws-sdk` library requires to connect to s3
+* `underscore` not use in bucket name, no `period` in bucket name, no `-` next to `period`. No `upper case` in bucket name
+* S3 is not DFS or a distributed file system, it is a binary object that stores data in key value pairts. Keys being your "folder path" and values being the binary objects (files)
+* use this to use s3 in mac
+```
+brew install s3fs 
+echo ACCESS_KEY:SECRET_KEY > ~/.passwd-s3fs
+cat ~/ .passwd-s3fs ACCESS_KEY:SECRET_KEY
+chmod 600 .passwd-s3fs
+```
+* The owner of bucket can select who can access to buckets.
+* How to use s3:
+```javascript
+const upload = require('../../services/upload.js');
+const singleUpload = upload.single('image');
+
+router.post('/uploadFile', async (req, res, next) => {
+	singleUpload(req, res, function(err) {
+		return res.json({ imgUrl: req.file.location });
+	});
+```
+* Where upload.js is like 
+```javascript
+var aws = require("aws-sdk");
+var multer = require("multer");
+var multerS3 = require("multer-s3");
+const config = require("../config/config.json");
+
+aws.config.update({
+  secretAccessKey: config.Secret_Access_Key_S3,
+  accessKeyId: config.Access_Key_ID_S3,
+  region: config.REGION_S3,
+});
+
+var s3 = new aws.S3();
+
+var upload = multer({
+  storage: multerS3({
+    s3: s3,
+    bucket: "youBucketName",
+    metadata: function (req, file, cb) {
+      cb(null, { fieldName: file.fieldname });
+    },
+    key: function (req, file, cb) {
+      cb(null, Date.now().toString());
+    },
+  }),
+});
+module.exports = upload;
+```
+* Get list of buckets
+```javascript
+const AWS = require("aws-sdk");
+router.get("/", async (req, res, next) => {
+  let s3bucket = new AWS.S3({
+    accessKeyId: "A****************L",
+    secretAccessKey: "s*********************",
+    Bucket: "your-bucket-name",
+  });
+  s3bucket.listBuckets(function (err, data) {
+    if (err) {
+      console.log("Error", err);
+    } else {
+      res.json(data);
+    }
+  });
+});
+
+```
+
+### EKS vs ECS
+* ECS Elastic Container Service allows to run k8s. It does manage LB and or Network LB automatically unkike EKS which you can use more customize 
+* Elastic Container Service for Kubernetes allows to use Kubernetes on AWS. It provides some feautes as:
+  * Elastic LB for load distribution
+  *  IAM for authentication
+  *  VPC for isolation
+  *   CloudTrail for logging
+* EKS use to manage and deploy containerized applications. It is good for apps with high availability and fault tolerance, such as web applications, microservices, and data processing pipelines
+* AWS provides all tools which you need in kubernetes environment at EKS like worker nodes or control plane, this is the different between EKS and EC2
+* `ECR` keeps images, to access ECR from ECS you need to add a policy to IAM policy then access it via url 
+* Get access to ECR images as 
+```go
+aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:latest
+```
+* `Helm` helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade complex Kubernetes application. Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste
+
+### EC2
+* Amazon Web Services EC2 (Elastic Cloud Compute) is a web service that offers resizable compute capacity in the Amazon Web Services cloud. It provides Infrastructure as a Service (IaaS) to its consumers (IaaS). It gives you full control over your computing resources, which you can scale as needed
+
+### Route53
+* A DNS web service
+* Amazon Route 53 Traffic is a domain name system service that lets customer to define how end-user traffic is routed to application via drag-and-drop graphical user interface to ease traffic management, it has a global LB 
+  
+### Serverless service Lambda 
+* Serverless Computing
+* Event based computing which runs on the event, same as `Cloud Functions` in GCP. They both have automatic scaling and
+As part of the free tier, they both provide at least a million free requests
+* A standard serverless application consists of one or more functions triggered by events such as object uploads to Amazon S3, Amazon SNS notifications, or API actions, Amazon Simple Email Service, AWS CodeCommit
+* You charged based on  number of requests functions and the duration
+* There are 3 ways to trigger lambda:
+  * API Gateway event, It will trigger your lambda function, when somebody is calling an API Gateway For Lambda. Need to specify in the configuration to find which event type has been triggered, or serverless.yml if you are using the Serverless Framework.
+  * S3 When someone(s) modifies the contents of an S3 bucket, S3 events occur
+  * DynamoDB events When someone updates a record in a specific DynamoDB table (a nosql supported aws db)
+
+
 ## Kubernetes Cluster
  
 * In kubernetes are `control nodes` which run vital services for cluster. You make sure when one is down another work fine. Also there are `worker nodes`

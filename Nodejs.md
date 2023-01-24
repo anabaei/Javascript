@@ -1606,6 +1606,7 @@ app.use('/todos',todoRouter); // First came here our app.
 <details>
 	<summary> Send Email </summary>
 
+* `Sendgrid` is another tool was using to broadcast emails
 * Many options here we use `Noodemailer`
 * First build `transport` object by describing service(it is suggested) like mailgun or sendgrid or use `smtp` ourselve but since we don't have authority many emails could flag it as spam [here](https://www.youtube.com/watch?v=gzDB0ZGOjA0)
 * Then when you create transport object use sendMail function as
