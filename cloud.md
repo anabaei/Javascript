@@ -1161,6 +1161,7 @@ router.get("/", async (req, res, next) => {
 ```
 
 ### EKS vs ECS
+* ECS EKS represent different containerzied services that they are withing in this cluster 
 * ECS Elastic Container Service allows to run k8s. It does manage LB and or Network LB automatically unkike EKS which you can use more customize 
 * Elastic Container Service for Kubernetes allows to use Kubernetes on AWS. It provides some feautes as:
   * Elastic LB for load distribution
@@ -1175,6 +1176,7 @@ router.get("/", async (req, res, next) => {
 aws_account_id.dkr.ecr.region.amazonaws.com/my-repository:latest
 ```
 * `Helm` helps you manage Kubernetes applications — Helm Charts help you define, install, and upgrade complex Kubernetes application. Charts are easy to create, version, share, and publish — so start using Helm and stop the copy-and-paste
+
 
 ### EC2
 * Amazon Web Services EC2 (Elastic Cloud Compute) is a web service that offers resizable compute capacity in the Amazon Web Services cloud. It provides Infrastructure as a Service (IaaS) to its consumers (IaaS). It gives you full control over your computing resources, which you can scale as needed
@@ -1392,3 +1394,8 @@ Remaining tasks
 React upgrade
  
 
+
+# <font color=Blue> Automation and CI/CD </font> 
+
+* Automation is leveragin tools to get infrastructure getting deployed without intervention. Like define a buttom on the build to run terraform, instead of manually provisions 
+* CI/CD when check in code and commit to repository which it goes to QA environment, testing, staging then hit to produciton. This stage pipleline can quickly deploy your code 
