@@ -5,6 +5,15 @@
 * Both quick-sort and merge-sort are recursive which needs call stack space
 * If array size is billions then quick sort takes 12 min, merge-sort takes 18 minutes and insertion-sort takes 317 years!!
 
+### Hidden Facts in Job Description
+* Always read job description carefully, find hidden facts in it, optional requirements and yrs of experience on specific languages
+* AWS SA is presentations. 
+* STAR answer with behavirial questions:
+  * Situation: Context surrounding the event, what happened the problem started
+  * Task: What was the problem/goal you face
+  * Action: What did you do to solve that problem
+  * Result: quantify the result of your action
+
 ### some facts
 
 * quick sort works better in big inputs

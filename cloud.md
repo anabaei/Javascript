@@ -907,6 +907,7 @@ image ...
 * OCI Open Containers Initiative standardizes use of container images and run time. This ensure that you can run one image on different container engine environment. It means if you take one Docker cotainer, you can run it in Podman environment for Refhats.`podman` is `docker` alternative for `Redhat` but commands are almost identical
  
 #### Docker Architecture
+* 
 * Docker daemon is responsible for building, running and downloading container images and Docker client is responsible for communicating with Docker server
 * Docker hub is a common registry, but there are some other private registries
 * Container Engine is our docker environment.
@@ -1434,5 +1435,46 @@ React upgrade
 
 # <font color=Blue> Automation and CI/CD </font> 
 
-* Automation is leveragin tools to get infrastructure getting deployed without intervention. Like define a buttom on the build to run terraform, instead of manually provisions 
-* CI/CD when check in code and commit to repository which it goes to QA environment, testing, staging then hit to produciton. This stage pipleline can quickly deploy your code 
+* Automation is leveragin tools to get infrastructure created and getting deployed with less human intervention. Like define a buttom on the build to run terraform or aws cloudFormation, instead of manually provisions each service
+
+* CI/CD having a pipeline since you commit the code to repository and it deploy to different environments for QAs, testing, staging and production with minimum intervenion. 
+
+### Automation
+
+
+
+# <font color=Blue> Stateless vs Statefull Services  </font> 
+* Stateful services are good for small apps, all services use one db and comunicate. If one of them is down the app is down
+* Statelss services, services not depends on each other works, each services can have replicas in case of down other works, each service could have its own db and helps in scaleability
+
+
+# <font color=Red> Security, LB, Firewall, VPC, Policies </font> 
+* LB: having many requests can increase unintended the cost, if they are not maliviouse, so LB is good to hadnle traffic. AWS has API gateway that is LB where we can rate limit reqs, max req
+* Firewall: Make sure requests come from valid resources
+* Policies: To make sure services can access the right service
+* VPC: Only you and company and no other ppl
+
+* SaaS: Software as a service: Application access over the web not manage by you like slack
+* IaaS: Infra Structure as Service: Acuiring computing and storage on demand. The model is pay as you go model. EC2 you only pay the size of instance you have, DynamoDB: you pay as many as database you have you pay
+* PaaS: Platform as service, Offer access to cloud base environment without installing it. Google App engine is an example
+
+
+# <font color=green> Scalling Vertical and Horizental </font> 
+
+### Vertical Scaling
+* Means you upgrade hardware like need memory just add it. 
+  * Pros: cost effective, less complex process, less software need change
+  * Con: impact users, high possibility of downtime, upgrade limitation, singl point failure
+
+### Horizental
+* Means you increases the number of servers so more instances
+  * Pros: Scaling is easir than hardware scales, less downtime, increase resiliance and fault tolerance, increase performance 
+  * Cons: increase complexity maintain operation, more initial costs, track and trace requests on more machines is more complex
+
+# <font color=green> Latency  vs Throughput </font> 
+
+* `Bandwidth` the number of packets that can be transferred throughout the network
+* `Latency` How long takes packets reach their destinations
+* `Throughput` Number of packets that are proceed within a specific period of time
+*  
+
