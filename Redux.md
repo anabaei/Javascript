@@ -69,6 +69,7 @@ const action = {
 const nextState = errors(state,action)
 console.log(nextState);
 ```
+![alt text](https://user-images.githubusercontent.com/7471619/215295958-ebe4ae39-c521-4ff2-9456-89403dd6d700.png)
 
 ### Store
 * use `createStore` function from redux and then assign a reducer to ir and then dipatch to get new array of state
