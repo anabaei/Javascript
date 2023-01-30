@@ -9,19 +9,32 @@
 
 * Hoisting is the process of setting up of memory space for our variables and functions
  [link](https://dev.to/godcrampy/the-secret-of-hoisting-in-javascript-egi) 
-* In fact JavaScript two times read the code before running. The first time assign variables and functions and second time run them. `Var` define new variable in window, but `let` define a variable in the current scope or block.  
+* In fact JavaScript two times read the code before running. The first time assign `variables` and `functions` and second time run them. `Var` define new variable in window, but `let` define a variable in the current scope or block.  
 ```javascript
 console.log(a)
 var a = 5;
-// the value is undefined, because of 
+// the value is undefined, because of var is defined and not assign in the memory
+```
+```javascript
+console.log(a())
+function a() { return 5};
+// the value is undefined, because of function is defined and not assign in memory
 ```
 * And beucase of hoisting this returns error
 ```javascript
 a = 10;
 console.log(a);
 // Reference Error
-let a = 5;
+let a = 5; // a not defined in the memory  so compiler not know it
+or 
+a = 5 // same as let
+
+console.log(str)
+const str = "something"
+// Reference Error
+// Cannot access 'str' before initialization
 ```
+
 </details>
 
 <details>
@@ -81,6 +94,19 @@ mutatingReplace.splice(2, 2, 30);
 // 
 //[ 'a', 'b', 30, 'e', 'g', 'j' ]
 ```
+* slice (on string and arrays). Slice from index i to j
+```
+u = "0123456789"
+slice(2,4)
+23
+```
+* split (only on strings) return array
+```javascript
+a = "amir"
+arr = a.split("")
+['a','m','i','r']
+```
+
 </details>
 
 
@@ -116,6 +142,31 @@ curly
 
 <details> 
   <summary> This   </summary>
+
+* This in cont
+
+```javascript
+const object = {
+  message: 'Hello, World!',
+  getMessage() { // this is a function
+    const message = 'Hello, Earth!';
+    return this.message;
+  }, 
+  newone: params => {
+    console.log("ss")
+  }
+  or 
+  //   getMessage: function() { 
+  //   const message = 'Hello, Earth!';
+  //   return this.message;
+  // }
+};
+console.log(object.getMessage);
+//--> [Function: getMessage]
+console.log(object.getMessage());
+// no need to specify the function keyword when defining functions inside objects.
+// --> Hello, World!
+```
 
 * Why we need this! At below if the user wants to print `Hi There` how can he would?we want to call a variable of an objec that is part of.
 ```javascript
@@ -313,9 +364,34 @@ console.log(JSON.stringify([new Number(3), new String('false'), new Boolean(fals
 console.log(JSON.stringify({ x: [10, undefined, function(){}, Symbol('')] })); //  output: "{"x":[10,null,null,null]}"
 console.log(JSON.stringify(new Date(2006, 0, 2, 15, 4, 5))); //  output: ""2006-01-02T15:04:05.000Z""
 ```
-
 	
-</details> 
+</details>
+
+<details> 
+	<summary> Lazy Loading </summary>
+
+* Lazy loading is a practice that delays the initialization of web elements. It helps web performance, like you can stop a video from initializing
+#### Intersection Observer API
+* A built in browser tool for using lazy loading on different features. 
+* To use Intersection Observer, first create a callback, which can be triggered by an element that intersects with a specified element or the viewport.
+```javascript
+let callback = (entries, observer) => {
+  entries.forEach(entry => {
+    // Each entry describes an intersection change for one observed
+    // target element:
+    //   entry.boundingClientRect
+    //   entry.intersectionRatio
+    //   entry.intersectionRect
+    //   entry.isIntersecting
+    //   entry.rootBounds
+    //   entry.target
+    //   entry.time
+  });
+};
+```
+
+</details>
+
 <details> 
 	<summary> RSA JavaScript </summary>
 
