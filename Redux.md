@@ -3,7 +3,28 @@
 * [simple exa ](http://blog.tylerbuchea.com/super-simple-react-redux-application-example/)
 * [redux](https://stackoverflow.com/questions/35864957/how-to-use-reduxs-provider-with-react)
 * [redux2](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
-* Redux is based on flux, a design pattern. A simplify approach is dependent on FLUX, a design pattern developed by facebook as an alternative to MVC or MVVM. In Flux data flowds in one direction.
+* What is Redux flow?
+  *  Views, dispatches actions (event handlers)
+  *  Actions triggers reducers
+  *  reducers update State which state update UI
+* What are thunks?
+  * Thunks are standard approach for async logic in redux app
+  * Thunks returns a function instead of plain object
+  * Since it returns functions, we can do things inside the function like api call, then this could update your state
+
+* What is JSX? a syntax sugar for createElement. Babel translate React eventualy to html javascript
+* Why class is className ? class is a reserve word for javascript, so when you use class javascript think you really want to create js class not css class 
+* Describe Data Flow in React?
+  * Data flow is uni direction, you pass data from parent to child component in one direction only using props or contextAPi or global state management like redux 
+
+* How would you deplay api call?
+  * In class we could have componentDidMount. It means a function run after a component loaded. 
+  * Use useEffect hook and pass empty array. It mimics component did mount and inside of useEffect write your api call. If you pass variable inside the array second args at useEffect, useEffect run when they change.
+
+* Should you use ternaries or && and operator to conditionally render react component? 
+  * Javascript assume 0 and everything is always false without checking the right side, so ternary is better
+
+* 
 * Changes are initiated with actions. Actions are dispatch with `Dispatcher`. Dispatcher is an object that sends the action to appropriate store. 
 The store holds data like model. Then the view is updated from stores. So all start with dispatching actions and end with updating views.
 ![alt text](https://user-images.githubusercontent.com/7471619/40376160-76c65d1c-5da2-11e8-93de-f02a9cdfba8e.png)
