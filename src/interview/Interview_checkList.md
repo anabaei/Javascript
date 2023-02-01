@@ -40,7 +40,19 @@ while j >= 0 and  key < arr[j]:
 
 # Which of the following algorithms are stable?
 * Bubble, Insertion, Merge
-  
+
+
+### BST Binary Search Tree (at trees)
+* create, insert, delete and traverse 
+  * treavers inorder, preorder, levelorder (did this example)
+##### To remember traverse differences, memorize this
+    # Visit node from left -> Preorder 
+        # before visiting the rest of nodes print it
+    # Visit node from bottom -> Inorder 
+        # after visiting left child and before visiting right child print it
+    # Visit node from right -> Postorder
+        # after visiting left and right child print the node val
+
 ### Binary Heap (priority queue)
 * Is a basic binary tree, which the most important element is the root(min or max) could be. 
 * Sorting in binary heap takes logn and extract is 1. So extract n elements from a binray heap and insert into array takes nlogn to create a sorted array   
@@ -48,6 +60,8 @@ while j >= 0 and  key < arr[j]:
 time: O(nlogn) : no worse case 
 space: O(1)
 ```
+
+
 
 
 ### Mergesort

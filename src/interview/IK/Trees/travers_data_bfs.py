@@ -1,4 +1,10 @@
 
+
+## Traversal is a systematic way to visiting all nodes in tree
+
+## In array you can traverse using index
+## In linked list you can use while loop to go next
+## For trees you can traverse level by level (BFS) or path in depth as (DFS)
 ## BFS search takes o(n) space and time o(n)
 ## Insert BFS
 class BinaryTreeNode:
@@ -7,9 +13,8 @@ class BinaryTreeNode:
         self.left = None
         self.right = None
 
-
-
-## Create BFS
+## Create a tree representing data
+## BFS is one way to visiting all nodes
 # [
 # [2],
 # [5, 4],
@@ -51,7 +56,16 @@ def levelOrder(root):
         result.append(currList)
     print(result) 
 
+## BFS or LevelOrderTraverse if you want levels as well
 levelOrder(a)
+
+## BFS is simpler if you don't need to keep track of levels
+## queue = root
+## while queue is not empty
+    ## print root.value 
+    ## root.left push to queue
+    ## root.right push to queue
+
 
 
 
