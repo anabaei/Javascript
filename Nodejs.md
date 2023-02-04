@@ -5636,3 +5636,41 @@ obj.hasOwnPropery
 * Allows us to lunch `vs code` inside [of container](https://code.visualstudio.com/docs/remote/containers).
 * In the configuration you can get it lunch after installing remote development tool in vs. 
 </details>
+
+<details>
+        <summary> Mysql </summary>
+
+* select number of cities in desc order and number of repeataions
+* 1 means order by the first attribute count, if you select 2 means order by city
+```
+SELECT Count(*), City FROM Customers Group By City ORDER BY 1 DESC
+ 
+```
+* Dates
+```
+SELECT *
+FROM players
+WHERE DATE(us_reg_date) BETWEEN '2000-07-05' AND '2011-11-10' 
+
+OR
+
+SELECT *
+FROM players
+WHERE us_reg_date >= '2000-07-05'
+  AND us_reg_date < '2011-11-10' + interval 1 day
+
+
+select date_format(date(starttime),'%Y-%m-%d') from data
+where date(starttime) >= date '2012-11-02';
+```
+* Check the fomate date
+```
+SELECT DATE_FORMAT("2017-06-15", "%M %d %Y");
+```
+* Remove duplicates
+```
+ALTER IGNORE TABLE `table_name` ADD UNIQUE (title, SID)
+```
+* When you have groupby then you can't have where, you should have having
+
+</details>

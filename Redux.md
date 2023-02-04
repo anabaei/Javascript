@@ -5,8 +5,8 @@
 * [redux2](https://www.sohamkamani.com/blog/2017/03/31/react-redux-connect-explained/)
 * What is Redux flow?
   *  Views, dispatches actions (event handlers)
-  *  Actions triggers reducers
-  *  reducers update State which state update UI
+  *  Actions triggers reducers, reducers update State which state update UI
+  *  Store holds the state which is global state
 * What are thunks?
   * Thunks are standard approach for async logic in redux app
   * Thunks returns a function instead of plain object
