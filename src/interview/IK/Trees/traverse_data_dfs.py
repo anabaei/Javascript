@@ -14,6 +14,14 @@
     # Visit node from right -> Postorder
         # after visiting left and right child print the node val
 
+#     a
+#    / \
+#   b   c
+# Preorder: abc
+# In order: bac
+# Post Order: bca
+
+
 #        1
 #      /   \
 #     2     3

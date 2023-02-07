@@ -45,13 +45,35 @@ while j >= 0 and  key < arr[j]:
 ### BST Binary Search Tree (at trees)
 * create, insert, delete and traverse 
   * treavers inorder, preorder, levelorder (did this example)
-##### To remember traverse differences, memorize this
-    # Visit node from left -> Preorder 
-        # before visiting the rest of nodes print it
-    # Visit node from bottom -> Inorder 
-        # after visiting left child and before visiting right child print it
-    # Visit node from right -> Postorder
-        # after visiting left and right child print the node val
+
+### BFS and DFS
+ * Write BFS traversal
+ * Write DFS and 3 versions 
+ * Bottom up level order traversal (associate with dfs)
+
+### Time Complexity
+* DFS time complexity is O(n) -> need to touch each node once, space complexity - > O(logn) height of tree
+* BFS space complexity - > O(n) number of leaves
+  
+
+Difference between Binary Tree & Binary Search Tree
+```
+Binary Tree has only two childs
+Binary Search Tree left child is less than root, right child bigger than root
+```
+```
+this pseudocode compute the sum of all the keys in a t
+
+def computesum(TreeNode root):
+    if root is null, return 0
+    leftsum = computesum(root.left)
+    rightsum = computesum(root.right)
+    return root.key + leftsum + rightsum
+```
+* What is the worst-case time complexity of searching for an element in the following data structures with n nodes: unbalanced binary tree/ balanced binary tree/ unbalanced binary search tree / balanced binary search tree / binary search in a sorted array
+```
+n/n/n/logn/logn
+```
 
 ### Binary Heap (priority queue)
 * Is a basic binary tree, which the most important element is the root(min or max) could be. 
