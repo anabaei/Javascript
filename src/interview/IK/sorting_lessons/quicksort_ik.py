@@ -71,3 +71,12 @@ quick_sort(arr);
 # T(n/4): time to sort n/4 of the array
 # each level needs Cn to parition, one hieght is L and another is H. 
 # 7:00 min reference https://uplevel.interviewkickstart.com/resource/rc-video-400205-735588-230-4352-4097617
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        less = [x for x in arr[1:] if x <= pivot]
+        greater = [x for x in arr[1:] if x > pivot]
+        return quicksort(less) + [pivot] + quicksort(greater)

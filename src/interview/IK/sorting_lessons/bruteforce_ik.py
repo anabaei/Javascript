@@ -22,7 +22,7 @@
 
 
 ################ Adding elements to an array ################
-# INSERT: array.insert(index,value)  insert at index always
+# INSERT: array.insert(index,value)  insert a specific index always
 # Extend: it extends the current array with another array. array.extend(arr2)
 
 # Append: Add one element to an array
