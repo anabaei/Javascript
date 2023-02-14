@@ -1,3 +1,4 @@
+
 ### API
 * API is Application Programming Interface
 * API is specification of possible interactions with an application
