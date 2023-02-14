@@ -45,7 +45,7 @@ function Pet(name) {
     }
   }
   const cat = new Pet('Fluffy');
-  console.log(cat.getName())
+  // console.log(cat.getName())
   
 //   console.log(cat.getName()); // What is logged?
   
@@ -56,3 +56,76 @@ function Pet(name) {
 
 
 
+// interviewer: what will the following code output?
+ const arr = [10, 12, 15, 21];
+for (let i = 0; i < arr.length; i++) {
+  console.log(i)
+  setTimeout(function() {
+    console.log('Index: ' + i + ', element: ' + arr[i]);
+  }, 3000);
+
+}
+
+for (let i = 0; i < 5; i++) {
+  (function() {
+    setTimeout(function() {
+      console.log("-",i);
+    }, 1000);
+  })();
+}
+
+
+// for (var i = 0; i < arr.length; i++) {
+//   // pass in the variable i so that each function 
+//   // has access to the correct index
+//   setTimeout(function(i_local) {
+//     return function() {
+//       console.log('The index of this number is: ' + i_local);
+//     }
+//   }(i), 3000);
+// }
+
+// for (let i in arr) {
+//   console.log(i)
+//   setTimeout(function() {
+//     console.log('Index: ' + i + ', element: ' + arr[i]);
+//   }, 3000);
+
+// }
+// (element => console.log(element));
+
+// arr.forEach((element,i)  => {
+//   console.log(i)
+//   setTimeout(function() {
+//     console.log('Index: ' + i + ', element: ' + arr[i]);
+//   }, 3000);
+
+// })
+
+// Foreach doesn't have stop loose 
+// arr.forEach(function (element, i) { 
+//   console.log(i)
+//   setTimeout(function() {
+//     console.log('Index: new ' + i + ', element: ' + arr[i]);
+//   }, 1000);
+
+// })
+
+// const ratings = [5, 4, 5];
+// let sum = 0;
+
+// const sumFunction = async (a, b) => a + b;
+
+// ratings.forEach(async (rating) => {
+//   sum = await sumFunction(sum, rating);
+// });
+
+// (async ()=>{
+//   for(let i=0; i< ratings.length; i++) {
+//     sum = await sumFunction(sum, ratings);
+//   };
+//   console.log(">>", sum);
+// })();
+
+// Naively expected output: 14
+// Actual output: 0
