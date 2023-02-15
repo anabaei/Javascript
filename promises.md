@@ -1,4 +1,133 @@
+## Type Google
+* https://github.com/alex/what-happens-when
 
+
+### Promises
+
+* https://www.youtube.com/watch?v=8aGhZQkoFbQ
+* 
+
+### Hoisting
+
+* Variable declarations are processed before any code is execute
+* 
+```javascript
+console.log(typeof variable); // Output: undefined.
+//In JavaScript, an undeclared variable is assigned the value undefined at execution and is also of type undefined.
+
+console.log(variable); // Output: ReferenceError: variable is not.defined. In JavaScript, a ReferenceError is thrown when trying to access a previously undeclared variable.
+```
+* https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+* Always declare variables regardless of whether they are in a function or global scope. This clearly delineates how the interpreter should handle them at run time
+```javascript
+function hoist() {
+  a2 = 20;
+  var ab = 100;
+}
+
+hoist();
+console.log("?", a2); 
+console.log("?>", ab);
+```
+* What is the output?
+```javascript
+function hoist() {
+  console.log(message);
+  var message='Hoisting is all the rage!'
+}
+
+hoist();
+// is undefined
+```
+* This is how the interpreter views the above code:
+```javascript
+function hoist() {
+  var message;
+  console.log(message);
+  message='Hoisting is all the rage!'
+}
+
+hoist(); // Ouput: undefined
+```
+###  const, let
+* With const, just as with let, the variable is hoisted to the top of the block
+```javascript
+console.log(hoist); // Output: ReferenceError: hoist is not defined
+const hoist = 'The variable has been hoisted.';
+
+hoist = "sss" // Output: TypeError: Assignment to constant variable.
+```
+* vv
+```javascript
+console.log(hoist); // Output: ReferenceError: hoist is not defined ...
+let hoist = 'The variable has been hoisted.';
+```
+```
+for (var i = 0; i < arr.length; i++) {
+  // pass in the variable i so that each function 
+  // has access to the correct index
+  setTimeout(function() {
+    return function() {
+      console.log('The index of this number is: ' + i);
+    }
+  }(), 3000);
+}
+
+for (var i = 0; i < arr.length; i++) {
+  // pass in the variable i so that each function 
+  // has access to the correct index
+  setTimeout(function() {
+    return function() {
+      console.log('The index of this number is: ' + i_local);
+    }
+  }, 3000);
+}
+```
+
+#### Strict
+* Strict is a restricted variant of JavaScript. It provides better security and stronger error checking
+* strict will not tolerate usage of a variable before declaration
+```javascript
+'use strict';
+
+console.log(hoist); // Output: ReferenceError: hoist is not defined
+hoist = 'Hoisted';
+```
+* If we missed out on declaring our variable, use strict has stopped us in our tracks by explicitly throwing a Reference error
+  
+
+## This
+* Invocation is important in `this`. Invocation is simply calling a function (obj.callmyname() is not function invocation it is method call). `Context` of an invocation is the value of `this`.
+```javascript
+window
+function myFunc(){
+  this; // this here is window global object
+  // in strict mode return undefine
+}
+myFunc()
+```
+* When this is used outside of any function scope (the topmost scope: global execution context), it also equals to the global object:
+
+```javascript
+const numbers = {
+  numberA: 5,
+  numberB: 10,
+  sum: function() {
+    console.log(this === numbers); // => true
+   // const calculate ()  { // 
+   // if no arrow, then this is global obj not numbers, but arrow solve it
+    const calculate = () => {
+      console.log(this === numbers); // => true
+      return this.numberA + this.numberB;
+    }
+    return calculate();
+  }
+};
+numbers.sum();
+```
+* first `This` inside is method invocation, so it is numbers. 
+* `This` inside calculate, since you invoce function calculate, this inside 
+ 
 
 ## Async- Await 
 
