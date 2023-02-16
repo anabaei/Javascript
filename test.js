@@ -1,3 +1,4 @@
+
 // const person =(firstName, lastName) =>
 // ({
 // first: firstName,
@@ -10,8 +11,8 @@ const person = { name, age };
 const a = {
   b: "eee",
 };
-console.log(person, a);
-console.log(age);
+// console.log(person, a);
+// console.log(age);
 
 const message = "AA";
 
@@ -36,14 +37,14 @@ aaa = function () {
 
 // console.log("__________________________________________");
 
-function Pet(name) {
-  this.name = name;
-  // this.getName = () => this.name;
-  function getName() {
-    console.log("sss");
-  }
-}
-const cat = new Pet("Fluffy");
+// function Pet(name) {
+//   this.name = name;
+//   // this.getName = () => this.name;
+//   function getName() {
+//     console.log("sss");
+//   }
+// }
+// const cat = new Pet("Fluffy");
 // console.log(cat.getName())
 
 //   console.log(cat.getName()); // What is logged?
@@ -96,7 +97,7 @@ const arr = [10, 12, 15, 21];
 //   }(i), 3000);
 // }
 
-// for (let i in arr) {
+// for (var i in arr) {
 //   console.log(i)
 //   setTimeout(function() {
 //     console.log('Index: ' + i + ', element: ' + arr[i]);
@@ -115,7 +116,7 @@ const arr = [10, 12, 15, 21];
 
 // Foreach doesn't have stop loose
 // arr.forEach(function (element, i) {
-//   console.log(i)
+//   console.log(",,,")
 //   setTimeout(function() {
 //     console.log('Index: new ' + i + ', element: ' + arr[i]);
 //   }, 1000);
@@ -174,4 +175,106 @@ const numbers = {
     return calculate();
   }
 };
-console.log(numbers.sum()); 
+// console.log(numbers.sum()); 
+
+
+ar = [1,2,3,4,5]
+
+// b3 = ar.forEach((a, index)=>{
+//   return "S"
+// })
+// console.log(b3)
+
+// a3 = ar.map(a => a*2 ).filter(a=> a)
+
+
+q = [
+  [1,2,3],
+  [4,5,["a","b"],6]
+]
+
+// console.log([].concat(rb,ra,rb))
+// console.log(...q)
+
+function flatten(arr, depth=1) {
+  result = []
+  arr.forEach(element => {
+    if(typeof element === Array){
+      flatten(element)
+    }
+    result = result.concat(...element)
+   
+  });
+  console.log(result)
+}
+// flatten(q)
+
+{
+  var pp = 3
+}
+
+function s(){
+  var pp1 = 1
+}
+s()
+
+var ay = 33
+var ay = 34
+
+// console.log(ay)
+
+const person1 ={
+  name: "coder",
+  hello: function(thing){
+    console.log(this.name + " from "+ thing)
+  }
+}
+
+var newvar = {
+  name: "coder 2"
+}
+
+// person1.hello(" Js")
+// person1.hello.apply(newvar,[0,"Js"])
+// const hello = person1.hello.bind(newvar)
+// hello(" Js")
+
+const rr  = arr.reduce((acc, curr)=>{
+  return curr*2 
+},0)
+
+// console.log(rr)
+
+res = Promise.resolve("hi").then(val => console.log(val) )
+// console.log(res)
+
+function testme(prop){
+  return new Promise((res, rej)=>{
+    setTimeout(() => {
+      res(prop)
+    }, 1);
+  })
+}
+
+promises = [Promise.resolve("hi"), Promise.resolve("you"), Promise.reject("no")]
+
+results = []
+promises.forEach((promise, index)=>{
+    
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
