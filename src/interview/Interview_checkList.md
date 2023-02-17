@@ -96,7 +96,7 @@ space: O(1)
 - Stability: true, 
 ```
 ### Quicksort
-```javascript
+```python
 - select a pivot
 - compare all elements with pivot
 - set a pointer to left most index, 
