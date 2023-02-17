@@ -258,10 +258,15 @@ function testme(prop){
 
 promises = [Promise.resolve("hi"), Promise.resolve("you"), Promise.reject("no")]
 
-results = []
-promises.forEach((promise, index)=>{
+// results = []
+// promises.forEach((promise, index)=>{
     
-})
+// })
+
+
+
+
+
 
 
 

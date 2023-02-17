@@ -7,15 +7,15 @@
 from heapq import heappop, heappush
 
 def heap_sort(array):
-    heap = []
+    h = []
     for element in array:
-        heappush(heap, element)
+        heappush(h, element)
 
-    ordered = []
-    print(heap)
+    print(h)
     # While we have elements left in the heap
-    while heap:
-        ordered.append(heappop(heap))
+    ordered = []
+    while h:
+        ordered.append(h(heap))
 
     return ordered
 
