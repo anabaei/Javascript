@@ -37,6 +37,15 @@ port, ()=>console.log('server is running')
 *  on vs code select `node.js` and `node.js attach to process` then run it locally then click on `debug` to attach debug to the current process you are running (the best)
 
 #### VS code debug
+* Containerize App:
+  * Download remote container
+  * Create `.devcontainer.json` and assign which ports to expose and which docker file should build the container
+  * Create Dockerfile.develop to open container at from this docker file
+  * open .vscode -> launch.json
+  * select Add Configuration -> Node.js: Nodemon.setup   
+  * update server.js to which file you write like index.js
+  * also you can select run npm run start from dropdown
+  * 
 * Easy way is select node debug on vs code and define `debug` on package.json
 * A Good Resource to handl errors [vscode](https://code.visualstudio.com/docs/supporting/errors)
 ```javascript
@@ -1620,6 +1629,7 @@ transport.sendMail(From,to,subbject,content)
 	<summary> postgres </summary>
 
 ### Start From Sratch
+* A good Refrence to create postgres on node.js https://stackabuse.com/using-postgresql-with-nodejs-and-node-postgres/
 * [Tutorial link](https://www.youtube.com/watch?v=ExTZYpyAn6s)
 * run below to have a basic npm package installed in empty folder
 * Sequelize is promise based ORM (object relational mapping). A promise is the eventual completion of an async operation.
@@ -1638,9 +1648,30 @@ brew install postgres
 brew services start postgresql
 brew info postgres
 brew postgresql-upgrade-database
-psql postgres
+psql -U postgres
 \du
-\dt
+\dt  // see tables with databse
+\dt+  // more table details
+\d+ table_name
+\c   // connect to databse
+\l   // see databases
+CREATE DATABASE testdb;
+ON UPDATE CASCADE  -> means when parent Id is updated the FK in child table is updated accordingly
+ON DELETE CASCADE -> when parent item is deleted associate to parents at child tables are deleted 
+```
+* if postgres error happen
+```javascript
+ brew install postgresql postgresql-contrib
+ arch -arm64 brew install postgresql@15
+ brew services start postgresql@15
+ psql -U [username] -d [database name]
+ psql -U postgres // default user is create with a password you set while downloaing from postgresql main page
+lsof -i :5432
+
+// for M1 run below once
+/opt/homebrew/bin/createuser -s postgres
+// for other mac run
+/usr/local/opt/postgresql/bin/createuser -s postgres
 ```
 * Then defince server.js as
 ```javascript

@@ -1,5 +1,8 @@
 # Interview 
-
+* Write an app to read from a json file and print it and allow to like/dislike in sorted array
+* create a play stop song player
+* find the average speed of cars
+* design an app to allow users to chat
 
 ## Type Google
 * https://github.com/alex/what-happens-when
