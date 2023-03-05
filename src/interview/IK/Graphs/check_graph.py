@@ -10,6 +10,9 @@
 # check if all vertices visited 
 
 # To check Eulerian Path exist, check there are only 2 vertic only with odd numbers
+[0,0] [0,1] [1,1] [0,1] 
+a  -   b  -   c -  d - a  
+
 
 
 edges = {

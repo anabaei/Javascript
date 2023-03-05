@@ -164,13 +164,33 @@ function testme(prop){
 ```
 * Create Promise all
 ```javascript
+let result = []
 new Promise((res, rej)=>{
   forEach.promises((promise, index)=>{
-    promise.then((res)=> resul.push(res))
+    promise.then((res)=> result.push(res))
   }).catch((err)=> rej(err))
 })
-
+const res =  await Promise.all(result)
+// res is an array of results, we can destrcut res as well
 ```
+* A better error handling for errors
+```javascript
+const p1 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve("p1_delayed_resolution"), 1000);
+});
+
+const p2 = new Promise((resolve, reject) => {
+  reject(new Error("p2_immediate_rejection"));
+});
+
+Promise.all([p1.catch((error) => error), p2.catch((error) => error)]).then(
+  (values) => {
+    console.log(values[0]); // "p1_delayed_resolution"
+    console.error(values[1]); // "Error: p2_immediate_rejection"
+  },
+);
+```
+
 </details>
 
 ### Hoisting

@@ -172,13 +172,6 @@ render() {
  window.location.href
  ```
  </details>
-  <details>
-     <summary> Hook </summary>
-
-### Hook
-* Hooks is a function that allows you to add some functioneallity to our function or component. React has built in hooks to handle common use cases like useState. Hooks can't work inside classes [here]
-(https://reactjs.org/docs/hooks-overview.html#:~:text=Hooks%20are%20functions%20that%20let,you%20use%20React%20without%20classes.&text=You%20can%20also%20create%20your,stateful%20behavior%20between%20different%20components). Hooks have different types 
-
 #### Array destrucutres
 * Instead of calling via index we can have
 ```javascript
@@ -192,6 +185,13 @@ console.log(B)// return second
 const [, , C] = ['first', 'second', 'third']
 console.log(C)// return third
 ```
+  <details>
+     <summary> Hook </summary>
+
+
+### Hook
+* Hooks is a function that allows you to add some functioneallity to our function or component. React has built in hooks to handle common use cases like useState. Hooks can't work inside classes [here]
+(https://reactjs.org/docs/hooks-overview.html#:~:text=Hooks%20are%20functions%20that%20let,you%20use%20React%20without%20classes.&text=You%20can%20also%20create%20your,stateful%20behavior%20between%20different%20components). Hooks have different types 
 ## useState
 * Is a function when we use different states in our app. The first value is the state and second value is always a function to set state
 ```javascript

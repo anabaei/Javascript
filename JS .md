@@ -3,39 +3,181 @@
 * [JavaScript Algorithm](https://github.com/trekhleb/javascript-algorithms)
 * [Regular Expressions](http://users.cs.cf.ac.uk/Dave.Marshall/Internet/NEWS/regexp.html)
 * [Create Component](https://medium.com/@BrodaNoel/how-to-create-a-react-component-and-publish-it-in-npm-668ad7d363ce)
+  
+  <details>
+        <summary> Reducer </summary>
+  
+  * Reducer 
+    * 
+  * Reducer Right
+  </details>
+
+  <details>
+        <summary> What is difference between map and for each </summary>
+
+* arr.forEach((ar)=>{}) doesn't return anything, even if you return. Foreach uses same space
+* arr.map returns an array,  you can add filter after that
+* arr.(a => a*2).filter(a => a<4)
+
+</details>
+  <details>
+        <summary> Flatten an array</summary>
+  
+* arr = [ [1,2,3], [4,5,6]]
+* (...arr) -> spread one layer, 
+* cancat add two or more arrays togather
+```javascript
+[].concat(...arr) -> flatten one layer [1,2,3,4,5,6]
+```
+* There is a built in flat function to pass depth flat(arr,2)
+  
+</details>
+  <details>
+        <summary> var let const</summary>
+
+* Var is function scope,  let and const are block scope
+```javascript
+{
+  var pvar = 3
+}
+// 3
+{
+  let plet = 3
+}
+// error throw 
+  const pconst = 3
+}
+//error throw 
+```
+### Initialize serveral times
+* ...
+```javascript
+var ay = 33
+var ay = 34
+var ay
+// no problem
+
+// throw error
+let ay = 33
+let ay = 34
+let ay
+ay = 35 
+
+// throw error
+const ay = 33
+ay = 35 
+const a --> error
+```
+* 
+
+</details>
+
+<details>
+   <summary> Composing </summary>
+
+*  const compose = fun1(fun2(fun3)), an alternative is using reducer
+* function compose(fun1, func2, func3) as:
+```javascript
+const compose => (...funcs) => {return (args) => {return funcs.reduceRight((accumulate, value)=> value(accumulate)), args}}
+```
+</details>
 
 <details>
           <summary>  Hoisitng </summary>
 
-* Hoisting is the process of setting up of memory space for our variables and functions
- [link](https://dev.to/godcrampy/the-secret-of-hoisting-in-javascript-egi) 
-* In fact JavaScript two times read the code before running. The first time assign `variables` and `functions` and second time run them. `Var` define new variable in window, but `let` define a variable in the current scope or block.  
-```javascript
-console.log(a)
-var a = 5;
-// the value is undefined, because of var is defined and not assign in the memory
-```
-```javascript
-console.log(a())
-function a() { return 5};
-// the value is undefined, because of function is defined and not assign in memory
-```
-* And beucase of hoisting this returns error
-```javascript
-a = 10;
-console.log(a);
-// Reference Error
-let a = 5; // a not defined in the memory  so compiler not know it
-or 
-a = 5 // same as let
 
-console.log(str)
-const str = "something"
-// Reference Error
-// Cannot access 'str' before initialization
+* Variable declarations are processed before any code is execute
+* 
+```javascript
+console.log(typeof variable); // Output: undefined.
+//In JavaScript, an undeclared variable is assigned the value undefined at execution and is also of type undefined.
+
+console.log(variable); // Output: ReferenceError: variable is not.defined. In JavaScript, a ReferenceError is thrown when trying to access a previously undeclared variable.
+```
+* https://www.digitalocean.com/community/tutorials/understanding-hoisting-in-javascript
+* Always declare variables regardless of whether they are in a function or global scope. This clearly delineates how the interpreter should handle them at run time
+```javascript
+function hoist() {
+  a2 = 20;
+  var ab = 100;
+}
+
+hoist();
+console.log("?", a2); 
+console.log("?>", ab);
+```
+* What is the output?
+```javascript
+function hoist() {
+  console.log(message);
+  var message='Hoisting is all the rage!'
+}
+
+hoist();
+// is undefined
+```
+* This is how the interpreter views the above code:
+```javascript
+function hoist() {
+  var message;
+  console.log(message);
+  message='Hoisting is all the rage!'
+}
+
+hoist(); // Ouput: undefined
+```
+###  const, let
+* With const, just as with let, the variable is hoisted to the top of the block
+```javascript
+console.log(hoist); // Output: ReferenceError: hoist is not defined
+const hoist = 'The variable has been hoisted.';
+
+hoist = "sss" // Output: TypeError: Assignment to constant variable.
+```
+* vv
+```javascript
+console.log(hoist); // Output: ReferenceError: hoist is not defined ...
+let hoist = 'The variable has been hoisted.';
+```
+```
+for (var i = 0; i < arr.length; i++) {
+  // pass in the variable i so that each function 
+  // has access to the correct index
+  setTimeout(function() {
+    return function() {
+      console.log('The index of this number is: ' + i);
+    }
+  }(), 3000);
+}
+
+for (var i = 0; i < arr.length; i++) {
+  // pass in the variable i so that each function 
+  // has access to the correct index
+  setTimeout(function() {
+    return function() {
+      console.log('The index of this number is: ' + i_local);
+    }
+  }, 3000);
+}
 ```
 
 </details>
+
+<details>
+          <summary> "use strict" </summary>
+
+* Strict is a restricted variant of JavaScript. It provides better security and stronger error checking
+* strict will not tolerate usage of a variable before declaration
+```javascript
+'use strict';
+* when you use "use strict" then if you leave not mentioning type of var it throws an error
+```javascript
+"use strict"
+"use strict";
+tt = "A" // throws error 
+console.log("somthing")
+```
+ </details> 
 
 <details>
           <summary>  JavaScript Object	& What is JSON </summary>
@@ -105,6 +247,26 @@ slice(2,4)
 a = "amir"
 arr = a.split("")
 ['a','m','i','r']
+```
+
+</details>
+
+<details> 
+        <summary> Destrucutres </summary>
+  
+* Instead of calling via index we can have
+```javascript
+const arr = ['first', 'second', 'third']
+console.log(arr[0]) // returns first
+// 
+const [A, B, C] = ['first', 'second', 'third']
+console.log(A)// return first
+console.log(B)// return second
+// 
+const [, , C] = ['first', 'second', 'third']
+console.log(C)// return third
+
+[a, b, ...rest] = [10, 20, 30, 40, 50] // rest = [30, 40, 50]
 ```
 
 </details>
