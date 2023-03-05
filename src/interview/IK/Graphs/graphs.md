@@ -7,6 +7,81 @@ Would a simple graph traverse solve it
 Would some popular extensions helps to solve it
 Code it
 ```
+
+### Adjlist
+* 2d array of arrays. 
+* Initialize 
+```python
+# edges= [(0,1),(2,1),(1,2)]
+adjlist = [[] for _ in range(n)]
+adjlist = [[-1] for _ in range(4)]
+
+for edge in edges:
+  adjlist[edge(0)].append(edge(1))
+```
+* If graph is not dense, we use adjlist. If it is dense we use adjmatrix
+
+
+### BFS Graph (you should do it in 2 min)
+
+```python
+TC: O(E+V) # we traverse each edge and on each eadge we check nodes that not visited, so it is all edges + all nodes
+SC: O(V+V+E) ~ O(V+E) # need to save vertices in qs, for adjlist needs E
+```
+* Is level by level traverse a graph. For this we need a queue to holds all neighbours to be visited in next round
+* Start from node A, save it into a hash table call visited nodes, put negbours in the queue, check them if they are not visited yet, then continue until the queue is empty.
+* FIFO  
+```graph
+Adjacy List
+a -> b,e
+b -> c,f,a
+c -> d,b,g
+d -> c,e,g 
+e -> a,d
+f -> b,g
+g -> d,f,c
+```
+```python
+a = {}
+a["a"] = []
+a["a"].append("b")
+```
+```python
+
+def bfs(s):
+  visited[s] = 1
+  q.push(s)
+  while q not empty:
+    v = q.pop()
+    for w in Adj(v):
+      if visited[w] == 0 then
+        visited[w] = 1, parent[w] = v
+        q.push(w)  
+```
+### DFS Graph
+* At any point, we get as deep as possible, then if not anymore not visited vertex, it recursively back to previous node
+* FILO
+```python
+def dfs(source):
+  visited[source] = 1
+  for neighbor in adjlist[source]:
+    if visited[source] == -1:
+      dfs(neighbor)
+```
+
+### Number of connected components in a graph
+* We have a give graph, we want to know how many components is it, it means how many separated graphs
+```python
+create adjlist
+
+for each node:
+  if visited[node] == -1:
+      do bfs
+      cnt++
+
+return cnt
+```
+
 ### Degree of Vertex
 * Is a number of vertices that are adjacent to the vertex
 * A complete graph is a graph that all edges are connected 
