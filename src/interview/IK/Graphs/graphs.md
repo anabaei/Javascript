@@ -82,6 +82,94 @@ for each node:
 return cnt
 ```
 
+### Find a Cycle
+* Use BFS, add one condition at then end
+```python
+bfs ...
+# add below 
+ parent[vertex] = edge
+ if visited[vertex] == 1 and parent[vertex] != vertex
+    return false  
+```
+
+### How to know if a graph is tree
+* A valid tree is a graph that
+  * No cycle
+  * all vertices connected (check connected components less than 2)
+* You can find it with BFS/DFS
+```python
+Number of connected ...
+  if cnt > 1:
+    return false
+  if findCycle(noe) == true:
+    return false
+##add connected component here
+TC: O(E+V)
+TS: O(V+E+V) ~ O(E+V) # Second V is for parent hash table
+```
+### Bipartite TODO
+* You have a graph, you can put nodes in A or B only. 
+  * Nodes should connect to other side
+  * Nodes should not connect on the same side
+* Since every node has two options so number of possibilities are 2^n - 1 in brute force approach
+* Solution
+```python
+If there is any odd cycle inside graph, the graph is not Bipartite
+Use BFS
+   add distance[node] to each node is visited as
+   distance[w] = distance[v] +1
+
+   if(visited[w] == 1 and distance[w] == distance[v]):
+     return false
+```
+
+
+### Snake and Ladder TODO
+* Similar leetcode "string transforms into another string"
+* Given a snake and ladder game, find the min number of throws require to win the game, when reach to 100 
+* Create Hmap[i+dice] , dice = 1..6, i = 1..100
+```python
+Hmap[1] = 38 #ladder
+Hmap[2] = 2 #normal
+Hmap[3] = 3 #normal
+Hmap[4] = 1 #snake
+
+```
+* Write a graph as:
+```python
+for each i in 0 to 100:
+  for dice in 1 to 6:
+    if i+dice <= 100:
+      adjList[i].append(Hmap[i+dice])
+#keep distance, 100 of -1 initialize visited = [-1]^101 
+distance = [-1,-1, ..., -1]  
+TO(V+E) = V + 6*V, where v=100 ~ O(7V) ~ O(V)
+
+```
+* To optimization we cen use Dijkstra, Bellmen-ford if there are negative weight gives us shortest path
+
+### BFS (Directed Graph)
+* BFS is not good solution to find a cycle in Directed graph because detecting of a backage( a back to other nodes) to crossage is not easy
+  
+### DFS (Directed Graph)
+* Look at all neighbours, if it is not visited look at it recursively
+* Use DFS but with small changes calling bookkeeping
+* We add one global clock, and everytime we reach to a node, we increase the time to set up arrival time `arr[source]= time++`
+* When the node is done with its recuresives, we tag this node as departure time `dep[source]= time++`
+```python
+time = 0 #new
+# arr, dep are arrays recording arrival and departuring time of each node initialize with -1
+def dfs(source):
+  visited[source]= 1
+  arr[source] = time++
+  for each vertex in adj[source]:
+    if(visited == -1):
+      dfs(vertex)
+  dep[source] = time++
+
+```
+
+
 ### Degree of Vertex
 * Is a number of vertices that are adjacent to the vertex
 * A complete graph is a graph that all edges are connected 
