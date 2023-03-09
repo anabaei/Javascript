@@ -7,13 +7,31 @@ a["aa"].append("bb")
 a["aa"].append("cc")
 print(a)
 
-def cycle():
-    b = [[0] for _ in range(4)]
-    print(b)
-    sa = [(1,2),(2,4)]
-    def findCycle(sa):
-        for edge in sa:
-            print(edge[0], edge[1])
-    findCycle(sa)
+# def cycle():
+#     b = [[0] for _ in range(4)]
+#     print(b)
+#     sa = [(1,2),(2,4)]
+#     def findCycle(sa):
+#         for edge in sa:
+#             print(edge[0], edge[1])
+#     findCycle(sa)
 
-cycle()
+# cycle()
+
+def base10_to_base64(num):
+    # Define the base 64 alphabet
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+
+    # Initialize the result string
+    result = ''
+    print("alphabet ",alphabet)
+    # Convert the number to base 64
+    while num > 0:
+        remainder = num % 64
+        print("alphabet[remainder]", alphabet[remainder])
+        result = alphabet[remainder] + result
+        num //= 64
+    print(result)
+    return result
+
+base10_to_base64(127)
