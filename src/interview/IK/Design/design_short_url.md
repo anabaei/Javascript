@@ -113,6 +113,17 @@ ip destination, port destination, ip source, port source
 * Use multiple copies of running program (multiple processors)
 * I/O on webserver happen when they 
 
+How two service in one microservices architecture  communicate with each other ?
+They can use API key which generated and saved into process.env. Each request header should have one APIkey to verify
+To make sure API key are safe we can encrypt them
+Or use Secret Management tools to save keys
+const crypto = require('crypto');
+crypto.randomBytes(16).toString('hex');
+
+In a microservices architecture, services communicate with each other through APIs. There are several approaches to implement API communication between services, including HTTP/REST, gRPC, and messaging protocols such as AMQP or Kafka.
+To keep authentication and authorization safe in microservices, what can we do?
+Implement them using a centralized identity provider, such as OAuth2 or OpenID.
+We used HTTP/REST to communicate between two services
 
 
 
