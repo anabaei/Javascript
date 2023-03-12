@@ -249,6 +249,8 @@ Uber want to hit rate of 98-99%, how much data should store in cache layer?
   * Sort the requests came or the most wanted short urls,
     * take top ones based on frequencies 
   * When we sort based on frequency of request, we can decide based on the data, how to manage most frequent requests on cache
+  
+![Cache App DB Layer](https://user-images.githubusercontent.com/7471619/224517144-37378181-15ef-4c5c-9a23-aeee4b1c280c.png)
 
 ### Scale for Throughput (Handle Traffic)
 
@@ -264,7 +266,7 @@ Uber want to hit rate of 98-99%, how much data should store in cache layer?
 ```
 * In reality from 100 threads not all doing the process, some of do garbage collecting, some do switcing between threads, so we need only 30-40% of cpu utilization for overale health
   * because if traffic has spike then cpu has drop request,
-* we have 3000/X for all machines, X is varied,for example in DB, X is more than what we have in cache or app server. 
+* we have 3000/X for every machine, X is varied,for example in DB, X is more than what we have in cache or app server. 
 ```bash
 DB Server X = 10ms , 3000 rps
 Cache Server X = 2ms , 15000 rps
@@ -306,4 +308,126 @@ App Server X = 1ms , 30000 rps
     * App server have to go down to db tier, to retrieve data
     * It goes through to db and return back to app server
 
+### Performance optimization (SLI)
+ service level indicators to measure the performance of a scalable system are `Correctness`,`Availability`, `(system) Throughput` and `response time` 
+* Ask what type of service are we providing?
+  * Then we can define the correctness of our application by data we receive from the app
+  * To quantify the correct result we need Error rate to be almost zero 
+They are as below
+* `Correctness`: Error rate to be almost zero 
+* `Availability`: Earlier we defined as a single server would be single point of failure. Calculate availability as:
+  * What fraction of well formed request came in ( as specific period time) was successfully severed
+```bash
+if from 1000 request, one not successfully serverd 
+-> %99.9 availability rate -> 3 min availability
+# 3 role of Thumb 
+# number of 9s are availability in minutes
+99% -> 2 min
+99.999% -> 5 min 
+3 1/2 min -> 99.95% 
+```
+* `(system) Throughput`: Number of request per second that could be handle
+* `Response time` The time took to return a response to the client
+```bash
+# studies show 300 ms or more let clients feel some delay happening
+# 4 ms -> 900 ms => 25% drop of clients
+```
+  * Round trip request around the world could take some ms
+    * Multiple data centers around the world decrease request time significantly
+    * The application should have multiple servers in different locations to ensure low response time to cater to the customer services.
 
+* Focus on decreasing response time for 99% time value
+  * Median is not good, most valueable customers are longer ones
+* 
+ 100 thread/ms, * 1000 = 10^4 
+### Service Layer Objective (SLO)
+* SLO is a range value of SLI's. 
+* Non-Functional requirements need to explicitly displays what are 4 SLIs should be, then we can define the system
+* Also `Scaling for data size`: if there is no enough space to store all data so some reponse may not even receive response, `throughputs`, `bulky system time`, `availability`, `geolocation` and `data hotspots` are meant to `SLOs`
+
+### Service Layer Agreement (SLA)
+* An explicit & implicit contract with your clients on what the SLOs should be. Including the consequences of missing SLOs. (rebate penalty)
+  * If the user paid for the service and if SLOs didn't meet you assume to receive a penalty
+  * For example on the span of one month the availability is 99.9%, if that missed in 1 percent get 15 days of free service
+    * if you missed by 5 percent you get 45 days of free service
+
+### Latency vs Response
+* `Bandwidth` is the main ones that characterizing network performance, below we explain why:
+  * There are `Bandwidth`, `Propagation Delay` and `Queueing delays`to make network latency
+* Latency is duration that a request is latent (awaiting not actually service) RTT (Round Trip Time)
+  * Latency is that time which request and response take to travel (RTT) between client and server on network 
+```bash
+Response Time = RTT + Service Time
+```
+* Network latency is depend on Bandwidth
+* `Bandwidth` Number of bits can transmitted over network per seconds (can pure number of bits per seconds into network). It is best possible performance. The actual measure performance is called `Throughput Bandwidth`. 
+* Also, we have a `Propagation Delay` which is the time takes it passes the network and is divided by distance on speed (speed of light)
+* Messages are stores in the routes in middle of network, before going to the next router which is called `Queueing delays` in each router
+* 
+```bash
+speed of light in vaccum = 3*10^8 meter/sec
+speed of light in optic = 2*10^8  meter/sec
+10 Mbps = 10 million bits can transmitted serially into network
+-> 1 bit needs 1/10^6 time to transmit through network 
+```
+* Calculate `Propagation Delay` in case the server is other side of the world,  40,000 km 
+```bash
+circumference of the earth is 40,000 km 
+40,000*1000/2*10^8 = 0.2 sec ~ 200 ms
+```
+* We need to add router latencies to it then it would increase
+* Why `Transition Time` dominate our transmition time?
+```bash
+# 1 byte = 8 bits
+Assume you want to download 25 MB image on 10 Mbps 
+25 M * 8 / 10 = 20 sec 
+```
+* 20 sec is way more than 200ms we gain => Bandwidth is what dominate our response time
+
+### Reverse and Forward Proxy
+
+* Benefits of `Reverse Proxy`
+  * Increase Security
+  * Add encrypt and decryption
+  * Load Balancing
+* LB is the public face of a `Microservice` 
+* LB is single point of contact which request is send and received form clients. 
+* LB is a type of reverse proxy (server side proxy)
+  * Proxy: is an intermediate between the client and server
+  * Reverse Proxy: act on behalf of a servers as a shield. A server side proxy that send request to internal servers
+  
+* When request sent from client to DNS, DNS returns the ip address of LB in APP tier.
+* Client doesn't know what services are behind the LB, and doesn't need to know the ip address of each microservice.
+* The entire system is hide from the public internet and only LB is the way to talk with outside
+* Reverse Proxy can receive encrypted requests from client then decrypt it and send it to one of the down servers. 
+  * Similarly the response can be encrypt by LB and send it to clients
+  * So ip address of servers are hidden from outside organization
+
+* `Forward Proxy` Act as web cache. or client side proxy is when we can define several clients put one Forward proxy between them and server. Forward proxy keeps a copy of all request to the server, in case duplication happen then it act like cache layer
+  * `Forward Proxy` can act as a filter to ban unwanted servers access
+* In fact `Forward Proxy` and `Reverse Proxy` LB talks with each other instead of client vs servers
+
+### LB
+* `Increase throughput` to our service
+* LB is a software which increase throughput to the service 100-1m qps
+  * Nginx is popular one
+  * To distribute traffic LB uses diffrerent policies:
+    * Round Robin: start from the left and go to the next one on the right and back
+    * Connect to service with least connections
+    * Connect to least response time
+    * Random server
+    * Hashing: Take one thing or number from request, and based on that decide which server should be render
+    * 
+* `Increase Availability`: Each server send a health check/heartbeaat to LB to tell it their availability, to remove or keep them from ones to send next request
+* What if LB fail?
+  * We need a passive LB. Passive LB is another single machine same as LB which share the same ip address
+  * IP addresses are not hardware level they are at software level so we can do it
+  *  Both LB share the same ip Address, it means both receive the request, and both health check on each other. 
+  * When one is failed, then another one starting  
+
+* DNS-based LB
+    * Another solution have more than two active LBs with different ip addresses. 
+    * Client relies on DNS serverice so we can define DNS service to return multiple Ip addresses to browsers.
+    * The client browser take first ip address and send request to that, if one is not working then pick another one
+  
+* We can have both `DNS based LB` and `Passive LB` solutions.  
