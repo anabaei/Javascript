@@ -406,6 +406,7 @@ Assume you want to download 25 MB image on 10 Mbps
 * `Forward Proxy` Act as web cache. or client side proxy is when we can define several clients put one Forward proxy between them and server. Forward proxy keeps a copy of all request to the server, in case duplication happen then it act like cache layer
   * `Forward Proxy` can act as a filter to ban unwanted servers access
 * In fact `Forward Proxy` and `Reverse Proxy` LB talks with each other instead of client vs servers
+![LB](https://user-images.githubusercontent.com/7471619/224579604-4d51a50a-c8fb-4024-9133-71248938520f.png)
 
 ### LB
 * `Increase throughput` to our service
