@@ -1,4 +1,21 @@
 
+## Steps to take In System Design
+1- Gather functional requirements
+2- Cluster them into a collection of Microservice, assign each function related to each service and how are the requests and responses should be look like
+3- Draw an architecture diagram connecting 
+4- Dive into each microservice, each service should has three parts:
+  - App layer: Logic of Program
+  - Cache Tier: Serve popular request
+  - Database Layer: Save into Disk
+
+6 - Gather non-functional requirements:
+  - Capacity requirements
+  - What extend should we scale each tier  
+  * Use distributed system solution, means each tier (app, cache and database) should be a distribute system or a collection of machines which work togather to the same thing which a single server is doing
+
+
+
+
 * In system design need for collecting the Functional requirements for(functions that this system has to accomplish)
   * To detail out problem statement
   * To describe user's view of the system
@@ -24,14 +41,6 @@
     * even we can use first half of custom domain name
     * 
 * 
-
-### Steps to take
-1- Collect functional requirements
-2- Cluster them into a collection of Microservice, assign each function related to each service and how are the requests and responses are 
-3- Draw the architecture diagram connecting them
-4- Dive into each microservice 
-5- scale if it is in picture on each microservice to handle traffic
-
 
 
 
@@ -113,17 +122,188 @@ ip destination, port destination, ip source, port source
 * Use multiple copies of running program (multiple processors)
 * I/O on webserver happen when they 
 
-How two service in one microservices architecture  communicate with each other ?
-They can use API key which generated and saved into process.env. Each request header should have one APIkey to verify
-To make sure API key are safe we can encrypt them
-Or use Secret Management tools to save keys
-const crypto = require('crypto');
-crypto.randomBytes(16).toString('hex');
+### Databases
+* A server has running multiple instances of a function which accessing the same resource like database, so we call them thread (if they didn't share resources we could call them process)
+* When different server accessing one database, it maybe both threads access to the same database which lead to conflict if both have the same post request -> inconsistently 
+* Solution: Create a global lock, when one thread accessing resource or critical section.
+  * It is lock when one thread is using it, it only gets unlock when a thread released critical section
+  * DBMS (database management system) are built to handle this complexity for us
 
-In a microservices architecture, services communicate with each other through APIs. There are several approaches to implement API communication between services, including HTTP/REST, gRPC, and messaging protocols such as AMQP or Kafka.
-To keep authentication and authorization safe in microservices, what can we do?
-Implement them using a centralized identity provider, such as OAuth2 or OpenID.
-We used HTTP/REST to communicate between two services
+#### High Traffic
+* LB is for handling traffics to servers
+* If all servers were busy, need a line like bank line in front of servers, incoming request queue
+* Same for response request queue if too many response comming if there were not enough bandwidth with enough data they need to be queued
+  * nginx is a framework but it can act more than that like LB
+  * Cache is always a subset of populare items of database to reduce the cost of reading data from db
+  
+#### Memory
+* App service is stateless, it means it doesn't store data
+* Cache layer (key,value) allows us to look up for data
+* We can save or hash tables or data in RAM easily, Random Access Memory allow us to save it any where randomly in memory, but it is temporary so we need to save into Disk
+* To save into Disk, we can't save it anywhere. It would be timely expensive to check Disk and find a place to save data
+  * We use index to save data into database, so we have one index another value or data object
+  * To get access to index, need to define a `in memory hash index` , with key values as key is the shorted url (what we look for) and key is the index of the value in Disk
+    * Advantage is `in memory hash index`  is small and we can keep it in main memory
+    * `in memory hash index` is located in Database layer, not in cache layer
+  
 
+### Reasons to go with Distributed Systems (6 roles) Scale Horizontally  
+
+* less memory: DB and cache may not have enough space on a single machine to hold data with huge size -> need to split or partition data across multiple data servers
+* Traffic: When number of requests coming is too much more than one tier able to handle, need to scale throughput. It means replace current server with a collection of servers
+* Delay: Response time at single server is too high, then we need to parallel the work and overall time would reduce
+* Failure: Single server is single point of failure, so if one is down other services can handle it
+* Geolocation: If we have several servers on different locations, we minimize network latency
+* Hotspots: Disporpotionally high load on a piece of data in database. In case one we split or partion data but one specific may get too much traffic, so we need to split that part as well
+
+### More powerfull machine (Scale Vertically)
+* Another solution to scale is using more power full machines
+* Scale vertically means buy more power for one single machine
+* If system needs to scale massively then the cost would be too high
+* Working with 2 copies of machines is cheaper than one 
+* Has ceiling on data size and traffic on single machine
+* We can't minimize network latency 
+* Single of failure still is in this
+
+### Non Functional
+
+* Need 3 ties in apps and 3 ties of cache to avoid single point of failure
+* Need infos, like bitly creats
+```bash
+2 - 3 billion short urls each year 
+20 billion click per month
+```
+* Calculate how many requests comes in per seconds
+```bash
+300 milion/month
+10 million/day
+160 k/hr
+3 k/min
+50 ps
+-----
+700 mi/day
+12 mi/hr
+200 k/min
+3500 ps
+----- 
+50 or Q qps url per second is created
+3500 or C ps click per seconds
+read 100 more than write
+But still use variable instead in case if your calulcation is wrong your answeres werent
+
+```
+#### Calculate Sharding or partitioning
+* 3 years is a good number for storage to keep
+* The process of deviding data into multiple sections for storage is called partitioning/sharding
+* Ask how many machines do we need to handle this amount of requests coming ps and how much space we need to save in memory
+* In this example, if we assume we save data as key and value in hash table, value is short url and key is long url
+  * How many we need to store?
+    * storage space is 3 years -> roughly 1000 days
+    * 24*60*60 = 86400 ~ 100,000 seconds per day
+    * 100,000 * 1000 = 100 million seconds for  years
+    * 10^8 * Q url created in 3 years, number of writes
+    * if Q=100 -> 10 billion writes
+    * Each url size max is 2048 byte,  
+    * 10^10 * 2048 ~ 10^13 byte space to write
+
+```bash
+we know:
+ 2^30 bits-> 1 billion
+ 2^31 bits-> 2 billion
+ 2^32 bits-> 4 billion
+```
+* index key should cover 10 billions, so to represent 10 billions in binary we need 2^34 bits ~ 16 billion 
+* each 6 bit we assign to create on char, so it is 6 byte
+* 6 byte is key, 2k is the value ~ 2k byte
+* 2k * 10^10 = 2 * 10^13 ~ 20 TB (trillion byte)
+* if each machine store 2 TB then 
+  * need to partition/shared hash tables into 10 machines
+* Sharding dealing with data and managing data on different servers, it is good for heavy reads and not for write. 
+* Partitioning dealing with one table, partition it into smaller portion and save to different servers, it is good for read and write
+##### APPS and DB
+* When we shared/partition, each server needs to access all data, so if we have 3 tier apps/cache, for each we need 10 partition
+```bash
+total dbs = 3 * 10 = 30 db machines
+```
+### Calculate Cache Tier 
+* Cache tier only store read data and not write data 
+```bash
+Uber want to hit rate of 98-99%, how much data should store in cache layer? 
+20%-30%
+# This is 1 role of Thumb
+
+10% entries save into cache -> 90% read hit direct to cache
+20%-30% entries save into cache -> 98%-99% hit direct to cache
+```
+* So if we go with 20% of 20TB key value then 4 TB save into cache 
+  * Cache uses RAM
+```bash
+# This is 2 role of Thumb
+128 GB Ram # each machine has
+```
+* 4 TB/ 128 GB ~ 30 partitions 
+* Since we don't need any data get lost we go with 3X replicas 
+  * 30 * 3 = 90 Cache machine
+
+* How we select 20-30% to cache?
+  * Sort the requests came or the most wanted short urls,
+    * take top ones based on frequencies 
+  * When we sort based on frequency of request, we can decide based on the data, how to manage most frequent requests on cache
+
+### Scale for Throughput (Handle Traffic)
+
+* We should know the time in ms assume `X`, is needed to process a given request by a single thread on a local single cpu to do something like i/o on that server machine
+* Calculation as below shows ~ 8100 qps receive on any machine, these machine could be any server( app server / cache server / db server)
+* Assume our machine has 
+```bash
+8-12 cores 
+8 threads per core 
+=> 8*12 = 96 ~ 100 threads per machine can work parallel per seconds
+
+100 * (time on each thread 1/X) * 1000 * 30% = total time needed to process a single thread in this machine 3000/X request/sec
+```
+* In reality from 100 threads not all doing the process, some of do garbage collecting, some do switcing between threads, so we need only 30-40% of cpu utilization for overale health
+  * because if traffic has spike then cpu has drop request,
+* we have 3000/X for all machines, X is varied,for example in DB, X is more than what we have in cache or app server. 
+```bash
+DB Server X = 10ms , 3000 rps
+Cache Server X = 2ms , 15000 rps
+App Server X = 1ms , 30000 rps
+```
+* Now compare above numbers with 8000 rps we have in below, so our service is fine
+  * Because we have 3 tier service in app layer and each one can handle traffic as 8000
+  * 
+* So far with design, we have
+```bash
+8000 qps/ query per second
+73   qps / read per second
+```
+#### Reads
+* 8000 qps hits the app service
+* app service check cache for each request
+* 1-2 percent of request needs to hit DB (role of thumb)
+* Any request make to db, it save into cache tier
+#### Write
+* all reads directly hit the database and not cache
+
+* How many service we need to handle this traffic?
+  
+
+
+### So Far Design Summary
+
+* Request comes in to generate a short url (write action), 
+  * LB in app server send it to a app server
+  * One of threads at app server takes it
+  * send request to DB
+  * LB at DB guided to the right shared
+  * Then thread return back result to app server
+* Request comes in to get long url (read )
+  * Look at Cache tier first
+  * After passing from LB at Cache tier
+  * Then that particulate thread returns back the url 
+  * If not exist in cache tire
+    * App server have to go down to db tier, to retrieve data
+    * It goes through to db and return back to app server
 
 
