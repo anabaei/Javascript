@@ -432,3 +432,27 @@ Assume you want to download 25 MB image on 10 Mbps
     * The client browser take first ip address and send request to that, if one is not working then pick another one
   
 * We can have both `DNS based LB` and `Passive LB` solutions.  
+
+
+### Global LB and Local LB
+* LB has two big advantages:
+  * Increase throughput
+  * Increase availability
+  * Reduce response time (IP anycast)
+* Local LB, each tier
+  * Cache has a LB on top of it in cluster
+  * DB has its own LB 
+  * App Service has LB which exposes it to the world:
+    * Local LBs help to handle throughput availability
+* Global LB
+  * DN base service
+  * IP Anycast 
+
+* `IP Anycast`:  IP anycast load balancing method use Dijkstra algorithm 
+*  Every router knows the information about other routers in the network by broadcasting its local information
+  * If we rely on round robin DNS, we can not access the closest ip address LB to the client to reduce response time
+  * Solution is for each IP address that LB DNS provides, we can have several LB around the world, so same as having a passive LB, we can have several servers with same ip address
+  *  We can use BFS to find shortest path to the which service we should choose with same ip, which each edge has a weight that indicate the distance. So we have an undirected weighted graph we find the shortest path from client to any source
+  *  Each route get its own edges, create and adjacency list of it, use not BFS(because there is weight), Dijkstra algorithm to find closest destination ip address
+  
+  
