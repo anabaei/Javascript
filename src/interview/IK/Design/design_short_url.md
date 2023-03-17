@@ -456,3 +456,5 @@ Assume you want to download 25 MB image on 10 Mbps
   *  Each route get its own edges, create and adjacency list of it, use not BFS(because there is weight), Dijkstra algorithm to find closest destination ip address
   
   
+### CRUD
+* 
