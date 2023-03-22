@@ -1280,7 +1280,54 @@ apromise(passparams).then((res)=> anotherfun(res,new)).then(..)
 
 
 </details>
+<details>
+       <summary> Event Loop & Stack Memory </summary>
 
+* Event loop: is a loop to constantly check task queue where I/O, Timers and callbacks are queued and waiting for execution. 
+  * Event loop runs when stack memory is empty
+* Event loop: When async operation is executed, a corresponding callback/promise/time/IO is registered with event loop. When operation is complete it is added to task queue. Therefore Promises and call backs are not store in stack memory. 
+* Promises store in microtask queue, wile callbacks and timeers store in task queue. Event loop responsible for both queues and priority to execute is with promises
+  * Promise execute in two ways:
+    * If resolve the then will be excuted 
+    * If rejects the catch will be exuted
+* Stack Memory: When a function is called, a new execution context is created and add to top of the stack memory. 
+  * Execution context includes information about the function call, function arguments, variable and current poistion of the code. 
+  *  When function returns, execution context removed from stack
+* Even loop lag is when taks queue is full
+```javascript
+// event loop example and call back example
+const pro = (variable) =>{
+ return new Promise((res, rej)=>{
+    if(variable==="you"){
+      console.log("resolve1")
+      console.log("")
+    }
+    if(variable==="me"){
+      console.log("reject1")
+      console.log("")
+    }
+  })
+}
+
+function add(a, b, cb) {
+  let result = a + b;
+  cb(result);
+}
+
+function displayResult(result) {
+  console.log("The result is: " + result);
+}
+
+
+
+(async () => {
+  await pro("you")
+  add(2, 3, displayResult)
+}
+)();
+```
+
+</details>
 <details>
        <summary> sum </summary>
 

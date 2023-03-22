@@ -456,5 +456,83 @@ Assume you want to download 25 MB image on 10 Mbps
   *  Each route get its own edges, create and adjacency list of it, use not BFS(because there is weight), Dijkstra algorithm to find closest destination ip address
   
   
-### CRUD
+### CRUD and Compaction Process
+* CRUD operations are done on the disk
+* Implement hash table storing
+```bash
+(k, offset on disk)
+```
+* where `k` key and offset on disk is the pointer to the location of the value
+  * It could be challenge, on update since there may be new update needs more memory than what it had at first
+  * So it is better we consider update as `deletion` and `insertion` at the end of the file
+* On delete, we can only remove it from hash table, then even if it is on the disk it is unaccessible
+* On update since we create a new values for the same key at the end of disk we need a garbage collector to clean up our disk
+* `Compaction Process`: traverse from the end of the file and see if there are repeatation delete them to create new file create. When this completed db switched to the new one
+
+### Inconsistently, Leader & follower
+* How we can scale a DB in microservices?
+* At app service layer, we scale app tier to increase availability and throughput. 
+* By replacing single app server, by collection of replica app servers with a load balancer in the front. Can we do the same for the DB tier?
+  * Which we have a collection of DBs behind a LB, each DB has a full copy of all data. 
+  * `Data Replication`: Instead of `Service Replication` in service app layer, we have data replication. Data replication is keep copy of data on multiple machines connected over network
+  * Reading from different replicas are okay
+  * Writting may have issue on not syncing data in different replicas
+    * Need one Master/Leader DB service, so all writting has to add to the leader and followers/slaves synced themselve with it
+      * In case if one follower/leader fail, another one in reserver has to be replace
+
+* We may have `inconsistency` in some cases when leader is not sync with all followers in fraction of seconds. But eventually there is consistently  
+* Some laggs are acceptable
+  * One way to optimize inconsistency, is check who is gonna read this data, if it is the same person who did changes, then send his requests only to the leader/master DB.
+  * Another solution to avoid lagging is when one write come in to master/leader, lock any request on this key value request to all followers/slaves until write is completed and all followeres are sync to get all consistent respond. 
+    * It means throughput would be lower, so if want high throughput we have to compromise eventual consistently
+  
+### MultiLeader and follower
+* We can have multi leader on each region. 
+* Each leader is responsible to update followers and broadcast the changes to other cluster leader to update that followers to.
+* If two request came in at the same time on different leaders, each one has a UTC (universal time coordinator) then the older one wins conflict and overcome other changes when broadcasting. The receiver leader never changed any data which is older than recent changes.
+
+
+### Leaderless Data Replication and quorums W & R
+* We can use democracy
+  * Write is done on all replicas
+    * When more machines has the same data, we update minority with the data
+      * If they are equal we can check the time stamp to know which one should be majority
+      * We need at least one machine returns read/write request to validate the rest of replicas
+      * This one makes write fast but Read is slow, because we need to read from different replicas to validate the data
+      * In the middle of read, maybe only one write has done before syncing with rest, then read can get majority which is old version, so there is inconsistently
+
+* We can have different setups for this design
+```bash
+# minimize read faster and write slow
+Number of nodes = 3
+Read only from 1 
+Write into 3 machines 
+# minimize write faster and read slow
+Number of nodes = 3
+Read only from 3 
+Write into 1 machines 
+
+# normal setup, this one can tolerate one fail on each machines
+Number of nodes = 3
+Read only from 2
+Write into 2 machines 
+```
+* In a leaderless network with 7 nodes, the write `quorum` is 4. From how many replicas should we read in order to figure out what the true value is? answer is 4
+* While designing a network with 15 nodes, you need to decide the values of W and R for the network. You want the network to read fast and also be fault-tolerant. Which of the following values could be a possible suitable combination for such a network? answer is W=11, R=5
+
+
+### CAP Theorem
+*  ![CAP](https://user-images.githubusercontent.com/7471619/226084940-7e792639-65df-4a36-b92d-ee1ce40bd35f.png)
+
+
+### CDNs
+* Content Delivery Network is a popular way to replicate our data to reduce response time improve availability and throughput without needing to build multiple data centers.
+* Third party CDNs like Cloudflare and Akamai can be used for that
+* 
+* At above image, we can remove on DB in one region, and send all read and write to one DB. It would be still fast
+  
+*  To optimize Write, we end up to have multiple leaders in each region 
+* Also there is browser caching on each client
+* Forwarded proxy can help caching requests comming from one organization, but no body outside of that organization not benefit from that
+* Network can be congested if we use other region DB for reading for big files like movies, the bandwidth would be issue
 * 
