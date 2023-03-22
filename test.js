@@ -264,15 +264,56 @@
 // // })
 a = [1,2,3,4,5]
 
-const tt = a.reduce((previous, current) => { 
-  previous  + current
-  console.log(current, previous)
-  return previous
-}, 0)
-console.log(tt)
+// const tt = a.reduce((previous, current) => { 
+//   previous  + current
+//   console.log(current, previous)
+//   return previous
+// }, 0)
+// console.log(tt)
 
 
 
+
+const pro = (variable) =>{
+ return new Promise((res, rej)=>{
+    if(variable==="you"){
+      console.log("resolve1")
+      console.log("")
+    }
+    if(variable==="me"){
+      console.log("reject1")
+      console.log("")
+    }
+  })
+}
+
+function add(a, b, cb) {
+  let result = a + b;
+  cb(result);
+}
+
+function displayResult(result) {
+  console.log("The result is: " + result);
+}
+
+
+
+(async () => {
+  await pro("you")
+  add(2, 3, displayResult)
+}
+)();
+
+
+
+// function sayHiToPerson(name) {
+//   return new Promise((res, rej)=> {
+//      setTimeout(() => { // Can't remove the timeout
+//      res(`Hi, ${name}!`);
+//   }, Math.floor(Math.random() * (5000 - 1000) + 1000)); // random number between 1000 and 5000
+//     rej('Bye');
+//   }) 
+// }
 
 
 
