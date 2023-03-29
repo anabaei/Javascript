@@ -1,5 +1,7 @@
 
-## Steps to take In System Design
+<details> 
+  <summary>  Steps to take In System Design </summary> 
+
 1- Gather functional requirements
 2- Cluster them into a collection of Microservice, assign each function related to each service and how are the requests and responses should be look like
 3- Draw an architecture diagram connecting 
@@ -12,9 +14,6 @@
   - Capacity requirements
   - What extend should we scale each tier  
   * Use distributed system solution, means each tier (app, cache and database) should be a distribute system or a collection of machines which work togather to the same thing which a single server is doing
-
-
-
 
 * In system design need for collecting the Functional requirements for(functions that this system has to accomplish)
   * To detail out problem statement
@@ -40,11 +39,11 @@
     * Marketing can track of which individual can work better for the company to encourage people to land our service
     * even we can use first half of custom domain name
     * 
-* 
+</details> 
 
+<details> 
+  <summary>  Design a shortend url </summary> 
 
-
-### Design a shortend url
 * Need to define two function requirements
   * Encode the current url
   * Decode the upcomping url and redirect to actual one
@@ -97,6 +96,10 @@ SHA 3
 * We can pre-generate short urls, before getting long urls then match them togather. For this you can pregenerate short urls and put them into a queue waiting for upcoming requests.
 * This way we handle duplication, we can sort it because it is offline so it won't affect the overal speed
 * Downside is we need a lot of space to store it 
+</details> 
+
+<details> 
+  <summary>  Scale </summary> 
 
 #### Network Protocol
 * Browser use `curl -v` command to send HTTP request under the hood of browser
@@ -192,7 +195,11 @@ read 100 more than write
 But still use variable instead in case if your calulcation is wrong your answeres werent
 
 ```
-#### Calculate Sharding or partitioning
+</details> 
+
+<details> 
+  <summary>  Calculate Sharding or partitioning </summary> 
+
 * 3 years is a good number for storage to keep
 * The process of deviding data into multiple sections for storage is called partitioning/sharding
 * Ask how many machines do we need to handle this amount of requests coming ps and how much space we need to save in memory
@@ -225,7 +232,11 @@ we know:
 ```bash
 total dbs = 3 * 10 = 30 db machines
 ```
-### Calculate Cache Tier 
+</details> 
+
+<details> 
+  <summary>  Calculate Cache Tier </summary> 
+
 * Cache tier only store read data and not write data 
 ```bash
 Uber want to hit rate of 98-99%, how much data should store in cache layer? 
@@ -252,7 +263,10 @@ Uber want to hit rate of 98-99%, how much data should store in cache layer?
   
 ![Cache App DB Layer](https://user-images.githubusercontent.com/7471619/224517144-37378181-15ef-4c5c-9a23-aeee4b1c280c.png)
 
-### Scale for Throughput (Handle Traffic)
+</details> 
+
+<details> 
+  <summary>  Scale for Throughput (Handle Traffic) </summary> 
 
 * We should know the time in ms assume `X`, is needed to process a given request by a single thread on a local single cpu to do something like i/o on that server machine
 * Calculation as below shows ~ 8100 qps receive on any machine, these machine could be any server( app server / cache server / db server)
@@ -290,8 +304,6 @@ App Server X = 1ms , 30000 rps
 
 * How many service we need to handle this traffic?
   
-
-
 ### So Far Design Summary
 
 * Request comes in to generate a short url (write action), 
@@ -307,8 +319,11 @@ App Server X = 1ms , 30000 rps
   * If not exist in cache tire
     * App server have to go down to db tier, to retrieve data
     * It goes through to db and return back to app server
+</details> 
 
-### Performance optimization (SLI)
+<details> 
+  <summary>  Performance optimization (SLI) </summary> 
+
  service level indicators to measure the performance of a scalable system are `Correctness`,`Availability`, `(system) Throughput` and `response time` 
 * Ask what type of service are we providing?
   * Then we can define the correctness of our application by data we receive from the app
@@ -350,8 +365,11 @@ if from 1000 request, one not successfully serverd
   * If the user paid for the service and if SLOs didn't meet you assume to receive a penalty
   * For example on the span of one month the availability is 99.9%, if that missed in 1 percent get 15 days of free service
     * if you missed by 5 percent you get 45 days of free service
+</details> 
 
-### Latency vs Response
+<details> 
+  <summary>  Latency vs Response </summary> 
+
 * `Bandwidth` is the main ones that characterizing network performance, below we explain why:
   * There are `Bandwidth`, `Propagation Delay` and `Queueing delays`to make network latency
 * Latency is duration that a request is latent (awaiting not actually service) RTT (Round Trip Time)
@@ -384,7 +402,10 @@ Assume you want to download 25 MB image on 10 Mbps
 ```
 * 20 sec is way more than 200ms we gain => Bandwidth is what dominate our response time
 
-### Reverse and Forward Proxy
+</details> 
+
+<details> 
+  <summary>  Reverse and Forward Proxy </summary> 
 
 * Benefits of `Reverse Proxy`
   * Increase Security
@@ -408,7 +429,20 @@ Assume you want to download 25 MB image on 10 Mbps
 * In fact `Forward Proxy` and `Reverse Proxy` LB talks with each other instead of client vs servers
 ![LB](https://user-images.githubusercontent.com/7471619/224579604-4d51a50a-c8fb-4024-9133-71248938520f.png)
 
-### LB
+</details> 
+
+<details>
+      <summary> DNS load balance </summary>
+
+* DNS load balancing is a technique used to distribute incoming traffic across multiple servers or data centers using the Domain Name System (DNS).
+
+* In DNS load balancing, multiple IP addresses are associated with a single domain name, and when a client requests to connect to that domain, the DNS server returns one of the IP addresses in a round-robin fashion or based on predefined criteria such as server availability or geographic location.
+
+</details>
+
+<details> 
+  <summary>  Load Balance </summary> 
+
 * `Increase throughput` to our service
 * LB is a software which increase throughput to the service 100-1m qps
   * Nginx is popular one
@@ -433,8 +467,11 @@ Assume you want to download 25 MB image on 10 Mbps
   
 * We can have both `DNS based LB` and `Passive LB` solutions.  
 
+</details> 
 
-### Global LB and Local LB
+<details> 
+  <summary>  LB Global & Local </summary> 
+
 * LB has two big advantages:
   * Increase throughput
   * Increase availability
@@ -454,9 +491,11 @@ Assume you want to download 25 MB image on 10 Mbps
   * Solution is for each IP address that LB DNS provides, we can have several LB around the world, so same as having a passive LB, we can have several servers with same ip address
   *  We can use BFS to find shortest path to the which service we should choose with same ip, which each edge has a weight that indicate the distance. So we have an undirected weighted graph we find the shortest path from client to any source
   *  Each route get its own edges, create and adjacency list of it, use not BFS(because there is weight), Dijkstra algorithm to find closest destination ip address
+</details> 
   
-  
-### CRUD and Compaction Process
+<details> 
+  <summary>  CRUD and Compaction Process on Disk </summary> 
+
 * CRUD operations are done on the disk
 * Implement hash table storing
 ```bash
@@ -468,8 +507,11 @@ Assume you want to download 25 MB image on 10 Mbps
 * On delete, we can only remove it from hash table, then even if it is on the disk it is unaccessible
 * On update since we create a new values for the same key at the end of disk we need a garbage collector to clean up our disk
 * `Compaction Process`: traverse from the end of the file and see if there are repeatation delete them to create new file create. When this completed db switched to the new one
+</details> 
 
-### Inconsistently, Leader & follower
+<details> 
+  <summary>  Inconsistently, Leader & follower </summary> 
+
 * How we can scale a DB in microservices?
 * At app service layer, we scale app tier to increase availability and throughput. 
 * By replacing single app server, by collection of replica app servers with a load balancer in the front. Can we do the same for the DB tier?
@@ -491,8 +533,12 @@ Assume you want to download 25 MB image on 10 Mbps
 * Each leader is responsible to update followers and broadcast the changes to other cluster leader to update that followers to.
 * If two request came in at the same time on different leaders, each one has a UTC (universal time coordinator) then the older one wins conflict and overcome other changes when broadcasting. The receiver leader never changed any data which is older than recent changes.
 
+</details> 
 
-### Leaderless Data Replication and quorums W & R
+
+<details> 
+  <summary>  Leaderless Data Replication and quorums W & R </summary> 
+
 * We can use democracy
   * Write is done on all replicas
     * When more machines has the same data, we update minority with the data
@@ -520,12 +566,45 @@ Write into 2 machines
 * In a leaderless network with 7 nodes, the write `quorum` is 4. From how many replicas should we read in order to figure out what the true value is? answer is 4
 * While designing a network with 15 nodes, you need to decide the values of W and R for the network. You want the network to read fast and also be fault-tolerant. Which of the following values could be a possible suitable combination for such a network? answer is W=11, R=5
 
+</details> 
 
-### CAP Theorem
+<details> 
+  <summary>  CAP Theorem </summary> 
+
+* On distributed systems we can choose Availability or Consistently, based on our design. This is called CAP theorem
 *  ![CAP](https://user-images.githubusercontent.com/7471619/226084940-7e792639-65df-4a36-b92d-ee1ce40bd35f.png)
+</details> 
 
 
-### CDNs
+<details> 
+  <summary>  CDNs </summary> 
+
+* By having different data center around the world
+  * Reduce response time
+  * Increase availability 
+  * Increase throughput 
+
+* Usually `number of Reads req  >> number of Writes req` so we can focus on `Read` to optimize it
+* To optimize response time to `Write` we could have replicate of databases around the world with multiple `master` node in each one
+* To optimze `Read` we don't need a datacenter in each region
+  * If the app tier is not complicated we can have whole as a app and cache in other regions
+  * It is called `proxy cache` 
+  * Since this proxy cache is close to region of client, the response time is short
+* ISP become overwhelms with uploading huge files with traffics since each file needs to cross files 
+  * If we transfer files in proxy cache in advance, then it would have less traffic on our network
+* This is the Idea of `CDN`s
+### CDN (proxy cache on the server side)
+* Is a good way to reduce response time and increase availability without building new data centers
+* Content Delivery Networks: is geographically collection of proxy caches which stores most of populare requests
+  * It is a replicas of master servers geographically distributed services
+  * Static content, not dynamic content like stock prices can't be like that
+  * Netflix Amazon have it's own CDNs servers. 
+  * Youtube videos can be sent to their own ISPs which have CDNs
+
+* CloudFlare and Akamai are third party distributed network to keep your data 
+* Part of pages can comes from database service and the rest could use the ip address of the client and cloud flare can decide which CDNs can send static file from the geographically closes
+* 
+
 * Content Delivery Network is a popular way to replicate our data to reduce response time improve availability and throughput without needing to build multiple data centers.
 * Third party CDNs like Cloudflare and Akamai can be used for that
 * 
@@ -536,3 +615,25 @@ Write into 2 machines
 * Forwarded proxy can help caching requests comming from one organization, but no body outside of that organization not benefit from that
 * Network can be congested if we use other region DB for reading for big files like movies, the bandwidth would be issue
 * 
+</details> 
+<details> 
+  <summary> Cache Read and Write  </summary> 
+
+* CDNs helps availability and throughput
+```bash
+# calculate throughputs on each section on each thread
+# server gets 30,000 rps 
+# cache repose is 2 ms, db response is 10 ms
+=> cache 15000 rps
+=> db 3000 rps
+```
+* Porpuse of cache tier is improve read 
+
+### Read
+* v = get(x)
+* if v is null then cache missed 
+  * check db
+  * put it into cache
+</details>
+
+
