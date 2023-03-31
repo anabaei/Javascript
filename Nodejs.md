@@ -2,7 +2,7 @@
 
 [Node Docs](https://nodejs.org/api/https.html#https_server_close_callback)
 
-<details>
+-details-
 	<summary> Start Nodejs</summary>
 
 # Quick start
@@ -243,7 +243,7 @@ npm i lodash
 npm i morgan
 ```
 </details>
-<details>
+-details-
 	<summary> Setup Jest in Nodejs and Test VS Code Launch</summary>
 
 * unit testing: test a function or a simple unit of code, mock the rest of peices if needed 
@@ -368,7 +368,7 @@ describe("Filter function", () => {
    });
 ```
 </details>
-<details>
+-details-
           <summary>websocket ws</summary>
 
 
@@ -504,7 +504,7 @@ ws.send(JSON.stringify(jsonObject));
 ToDos
 * 
 </details>
-<details>
+-details-
         <summary> setTimeout and SetInterval </summary>
 
 * print each 1 seconds
@@ -525,7 +525,7 @@ setInterval(function() {
 setTimeout(doSomething, 100);
 ```
 </details>
-<details>
+-details-
           <summary>Redis</summary>
 
 * List of services running in background
@@ -564,7 +564,7 @@ redis-cli
 publish m* hi
 ```
 </details>
-<details>
+-details-
           <summary>config</summary>
 
 * Config file can be like this:
@@ -592,7 +592,7 @@ var envConfig = require('./' + config.env); // this is how we use these cofig fi
 ```
 </details>
 
- <details>
+ -details-
 	<summary> Organization </summary>
 
 * The API is a collection of resources with models to define how the resource look, controllers to access resources, and routes to let controllers expose our api. That would be like this
@@ -822,7 +822,7 @@ module.exports = logger;
 http localhost:3000/api/users
 ```
 </details>
-<details>
+-details-
         <summary> Module exports </summary>
 
 * `Module` is a variable that represents current module. `exports` is an object that will be exposed as a module so whatever we assign to  `module.exports` will be exposed as `module`.
@@ -858,7 +858,7 @@ console.log(person1.fullName());
  * More examples [here](https://www.tutorialsteacher.com/nodejs/nodejs-module-exports)
  * When `export default ` then import could be as `import whateverName from`. It means there is only one file is exporting. On the other hand, `export something` thne you need to use brackets at import as `import {somethign} from`
 </details>
-<details>
+-details-
        <summary> App USE </summary>
 
 * App use requires a middle ware like
@@ -881,7 +881,7 @@ import item from './somewhere';
 ```
 </details>
 
-<details>
+-details-
        <summary> Start with Swagger </summary>
 
 * Define your api [here](https://editor.swagger.io/) and generate node.js
@@ -940,7 +940,7 @@ var options = {
 * Then it read yamle file and create swagger doc file. Then convert this file to safeload. Then we initialize swagger middleware.
 * Reading files in json, you u need to encode them to `urf8` otherwise you get back an array of bits. you need to parse json and then stringify and send it.
 </details>
-<details>
+-details-
        <summary>JWT</summary>
 
 * [reference](https://medium.com/@siddharthac6/json-web-token-jwt-the-right-way-of-implementing-with-node-js-65b8915d550e)
@@ -1031,7 +1031,7 @@ var publicKEY  = fs.readFileSync('./public.key', 'utf8');  module.exports = {
 ```
 </details>
 
-<details>
+-details-
        <summary> VS Code </summary>
 
 * Go to debug at VS and select node or attach. Then if you choose node then it would be like below when running the app is with `npm index.js`
@@ -1062,7 +1062,7 @@ var publicKEY  = fs.readFileSync('./public.key', 'utf8');  module.exports = {
 }
 ```
 </details>
-<details>
+-details-
        <summary> Prometheus </summary>
 
 * Prometheus is a  metrics system to collect data from both kubernates itself  and any prometheus  enable data application. so we can add prometheus metrics to our application so it would be able to collect.
@@ -1096,7 +1096,7 @@ To have metrics running live into kubernetes:
 * We can use Grafana that works with prometheus and we can create custom charts and custom dashboards
 </details>
 
-<details>
+-details-
        <summary> OPENAPI 3 </summary>
 
 * Yaml has important properties like
@@ -1110,7 +1110,7 @@ To have metrics running live into kubernetes:
 * `operationId`: is controllername + '_'+ function to call like `PeopleList_peopleGet` in fact it represent what method in what controller should be called to implement this url
 *
 </details>
-<details>
+-details-
        <summary> Execution Context & Closure</summary>
 
 # (no closure) Same Level Execution context 
@@ -1183,7 +1183,7 @@ When we declare a function in memory, behind the scene javascript does very spec
 * If I store data inside my function, whenever function runs the data is gone, also store in global is not good, so we store data inside back pack. Then for the life of our application, we have data around and persisted. We use our lexical scope or our closed environmental variables. 
 
 </details>
-<details>
+-details-
        <summary> Promises, async await </summary>
 
 * When I was node develop I always concern about performance issue but main concern was about debug ability.
@@ -1280,7 +1280,7 @@ apromise(passparams).then((res)=> anotherfun(res,new)).then(..)
 
 
 </details>
-<details>
+-details-
        <summary> Event Loop & Stack Memory </summary>
 
 * Event loop: is a loop to constantly check task queue where I/O, Timers and callbacks are queued and waiting for execution. 
@@ -1328,7 +1328,7 @@ function displayResult(result) {
 ```
 
 </details>
-<details>
+-details-
        <summary> sum </summary>
 
 * in service
@@ -1430,7 +1430,7 @@ app.get('/v1/captcha', (req, res) => res.sendStatus(200));
 app.post('/v1/captcha/response', (req, res) => res.sendStatus(200));
 ```
 </details>
-<details>
+-details-
 	<summary> Passport </summary>
 
 * A good [resource](https://github.com/Hyperkind/Basic-Authentication-with-Passport/tree/cb3ba96845c0282152322ab46bd077badde7a6ba)
@@ -1505,7 +1505,7 @@ passport.deserializeUser(async (id, done)=> {
 })
 ```
  </details>
- <details>
+ -details-
 	<summary> MiddleWare </summary>
 
 * MiddleWare are backbone of express. Express is just routing and middleware framework.
@@ -1610,7 +1610,7 @@ app.post('/lions',updateid, function(req, res, next){
 </details>
 
 
-<details>
+-details-
 	<summary> Routes and Sequelize include</summary>
 
 * command line
@@ -1659,7 +1659,7 @@ app.use('/todos',todoRouter); // First came here our app.
 </details>
 
 ### Email
-<details>
+-details-
 	<summary> Send Email </summary>
 
 * `Sendgrid` is another tool was using to broadcast emails
@@ -1672,7 +1672,7 @@ transport.sendMail(From,to,subbject,content)
 </details>
 
 ### Postgres
-<details>
+-details-
 	<summary> postgres </summary>
 
 ### Start From Sratch
@@ -1922,7 +1922,7 @@ Member.belongsTo(Group, { sourceKey: "id" });
 ```
 
 </details>
-<details>
+-details-
        <summary> ORM Sequelize </summary>
 
 * Objec Relational Maping, any language has ORM to map objects to databases. one of them is `Sequilize`
@@ -2268,7 +2268,7 @@ Post.belongsToMany(User)
 </details>
 
 ### Mongo
-<details>
+-details-
 	<summary> Mongod </summary>
 
 * Mongo db is a non relational database nosql. In fact saving json files into database. We need to persist our apid data so we use mongo. Install [source](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)
@@ -2481,7 +2481,7 @@ exports.post = function(req, res, next) {
 ```
 
 </details>
-<details>
+-details-
      <summary> Query with Mongo</summary>
 
 * Documents returns by mongoos are not just object, they have specific methods like `remove` or `create`
@@ -2533,7 +2533,7 @@ Model.findOne({name: 'Gigi'}, function(err,doc){
 })
 ```
 </details>
-<details>
+-details-
      <summary> Mongo Populdagion</summary>
 
 ## Population
@@ -2567,7 +2567,7 @@ Post.find({}).populate('author categories').exec().then(
 ```
 
 </details>
-<details>
+-details-
      <summary> Work with Mongo</summary>
 
 * After connecting to monogo now work with it.
@@ -2612,7 +2612,7 @@ owner: {
 
 *
 </details>
-<details>
+-details-
 	<summary> Files </summary>
 
 * The type of files when defining them as forexmaple db, is `Buffer`. Node readfiles as buffer we can have
@@ -2623,7 +2623,7 @@ fs.readFileSync('./package.json') // returns numbers .toString() gets actual fil
 ```
 *
 </details>
-<details>
+-details-
 	<summary> Image Upload , File streaming</summary>
 
 * Node can't work with binary data so it saves binary data into buffer. 
@@ -2746,7 +2746,7 @@ s.on('open', function () {
 fs.existsSync("///")
 ```
 </details>
-<details>
+-details-
       <summary> Work Thread and sub Threads</summary>
 
 ```javascript
@@ -2772,7 +2772,7 @@ const { var1, var2, var3 } = workerData;
 ```
 * [resource](https://www.youtube.com/watch?v=wT4lg9oiMvI)
 </details>
-<details>
+-details-
 	<summary> Testing </summary>
 
   * `unit testing` is testing functions to check what we expect the results are of functions or objects
@@ -2805,7 +2805,7 @@ describe('todos', function() {
 });
 ```
  </details>
-<details>
+-details-
 	<summary> Environement variables</summary>
 
  * `process` is actual process we are running and `process.env` displays all environment objects we have.
@@ -2817,8 +2817,8 @@ export HEY = 'hey'; // inside our app
 
 
  </details>
- <details>
-<details>
+ -details-
+-details-
 	<summary> Postgres and Import</summary>
 
 * [here](https://www.codementor.io/engineerapart/getting-started-with-postgresql-on-mac-osx-are8jcopb)
@@ -2942,7 +2942,7 @@ post.hasMany(Comment, {as: 'All_Comments'});
 
 </details>
 
-<details>
+-details-
 	<summary> Callbacks or cb() </summary>
 
 * `cb` is how a vanilla callback function is passed into a asynchronous function (sometimes labeld next) 
@@ -3036,7 +3036,7 @@ connenction.query('CREATE DATABASE IF NOT EXIST test', function(err){
 ```
 * Above table showing 3 callback functions `function(err)`
   </details>
-  <details>
+  -details-
 	<summary> ASYNCHRONOUS  </summary>
 
 * Different source of Async
@@ -3093,7 +3093,7 @@ btn.addEventListener("click",function() {
 
  </details>
 
-<details>
+-details-
 	<summary> run</summary>
 
 * Middleware apply actions on some data, and it has access to req, res and some data.
@@ -3126,7 +3126,7 @@ services:
 
 
 </details>
-<details>
+-details-
 	<summary> Test </summary>
 
 * `Test Double` is replacing a module or method with the one. It can be a hardcode behaviour of a funciton no matter of what the actual response is and is config in test only It includes `stub`, `spy`, `mock` and `fake`
@@ -3410,7 +3410,7 @@ describe(" some description", () => {
 });
 ```
 </details>
-<details>
+-details-
 
 	<summary> Hash </summary>
 
@@ -3485,7 +3485,7 @@ callback(null, res)
  ```
 *
 </details>
-<details>
+-details-
 	<summary> Brute force mitigation</summary>
 
 * `Brute force attack` to avoid it we should bcrypt and running number of hashes or add one second delay under post register
@@ -3503,7 +3503,7 @@ catch(err){
 ```
 * Also we can track faild logins
 </details>
-<details>
+-details-
 	<summary> Sessions </summary>
 
 ### Sessions
@@ -3551,7 +3551,7 @@ app.use(session({
 * Add session timing
 
 </details>
-<details>
+-details-
 	<summary> on load window </summary>
 
 * As for
@@ -3564,7 +3564,7 @@ window.addEventListener('load', function() {
 
 </details>
 
-<details>
+-details-
 	<summary> Selection </summary>
 
 * By understading `e.options[e.selectedIndex]` you can understand javascript structure
@@ -3587,7 +3587,7 @@ function select(e){
 ```
 </details>
 
-<details>
+-details-
 	<summary> Publish npm </summary>
 
 * if two companies have private packages in order to access both you need
@@ -3629,7 +3629,7 @@ npm login // your living s email and pass
 npm publish
 ```
 </details>
-<details>
+-details-
 	<summary> Docker & Containers</summary>
 
 * Node is single threat so we can securly use it as microservice and it would callback let us know when it is done. Remember create a thread for each application depletes or consume resources.
@@ -3697,7 +3697,7 @@ const a = await todo();
 </details>
 
 
-<details>
+-details-
 	<summary> Basic </summary>
 
 * `Global` variables, global namespace is available so
@@ -3768,7 +3768,7 @@ let x = amir() || nn || do || func();
 let a = false || 0 || 1 // returns a=1
 ```
 </details>
-<details>
+-details-
 	<summary> Lexical Scope </summary>
 
 * `lexical scope` is where the function is defined and looks for variables. inner functions contain the scope of parent functions even if the parent function has returned.
@@ -3784,7 +3784,7 @@ whatismyscope()()
 ```
 * Above code will return "I am just a local". It will not return "I am a global". Because the function func() counts where is was originally defined.
 </details>
-<details>
+-details-
 	<summary> NPM </summary>
 
 
@@ -3809,7 +3809,7 @@ npm audit fix --package-lock-onlu // it updated packages but not node modules
 * `node-gyp` is a tool which compiles Node.js Addons. Node.js Addons are native Node.js Modules, written in C or C++, which therefore need to be compiled on your machine. After they are compiled with tools like node-gyp, their functionality can be accessed via require(), just as any other Node.js Module.
 
 </details>
-<details>
+-details-
 	<summary> Moduls </summary>
 
 * Exporting moduls(functions)
@@ -3836,7 +3836,7 @@ output would be
 * use `REPL` session using  node
 
 </details>
-<details>
+-details-
 	<summary> Child process </summary>
 
 * We can run other processes inside node using `exec` code module as
@@ -3854,7 +3854,7 @@ exec("ls", function(err, stdout){
 * Another one is spawn, we can define when a charactor inter then run the spawn
 
 </details>
-<details>
+-details-
 	<summary> Files System fs </summary>
 
 * `fs` file system is core node module. All `fs` modules have option to be `sync` or  `async`
@@ -3953,7 +3953,7 @@ stream.on("end", function() {
 
 </details>
 
-<details>
+-details-
 	<summary> Security </summary>
 
 ```javascript
@@ -4027,7 +4027,7 @@ For Injection - We need to validate and sanitize all the params
  [source](https://jwt.io/introduction/)
 
 </details>
-<details>
+-details-
 	<summary> Axios, Fetch and HTTPS</summary>
 
 * There are 3 ways to make REST connections. 
@@ -4062,7 +4062,7 @@ console.log(commits)
 	
 </details>
 	
-<details>
+-details-
 	<summary> HTTP Module</summary>
 
 * There are `Http` and `Https` modules the difference is in `Https` there is a need for security certificate.
@@ -4106,12 +4106,12 @@ server.listen(3000);
 
 ```
 </details>
-<details>
+-details-
 	<summary> Gatsby </summary>
 
 * Deploy node or React to [gatsby](https://www.gatsbyjs.org/tutorial/part-four/)
 </details>
-<details>
+-details-
 	<summary> Crawler Scrapping </summary>
 
 * [crawling](https://code-maven.com/building-a-crawler-in-nodejs)
@@ -4172,12 +4172,12 @@ curl -d "username=myuser&password=mypw&submit=Login" URL
 curl -d "username=myuser&password=&submit=Login" https://www.eventbrite.com/signin
 ```
 </details>
-<details>
+-details-
 	<summary> Augumented Reality </summary>
 
 * link is [here](https://codelabs.developers.google.com/codelabs/ar-with-webxr/#1)
 </details>
-<details>
+-details-
 	<summary> Font Awesome</summary>
 
 * This is easy use from [here](https://fontawesome.com/icons?d=gallery&q=place)
@@ -4211,7 +4211,7 @@ rp(url).then(function(html){
 ```
 </details>
 
-<details>
+-details-
 	<summary> Promises Chain Async </summary>
 
 * A synchronous operation blocks processes till the one operation completes, so sending receiving all processes can come in orders. Like web services transactions sending and receiving http requests.
@@ -4240,7 +4240,7 @@ Promise.all([promise1, promise2]).then(function(values) {
 ```
 
 </details>
-<details>
+-details-
 	<summary> Nested Routes </summary>
 
 * If you have define a get"/" in server.js, then you even can have another post or get inside it.
@@ -4266,13 +4266,13 @@ It never works although the url is correct!
 
 </details>
 
-<details>
+-details-
 	<summary> API  </summary>
 
 * API with simple word [here](https://medium.freecodecamp.org/what-is-an-api-in-english-please-b880a3214a82)
 </details>
 
-<details>
+-details-
 	<summary> Check Undefined </summary>
 
 * The best way to check undefined is using type of as
@@ -4282,7 +4282,7 @@ typeof obj === "undefined" ? yes do it : no dont go
 * Arrays are type of object.
 </details>
 
-<details>
+-details-
 	<summary> Global Variable  </summary>
 
 * In order to have global variables in node we need to define a middle ware and append session to local req and use it
@@ -4315,7 +4315,7 @@ req.cookies.justName
 ```
 </details>
 
-<details>
+-details-
 	<summary> Sweeet Alert</summary>
 
 * You can find it [here](https://sweetalert.js.org/guides/)
@@ -4324,7 +4324,7 @@ req.cookies.justName
 swal("Hello world!");
 ```
 </details>
-<details>
+-details-
 	<summary> Connect SalesForce </summary>
 
 * First Create connection in with salesforce, connect Nodejs To Saleceforce
@@ -4367,7 +4367,7 @@ conn.sobject("Contact").create({
 
 </details>
 
-<details>
+-details-
 	<summary> Excel Files, csv to json </summary>
 
 * To download excel file use [excel](https://tableexport.v5.travismclarke.com/#javascript) and [here](https://tableexport.v3.travismclarke.com/#dependencies) for having tables we can use tabledata [here](https://datatables.net/manual/installation)
@@ -4419,7 +4419,7 @@ conn.sobject("Contact").create({
 </details>
 
 * User selection in dorp down menu as ![text](https://user-images.githubusercontent.com/7471619/52431124-73692680-2abc-11e9-8921-e39e2f91cedd.png)
-<details>
+-details-
 	<summary> Code is here </summary>
 
 ```javascript
@@ -4454,7 +4454,7 @@ font-size: 8px;
 ```
 </details>
 
-<details>
+-details-
 	<summary> Start Nodejs</summary>
 
 ## Express Start
@@ -4537,7 +4537,7 @@ PORT, ()=>console.log('server is running')
  ```
  * To run it just call `node app.js` which execute the file
  * You can see the complete version mysql connected to heroku from this [code](https://github.com/anabaei/sanction/blob/fixErrorMysqlHeroku/server.js)
- <details>
+ -details-
 	<summary> parse data from body </summary>
 
 * To have that we need to add
@@ -4660,7 +4660,7 @@ res.redirect('anotherEndPoint/');
 	;
  ```
  </details>
- <details>
+ -details-
 	<summary> Session </summary>
 
 * To have session first request it
@@ -4696,7 +4696,7 @@ app.use(appendLocalsToUseInViews);
  ### DataBase
  * Then add below to `app.js` file as `const db = require('./db/index');`
 
- <details>
+ -details-
   <summary> Create and Export db </summary>
 
 * To Create a database have a file name `createdb.js` and run it as `node ./db/createdb.js`
@@ -4724,7 +4724,7 @@ pgtools.createdb({
 module.exports = db;
  ```
 </details>
- <details>
+ -details-
   <summary> Logs with Kibana</summary>
 
 
@@ -4734,7 +4734,7 @@ module.exports = db;
 
 ```
 </details>
- <details>
+ -details-
   <summary> migrate.js </summary>
 
 * `Sequelize cli` allows us to change database without losing any data by providing migration.Learn migration [here](https://www.youtube.com/watch?v=gwrfXtC-y3k)
@@ -4857,7 +4857,7 @@ db.query(`
 
 </details>
 
- <details>
+ -details-
   <summary> seeds.js </summary>
 
 *
@@ -4881,7 +4881,7 @@ db.query(`
 
 </details>
 
-<details>
+-details-
   <summary>AWS & Node </summary>
 
   * Run Node js on AWS from the [link](https://hackernoon.com/tutorial-creating-and-managing-a-node-js-server-on-aws-part-1-d67367ac5171
@@ -4894,7 +4894,7 @@ aws s3 ls s3
 ```
 </details>
 
-<details>
+-details-
 	<summary> app.js </summary>
 
 * Here we add it in app.js to check it works
@@ -4920,7 +4920,7 @@ db.query(`
 * Just run `yarn db:setup` to have it running
 
  ### JSON API
- <details>
+ -details-
 	<summary> JSON </summary>
 
 * To have a JSON format as out put we define a selection as
@@ -5062,7 +5062,7 @@ app.listen(process.env.PORT || 3000)
 ```javascript
 heroku run bash
 ```
-<details>
+-details-
 	<summary> DB in Heroku </summary>
 
 * To run db using postgresql in Heroku post it in server.js
@@ -5109,7 +5109,7 @@ INSERT 0 1
 
 </details>
 * Then you can run node migrate.js etc from here!
-<details>
+-details-
 	<summary> Run the DM project </summary>
 
 * To have uuid use `npm i uuid` and then
@@ -5120,7 +5120,7 @@ uuidv4();
 
 </details>
 
- <details>
+ -details-
 	<summary> FORM in Node js </summary>
 
 ```javascript
@@ -5156,7 +5156,7 @@ app.post("/", function (req, res) {
 
 </details>
 
-<details>
+-details-
 	<summary> Deploy to CAS SFU </summary>
 
 * First check the request in `app.get('/', function(req,res) { }
@@ -5209,7 +5209,7 @@ myAsyncFunction(10, 99, function onComplete(error, data) {
 ```
 </details>
 
-<details>
+-details-
   <summary> Canvas LTI </summary>
 
 ### Start
@@ -5287,7 +5287,7 @@ and with ![this](https://user-images.githubusercontent.com/7471619/45457491-0041
 ---------------------
 </details>
 
-<details>
+-details-
   <summary> Cassandra </summary>
 
 * Apache Cassandra is an open source distributed database system designed for managing large amounts of data across commodity servers. [here](https://docs.datastax.com/en/developer/nodejs-driver-dse/1.3/api/class.Client/)
@@ -5417,7 +5417,7 @@ select * from evidence where question = 'evidence1' allow filtering;
 
 </details>
 
-<details>
+-details-
 	<summary> Express </summary>
 
 * To install express globally `npm install -g express` then `npm install -g express-generator` then create app by `express myproject` then cd project folder `npm install` and to debug `$ DEBUG=expressproject:* npm start`
@@ -5484,7 +5484,7 @@ app.get('/user/:id', loadUser, function(req, res){
 
 </details>
 
-<details>
+-details-
 	<summary> Access functions </summary>
 
 * At tools.js we define function like
@@ -5510,7 +5510,7 @@ console.log(typeof tools.bar);
  ```
 
 </details>
-<details>
+-details-
 	<summary> Ubuntu VM in VirtualBox </summary>
 
 * First Download ubuntu 18.0.4 and then download VirtualBox. Then run virtualbox and let it to take ubuntu from your downloads file.
@@ -5520,7 +5520,7 @@ Then to have a fullscreen vm running in ubuntu follow bellow link
 * the link to have vm [here](https://websiteforstudents.com/installing-virtualbox-guest-additions-on-ubuntu-18-10-18-04-16-04-lts/)
 </details>
 
-<details>
+-details-
 	<summary> Authentication </summary>
 
 ### JWT
@@ -5540,7 +5540,7 @@ const res = await User.findById(user._id);
 * CORS is Cross Origin Resources. If you are on `localhost:3000` and want to access `localhost:4000` browsers doesn't let you. Browsers always send two requests: one is `option` another is `get:put:post:update:fetch:delete..`. `OPTION` means am I allow to send you request(checking cors and see the server they allow or not).
 </details>
 
-<details>
+-details-
     <summary> Deployment </summary>
 
 * All servers runs below which means it install all `dependencies` from `package.json` and it won't `devDependencies` or others.
@@ -5580,7 +5580,7 @@ use forman start // it runs it it is like running on heroku on port 5000
 ```
 
 ## LIVING_LEARNE
-<details>
+-details-
         <summary> use lodash</summary>
 
 * A helper method called [loadash](https://medium.com/voobans-tech-stories/10-lodash-functions-everyone-should-know-334b372aec5d)
@@ -5606,7 +5606,7 @@ use forman start // it runs it it is like running on heroku on port 5000
 | 110 | 6 |    r&nbsp;w&nbsp;- |
 | 111 | 7 |    r&nbsp;w&nbsp;x |
 
-<details>
+-details-
   <summary>Reducer</summary>
 
 * Return one value, here is reducer
@@ -5618,7 +5618,7 @@ array.reduce( function(total, currentValue, currentIndex, arr), initialValue )
 [1,2,3].reduce( (sum, current, indx, theArr)=> sum += current, 0) // returns 6
 ```
 </details>
-<details>
+-details-
       <summary> loadash avoid undefind</summary>
 
 * Below is the code to aovid `nil`
@@ -5637,7 +5637,7 @@ my_object={ id: 1423, FK: 322, isPrivate: false }
 ```
 </details>
 
-<details>
+-details-
       <summary> LOGS & SSH to DB</summary>
 
 * Kibbana is easy to add field name to filter logs
@@ -5691,7 +5691,7 @@ make sure it is json string and is logable for the standard out looking.
 * `log-response` modify res.sent function. It prepares header, json stringify on header didn't work. It send time difference between log received and sent. If res.send called several times it stop it.
 
 </details>
-<details>
+-details-
          <summary> JS ENGINE and Stack Trace Devaraj Video</summary>
 
 * Deva [video](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
@@ -5708,14 +5708,14 @@ obj.hasOwnPropery
 ```
 ...
 </details>
-<details>
+-details-
          <summary> Develop in VC CODE Docker world</summary>
 
 * Allows us to lunch `vs code` inside [of container](https://code.visualstudio.com/docs/remote/containers).
 * In the configuration you can get it lunch after installing remote development tool in vs. 
 </details>
 
-<details>
+-details-
         <summary> Mysql </summary>
 
 * select number of cities in desc order and number of repeataions
