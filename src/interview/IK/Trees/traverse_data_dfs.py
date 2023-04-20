@@ -128,5 +128,4 @@ def preorder(root):
     result = helper(root, result)
         
     
-   
     return result

@@ -405,7 +405,7 @@ Assume you want to download 25 MB image on 10 Mbps
 </details> 
 
 -details- 
-  <summary>  Reverse and Forward Proxy </summary> 
+  <summary>  Reverse proxy and Forward Proxy </summary> 
 
 * Benefits of `Reverse Proxy`
   * Increase Security
@@ -428,6 +428,8 @@ Assume you want to download 25 MB image on 10 Mbps
   * `Forward Proxy` can act as a filter to ban unwanted servers access
 * In fact `Forward Proxy` and `Reverse Proxy` LB talks with each other instead of client vs servers
 ![LB](https://user-images.githubusercontent.com/7471619/224579604-4d51a50a-c8fb-4024-9133-71248938520f.png)
+
+* A `reverse proxy service` is a server that sits between a client and a web server, forwarding client requests to the appropriate server and returning the server's response to the client. Unlike a forward proxy, which is used to protect clients from the Internet, a reverse proxy is typically used to protect a web server from Internet traffic and provide additional functionality, such as load balancing, caching, and security features like SSL termination. By acting as an intermediary between clients and servers, a reverse proxy can improve the performance, reliability, and security of web applications
 
 </details> 
 
@@ -634,6 +636,33 @@ Write into 2 machines
 * if v is null then cache missed 
   * check db
   * put it into cache
+
+
+* Main purpose of cache tier is increase throughput
+* Save every request in cache, but it may get full
+  * In order to make space for new key value pairs in cache, we need to delete the current ones
+  * There are different cache eviction:
+    * Random removing pairs from memory
+    * LRU policy (Least Recently Used): throw out the 
+
+
 </details>
 
+<details>
+  <summary> Least Recently Used LRU </summary> 
 
+* Implement get(key) to check cache  and  put(key, value) to put key value pair in cache in O(1)
+* We save key values into hash table
+* 3 Common ways to coquire data:
+* `Balance Tree like Heap` -> takes logn, 
+* `Hash tables` -> have no ordering 
+* `pre sorting` -> it is sort
+  * `pre sorting` allows us to put most recent in first index and get the one that should be deleted from the last item in `it`
+  * so even we don't need to keep timestamp 
+
+* `it` can't be an array because we want constant time when we insert at the front of the array, so we chose a linked list. A dwal linked list which tailer linked list which has two pointer to tail and front nodes
+
+* 
+
+
+</details>
