@@ -5752,3 +5752,202 @@ ALTER IGNORE TABLE `table_name` ADD UNIQUE (title, SID)
 * When you have groupby then you can't have where, you should have having
 
 </details>
+
+
+<details>
+
+-details-
+        <summary> Read Text Files </summary>
+
+```javascript
+import fs from 'fs';
+
+// Read the file
+fs.readFile('./a.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  const obj = JSON.parse(data);
+  const keys = Object.keys(obj);
+  const values = Object.values(obj);
+  
+  for(let i in obj){
+    console.log(i)
+  }
+  // Log the keys
+  console.log(keys, values)
+
+  // Process the contents of the file
+  console.log(data);
+});
+```
+* To convert javascript object to json need `stringify`
+```javascript
+const obj = {
+  name: 'John',
+  age: 30,
+  city: 'New York'
+};
+
+const jsonString = JSON.stringify(obj);
+console.log(jsonString);
+
+```
+
+* Notice a callback is executed after, below for loop print after console log
+* Readfile is async function, 
+```javascript
+import fs from 'fs';
+
+// Read the file
+fs.readFile('./a.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+  const obj = JSON.parse(data);
+
+  for(let i in obj){
+    console.log(">>",i)
+  }
+
+});
+const obj = {
+  name: 'John',
+  age: 30,
+  city: 'New York'
+};
+
+console.log(Object.keys(obj))
+
+```
+
+</details>
+
+
+<details>
+<summary> GraphQL VS REST </summary>
+
+* In Rest you have different endpoints for differnet use cases, in graphql you only have one end point and by request let the BE which parts you need
+* IN Rest response may be over fetching or under fetching but in Graphql you only get field which you requested
+* Both uses HTTP actions like GET POST and allow data manipulation
+* REST is more predeifned strucutre while graphql has felexitiby 
+
+##### Graphql disadvantages
+* Caching which may work in rest may not work since request can be vary 
+* complexity in the backend 
+</details>
+
+
+<details>
+    <summary> Order of Executaion</summary>
+
+```javascript
+function longLoop() {
+
+    var i = 0;
+
+    while (i < 1000000000) {
+
+        i++;
+
+    }
+
+    console.log(i);
+
+}
+
+ 
+
+console.log("start");
+
+
+setTimeout(() => {
+
+    console.log("settimeout");
+
+}, 0);
+
+process.nextTick(() => {
+    console.log("nexttick");
+
+});
+Promise.resolve().then(() => {
+    console.log('Promise resolve');
+  });
+  setImmediate(() => {
+    console.log('setImmediate');
+  });
+  
+
+longLoop();
+
+console.log("end");
+
+```
+
+</details>
+
+<details>
+  <javascript>
+
+
+```javascript
+// Passing a primitive value by value
+let a = 10;
+let b = a;
+b = 20;
+console.log(a); // Output: 10
+
+// Passing an object by reference
+let obj1 = { value: 10 };
+let obj2 = obj1;
+obj2.value = 20;
+console.log(obj1.value); // Output: 20
+
+
+```
+* 
+```javascript
+function downloadAndProcessDocuments(documentUrl, callback) {
+  downloadDocument(documentUrl, function(document, err) {
+    if(err) {
+      callback(null, err);
+      return;
+     }
+     processDocument(document, callback);
+  });
+}
+
+function downloadDocument(documentUrl, callback) {
+ // ...
+}
+
+function processDocument(document, callback) {
+ // ...
+}
+
+```
+*  To invokde above we need a funciton to handle both result and error:
+```javascript
+function handleDownloadedDocuments(result, error) {
+  if (error) {
+    console.error('Error:', error);
+    // Handle the error case
+  } else {
+    console.log('Result:', result);
+    // Handle the successful result case
+  }
+}
+
+downloadAndProcessDocuments('document-url', handleDownloadedDocuments);
+
+```
+
+
+</details>
+
+SQRS
+
+
