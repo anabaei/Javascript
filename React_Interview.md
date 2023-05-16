@@ -435,3 +435,82 @@ export default App;
 * A lazy loading is used for large components when users don't need them immediately, like images videos
 * Fetch data could be in lazy load unless the data is critical of the function of component, so it is better to load data during initial render
 </details>
+
+```javascript
+import ReactDOM from "react-dom";
+
+import App from "./App";
+
+const yogaPoses = [
+  "Tadasana",
+  "Vrikshasana",
+  "Adho Mukho Svanasana",
+  "Trikonasana",
+  "Kursiasana",
+  "Naukasana",
+  "Bhujangasana",
+  "Paschimottanasana",
+  "Balasana",
+  "Sukhasna",
+  "Bandha Sarvangasana",
+  "Virabhadrasana I",
+  "Chaturanga",
+  "Utkatasana",
+  "Bakasana",
+  "Savasana"
+];
+
+ReactDOM.render(<App data={yogaPoses} />, document.getElementById("root"));
+
+```
+* Then fix the below issue
+```javascript
+import { useState } from "react";
+import "./styles.css";
+
+export default function App({data}) {
+ const[inputValue, setInputValue] = useState('')
+ const[filteredData, setFilteredDate] = useState([])
+
+  const handleInputChange = ( e) =>{
+    const value = e.target.value
+    setFilteredDate(
+      data.filter((item)=>{
+        item.toLowerCase().startWith(value.toLowerCase())
+      })
+    )
+  }
+
+  const handlItemClick =  (value) =>{
+    setInputValue(value)
+    //TODO empty another one ?
+    setFilteredDate([])
+  }
+
+
+
+  return <div className="App">
+    <input
+     type="text"
+     value={inputValue}
+     onChange={handleInputChange}
+    /> 
+    
+    {  inputValue !== ' ' && (
+      <ul>
+        {filterData.map((item)=>
+        {
+        <li key={item} onClick={()=> handlItemClick(item)}>
+        {
+         <div className={item === 'blue' ? blue : ''}> {item} </div>
+        )}
+      </li>
+    ))}
+  </ul> 
+  
+
+     
+    </div>;
+}
+
+```
