@@ -5,7 +5,6 @@
 *  But, since these individual containers have to communicate, Kubernetes is used
   
 
-
 # K8
 * manually linked and orchestrated running containers, using Kubernetes. 
 * Each application (running containers = cluster of containers) can have its own libraries independent from the rest of containers inside each container

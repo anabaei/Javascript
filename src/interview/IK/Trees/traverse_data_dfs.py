@@ -100,8 +100,6 @@ def postorder(root):
     while node has child:
         du += du + postorder(child) 
 
-
-
 ### Preorder  return as an array so we need a helper method
 def helper(node, result):
 
@@ -126,6 +124,6 @@ def preorder(root):
     if (root == None):
         return result
     result = helper(root, result)
-        
-    
     return result
+
+    

@@ -63,7 +63,7 @@ async function foo(url){
 * We can await on any object that has `then` in it and it shouldn't ne a promise even. It can be even a `setTimeout()` function as this link with [NV8 google](https://www.youtube.com/watch?time_continue=402&v=DFP5DKDQfOc&feature=emb_title)
 
 # V8
-* When V8 sees an `async` it marked it as resumeable function. It means suspend it and resume it later. It creads so called an implicit promise which is a promise that is returned when you invoke the async function. 
+* When V8 sees an `async` it marked it as resumeable function. It means suspend it and resume it later. It creats so called an implicit promise which is a promise that is returned when you invoke the async function. 
 
 
 ```javascript
@@ -91,6 +91,6 @@ apromise(passparams).then((res)=> anotherfun(res,new)).then(..)
 ```
 ## Tasks and Microtasks
 * In v8 there are `tasks` and `microtasks`. `Tasks` handle events like `io` or `setTimeout` and execute one at a time
-* Microtasks implement deffered execution for `async await` and `promises`. Microtasks queue is always empty before execution returns to `event loop`.
+* Microtasks implement defferent execution for `async await` and `promises`. Microtasks queue is always empty before execution returns to `event loop`.
 
 
