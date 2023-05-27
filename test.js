@@ -330,3 +330,25 @@ function displayResult(result) {
 
 
 
+
+
+let x = [2,3,4,1,0,9,5]
+let temp
+for(let i in x){
+   for(let j=0; j< x.length-1; j++){
+    if(x[i]<x[j]){
+      x[i], x[j] = x[j], x[i]
+    //  temp = x[i]
+    //  x[i] = x[j]
+    //  x[j] = temp 
+    }
+   }
+
+
+
+}
+// console.log(x)
+//console.log(x.split(2))
+console.log(x.splice(2))
+console.log(x)
+

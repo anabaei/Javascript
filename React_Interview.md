@@ -18,7 +18,7 @@
 <details>
         <summary> What is difference between map and for each </summary>
 
-* arr.forEach((ar)=>{}) doesn't return anything, even if you return. Foreach uses same space
+* arr.forEach((ar)=>{}) doesn't return anything, even if you return. Foreach uses same space, same action
 * arr.map returns an array,  you can add filter after that
 * arr.(a => a*2).filter(a => a<4)
 
@@ -121,7 +121,7 @@ const a --> error
 <details>
    <summary> Call Apply Bind</summary>
 
-* We can manipulate the context of a funciton
+* We can manipulate the context of a function
 
 ```javascript
 var person ={
@@ -135,7 +135,7 @@ var newvar = {
   name: "coder 2"
 }
 
-person1.hello(" Js")
+person1.hello("Js")
 person1.hello.apply(newvar,[0,"Js"])
 const hello = person1.hello.bind(newvar)
 hello(" Js")
@@ -357,6 +357,35 @@ const { a: numbers[0], b: numbers[1] } = obj;
 ```
 </details>
 
+<details>
+         <summary> Accumolate state</summary>
+
+* below code allow us to keep previuose state, and add new one
+```javascript
+setDropZoneItems((prevItems) => [...prevItems, draggedItem]);
+```
+</details>
+
+<details>
+         <summary> Higher Order</summary>
+
+* Function composition is a way of functional programming. ` add(multiply(a, b), c);` 
+* Higher order functions are functions that allow to pass a function as argument or return a function as result like map, reduce, filter, find, 
+```javascript
+// have this products, write  HO function to filter price > 0.5
+// then multiple price *2 then reduce it to have final 
+const products = [
+  { id: 1, name: 'Apple', price: 0.5 },
+  { id: 2, name: 'Banana', price: 0.3 },
+  { id: 3, name: 'Orange', price: 0.8 },
+  { id: 4, name: 'Grapes', price: 1.2 },
+];
+const totalPrice = products
+  .filter((product) => product.price > 0.5)
+  .map((product) => ({ ...product, price: product.price * 2 }))
+  .reduce((acc, product) => acc + product.price, 0);
+```
+</details>
 
 <details>
      <summary> Image Component & ProgressiveImage </summary>

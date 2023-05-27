@@ -34,7 +34,7 @@ class Solution:
         self.quicksortHelper(0, end, arr)
         print(arr)
         
-def partion(arr, left, right):
+def partition(arr, left, right):
     pivot = left 
     leftMostBiggestIndex = left + 1
     for i in range(left +1 , right+1):
@@ -48,7 +48,7 @@ def partion(arr, left, right):
 def _helper(arr, left, right):
     
     if(left < right):
-        pivot = partion(arr, left, right)
+        pivot = partition(arr, left, right)
         _helper(arr, left, pivot-1)
         _helper(arr, pivot+1, right)
 

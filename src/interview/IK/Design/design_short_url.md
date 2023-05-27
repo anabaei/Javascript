@@ -2,18 +2,111 @@
 <details> 
   <summary>  Steps to take In System Design </summary> 
 
-1- Gather functional requirements
-2- Cluster them into a collection of Microservice, assign each function related to each service and how are the requests and responses should be look like
-3- Draw an architecture diagram connecting 
-4- Dive into each microservice, each service should has three parts:
-  - App layer: Logic of Program
-  - Cache Tier: Serve popular request
-  - Database Layer: Save into Disk
+- most important is calculating amount of cpu(time) and memory(space)
+- first 2 minutes asks questions
+- 10 minutes finish the design
+- 50 minutes talks about optimization 
+- how to handle traffic
+- how to increase throughput (number of request system can handle per second)
+- how to handle system fails 
+- how to decrease latency
+#### Steps to Take 
 
-6 - Gather non-functional requirements:
-  - Capacity requirements
-  - What extend should we scale each tier  
-  * Use distributed system solution, means each tier (app, cache and database) should be a distribute system or a collection of machines which work togather to the same thing which a single server is doing
+##### 1- Gather infos in less than 5 min (10% of whole time)
+- Gather functional requirements (Super critical)
+ * Super critical to be starting with unpacking unclear problem
+ * Ask clarifying questions
+ * Details the problem into statements
+ * It should show you can unpack a problem 
+ * It should show you can communicate 
+  
+- Gather non-functional requirements, skip fast this part now
+  * Number of users, 
+  * Transactions per seconds
+  * Can be collected at later steps as well
+- tip: 99% you work on a distributed systems which could handle 1 million users
+
+##### 2- Define Data Model & Microservices (7 min)
+- What kind of data model: users {id, name, ...}, posts {} ,comments {}
+- What kind of database 99% sql dbs
+- What APIs 
+- Then come up with microservices (10 )
+- 1 or 2 only microservices you need to ask which one dive in
+- tip: Take which one you want to design. Take two core micro services. 
+Pick one reading and one writing. 
+Tell him I am choosing two because I want to demonstrate how scalling different for one for read and one for write intensive applications.
+
+#### 3- Design logic (2 min) (glue microservice togather)
+- Design one block for each microservice
+- Draw and explain logic data between them
+- Rules of thumb:
+  - client is waiting to response, use HTTP/REST APIs
+  - client not expect immediate response, use message queue which is its own microservice. 
+    - If we want partially of data of a microservice we can choose pub/sub
+    - Consumer of that microserivce may want to consume data on sweet time so we can queue it
+  - if data transfer is offline, use batched ETL(extract transform load) jobs
+
+#### 4- Deep dive into one (max 2) Microservice (20 min)
+- Divide microservice into 3 parts:
+  - App Server, 
+  - Cache tier, 
+    -  No functionality
+    -  data here is subset of the database tier and store in any format
+  - Database, store in row-major/col-major persistant data files 
+- For each microservice
+  - write data model what needs to be stored to match functional requirements
+  - solve logics in app service
+  - discuss how data store in sotrage and cache
+  - propose APIs to match functional requirements
+  - propose workflow for the APIs in eah tier 
+
+- tips: Never Go To implementation to select tool or service(this is a trap) like never say use kafka or dynamodb then they ask you why kafka? etc...
+- scale not here
+- we dont worry about frontend tier
+- can you name some shelf technologies in each layer
+
+#### 5- Identify need for scale, always is same (7 min)
+* Alegbra and calculation (if time taking guess round)
+* There are some common issues
+  * Scale for storage (storage and cache tier)
+  * Scale for throughput (CPU/IO)
+  * API parallelization
+  * Remove hotspots
+  * Availability and Geo distribution
+
+* Scaling (Vertical vs Horizental)
+  * vertical is one machine just buy a better one more cpu more memory but expensive
+  * horizental scalling buy many cheap machines, it added complexity, if comunication break what happen, syncing data is issue
+  * 
+
+
+#### 6- propose distributed system (7 min)
+
+* How will you shard and how application works
+* Draw a generic distributed architecture per tier
+* Create different clusters each one has its own microservices
+* Talk about LB to balance data between machines
+  * app server or stateless -> use round robin
+  * cache and storage
+    * partition data into buckets or shards in server
+    * propose solution to place shards in servers
+    * explain how shard works
+    * propose replicas
+    * propose CP or AP (always CAP theorem is same)
+
+* This is how microservice looks whithin a single data center, either on premise or VPC in cloud
+
+
+* Avoid implementation of details
+* If you get delay you can say I can come back 
+
+
+
+
+## Example 1: Design Social Media 
+* 
+
+
 
 * In system design need for collecting the Functional requirements for(functions that this system has to accomplish)
   * To detail out problem statement
@@ -21,9 +114,15 @@
   * To design minimum viable product
   * Convert each functional requirment to a function in server
 
+2- Cluster them into a collection of Microservice, assign each function related to each service and how are the requests and responses should be look like
+3- Draw an architecture diagram connecting 
+4- Dive into each microservice, each service should has three parts:
+  - App layer: Logic of Program
+  - Cache Tier: Serve popular request
+  - Database Layer: Save into Disk
+
 * Monolotic is use depth-oriented approach to design
 * A third party to save authentication use depth-oriented
-* 
 * CPU usage is Time Complexity
 * RAM usage is Space Complexity
 * Scalability: Build a system to handle millions of traffics comes to our system
@@ -40,6 +139,19 @@
     * even we can use first half of custom domain name
     * 
 </details> 
+<details> 
+  <summary>  3 main Systems </summary> 
+
+* `Online Services`, systems like websites. It is important CPU and Memory
+* `Batch processing`, like when you upload something on google.  your firend can't access it right away, it takes hours. When Google AIML takes keywords, making hash from those keys which is like reverse indexing. These take time and run in BE.
+* `Stream Processing`, like Netflix or IOT systems. Stream are constantly produce or shared. In stream processing we need to scale network bandwidth, how to optimize network 
+
+</details>
+<details> 
+  <summary>  Online Services </summary> 
+
+* 
+</details>
 
 <details> 
   <summary>  Design a shortend url </summary> 
@@ -70,7 +182,7 @@ base10_to_base64(127)
 ```
 #### How make sure the message is not tamper on the way?
   * One is to encrypt it in a way to avoid predictable urls:
-    * Any ecrypt could be duplicate key, so after creating an ecrypt first check if alreay a key exist (in O(1)) if not then assign url to this key
+    * Any ecrypt could be duplicate key, so after creating an encrypt first check if already a key exist (in O(1)) if not then assign url to this key
     * To make sure a message is not `tamper` from client to another client
 ```javascript
 user 1 send message m, and a hashed code of that message
