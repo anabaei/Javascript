@@ -104,9 +104,127 @@ Tell him I am choosing two because I want to demonstrate how scalling different 
 
 
 ## Example 1: Design Social Media 
+* Interviewer needs to tell you what is the system, 
+  
+
+#### 1- Functional Requirements 5 min
+* Come up with 5,6 funcitonal requirements
+  * View, upload download photos
+  * Like, comment on photos
+  * Search for photos based on tag/title
+  * Follow/unfollow other users
+  * Generate news feed, based on who the user follow
+* Non functional:
+  * Service need to be highly available (prefer availability over consistently)
+  * Accetpable latency of X milliseconds to generate feed, Y milisecond to view a photo
+  * High reliable(no lost photo)
+  
+  Ask from interviewers: Communication 
+  * total users - 1 billion
+  * daily active user - 500 million
+  * new photos per second - 1000
+  * views per second - 20000
+  * avaerage photo size - 200kb
+    * job of FE to normalize the size of photos
+    * no point to keep high res photos unless it is website for photos
+  tips: 
+  - don't talk about deployment strategy like in asia and the use how to handle request, you may talk abit on step 6 not here
+  - 
+#### 2- Defince Services 7 min
+
+* Usually each function requirement is one to one with microservice
+  * Microservice is small peice of work you can independtly design, code, validate and test
+
+- ViewService: if someone request a photo, i just give it to that
+- PostService: everyone post photo, i just put it into database in fact put meta data into database and put image into blob storage and save the path at database, that is his job
+- LikeSerivce: 
+- FollowService
+- CommentService
+- NewsFeedService
+- FeedGenerationService
+- SearchService
+- AccountService
+- UserService
+
+  
+ Then take one or 2 services to talk later, I want to pick view and post services
+ to demonstrate one for read intensive and one for write intensive. I want to show how scaling work reading vs writing. Very important point
+
+
+tips:
+if charactors encode to ASCII or UTF-8 each char is one byte
+varchar 32 -> 32 charactors -> 32 byte
+dateTime is 8 byte
+one byte is 8 bits
+
+Data Models:
+* Photos should be upload download
+  * photo Table: pk(int64), userId(int64), text(varchar64), imgStorePath(varchar256), photoLatitude(int), photLangitude(int), TimeStamp(datetime)
+  * user Table: pk(int64), name(varchar 32), email(varchar32), dob(datetime), zipcode(int), creeateTime(dateTime), lastLogin(datetime)
+* Users should be able to like comments 
+  * LikesTable userId(int64), photoId(int64), Timestamp(datetime), pk=userId or photoId
+  * CommentTable, userId(int64), photoId(int64),comment(varchar 128), Timestamp(datetime) pk = userId+ photoId+ timestamp
+  
+* Follow/unfollow a user
+  * FollowTable follwerId(int64), followeeId, Timestamp, pk  = followerId+ followeeId 
+
+* News Feed 
+  * userNewsFeed pk, userId, photoId, descrptions, feedCreationTimeStamp, Numlinks, NumComments, imagestoreorCDNpath
+
+* How to translate it to DB
+
+- Tell how Microservices communicate with each other and client: (through APIs)
+- APIs According to functional Requirements
+  - 1 Users should be able to view or upload photos
+    - viewPhoto(photo_id, user_id)
+    - viewPhoto(photo_id)
+    - postPhoto(user_id, location, time_stamp, title, tags[])
+
+  - 2 User should be able to like, comment on photos
+    - likePhoto(photo_id, user_id)
+    - potComment(photo_id, user_id, time_stamp, comment)
+
+  - 3 User should be able to follow/unfollow users
+    - follow(follower_id, followee_id, time_stamp)
+    - unfollow(follower_id, followee_id, time_stamp)
+
+
+
+#### 3 - Block Logical Diagram 2-3 min
+* Draw some micorservices connection under one API gateway, and connect them (no time to connect all)
+* Create Fan Out SVC (it uses for post here not for all services)
+  * It is like a hub, to connect services togather,
+    *  it is better than directly connect services togather because if you need to a new service to connect to post, then don't need to change post service, just make connection from fan out. it is like contor bargh
+* One line from client to post,
+  * save into database
+  * Then newsFeed service need know 
+  * Send to reverse indexing server as well
+    * I post photo of fall, in my area if someone search for the fall then it should show up right away
+    * Instead of traditional indexing where data is indexed based on its primary key or unique identifier, reverse indexing involves creating indexes based on other attributes or properties of the data.
+    * By creating reverse indexes, microservices can quickly retrieve and process data based on various criteria without having to perform complex joins or queries across multiple services. 
+
+* In the middle between services you can have Q to queue request and not waiting for the responses. It is not necessary to see the result so we use queue, they can take it its own time. 
+* Queue make sure services are communicating with each other but not dependent on each other. We want least dependency between services
 * 
+#### 4- Dive Deep into one Microservice PostService (any social media app)
+
+* PostService, when user post photo, it create metadata, save into blob, save into database and then inform some friends( fan out service)
+* Notice: Always social media should be a little different for celebrities, how?
+  * Fan out -> works for 200 followers, but how about celebrity with 10 mil followers? you can't update 10 mil feed out then system dead
+    * So for this persona, celebrity, we don't send feed out, we just cache it
+
+* CDN: Always streaming systems must have CDN.
+  * we use it as image storage here but sitting very close to your location
+    * Instead of sending a photo of celebrity thousands times across the ocean and consume a lot of bandwidth of network, you can save it at CDN near to locations.
+    * We can define it and use out sourcing from other companies to handle it
+    * Not chat but photos and videos 
+*  Tiers: App tier PostService, cache, database
+* Data Model: 
 
 
+
+
+#### 1- Functional Requirements
 
 * In system design need for collecting the Functional requirements for(functions that this system has to accomplish)
   * To detail out problem statement
