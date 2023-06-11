@@ -582,6 +582,8 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
 - Lambda function could be one and could be many
 - It is easier and less expensive, networking is already managed
 - Another solution is using EKS or ECS
+  
+  ![design](https://user-images.githubusercontent.com/7471619/244955503-671b9cdb-e2d8-4de7-985d-a202c0e23da7.png)
 </details>
 
  <details> 
