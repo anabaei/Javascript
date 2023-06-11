@@ -572,8 +572,6 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
 
 </details> 
 <details> 
-    <summary> Quize </summary>
-<details> 
     <summary> Design of System </summary>
 
 - Two ways one using EC2 another using lambda
@@ -593,22 +591,21 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
   ![design](https://user-images.githubusercontent.com/7471619/244955503-671b9cdb-e2d8-4de7-985d-a202c0e23da7.png)
 </details>
 
- <details> 
-    <summary>  Who is responsible for ensuring the security of AWS Regions, Availability Zones, and data centers?  </summary>
+<details> 
+    <summary> Quiz </summary>
+
+
+ Who is responsible for ensuring the security of AWS Regions, Availability Zones, and data centers?  
 
 - AWS
-</details>
-<details> 
-    <summary> Which of the following statements about containers and virtual machines is correct? </summary>
+Which of the following statements about containers and virtual machines is correct? 
 
 - Containers share an operating system (OS) kernel : correct
 - Virtual machines share an operating system (OS) kernel: wrong
 - Virtual machines must use the same operating system (OS) as the hypervisor :wrong
 - Containers each have their own kernel : wrong
 
-</details>
-<details> 
-    <summary> Which of the following elements are contained in an AWS Identity and Access Managment (IAM) policy? (Select THREE.) </summary>
+ Which of the following elements are contained in an AWS Identity and Access Managment (IAM) policy? (Select THREE.)
 
 - Effect
 - Action
@@ -617,78 +614,63 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
 - Resource
 - Image
 
-</details>
-<details> 
-    <summary> Users in a company are authenticated in the corporate network, and they want to use AWS services without signing in again. Which AWS authentication option should the company use?   </summary>
+ Users in a company are authenticated in the corporate network, and they want to use AWS services without signing in again. Which AWS authentication option should the company use?  
 
 - AWS Identity and Access Management (IAM) role -> correct
 - AWS Identity and Access Management (IAM) group -> wrong
 
-</details>
-<details> 
-    <summary> Which actions must be completed so resources in a public subnet can communicate with the internet?  </summary>
+Which actions must be completed so resources in a public subnet can communicate with the internet?  
 
 - Attach an internet gateway to the virtual private cloud (VPC)
 - Create a route in a route table to the internet gateway.
 
-</details>
-<details> 
-    <summary> Which of the following components are NOT required to launch an Amazon EC2 instance? (Select TWO.) </summary>
+ Which of the following components are NOT required to launch an Amazon EC2 instance? (Select TWO.) 
 
 - User data
 - Tenancy
   these 3 are require
 - Instance type, Storage, Operating system (OS)
 
-</details>
-<details> 
-    <summary>  What is a typical use case for Amazon Elastic Block Store (Amazon EBS)? </summary>
+What is a typical use case for Amazon Elastic Block Store (Amazon EBS)?
 
 - Block storage for an Amazon EC2 instance
 
-</details>
-<details> 
-    <summary> An employee at a healthcare facility is tasked with storing 7 years of patient information that is rarely accessed. Their boss wants them to consider one of the Amazon S3 storage tiers to store the information. Which storage tier should they use?  </summary>
+ An employee at a healthcare facility is tasked with storing 7 years of patient information that is rarely accessed. Their boss wants them to consider one of the Amazon S3 storage tiers to store the information. Which storage tier should they use?  
 
 - S3 Glacier Deep Archive
 
-</details>
-<details> 
-    <summary> Which database task is the customer's responsibility when using Amazon Relational Database Service (Amazon RDS)? </summary>
+ Which database task is the customer's responsibility when using Amazon Relational Database Service (Amazon RDS)? 
 
 - Optimizing the database
 
-</details>
-<details> 
-    <summary> A Multi-Availability Zone database (DB) deployment is beneficial when a customer wants to increase the availability of their database. What are other benefits of a Multi-AZ deployment?  </summary>
+A Multi-Availability Zone database (DB) deployment is beneficial when a customer wants to increase the availability of their database. What are other benefits of a Multi-AZ deployment? 
 
 - Automatic failover
 - Protect db performance
-
-</details>
-<details> 
-    <summary>What are the main components that make up Elastic Load Balancing (ELB)?  </summary>
+What are the main components that make up Elastic Load Balancing (ELB)? 
  
  * Rule, listener, target group
 
-</details>
-<details> 
-    <summary> Which Elastic Load Balancing (ELB) load balancer type should be used for an application that uses a rule based on a website's domain to choose target groups? </summary>
+Which Elastic Load Balancing (ELB) load balancer type should be used for an application that uses a rule based on a website's domain to choose target groups?
 
 - Application Load Balancer
 
 
-*  X-Ray can help users quickly identify services by their relative response times. X-Ray can identify a poorly performing service from within a web of interacting services. Once identified, CloudWatch provides the context, including the logs and metrics necessary to study specific issues.
-*  Parameter Store allows for easy externalization of parameters, such as an API key. The secure string option provides for data security by keeping the value encrypted at rest. Authorized access to the parameter is governed by IAM permissions. Parameter values can be easily changed by authorized principals at any time without requiring a re-deployment of the function, although the function would require intelligence to re-read the parameter values.
-*  ElastiCache for Redis is a fast in-memory data store that provides sub-millisecond latency to power internet-scale applications in real time. The data will not be stored on the instance itself. This choice is ideal for ensuring that the session state information persists across devices.
-* Instead of using ARNs for the Lambda function in event source mappings, you can use an alias ARN. 
+*  X-Ray can help users quickly identify services by response times. X-Ray can find poor performance service. CloudWatch provides the context, including the logs and metrics necessary to study specific issues.
+*  Parameter Store allows externalization parameters, like API key. 
+  secure string provides data security by value encrypted at rest. 
+  Authorized access to the parameter control by IAM. 
+  Parameter values can changed by authorized principals requiring a re-deployment of the function, although the function would require intelligence to re-read the parameter values.
+*  ElastiCache for Redis is a fast in-memory data store that provides sub-millisecond latency to power internet-scale applications. Data  not stored on the instance itself. This choice is ideal for ensuring that the session state information persists across devices.
+* Instead of using ARNs for the Lambda function in event  mappings, you can use an alias ARN. 
 *  A Lambda alias is a pointer to a specific Lambda function version.
-*  An ElastiCache cluster with a write-through strategy will allow for the read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
-*  You can enable DynamoDB Streams on a table to create an event that invokes an AWS Lambda function.
+*  An ElastiCache cluster with a write-through strategy allow read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
+*  You can enable DynamoDB Streams on a table to create event that invokes an AWS Lambda function.
 *  If you enable DynamoDB Streams on a table, you can associate the stream Amazon Resource Name (ARN) with an Lambda function that you write. Immediately after an item in the table is modified, a new record appears in the table's stream. 
   
 #### 2000 course
 WHAT YOU'LL LEARN
+
 Set up the AWS SDK and developer credentials for Java, C#/.NET, Python, and JavaScript
 Interact with AWS services and develop solutions by using the AWS SDK
 Use AWS Identity and Access Management (IAM) for service authentication
@@ -697,9 +679,11 @@ Integrate applications and data by using AWS Lambda, Amazon API Gateway, Amazon 
 Use Amazon Cognito for user authentication
 Use Amazon ElastiCache to improve application scalability
 Leverage the CI/CD pipeline to deploy applications on AWS
-*  
-</details>
-[Resource](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
+  
+
 
 </details>
+
+Images and content are all from below
+[Resources](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
 
