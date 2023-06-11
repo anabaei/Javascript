@@ -1,66 +1,74 @@
-
-
-# <font color=orange> AWS </font> 
+# <font color=orange> AWS </font>
 
 <details>
 <summary> Data center, Zone, Region, APIs </summary>
 
 ## Data center, Zone, Region
-* AWS keep different copy of data at different Data Centers. 
-  * One cluster can have more than one data centers in one Available `zone`, with redundant power and networks. In case one data center goes down
-  * But what if the whole cluster goes down?
-    * AWS has different redundant cluster around the world. 
-      * So like data centers, AWS clusters AZs togather and connect them
-      * A Cluster of AZ called a `region` 
-* How to choose `Region`
-  * Compliance:
-    * data residency if that matter for country or org
-  * Latency
-    * how close region are to you impact latency 
-  * Price
-    * Is vary in region to region
-  * Service Availability 
-    * Check the region you want to use have those services you want 
+
+- AWS keep different copy of data at different Data Centers.
+  - One cluster can have more than one data centers in one Available `zone`, with redundant power and networks. In case one data center goes down
+  - But what if the whole cluster goes down?
+    - AWS has different redundant cluster around the world.
+      - So like data centers, AWS clusters AZs togather and connect them
+      - A Cluster of AZ called a `region`
+- How to choose `Region`
+  - Compliance:
+    - data residency if that matter for country or org
+  - Latency
+    - how close region are to you impact latency
+  - Price
+    - Is vary in region to region
+  - Service Availability
+    - Check the region you want to use have those services you want
+
 ###### Resiliency
-* At a minimum, you should use two Availability Zones. That way, if an Availability Zone fails, your application will have infrastructure up and running in a second Availability Zone to take over the traffic
+
+- At a minimum, you should use two Availability Zones. That way, if an Availability Zone fails, your application will have infrastructure up and running in a second Availability Zone to take over the traffic
 
 ###### Edge Locations
-* Edge locations are global locations where content is cached. 
-* Edge Location and regional edge caches to cache content closer to the end users
-* CloudFront is edge location. When a user requests content that is being served with CloudFront, the request is routed to the location that provides the lowest latency
 
+- Edge locations are global locations where content is cached.
+- Edge Location and regional edge caches to cache content closer to the end users
+- CloudFront is edge location. When a user requests content that is being served with CloudFront, the request is routed to the location that provides the lowest latency
 
 ## AWS APIs
-* 3 ways to interact with aws, 
-  * Command line interface CLI
-  * Management Console (web GUI)
-  * Software Development Kits SDK
-* Some aws cli commands:
+
+- 3 ways to interact with aws,
+  - Command line interface CLI
+  - Management Console (web GUI)
+  - Software Development Kits SDK
+- Some aws cli commands:
+
 ```bash
 aws s3api list-buckets #list of buckets
 ```
+
 </details>
 
 <details>
 <summary> Security </summary>
 
-* Host VMs on cloud, EC2 is primary use. AWS is responsible to update OS of the host. 
-* Client is responsible for 
-  * Configuring firewalls 
-  * who can and how much other access the resources
-  * Server side encryption 
-  * Network traffic protection encrypt
-  * Customer side data encryption
+- Host VMs on cloud, EC2 is primary use. AWS is responsible to update OS of the host.
+- Client is responsible for
+  - Configuring firewalls
+  - who can and how much other access the resources
+  - Server side encryption
+  - Network traffic protection encrypt
+  - Customer side data encryption
 
 ### Root user
-* Each account has a root user who created account
-* Single factor authentication is not that secure, it is better to have multi factor authentication on root user
-  * One way is virtual MFA device, like a phone app that create one time pass every minute
+
+- Each account has a root user who created account
+- Single factor authentication is not that secure, it is better to have multi factor authentication on root user
+  - One way is virtual MFA device, like a phone app that create one time pass every minute
+
 ### IAM
-* Manage API calls to to our services like from EC2 to S3 or other services 
-* Authentication make sure you are who you are saying you are
-* Authorization is level of accessing resources, permission control what you can do
-* `IAM Policy` is the way to manage Authorizations. It is a json file
+
+- Manage API calls to to our services like from EC2 to S3 or other services
+- Authentication make sure you are who you are saying you are
+- Authorization is level of accessing resources, permission control what you can do
+- `IAM Policy` is the way to manage Authorizations. It is a json file
+
 ```json
 // This file allow the identity which attached to any EC2 related action
 {
@@ -72,94 +80,83 @@ aws s3api list-buckets #list of buckets
     }]
 }
 ```
-* IAM policy can attach to specific users or groups, it is suggestion to assign policy to group
-* It is better with root user create MFA then create admin user, log out from root and log in as admin user. 
-* We can't apply policy against root user
+
+- IAM policy can attach to specific users or groups, it is suggestion to assign policy to group
+- It is better with root user create MFA then create admin user, log out from root and log in as admin user.
+- We can't apply policy against root user
 
 #### Access S3 and other services
-* IF you want to access apis through your app inside EC2, you need to have secret keys. 
-* Create `role`  name yourApplicationName. This role is assigned to resource for example `EC2` during creation of EC2. 
-  * Select trusted entity like `aws service`, `aws account` to say from which service the api call can make,  
-  * select a service for example `EC2` then, select a policy for example `S3 full access` and `dynamodb full access` policy
-  * So EC2 instances using this role can access S3 and dynamodb
 
-* Then create a `user` with a `group`. Create group like `ec2 admin` and attach policy like `ec2 access` to the group then select that group to the user.
-* 
-* Then you get Access key and secret Access key associate with this user 
-  
+- IF you want to access apis through your app inside EC2, you need to have secret keys.
+- Create `role` name yourApplicationName. This role is assigned to resource for example `EC2` during creation of EC2.
 
-</details>
-<details>
-<summary> Network </summary>
+  - Select trusted entity like `aws service`, `aws account` to say from which service the api call can make,
+  - select a service for example `EC2` then, select a policy for example `S3 full access` and `dynamodb full access` policy
+  - So EC2 instances using this role can access S3 and dynamodb
 
-* Each aws instance must live inside a network. There is default VPC when we create EC2. We can select no preference for subnets here. 
-* With firewall we can define HTTP and HTTPS to allow hit our EC2 from anywhere for example.
-* We can run script when instance boots up. like
-```bash
-# download source code for the app
-wget http//aws-tc-.....
-unzip 
-cd 
-# start web server 
-yum install...
-```
-* Then press launch, it boots and give you an ip address when it is done
+- Then create a `user` with a `group`. Create group like `ec2 admin` and attach policy like `ec2 access` to the group then select that group to the user.
+-
+- Then you get Access key and secret Access key associate with this user
+
 </details>
 
 <details>
 <summary> Compute </summary>
 
-* VMs, Serverless, container services are different solutions for compute services
-* Linux, MacOS, Ubunto, windows and more are type of VMs OS.
+- VMs, Serverless, container services are different solutions for compute services
+- Linux, MacOS, Ubunto, windows and more are type of VMs OS.
 
 #### Amazon Machine Image AMI
-* You can choose what OS with what Application Image you want to run your EC2 instance, you can have your custom AMI as well. You can select what memory and compute instances. G resources implies for high graphic resource, M5 implies of balance of memory and compute. 
+
+- You can choose what OS with what Application Image you want to run your EC2 instance, you can have your custom AMI as well. You can select what memory and compute instances. G resources implies for high graphic resource, M5 implies of balance of memory and compute.
+
 ```bash
-# Ec2 instances type
+# Ec2 instances are family and instance size
 c5n.xlarge
-# c instance family
+# c family
 # 5 generation
 # n attribute
 # large size
 t3.medium # first is type instance second is the size of instance
 a1.large
 ```
-* Ec2 is resizeable after creation
-* Easy to spinning up servers
 
+- Ec2 is resizeable after creation
+- Easy to spinning up servers
 
 #### EC2 Lifecycle
 
-* `Launch` instance from AMI
-* `Pending State` when it launches, waiting for VM booting up. 
-* `Running State` after booting, it enters to running, here you charge 
-* `reboot` you can reboot it
-* Use stop to go stopping state
-* `stopping state` when can ask to stop
-* `stopping state` is charged same as running only if you want to `stop-hibernate` 
-* `stopped state` after stopping state it enters to stop state
-* from stopped state you can spinning it and enter the running through pending state again
-* you can use `stop-hibernate` to stopping and stop instance, but when you start it again, everything is same as it was before. Same as when you close laptop and open it. No boot sequence is requires since state of machine is saved into memory and ready to back to back and running
-* `terminate` get you from running to `shutting down` and then `terminated` state. Here is gone and for get it. They are visible for a while on console but they are gone
-* There is one tool call termination protection. 
+- `Launch` instance from AMI
+- `Pending State` when it launches, waiting for VM booting up.
+- `Running State` after booting, it enters to running, here you charge
+- `reboot` you can reboot it
+- Use stop to go stopping state
+- `stopping state` when can ask to stop
+- `stopping state` is charged same as running only if you want to `stop-hibernate`
+- `stopped state` after stopping state it enters to stop state
+- from stopped state you can spinning it and enter the running through pending state again
+- you can use `stop-hibernate` to stopping and stop instance, but when you start it again, everything is same as it was before. Same as when you close laptop and open it. No boot sequence is requires since state of machine is saved into memory and ready to back to back and running
+- `terminate` get you from running to `shutting down` and then `terminated` state. Here is gone and for get it. They are visible for a while on console but they are gone
+- There is one tool call termination protection.
 
-* `Terminate` is good, if there is an issue or require update, you can launch new instance and terminate the old one
+- `Terminate` is good, if there is an issue or require update, you can launch new instance and terminate the old one
 
-* We provision new EC2 on demand and charge for instances that are running currently
-* `Elastic Application` means that resources it needs are added or removed dynamically
-
+- We provision new EC2 on demand and charge for instances that are running currently
+- `Elastic Application` means that resources it needs are added or removed dynamically
 
 #### EC2 Hosting
-* When you create EC2 you select these steps
-  * name of instance
-  * AMI type of OS and apps
-  * Instance Type, the size and type of machine
-  * Key Pair, if you need SSH connection to your instance you can create one
-  * Network setting 
-  * Select auto assign public ip
-  * Create security group and configure the roles like HTTP HTTPS with source from 00000 means whole internet
-  * at Advance Details select IAM instance profile to assign Role you already defined
-  *  under user data you can paster user data script to launch the app
+
+- When you create EC2 you select these steps
+  - name of instance
+  - AMI type of OS and apps
+  - Instance Type, the size and type of machine
+  - Key Pair, if you need SSH connection to your instance you can create one
+  - Network setting
+  - Select auto assign public ip
+  - Create security group and configure the roles like HTTP HTTPS with source from 00000 means whole internet
+  - at Advance Details select IAM instance profile to assign Role you already defined
+  - under user data you can paster user data script to launch the app
+
 ```bash
 # data source
 # download app
@@ -183,60 +180,458 @@ FLASK_APP=application.py /usr/local/bin/flask run --host=0.0.0.0 --port=80
 ```
 
 ## Container Services (EKS, ECS)
-* Both runs containers on EC2 instances using orthestrating tools to manage containers
-* Containers have shorter bootup time than VMs. 
-* Also protability for containerized app is very useful
 
-* Amazon Kubernetes Servic and Amazon Elastic Container. EKS uses kubernetes to orchestrate contianers and is fully manage able but ECS doesn't use k8. ECS uses its own property and provide api to control plane for managing containers. ECS is simpler and manage task, scaling and scheduling container for us
-* Containers are portable, because everything an application needs to run including the app code, dependencies, configs are all packed up together as one executeable file. 
-* it is selfcontained so we expect same behave across environments like QA prodcution
-* `Fargate` is a serverless solution which does hosting our containers without need to manage EC2 instances or accessing OS
+- Both runs containers on EC2 instances using orthestrating tools to manage containers
+- Containers have shorter bootup time than VMs.
+- Also protability for containerized app is very useful
 
+- Amazon Kubernetes Servic and Amazon Elastic Container. EKS uses kubernetes to orchestrate contianers and is fully manage able but ECS doesn't use k8. ECS uses its own property and provide api to control plane for managing containers. ECS is simpler and manage task, scaling and scheduling container for us
+- Containers are portable, because everything an application needs to run including the app code, dependencies, configs are all packed up together as one executeable file.
+- it is selfcontained so we expect same behave across environments like QA prodcution
+- `Fargate` is a serverless solution which does hosting our containers without need to manage EC2 instances or accessing OS
 
 ## Serverless
-* Using EC2,ECS,EKS compute platforms require to manage instances
-  * Update Instances when new software package or security update came
-  * Setting up scaling instances
-  * Architect solution in highly available manner. Like deploy instances in to AZs at minimum
-  * But not every single solution not require that level of underlying control
-* `Serverless` you can't access infrastructure, patching, all scaling, fault tolerance, maintenance are taking care for you
-* With EC2, we need to patch the OS when new security release
-* So we choose between control and convenience when choosing between EC2 and serverless
+
+- You never pay for idle resources. only pay for running functions
+- Using EC2,ECS,EKS compute platforms require to manage instances
+  - Update Instances when new software package or security update came
+  - Setting up scaling instances
+  - Architect solution in highly available manner. Like deploy instances in to AZs at minimum
+  - But not every single solution not require that level of underlying control
+- `Serverless` you can't access infrastructure, patching, all scaling, fault tolerance, maintenance are taking care for you
+- With EC2, we need to patch the OS when new security release
+- So we choose between control and convenience when choosing between EC2 and serverless
 
 ##### Fargate
-* Fargate is AWS compute platform fro containers that we can use either ECS or EKS
-* Scaling and fault tolerate all built in, and no need to worry about OS. There is no provisioning, pathcing, cluster capacity management. 
+
+- Fargate is AWS compute platform fro containers that we can use either ECS or EKS
+- Scaling and fault tolerate all built in, and no need to worry about OS. There is no provisioning, pathcing, cluster capacity management.
+
 ###### How Containerize work
-* Create container image and send to repo like ECR Amazon Elastic Registry. 
-* Define compute and memory for your task if using ECS, or your pod if using EKS. You charge based on memory, compute and storage which consumed by containerized apps. But without Fargate in EKS/ECS you charge based on resources you provision and not necessary use.
-* Fargate does saving pricing options so it is good for microservice, batch processing, ML, migrating on premises app to cloud
+
+- Create container image and send to repo like ECR Amazon Elastic Registry.
+- Define compute and memory for your task if using ECS, or your pod if using EKS. You charge based on memory, compute and storage which consumed by containerized apps. But without Fargate in EKS/ECS you charge based on resources you provision and not necessary use.
+- Fargate does saving pricing options so it is good for microservice, batch processing, ML, migrating on premises app to cloud
 
 #### Labmda Serverless
-* Lambda function only runs with triggers. There are long list of lambda triggers. For example, `HTTP` request, `upload of a file` to S3, `events` from other services, `in-app` activity in mobile devices.  
-* Code is run in managed environment and you charged when code is running only.
-* You select language of lambda, memory and cpu, permissions and dependencies. 
-* Not usefull for hosting wordpress, it is useful for quick processing like BE handle request. 
 
-* For example, no one need to run an app 24 hours on EC2 to resize an image when new photo uploaded. You only need to run resize logic when new photo uploaded.  
-* When a new photo uploaded to S3, triggers lambda function it resize the image and upload to S3 bucket but to different location where the original image stored. 
-  * Go to AWS lambda console
-  * Create function
-  * Type of function
-    * Author from scratch
-  * Run time, select language
-  * Permission -> select existent role which we created was include read and write to S3
-  * Add trigger
-  * configure trigger select S3
-  * select which S3 bucket is event source
-  * Event type: select Put operation
-  * prefix: only trigger when put occurs inside this bucket
-  * select same S3 for out put
-  * say name of output prefix as bucket name for output
-  * Now it is created
-  * select code tab
-  * write your code
-  * Test now!
-    * Go to s3 and upload an image
-    * You should see out put prefix is created and thumbnail image is created
+- Lambda function only runs with triggers. There are long list of lambda triggers. For example, `HTTP` request, `upload of a file` to S3, `events` from other services, `in-app` activity in mobile devices.
+- Code is run in managed environment and you charged when code is running only.
+- You select language of lambda, memory and cpu, permissions and dependencies.
+- Not usefull for hosting wordpress, it is useful for quick processing like BE handle request.
+
+- For example, no one need to run an app 24 hours on EC2 to resize an image when new photo uploaded. You only need to run resize logic when new photo uploaded.
+- When a new photo uploaded to S3, triggers lambda function it resize the image and upload to S3 bucket but to different location where the original image stored.
+  - Go to AWS lambda console
+  - Create function
+  - Type of function
+    - Author from scratch
+  - Run time, select language
+  - Permission -> select existent role which we created was include read and write to S3
+  - Add trigger
+  - configure trigger select S3
+  - select which S3 bucket is event source
+  - Event type: select Put operation
+  - prefix: only trigger when put occurs inside this bucket
+  - select same S3 for out put
+  - say name of output prefix as bucket name for output
+  - Now it is created
+  - select code tab
+  - write your code
+  - Test now!
+    - Go to s3 and upload an image
+    - You should see out put prefix is created and thumbnail image is created
+- Ec2 charge per seconds, per hour so if there is an action that runs a request barely like once in 3 months, it is better to use Lambda to save cost, since Lambda charge you based on when code runs
+- In case you want to migrate from on-premises Linux server data center to AWS. You want to minimize the amount of refactoring needs for migration. Also you want to have elastic service. You need to use Ec2 which has AMI Linux environment and allows to scale down up based on demands.
+- Brand new app using microservices or service-oriented design. It needs to scale up/down quickly, lower risk of deploying new changes to production. The best answer is ECS/EKS. Containers bootup quicker than Ec2.
+</details>
+  <details>
+  <summary> Network </summary>
+
+* Each aws instance must live inside a network. There is default VPC when we create EC2. We can select no preference for subnets here.
+* With firewall we can define HTTP and HTTPS to allow hit our EC2 from anywhere for example.
+* We can run script when instance boots up. like
+
+```bash
+# download source code for the app
+wget http//aws-tc-.....
+unzip
+cd
+# start web server
+yum install...
+```
+
+- Then press launch, it boots and give you an ip address when it is done
+
+### VPC
+
+- Aws create VPC for us at every region by default. Serverless don't need VPC to create
+- IP Addresses are 32 bits IPV4 (4 byte, each byte is 8 bits) as below
+
+```bash
+00000001  00011110 00000010 00000101
+1.30.2.5
+```
+
+##### CIDR
+
+- To say a range in ip addresses we use `192.168.1.0/24` for below
+
+```bash
+192.168.1.0 and 192.168.1.255 == 192.168.1.0/24
+```
+
+- 32 total bits subtracted by 24 fixed bits leaves 8 flexible bits (256 ip addresses) which here is last digits 0 and 255
+- The higher the number after the /, the smaller the number of IP addresses in your network.
+
+#### Create VPC
+
+- Walls between VPC and datacentrs.
+- Region and CIDR are important
+  - Select right region
+  - VPC -> create VPC
+  - Select CIDR `10.1.0.0/16` - 65,536 ips addresses
+  - Then we need subnet why?
+    - IF we host our app on EC2 which is on a subnet, we don't want someone from that subnet access to our database, so we need a seperate subnet to isolate our database instances from app instances
+    - select VPC for subnet
+    - select Zone for subnet
+    - select IP range for subnet
+    - Make sure subnets are not overlap
+  - choose `10.1.1.0/24` for EC2, to allow public access to our app at EC2 make it public, name it public subnet, same zone
+  - select `10.1.3.0/24` for DB, name it private subnet, same zone
+- Make our EC2 available on internet, you need a tool call `Internet Gateway`
+  - Create gateway then attach to the `VPC`
+- Make our EC2 available only for specific data centers not the whole internet, then you need a tool called `Virtual Private Gateway`:
+
+  - `VGW` allows you to create VPN connection between an internal network or data center to VPC
+  - It is not use for our application, other use cases is there
+
+- To have `High Availability` in case of one `Zone` is down, we need to access to another Zone. So duplicate everything in another zone. We create two additional subnet each with another AZ. (as best practice we need to have at lease 2 AZ)
+- Public subnet is `10.1.2.0/24`
+- Private subnet is `10.1.4.0/24`
+
+### VPC Routing
+
+- Steps to take:
+  - Create a VPC - select CDRS
+  - Create subnets (for example 4) - none overlap CDRS
+  - Create and attach internet gateway to the VPC- one internet gatway for each VPC
+  - Configure and create route table
+    - Each VPC has one already created route table, need to define new custom one
+    - Add route that allows internet to flow traffic to some subnets we want
+
+```bash
+ # it is like add two rows as
+ In Rout table, route tab add below
+ destination: 0.0.0.0/0 target: nameOfInternetGateway # allow internet to our gateway
+
+ at route table, subnet tab add below
+ edit subnet, select which ones you want
+```
+
+- Relaunch our app in the new VPC
+
+  - To relaunch one app from EC2 to use our VPC, navigate to EC2 console, select it, select actions, select image and templates, select launch more like this
+  - Select a new name for the app
+  - On network setting, select VPC we created and select the public subnet
+  - Security group, need to create new one because the previouse one is tied with VPC
+  - IAM role select
+  - Check the user data
+  - Launch!
+
+- Route Table always can attach to subnet
+- When you create a VPC, aws create a route table called `main route table` and applies it to the entire `VPC`
+- So in this example a main route table has `destination : 10.1.0.0/16` and `target: local`. Means all local traffic can flow freely within VPC.
+- To add another row you can add new row `destination : 0.0.0.0/0` and `target: igw-id`. 0s means it can take and deliver traffic from anywhere and specify target as `internet gateway or igw-id`. Next we have to tell which subnet this route table applies to.
+  - Click on the subnet association tab, then choose subnets we already created.
+  - At above we hooked up subnets to route table that allows internet traffic from IGW to our app in EC2.
+- But you may want to add some restriction to access to some subnets.
+- If the route between `Internet Gateway` and `subnet` exist then this subnet has public access otherwise it doesn't.
+
+### VPC Security
+
+- VPC is secure, but when you open it to public internet you need to make some changes.
+- There are 2 options: `Network Access Control List` refers as network ACLs and `security groups`
+
+##### Network ACLs
+
+- This is a guard around each subnet only.
+- You can think about ACL as a firewall in subnet level. We can control what kind of traffic in and out from our subnets. They looks like a wall around each subnet.
+  - Like you can add a role to allow only HTTPS to your subnet and denies everything else. Also you need to define same out bound role for HTTPS to allow request get out of the subnets in response to HTTPs in
+
+#### Security Groups
+
+- It is responsible for securing EC2 instances, at default it blocks all inbound traffic and allows all outbound traffic.
+- Every time you create EC2 instance, you need to put that instance into a security group which allows appropriate traffic flow to the app.
+- Security groups are stateful, they memorize the initial connection traffic from EC2 or outbound and based on that they can apply roles. So we can define inbound and outbound roles with different settings
+- Create one security group:
+
+  - EC2 default security group blocks all inbound traffic and allow only outbound traffics
+  - For a webserver, need to create a group which allows HTTP/HTTPS inbound request
+
+- By ACLs everything is allow and you can use block and allow rules, but with Security Group default every is block by default and you can use only allow rules
+- To use `Ultimate` convenient leave ACL to default and use mainly security group to secure access, but you can always go further and add more security layers
+
+</details>
+  <details>
+  <summary> Storage </summary>
+
+* Two main storage we can store data: `Block` (EBS and ephermal) and `Object` (S3)
+* Block storage chunk data into smaller pieces but Object database save all as one unit
+* To find or update data in block it is easy since we need to update one part, but with objects data we need to change all blob
+  
+## Block Storages
+  * Internal storage called `instance store`
+  * External storage called `Amazon Elastic Block Store (EBS)`
+
+##### Instance store (ephemeral storage)
+* Directly attach to the Server, it is fast and response quickly
+* Its life cycle depends on the instance, so when instance down all data will disappear
+* It is good for temporary data to store and fast 
+
+
+##### Amazon Elastic Block Store EBS 
+* EBS only available on EC2 instances, not available with serverless like Lambda.
+* Is detachable, You can detach an EBS volume from one EC2 instance and attach it to another EC2 instance in the same Availability Zone to access the data on it, so if one instance is down the data will not lost. Size-limited line 2TB. If you need 5TB, you add more volume. Most of time can connect to 1 computer 1-1 relations, buy it is possible to use EBS multi attach instances, but it is not supported by all volume instance types
+* Drives (EBS) are network attached storage for instances
+* EBS Volume directly talks with instances
+* We can switch EBS Volume from one instance to another, we should first 
+  * stop instance
+  * detach the volume
+  * attach to another instance in the same AZ
+* EBS Usages:
+  * Databases which needs scale and quick access
+  * OS
+  * Business Critical applications which require high availability and high durability
+  * Data analises 
+  * A storage for a high-transaction relational database on an Amazon EC2
+
+##### Type of EBS Volumes
+* EBS volumes are organized into two main categories: solid-state drives `SSDs` and hard-disk drives `HDDs`. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for large streaming workloads that need high throughput performance.  AWS offers two types of each.
+
+##### Back up EBS Volumes
+* Error happens and EBS Volumes can fail, the way we take back up is `snapshot`
+* `EBS snapshots` are incremental backups that store redundantly
+* If something goes wrong, it create new volume from snapshots and restore data
+
+There are some reasons which we may not save all photos for example in EBS. EBS sizes have limited sizes, and also multi volume EBS are not supported in all volumes types
+
+## Object Storage 
+* Amazon Simple Storage Service S3, is storage solution that is not tied to compute. It is unlimited within individual size limit of `5 TB`.  
+* `S3` save objects in different regions. Bucket names are unique among all aws accounts globally. one example of bucket name `employee-photo-bucket-001` which is DNS compliant and everything on `S3` is private by default. 
+* `CloudFront` can store the frequently accessed content as a cache, and the performance is optimized for S3.
+##### Security
+* On bucket detail page, change permission which block all public access to this bucket
+* On Object Ownership tab, select `ACL enabled`. 
+* Then go back to object detail page on object actions, select Make public using ACL. But usually you want to be more `granular` about photos. To do that you can use `IAM` policy attach to `User` or `Group` and `roles` to access S3, or use `S3 bucket policy` 
+###### S3 Bucket Policies vs IAM 
+* S3 policies are attached to the bucket and what actions are allowed or forbidden, but IAM policy attach to user, groups or roles. But both are json file format 
+* S3 bucket policies are only for buckets not for folders. 
+* S3 usages:
+  * Backups: AWS stores EBS snapshots in S3
+  * Media
+  * Softwares: if your customers need to download software
+  * Data Lake: S3 storage is unlimited from TB to Petabyte
+  * Static Website and content: HTML etc
+  
+##### Amazon EFS (Elastic File System)
+* If we have a wordpress which same files into filesystems, and needs different instances we can use EFS which is only for `file storage`, is elastic and can scale from TB to peta byte.
+* S3 has flat hierarchy so it is not good to save file systems
+* S3 can not mount on to different instances
+* By saving Wordpress into EFS and mounting them into EC2 when each instance it boot, without depending on any EC2 instances
+</details> 
+<details> 
+    <summary> Databases </summary>
+
+* RDMS, you can install RDMS into EC2 which is good for migrating data from on premise to cloud
+* Alternative to manage DBs on EC2 we can choose one of the managed databases offered in EC2 like `AWS RDS` and `dynamodb` 
+
+* RDS Benefits:
+  * Complex SQL: We can join multiple table which we can more understand the relaiton between data
+  * Reduce Redundancy: Save data in one table and address it from other places
+  * Familiarity: Tech proffesional often more familiar with it
+  * Accuracy: RDS make sure data is atomic, consistent, isolate and durability ACID 
+* RDS why:
+  * Applications that have fixed schema and don't change often
+  * Apps that follows ACID and needs persistance storage like
+    * Enterprise resource planing
+    * CRM 
+    * Commerce and financial apps
+* Postgres, mysql, awz auroa are some kind which is faster than psql and mysql
+
+* NoSQL:
+  * we can have variation of data type 
+  * it is good for data sets which are less rigid
+  * Not every item in table should have same attributes
+  * If it is not complex data
+  * If it is a simple look up data
+  * It is not charge based on the running instance
+  * Queries are simpler and focus only on one table not collection of tables
+  * 
+
+
+### AWS RDS
+* It charged when it is running. When you create RDS, it replaced inside a subnet same as EC2 instance. We know subnets are bound to one AZ. For best practice we replicas our solution, so another RDS should create in another subnet at another zone. So we configure our RDS to launch another instance in another zone with another subnet using RDS multi-AZ-deployment. RDS manage and `sync` data for us. 
+* Also RDS manage fail over instances, one is primary and one is secondary.
+* We only need to make sure if the failur happen in databse, app can reconnect. It should use cache DNS Lookup first then try to reconnect, AWS RDS does the rest for us to connect to accessible db.
+
+
+### AWS DynamoDB
+* It is NoSQL, key value pair or document data. It works in massive scale with ms latency. 
+* Charge based on the usage of the table and amount of data reading from table not by hour like RDS
+* Stores data in one table and underlying it acrosses multiple AZs which makes it `highly available`
+* Milliseconds  response time makes it `highly performance`
+* No need schema
+* It scales to 10 trillion request per day
+* Create database tables that can store and retrieve any amount of data and serve any level of request traffic. 
+* Scale up or scale down your tables' throughput capacity without downtime or performance degradation. 
+* Monitor resource usage and performance metrics using the AWS Management Console.
+* DynamoDB encrypt all your data using encryption keys stored in AWS Key Management Service
+* IAM administrators control who can be authenticated and authorized to use DynamoDB resources
+* Best solution for high concurrency and connections for millions of users and millions of requests per second. 
+
+
+
+### AWS DocumentDB
+* A document database is a type of NoSQL database you can use to store and query rich documents in your application 
+* Works for content management systems, catalogs, user profiles. Amazon DocumentDB has API compatibility with MongoDB. This means you can use popular open-source libraries to interact with Amazon DocumentDB, or you can migrate existing databases to Amazon DocumentDB with minimal hassle
+
+### AWS Neptune
+* To have a social network app, track of who connects to who is complicated, so you can use a graph database AWS Neptone.
+* Companies often use graph databases for recommendation engines, fraud detection, and knowledge graphs.
+
+### Amazon QLDB
+* If there is supply chain app which needs to track all actions to make sure nothing is lost, or have banking system that requires 100% immutability. We need immutable ledger that provides a complete and cryptographically verifiable history of all changes made to your application data.
+* Any entry can never be removed in this database which is good for any audit 
+
+
+
+</details> 
+
+<details> 
+    <summary> Monitoring </summary>
+
+* Metrics, logs and network traffic are areas we monitor.
+* Services generate data points which is called `Metrics` like current cpu utilization by EC2 instance, network generate flow log to monitor traffic in or out to our VPC, at db layer it generate number of simultaneously connection. 
+* `Metrics` that are generated over time are called `statistics` 
+* When we collect data, compare with base line, if passes the base line then trigger alert to someone or something
+### CloudWatch
+* 3 state of Amazon Cloud Watch: OK, ALARM, INSUFFICIENT_DATA
+* Allow to monitor all data in one place. Data collected from all services
+* 70% of cpu utilization more than 5 minutes
+* You can define threshhold for matrics, if after certain amount of time threshhold pass then trigger an alarm
+* Setup `AWS SNS` to send email or message to let someone know there is problem
+
+</details>   
+<details> 
+    <summary> Auto Scaling & LB </summary>
+
+
+### Auto Scaling
+
+* 3 components of Auto Scaling: Launch template, scaling policies, Amazon EC2 Auto Scaling group 
+* When one instance is overloaded, then it report metrics to cloudWatch, then cloud watch go to alarm state and ask more instance to have horizental scalability
+* To have it we need to go to EC2 dashboard
+  * Select create launch template, select role, group, etc to say what to launch
+  * Select auto scaling group to tell when and where, attach to the template you create
+    * select vpc and private subnets
+    * check health ELB
+    * select min=2 means 1 at each zone, desire = 2 means how many you want to run,  max=4 means 2 at each zone if 2 zone
+    * Define scaling policies like when threshhold reach a 60% amount trigger new instance
+    * You can add notification when scaling happen. 
+* To test it you need to stress the app
+* You can create stress cpu feature to mimic the load coming into our server  or use load testing tool
+
+* When number of EC2 instances increase, it is hard to route requests to each subnets in EC2. LB does the job for us also check health of instances. 3 types of LB are 
+*  Application Load Balancer:  Layer 7 HTTP/HTTPS, For a web app we should use ALB, 
+*  Network Load Balancer: Layer4 TCP/UDP/TLS
+*  Gateway Load Balancer: Layer 4+3: IP, use for lbs to third party apps
+
+### ALB
+* ALB operates at application layer 7, Has 3 parts
+  * `Listener`: listen to port 80 or 443 using HTTP protocol 
+  * `Target`: The target group of backend resources like EC2, lamdba. Each target group has set of health check befor sending traffic. 
+  * `Rule` Define how request route to target. So we can say all requests to   `/info` routes gos to Target group B and with route `/about` goes to target group A
+
+* Fleet Management: Automatically replaces unhealthy EC2 instances
+* Predictive scaling  : Uses machine learning to help schedule the optimum number of EC2 instances
+
+
+
+</details> 
+<details> 
+    <summary> Design of System </summary>
+
+* Two ways one using EC2 another using lambda
+
+
+
+
+* RT53 uses DNS to match ip with DNS
+* CloudFront uses cache to edge locations
+* First S3 host static pages using only javascript, html, css, then they make request to API Gateway
+* Lambda function could be one and could be many
+* It is easier and less expensive, networking is already managed
+* Another solution is using EKS or ECS
+ </details> 
+
+ <details> 
+    <summary>  Who is responsible for ensuring the security of AWS Regions, Availability Zones, and data centers?  </summary>
+ * AWS
+
+</details>
+<details> 
+    <summary> Which of the following statements about containers and virtual machines is correct? </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
+
+</details>
+<details> 
+    <summary>  </summary>
+ * 
 
 </details>
