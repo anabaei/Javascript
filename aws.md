@@ -265,6 +265,7 @@ yum install...
 
 ### VPC
 
+ ![route](https://user-images.githubusercontent.com/7471619/244955952-bf7f1edb-3f82-4176-9df6-9ccb57b24019.png)
 - Aws create VPC for us at every region by default. Serverless don't need VPC to create
 - IP Addresses are 32 bits IPV4 (4 byte, each byte is 8 bits) as below
 
@@ -328,6 +329,7 @@ yum install...
  at route table, subnet tab add below
  edit subnet, select which ones you want
 ```
+   ![resource](https://user-images.githubusercontent.com/7471619/244955857-dd766778-9342-453f-b0b2-8d87e3a7ed67.png)
 
 - Relaunch our app in the new VPC
 
@@ -575,6 +577,11 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
     <summary> Design of System </summary>
 
 - Two ways one using EC2 another using lambda
+### EC2
+  ![ec2](https://user-images.githubusercontent.com/7471619/244955627-055178d5-00a4-4ddf-917e-877615842c7c.png)
+  
+### Lambda
+
 
 - RT53 uses DNS to match ip with DNS
 - CloudFront uses cache to edge locations
