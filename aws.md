@@ -376,262 +376,321 @@ yum install...
   <details>
   <summary> Storage </summary>
 
-* Two main storage we can store data: `Block` (EBS and ephermal) and `Object` (S3)
-* Block storage chunk data into smaller pieces but Object database save all as one unit
-* To find or update data in block it is easy since we need to update one part, but with objects data we need to change all blob
-  
+- Two main storage we can store data: `Block` (EBS and ephermal) and `Object` (S3)
+- Block storage chunk data into smaller pieces but Object database save all as one unit
+- To find or update data in block it is easy since we need to update one part, but with objects data we need to change all blob
+
 ## Block Storages
-  * Internal storage called `instance store`
-  * External storage called `Amazon Elastic Block Store (EBS)`
+
+- Internal storage called `instance store`
+- External storage called `Amazon Elastic Block Store (EBS)`
 
 ##### Instance store (ephemeral storage)
-* Directly attach to the Server, it is fast and response quickly
-* Its life cycle depends on the instance, so when instance down all data will disappear
-* It is good for temporary data to store and fast 
 
+- Directly attach to the Server, it is fast and response quickly
+- Its life cycle depends on the instance, so when instance down all data will disappear
+- It is good for temporary data to store and fast
 
-##### Amazon Elastic Block Store EBS 
-* EBS only available on EC2 instances, not available with serverless like Lambda.
-* Is detachable, You can detach an EBS volume from one EC2 instance and attach it to another EC2 instance in the same Availability Zone to access the data on it, so if one instance is down the data will not lost. Size-limited line 2TB. If you need 5TB, you add more volume. Most of time can connect to 1 computer 1-1 relations, buy it is possible to use EBS multi attach instances, but it is not supported by all volume instance types
-* Drives (EBS) are network attached storage for instances
-* EBS Volume directly talks with instances
-* We can switch EBS Volume from one instance to another, we should first 
-  * stop instance
-  * detach the volume
-  * attach to another instance in the same AZ
-* EBS Usages:
-  * Databases which needs scale and quick access
-  * OS
-  * Business Critical applications which require high availability and high durability
-  * Data analises 
-  * A storage for a high-transaction relational database on an Amazon EC2
+##### Amazon Elastic Block Store EBS
+
+- EBS only available on EC2 instances, not available with serverless like Lambda.
+- Is detachable, You can detach an EBS volume from one EC2 instance and attach it to another EC2 instance in the same Availability Zone to access the data on it, so if one instance is down the data will not lost. Size-limited line 2TB. If you need 5TB, you add more volume. Most of time can connect to 1 computer 1-1 relations, buy it is possible to use EBS multi attach instances, but it is not supported by all volume instance types
+- Drives (EBS) are network attached storage for instances
+- EBS Volume directly talks with instances
+- We can switch EBS Volume from one instance to another, we should first
+  - stop instance
+  - detach the volume
+  - attach to another instance in the same AZ
+- EBS Usages:
+  - Databases which needs scale and quick access
+  - OS
+  - Business Critical applications which require high availability and high durability
+  - Data analises
+  - A storage for a high-transaction relational database on an Amazon EC2
 
 ##### Type of EBS Volumes
-* EBS volumes are organized into two main categories: solid-state drives `SSDs` and hard-disk drives `HDDs`. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for large streaming workloads that need high throughput performance.  AWS offers two types of each.
+
+- EBS volumes are organized into two main categories: solid-state drives `SSDs` and hard-disk drives `HDDs`. SSDs are used for transactional workloads with frequent read/write operations with small I/O size. HDDs are used for large streaming workloads that need high throughput performance. AWS offers two types of each.
 
 ##### Back up EBS Volumes
-* Error happens and EBS Volumes can fail, the way we take back up is `snapshot`
-* `EBS snapshots` are incremental backups that store redundantly
-* If something goes wrong, it create new volume from snapshots and restore data
+
+- Error happens and EBS Volumes can fail, the way we take back up is `snapshot`
+- `EBS snapshots` are incremental backups that store redundantly
+- If something goes wrong, it create new volume from snapshots and restore data
 
 There are some reasons which we may not save all photos for example in EBS. EBS sizes have limited sizes, and also multi volume EBS are not supported in all volumes types
 
-## Object Storage 
-* Amazon Simple Storage Service S3, is storage solution that is not tied to compute. It is unlimited within individual size limit of `5 TB`.  
-* `S3` save objects in different regions. Bucket names are unique among all aws accounts globally. one example of bucket name `employee-photo-bucket-001` which is DNS compliant and everything on `S3` is private by default. 
-* `CloudFront` can store the frequently accessed content as a cache, and the performance is optimized for S3.
+## Object Storage
+
+- Amazon Simple Storage Service S3, is storage solution that is not tied to compute. It is unlimited within individual size limit of `5 TB`.
+- `S3` save objects in different regions. Bucket names are unique among all aws accounts globally. one example of bucket name `employee-photo-bucket-001` which is DNS compliant and everything on `S3` is private by default.
+- `CloudFront` can store the frequently accessed content as a cache, and the performance is optimized for S3.
+
 ##### Security
-* On bucket detail page, change permission which block all public access to this bucket
-* On Object Ownership tab, select `ACL enabled`. 
-* Then go back to object detail page on object actions, select Make public using ACL. But usually you want to be more `granular` about photos. To do that you can use `IAM` policy attach to `User` or `Group` and `roles` to access S3, or use `S3 bucket policy` 
-###### S3 Bucket Policies vs IAM 
-* S3 policies are attached to the bucket and what actions are allowed or forbidden, but IAM policy attach to user, groups or roles. But both are json file format 
-* S3 bucket policies are only for buckets not for folders. 
-* S3 usages:
-  * Backups: AWS stores EBS snapshots in S3
-  * Media
-  * Softwares: if your customers need to download software
-  * Data Lake: S3 storage is unlimited from TB to Petabyte
-  * Static Website and content: HTML etc
-  
+
+- On bucket detail page, change permission which block all public access to this bucket
+- On Object Ownership tab, select `ACL enabled`.
+- Then go back to object detail page on object actions, select Make public using ACL. But usually you want to be more `granular` about photos. To do that you can use `IAM` policy attach to `User` or `Group` and `roles` to access S3, or use `S3 bucket policy`
+
+###### S3 Bucket Policies vs IAM
+
+- S3 policies are attached to the bucket and what actions are allowed or forbidden, but IAM policy attach to user, groups or roles. But both are json file format
+- S3 bucket policies are only for buckets not for folders.
+- S3 usages:
+  - Backups: AWS stores EBS snapshots in S3
+  - Media
+  - Softwares: if your customers need to download software
+  - Data Lake: S3 storage is unlimited from TB to Petabyte
+  - Static Website and content: HTML etc
+
 ##### Amazon EFS (Elastic File System)
-* If we have a wordpress which same files into filesystems, and needs different instances we can use EFS which is only for `file storage`, is elastic and can scale from TB to peta byte.
-* S3 has flat hierarchy so it is not good to save file systems
-* S3 can not mount on to different instances
-* By saving Wordpress into EFS and mounting them into EC2 when each instance it boot, without depending on any EC2 instances
+
+- If we have a wordpress which same files into filesystems, and needs different instances we can use EFS which is only for `file storage`, is elastic and can scale from TB to peta byte.
+- S3 has flat hierarchy so it is not good to save file systems
+- S3 can not mount on to different instances
+- By saving Wordpress into EFS and mounting them into EC2 when each instance it boot, without depending on any EC2 instances
 </details> 
 <details> 
     <summary> Databases </summary>
 
-* RDMS, you can install RDMS into EC2 which is good for migrating data from on premise to cloud
-* Alternative to manage DBs on EC2 we can choose one of the managed databases offered in EC2 like `AWS RDS` and `dynamodb` 
+- RDMS, you can install RDMS into EC2 which is good for migrating data from on premise to cloud
+- Alternative to manage DBs on EC2 we can choose one of the managed databases offered in EC2 like `AWS RDS` and `dynamodb`
 
-* RDS Benefits:
-  * Complex SQL: We can join multiple table which we can more understand the relaiton between data
-  * Reduce Redundancy: Save data in one table and address it from other places
-  * Familiarity: Tech proffesional often more familiar with it
-  * Accuracy: RDS make sure data is atomic, consistent, isolate and durability ACID 
-* RDS why:
-  * Applications that have fixed schema and don't change often
-  * Apps that follows ACID and needs persistance storage like
-    * Enterprise resource planing
-    * CRM 
-    * Commerce and financial apps
-* Postgres, mysql, awz auroa are some kind which is faster than psql and mysql
+- RDS Benefits:
+  - Complex SQL: We can join multiple table which we can more understand the relaiton between data
+  - Reduce Redundancy: Save data in one table and address it from other places
+  - Familiarity: Tech proffesional often more familiar with it
+  - Accuracy: RDS make sure data is atomic, consistent, isolate and durability ACID
+- RDS why:
+  - Applications that have fixed schema and don't change often
+  - Apps that follows ACID and needs persistance storage like
+    - Enterprise resource planing
+    - CRM
+    - Commerce and financial apps
+- Postgres, mysql, awz auroa are some kind which is faster than psql and mysql
 
-* NoSQL:
-  * we can have variation of data type 
-  * it is good for data sets which are less rigid
-  * Not every item in table should have same attributes
-  * If it is not complex data
-  * If it is a simple look up data
-  * It is not charge based on the running instance
-  * Queries are simpler and focus only on one table not collection of tables
-  * 
-
+- NoSQL:
+  - we can have variation of data type
+  - it is good for data sets which are less rigid
+  - Not every item in table should have same attributes
+  - If it is not complex data
+  - If it is a simple look up data
+  - It is not charge based on the running instance
+  - Queries are simpler and focus only on one table not collection of tables
+  -
 
 ### AWS RDS
-* It charged when it is running. When you create RDS, it replaced inside a subnet same as EC2 instance. We know subnets are bound to one AZ. For best practice we replicas our solution, so another RDS should create in another subnet at another zone. So we configure our RDS to launch another instance in another zone with another subnet using RDS multi-AZ-deployment. RDS manage and `sync` data for us. 
-* Also RDS manage fail over instances, one is primary and one is secondary.
-* We only need to make sure if the failur happen in databse, app can reconnect. It should use cache DNS Lookup first then try to reconnect, AWS RDS does the rest for us to connect to accessible db.
 
+- It charged when it is running. When you create RDS, it replaced inside a subnet same as EC2 instance. We know subnets are bound to one AZ. For best practice we replicas our solution, so another RDS should create in another subnet at another zone. So we configure our RDS to launch another instance in another zone with another subnet using RDS multi-AZ-deployment. RDS manage and `sync` data for us.
+- Also RDS manage fail over instances, one is primary and one is secondary.
+- We only need to make sure if the failur happen in databse, app can reconnect. It should use cache DNS Lookup first then try to reconnect, AWS RDS does the rest for us to connect to accessible db.
 
 ### AWS DynamoDB
-* It is NoSQL, key value pair or document data. It works in massive scale with ms latency. 
-* Charge based on the usage of the table and amount of data reading from table not by hour like RDS
-* Stores data in one table and underlying it acrosses multiple AZs which makes it `highly available`
-* Milliseconds  response time makes it `highly performance`
-* No need schema
-* It scales to 10 trillion request per day
-* Create database tables that can store and retrieve any amount of data and serve any level of request traffic. 
-* Scale up or scale down your tables' throughput capacity without downtime or performance degradation. 
-* Monitor resource usage and performance metrics using the AWS Management Console.
-* DynamoDB encrypt all your data using encryption keys stored in AWS Key Management Service
-* IAM administrators control who can be authenticated and authorized to use DynamoDB resources
-* Best solution for high concurrency and connections for millions of users and millions of requests per second. 
 
-
+- It is NoSQL, key value pair or document data. It works in massive scale with ms latency.
+- Charge based on the usage of the table and amount of data reading from table not by hour like RDS
+- Stores data in one table and underlying it acrosses multiple AZs which makes it `highly available`
+- Milliseconds response time makes it `highly performance`
+- No need schema
+- It scales to 10 trillion request per day
+- Create database tables that can store and retrieve any amount of data and serve any level of request traffic.
+- Scale up or scale down your tables' throughput capacity without downtime or performance degradation.
+- Monitor resource usage and performance metrics using the AWS Management Console.
+- DynamoDB encrypt all your data using encryption keys stored in AWS Key Management Service
+- IAM administrators control who can be authenticated and authorized to use DynamoDB resources
+- Best solution for high concurrency and connections for millions of users and millions of requests per second.
 
 ### AWS DocumentDB
-* A document database is a type of NoSQL database you can use to store and query rich documents in your application 
-* Works for content management systems, catalogs, user profiles. Amazon DocumentDB has API compatibility with MongoDB. This means you can use popular open-source libraries to interact with Amazon DocumentDB, or you can migrate existing databases to Amazon DocumentDB with minimal hassle
+
+- A document database is a type of NoSQL database you can use to store and query rich documents in your application
+- Works for content management systems, catalogs, user profiles. Amazon DocumentDB has API compatibility with MongoDB. This means you can use popular open-source libraries to interact with Amazon DocumentDB, or you can migrate existing databases to Amazon DocumentDB with minimal hassle
 
 ### AWS Neptune
-* To have a social network app, track of who connects to who is complicated, so you can use a graph database AWS Neptone.
-* Companies often use graph databases for recommendation engines, fraud detection, and knowledge graphs.
+
+- To have a social network app, track of who connects to who is complicated, so you can use a graph database AWS Neptone.
+- Companies often use graph databases for recommendation engines, fraud detection, and knowledge graphs.
 
 ### Amazon QLDB
-* If there is supply chain app which needs to track all actions to make sure nothing is lost, or have banking system that requires 100% immutability. We need immutable ledger that provides a complete and cryptographically verifiable history of all changes made to your application data.
-* Any entry can never be removed in this database which is good for any audit 
 
+- If there is supply chain app which needs to track all actions to make sure nothing is lost, or have banking system that requires 100% immutability. We need immutable ledger that provides a complete and cryptographically verifiable history of all changes made to your application data.
+- Any entry can never be removed in this database which is good for any audit
 
-
-</details> 
+</details>
 
 <details> 
     <summary> Monitoring </summary>
 
-* Metrics, logs and network traffic are areas we monitor.
-* Services generate data points which is called `Metrics` like current cpu utilization by EC2 instance, network generate flow log to monitor traffic in or out to our VPC, at db layer it generate number of simultaneously connection. 
-* `Metrics` that are generated over time are called `statistics` 
-* When we collect data, compare with base line, if passes the base line then trigger alert to someone or something
+- Metrics, logs and network traffic are areas we monitor.
+- Services generate data points which is called `Metrics` like current cpu utilization by EC2 instance, network generate flow log to monitor traffic in or out to our VPC, at db layer it generate number of simultaneously connection.
+- `Metrics` that are generated over time are called `statistics`
+- When we collect data, compare with base line, if passes the base line then trigger alert to someone or something
+
 ### CloudWatch
-* 3 state of Amazon Cloud Watch: OK, ALARM, INSUFFICIENT_DATA
-* Allow to monitor all data in one place. Data collected from all services
-* 70% of cpu utilization more than 5 minutes
-* You can define threshhold for matrics, if after certain amount of time threshhold pass then trigger an alarm
-* Setup `AWS SNS` to send email or message to let someone know there is problem
+
+- 3 state of Amazon Cloud Watch: OK, ALARM, INSUFFICIENT_DATA
+- Allow to monitor all data in one place. Data collected from all services
+- 70% of cpu utilization more than 5 minutes
+- You can define threshhold for matrics, if after certain amount of time threshhold pass then trigger an alarm
+- Setup `AWS SNS` to send email or message to let someone know there is problem
 
 </details>   
 <details> 
     <summary> Auto Scaling & LB </summary>
 
-
 ### Auto Scaling
 
-* 3 components of Auto Scaling: Launch template, scaling policies, Amazon EC2 Auto Scaling group 
-* When one instance is overloaded, then it report metrics to cloudWatch, then cloud watch go to alarm state and ask more instance to have horizental scalability
-* To have it we need to go to EC2 dashboard
-  * Select create launch template, select role, group, etc to say what to launch
-  * Select auto scaling group to tell when and where, attach to the template you create
-    * select vpc and private subnets
-    * check health ELB
-    * select min=2 means 1 at each zone, desire = 2 means how many you want to run,  max=4 means 2 at each zone if 2 zone
-    * Define scaling policies like when threshhold reach a 60% amount trigger new instance
-    * You can add notification when scaling happen. 
-* To test it you need to stress the app
-* You can create stress cpu feature to mimic the load coming into our server  or use load testing tool
+- 3 components of Auto Scaling: Launch template, scaling policies, Amazon EC2 Auto Scaling group
+- When one instance is overloaded, then it report metrics to cloudWatch, then cloud watch go to alarm state and ask more instance to have horizental scalability
+- To have it we need to go to EC2 dashboard
+  - Select create launch template, select role, group, etc to say what to launch
+  - Select auto scaling group to tell when and where, attach to the template you create
+    - select vpc and private subnets
+    - check health ELB
+    - select min=2 means 1 at each zone, desire = 2 means how many you want to run, max=4 means 2 at each zone if 2 zone
+    - Define scaling policies like when threshhold reach a 60% amount trigger new instance
+    - You can add notification when scaling happen.
+- To test it you need to stress the app
+- You can create stress cpu feature to mimic the load coming into our server or use load testing tool
 
-* When number of EC2 instances increase, it is hard to route requests to each subnets in EC2. LB does the job for us also check health of instances. 3 types of LB are 
-*  Application Load Balancer:  Layer 7 HTTP/HTTPS, For a web app we should use ALB, 
-*  Network Load Balancer: Layer4 TCP/UDP/TLS
-*  Gateway Load Balancer: Layer 4+3: IP, use for lbs to third party apps
+- When number of EC2 instances increase, it is hard to route requests to each subnets in EC2. LB does the job for us also check health of instances. 3 types of LB are
+- Application Load Balancer: Layer 7 HTTP/HTTPS, For a web app we should use ALB,
+- Network Load Balancer: Layer4 TCP/UDP/TLS
+- Gateway Load Balancer: Layer 4+3: IP, use for lbs to third party apps
 
 ### ALB
-* ALB operates at application layer 7, Has 3 parts
-  * `Listener`: listen to port 80 or 443 using HTTP protocol 
-  * `Target`: The target group of backend resources like EC2, lamdba. Each target group has set of health check befor sending traffic. 
-  * `Rule` Define how request route to target. So we can say all requests to   `/info` routes gos to Target group B and with route `/about` goes to target group A
 
-* Fleet Management: Automatically replaces unhealthy EC2 instances
-* Predictive scaling  : Uses machine learning to help schedule the optimum number of EC2 instances
+- ALB operates at application layer 7, Has 3 parts
 
+  - `Listener`: listen to port 80 or 443 using HTTP protocol
+  - `Target`: The target group of backend resources like EC2, lamdba. Each target group has set of health check befor sending traffic.
+  - `Rule` Define how request route to target. So we can say all requests to `/info` routes gos to Target group B and with route `/about` goes to target group A
 
+- Fleet Management: Automatically replaces unhealthy EC2 instances
+- Predictive scaling : Uses machine learning to help schedule the optimum number of EC2 instances
 
 </details> 
 <details> 
+    <summary> Quize </summary>
+<details> 
     <summary> Design of System </summary>
 
-* Two ways one using EC2 another using lambda
+- Two ways one using EC2 another using lambda
 
-
-
-
-* RT53 uses DNS to match ip with DNS
-* CloudFront uses cache to edge locations
-* First S3 host static pages using only javascript, html, css, then they make request to API Gateway
-* Lambda function could be one and could be many
-* It is easier and less expensive, networking is already managed
-* Another solution is using EKS or ECS
- </details> 
+- RT53 uses DNS to match ip with DNS
+- CloudFront uses cache to edge locations
+- First S3 host static pages using only javascript, html, css, then they make request to API Gateway
+- Lambda function could be one and could be many
+- It is easier and less expensive, networking is already managed
+- Another solution is using EKS or ECS
+</details>
 
  <details> 
     <summary>  Who is responsible for ensuring the security of AWS Regions, Availability Zones, and data centers?  </summary>
- * AWS
 
+- AWS
 </details>
 <details> 
     <summary> Which of the following statements about containers and virtual machines is correct? </summary>
- * 
+
+- Containers share an operating system (OS) kernel : correct
+- Virtual machines share an operating system (OS) kernel: wrong
+- Virtual machines must use the same operating system (OS) as the hypervisor :wrong
+- Containers each have their own kernel : wrong
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> Which of the following elements are contained in an AWS Identity and Access Managment (IAM) policy? (Select THREE.) </summary>
+
+- Effect
+- Action
+- Object
+- Cause
+- Resource
+- Image
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> Users in a company are authenticated in the corporate network, and they want to use AWS services without signing in again. Which AWS authentication option should the company use?   </summary>
+
+- AWS Identity and Access Management (IAM) role -> correct
+- AWS Identity and Access Management (IAM) group -> wrong
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> Which actions must be completed so resources in a public subnet can communicate with the internet?  </summary>
+
+- Attach an internet gateway to the virtual private cloud (VPC)
+- Create a route in a route table to the internet gateway.
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> Which of the following components are NOT required to launch an Amazon EC2 instance? (Select TWO.) </summary>
+
+- User data
+- Tenancy
+  these 3 are require
+- Instance type, Storage, Operating system (OS)
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary>  What is a typical use case for Amazon Elastic Block Store (Amazon EBS)? </summary>
+
+- Block storage for an Amazon EC2 instance
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> An employee at a healthcare facility is tasked with storing 7 years of patient information that is rarely accessed. Their boss wants them to consider one of the Amazon S3 storage tiers to store the information. Which storage tier should they use?  </summary>
+
+- S3 Glacier Deep Archive
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> Which database task is the customer's responsibility when using Amazon Relational Database Service (Amazon RDS)? </summary>
+
+- Optimizing the database
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> A Multi-Availability Zone database (DB) deployment is beneficial when a customer wants to increase the availability of their database. What are other benefits of a Multi-AZ deployment?  </summary>
+
+- Automatic failover
+- Protect db performance
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary>What are the main components that make up Elastic Load Balancing (ELB)?  </summary>
+ 
+ * Rule, listener, target group
 
 </details>
 <details> 
-    <summary>  </summary>
- * 
+    <summary> Which Elastic Load Balancing (ELB) load balancer type should be used for an application that uses a rule based on a website's domain to choose target groups? </summary>
+
+- Application Load Balancer
+
+
+*  X-Ray can help users quickly identify services by their relative response times. X-Ray can identify a poorly performing service from within a web of interacting services. Once identified, CloudWatch provides the context, including the logs and metrics necessary to study specific issues.
+*  Parameter Store allows for easy externalization of parameters, such as an API key. The secure string option provides for data security by keeping the value encrypted at rest. Authorized access to the parameter is governed by IAM permissions. Parameter values can be easily changed by authorized principals at any time without requiring a re-deployment of the function, although the function would require intelligence to re-read the parameter values.
+*  ElastiCache for Redis is a fast in-memory data store that provides sub-millisecond latency to power internet-scale applications in real time. The data will not be stored on the instance itself. This choice is ideal for ensuring that the session state information persists across devices.
+* Instead of using ARNs for the Lambda function in event source mappings, you can use an alias ARN. 
+*  A Lambda alias is a pointer to a specific Lambda function version.
+*  An ElastiCache cluster with a write-through strategy will allow for the read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
+*  You can enable DynamoDB Streams on a table to create an event that invokes an AWS Lambda function.
+*  If you enable DynamoDB Streams on a table, you can associate the stream Amazon Resource Name (ARN) with an Lambda function that you write. Immediately after an item in the table is modified, a new record appears in the table's stream. 
+  
+#### 2000 course
+WHAT YOU'LL LEARN
+Set up the AWS SDK and developer credentials for Java, C#/.NET, Python, and JavaScript
+Interact with AWS services and develop solutions by using the AWS SDK
+Use AWS Identity and Access Management (IAM) for service authentication
+Use Amazon Simple Storage Service (Amazon S3) and Amazon DynamoDB as data stores
+Integrate applications and data by using AWS Lambda, Amazon API Gateway, Amazon Simple Queue Service (Amazon SQS), Amazon Simple Notification Service (Amazon SNS), and AWS Step Functions
+Use Amazon Cognito for user authentication
+Use Amazon ElastiCache to improve application scalability
+Leverage the CI/CD pipeline to deploy applications on AWS
+*  
+</details>
+[Resource](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
 
 </details>
+
