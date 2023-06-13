@@ -1,4 +1,4 @@
-# <font color=orange> AWS </font>
+# <font color=orange> AWS  </font>
 
 <details>
 <summary> Data center, Zone, Region, APIs </summary>
@@ -591,6 +591,7 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
   ![design](https://user-images.githubusercontent.com/7471619/244955503-671b9cdb-e2d8-4de7-985d-a202c0e23da7.png)
 </details>
 
+
 <details> 
     <summary> Quiz </summary>
 
@@ -687,3 +688,165 @@ Leverage the CI/CD pipeline to deploy applications on AWS
 Images and content are all from below
 [Resources](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
 
+
+
+<details> 
+    <summary> Containers </summary>
+
+* Containers run on OS level.
+* Single Hardware server host several containers they share underlying host system's OS kernel
+* In this way we can utilize more VMs on the same OS, the middle image rather than the old left side design. But there is redundancies same libraries need to download same Guest OS, so the containers the most left one came in
+* Container run time share `OS kernel`. Containers can share libraries if needed also can have its own libraries as well
+* `Docker` is virtualization platform. 
+* `image` is a read only immutable template with instruction for creating container. Running container is an instance of that image. 
+* `Image` is based on other images with some customization. 
+* `From` base layer of the container OS,
+* `Run yum -y update & yum -y install httpd` update OS and install apache
+*  `copy` copy over your system file to container,  `CMD` execute the code
+
+* Microservices are design pattern  that speed up deployment cycle, improves maintainability and scalability. 
+* Each service communicate via api operation and run as single independent service. Each service support single function which support multiple applications. 
+* In old fashion, adding more resources was difficult
+* Monolitic has risk in availability because many resources tightly coupled on single failure. 
+* Each service can scale independently, can update and deploy faster. 
+  * Decentralize of services: Each service can have different language framework which is more suited for the application
+  * smart endpoints, dumb pipes: service receive data must be smart to handle it. 
+  * Independent product not project: 
+  * Design for failure: services are resiliant hadnle
+  * Disposability: start fast, fail fast and reslease file handler fast
+  * Faciliates devops
+  * 
+</details> 
+
+<details> 
+    <summary> Serverless Lambda </summary>
+
+* Improve cost of model, speed and innovation
+* Lamdba allows to bring your own code and have it run in response to events
+
+#### Write Function
+* Use best practices, use repository to write your code in lambda. So not use management console for writing function
+* `Handler`: is like a main function, add function configuration, lambda-specific code and `No` business logic
+* `Controler` add business logic here
+* `Service` layer dealing with external tools that need to work with
+* `Cold Start` everytime lambda function is run, it needs time to bootstrap, this include executing libraries and dependencies. To reduce this time we should reduce size of libraries and dependencies
+* Spring in Java take long time to initialize. To use compile libraries `aws` provide staticllay linking some of libraries like node, python. It is linked from S3 to reduce time of dynamically 
+
+#### AWS SAM CLI
+
+* With these codes you can deploy
+```bash
+sam package # it takes all code base and create a zip file archive ready to deploy to lambda using S3
+sam deploy # 
+```
+#### Organize & Environment
+* Divide application into services. So each lambda service can have one or more functions
+
+* You can have for each user a development account, and each developer use their own credentials to submit their code to lambda, or have one share on different environments. 
+* Separate production and test/dev environments into different accounts
+
+#### Testing Serverless application
+
+* Testing are usually is done locally by own dev environment, then remote integration test run against sandbox account, and finally it is automated pipeline running expected tasks against other variable and environments. 
+
+* `Unit Test`: we keep all logic in controller, so we write unit test only for that. 
+* To mock up how other parts talks with lambda, we can use `DynamoDB local` and `LocalStack` on your local machine
+* Also you can have custom mocks. It is expensive 
+
+
+#### Debug your code
+* We can't have inter
+* AWS SAM allows you run your lambda function on your own local using docker. This allows us to interactive with it. Then you can make API request using your browser.
+  
+</details> 
+<details> 
+    <summary> EKS </summary>
+
+* EKS, create and manage k8 infrastructure across multiple zone to eliminate single point of failure. Also it can manage worker nodes. AWS support Native, upstream Kubernetes
+* It comes with ELB, VPC, IAM for role base access control. `EKS` allows us to create cluster and delete a managed node group. 
+* EKS is responsible for k8 control plan nodes like API server, schedular, forth
+* etc datastore
+* Consumer of EKS is responsible for:
+  * IAM
+  * Pod security
+  * runtime security
+  * network security
+  * security of the code inside image container
+
+#### Kubernetes
+* Only kubernetes(not EKS) can manually create deployment and get all namespaces.
+* `Cluster` set of worker machines, called node, that runs containers.
+* `Node` has services necessary to run pods(1 or more) and communicate with control plane. Node is VM or actual machine
+* `Pod` Group of containers. Pod is the basic building block within Kubernetes for deployment, scaling, and replication.
+* ` Kubernetes service` Logical collection of pods and a means to access them
+* `Ephemeral volume` application in a pod have access to shared facilities which when pod dies they removed 
+* `Persistent volume` same as ephemeral but they don't depend on pods life cycle
+* `Namespace` One cluster can have different namespace for different teams to separete nodes they work
+* `Replica Set` number of pods running 
+* `Deployment` we describe desire state in deployment, then deployment change the current state to desire state
+* `Secrets` all confidential data save there, `ConfigMap` save all non confidential as key value pair
+* `Control Plan` manage the worker nodes and the pods in the cluster, EKS always control it
+* `kubectl` can communicate with the Kubernetes API, commands to create resources, view detailed information about the cluster and resources, and access troubleshooting tools
+
+#### EKS Control Plan
+* EKS manage control plan for us. In standard kubernetes we are responsible for creating, maintaining control plan and nodes, but EKS does it for us.
+* Amazon EKS automatically manages the availability and scalability of the Kubernetes API servers and the etcd persistence layer for each cluster. EKS handle provision, scale and management of k8 control plane.
+* EKS automatically find and replace unhealthy nodes, we just connect to EKS, 
+* EKS uses `CloudFormation` in the background to build clusters based on the options you specify.
+
+#### EKS Data Plan Fargate
+* Managing infrastrucutre is difficult, by allowing Amazon EKS to manage some or all of your data plane, you can simplify your infrastructure and maintain standardization
+* `Fargate` manages the complete infrastructure of your Kubernetes data plane. You need to worry only about running your pods. There is no accessible to the lifecycle
+* One less automate EKS is  `managed node groups`, you still see resources in your AWS , such as EC2 instances and Auto Scaling groups. You get all of the control, security, and visibility, with less work. You can use SSH to to get into lifecycle
+
+### Networking
+* We have services some keep in public and some keep in private subnets in the same VPC. How EKS handle them? as below image. NAT Gateway is a tool to make connection between private subnets and other part of the cluster. 
+* Services stays at public subnet can directly accessible from internet 
+
+
+</details> 
+
+## <font color=orange> 4 main Domains for Exam  </font> 
+###### Scope
+* Different architectural pattern like event-driven, microservices, choreography, orchestration and fan out. You should code and best error handlers practices. 
+* Pattern should be fault tolerant such as retries with exponential backups, jitter and dead-letter queues
+* Method of requests, responses, integration request, integration response, enforce validation rule, over riding status code, mapping templates, stage, variable, caches, throttling. 
+* Dive deep into AWS Lambda developing, define config in lambda, such as memory, concurrency, timeout, runtime, handler, layers, extensions, triggers and destinations.
+* Make sure how to use, manage and datastore lifecycle, know different data caching services, caching strategies and make sure how to choose the best practice and how to encrypt data
+<details> 
+    <summary> Domain 1 Development  </summary>
+
+* AWS Well Architecture framework has 6 pillars:
+  * Security
+  * Cost Optimization
+  * Reliability
+  * Performance Efficiency
+  * Operational Excellence
+  * Sustainability
+
+#### Design Strategy
+* Access
+* Usage Patterns
+* Hardware 
+* Pattern: what is development and deployment pattern
+* Code
+
+#### Event Driven Design
+* It allows to decouple our services, what is difference between tightly coupled and loosely coupled components?
+* Event driven design promote use of microservices, many AWS service can act as event source since they generate event
+* It is scalable, resilience, agile and cost effective solution. SQS, SNS, EventBridge also help to create event driven app
+
+* Unlike monolithic app which process everything on the same memory on a single device, Event driven app communicate across network. 
+* Microservices allows you to get benefit of having the parts fail independently and write app code to handle those failures. It needs to have failure detection and automatic remediation. This Increase `reliability` and `reduce cost`. But it is not always safe to retry because that retry increase the load to the system. Instead of retry immediately, exponential backoff, which wait longer time after each try. It still can add load, so we can use message failure. We can use lambda to send invocations to other services like SQS, SNS. Or you can use AWS step function to separete rettries, backoff rates, max attemps, interval and timeouts. 
+
+* You can use orchestrators to keep track of state, overal execution and failures. 
+* Lambda or any messaging pattern help us to manage orchestrate workflow.
+* If functions are more complex we can use `Step Function` (state machine) to orchestrate workflow which can handle nested workflow logic, errors and retries
+* But if you want to coordinate state changes across multiple services, you can use `Amazon EventBridge`. 
+* `Fan out` If service published messages to multiple endpoints, SQS, HTTPs you can use. It replicas data to different services. 
+  
+* prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
+* 
+
+  
+</details> 
