@@ -803,7 +803,7 @@ sam deploy #
 * We have services some keep in public and some keep in private subnets in the same VPC. How EKS handle them? as below image. NAT Gateway is a tool to make connection between private subnets and other part of the cluster. 
 * Services stays at public subnet can directly accessible from internet 
 
-
+![networking](https://user-images.githubusercontent.com/7471619/245320572-20d71739-4a15-4c3a-8ed5-a088231f96d9.png)
 </details> 
 
 ## <font color=orange> 4 main Domains for Exam  </font> 
