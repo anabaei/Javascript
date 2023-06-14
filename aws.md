@@ -763,7 +763,7 @@ sam deploy #
     <summary> EKS </summary>
 
 * EKS, create and manage k8 infrastructure across multiple zone to eliminate single point of failure. Also it can manage worker nodes. AWS support Native, upstream Kubernetes
-* It comes with ELB, VPC, IAM for role base access control. `EKS` allows us to create cluster and delete a managed node group. 
+* It comes with ELB, VPC, IAM for role base access control. `EKS` allows us to `create cluster` and `delete a managed node group`. 
 * EKS is responsible for k8 control plan nodes like API server, schedular, forth
 * etc datastore
 * Consumer of EKS is responsible for:
@@ -772,9 +772,11 @@ sam deploy #
   * runtime security
   * network security
   * security of the code inside image container
+* EKS requires permission to make calls to AWS APIs on your behalf to manage the cluster. This permission is controlled by the `IAM role` assigned to your cluster. AWS provides an IAM policy with the recommended permissions for this role.  IAM role assigned to the worker nodes which allow kubelet daemon on Amazon EKS talks with worker nodes
+* The IAM role used to create the cluster will have full permission to manage the cluster, which is more permission than is usually required. For this reason, best practice is that you create a specific IAM role just for deploying clusters. Create additional principals in IAM that map to more restrictive roles in RBAC for routine operations, following the principle of least privilege
 
 #### Kubernetes
-* Only kubernetes(not EKS) can manually create deployment and get all namespaces.
+* Only kubernetes(not EKS) can manually `create deployment` and `get all namespaces`.
 * `Cluster` set of worker machines, called node, that runs containers.
 * `Node` has services necessary to run pods(1 or more) and communicate with control plane. Node is VM or actual machine
 * `Pod` Group of containers. Pod is the basic building block within Kubernetes for deployment, scaling, and replication.
@@ -805,6 +807,27 @@ sam deploy #
 
 ![networking](https://user-images.githubusercontent.com/7471619/245320572-20d71739-4a15-4c3a-8ed5-a088231f96d9.png)
 </details> 
+
+#### Select CDRS
+* AWS suggested below CIDR blocks from the private IP address ranges:
+  * 10.0.0.0/8, -> for example: vpc1= 10.0.0.0/16, vpc2 = 10.1.0.0/16
+  * 172.16.0.0/12 -> for example: vpc3= 172.16.0.0/16, vpc4=172.17.0.0/16
+  * 192.168.0.0/16->  vpc5=192.168.0.0/16
+
+### Create Cluster 
+* Before create cluster, make sure install `AWS CLI`, `kubectl` and `eksctl` (optional)
+  * `eksctl` a command line simplifies creation, this command can do:
+    * create IAM role for the cluster and nodes
+    * create dedicated VPC with CIDR 192.168.0.0/16
+    * create a cluster and node group
+    * install CoreDNS
+    * create kubernetes file for the cluster
+  * 
+  * `Management Console` give us a GUI to create cluter
+  * `AWS CLI` offers most potential for customization  
+  
+* 
+
 
 ## <font color=orange> 4 main Domains for Exam  </font> 
 ###### Scope
