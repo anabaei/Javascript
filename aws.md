@@ -838,7 +838,14 @@ kubectl get nodes
 ```
 
 - config file includes name, version, region, nodes, node min, node max, node type, version
+### Horizontal and vertical scaling
 
+* `Horizontally scalable` system is one that can increase or decrease capacity by adding or removing compute resources. For example more pods are deployed when demand spikes (scale out). Pods are removed when demand drops (scale in)
+  
+* `Vertically scalable` system increases performance by adding more resources to the compute resource, such as faster (or more) central processing units (CPUs), memory, or storage. For example, the size of pods (CPU and memory resources assigned) is increased when demand spikes (scale up) and decreased when demand drops (scale down). 
+
+* `Kubernetes` has mechanisms to scale application workloads both vertically and horizontally
+* 
 
 
 </details>
