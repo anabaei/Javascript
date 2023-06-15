@@ -845,7 +845,8 @@ kubectl get nodes
 * `Vertically scalable` system increases performance by adding more resources to the compute resource, such as faster (or more) central processing units (CPUs), memory, or storage. For example, the size of pods (CPU and memory resources assigned) is increased when demand spikes (scale up) and decreased when demand drops (scale down). 
 
 * `Kubernetes` has mechanisms to scale application workloads both vertically and horizontally
-* 
+
+![im](https://user-images.githubusercontent.com/7471619/246274518-aaa79936-e01c-45be-a851-b1fd2af66b0d.png)
 
 
 </details>
