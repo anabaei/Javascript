@@ -1,4 +1,4 @@
-# <font color=orange> AWS  </font>
+# <font color=orange> AWS </font>
 
 <details>
 <summary> Data center, Zone, Region, APIs </summary>
@@ -265,7 +265,8 @@ yum install...
 
 ### VPC
 
- ![route](https://user-images.githubusercontent.com/7471619/244955952-bf7f1edb-3f82-4176-9df6-9ccb57b24019.png)
+![route](https://user-images.githubusercontent.com/7471619/244955952-bf7f1edb-3f82-4176-9df6-9ccb57b24019.png)
+
 - Aws create VPC for us at every region by default. Serverless don't need VPC to create
 - IP Addresses are 32 bits IPV4 (4 byte, each byte is 8 bits) as below
 
@@ -329,7 +330,8 @@ yum install...
  at route table, subnet tab add below
  edit subnet, select which ones you want
 ```
-   ![resource](https://user-images.githubusercontent.com/7471619/244955857-dd766778-9342-453f-b0b2-8d87e3a7ed67.png)
+
+![resource](https://user-images.githubusercontent.com/7471619/244955857-dd766778-9342-453f-b0b2-8d87e3a7ed67.png)
 
 - Relaunch our app in the new VPC
 
@@ -575,11 +577,12 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
     <summary> Design of System </summary>
 
 - Two ways one using EC2 another using lambda
-### EC2
-  ![ec2](https://user-images.githubusercontent.com/7471619/244955627-055178d5-00a4-4ddf-917e-877615842c7c.png)
-  
-### Lambda
 
+### EC2
+
+![ec2](https://user-images.githubusercontent.com/7471619/244955627-055178d5-00a4-4ddf-917e-877615842c7c.png)
+
+### Lambda
 
 - RT53 uses DNS to match ip with DNS
 - CloudFront uses cache to edge locations
@@ -587,26 +590,23 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
 - Lambda function could be one and could be many
 - It is easier and less expensive, networking is already managed
 - Another solution is using EKS or ECS
-  
   ![design](https://user-images.githubusercontent.com/7471619/244955503-671b9cdb-e2d8-4de7-985d-a202c0e23da7.png)
-</details>
-
+  </details>
 
 <details> 
     <summary> Quiz </summary>
 
-
- Who is responsible for ensuring the security of AWS Regions, Availability Zones, and data centers?  
+Who is responsible for ensuring the security of AWS Regions, Availability Zones, and data centers?
 
 - AWS
-Which of the following statements about containers and virtual machines is correct? 
+  Which of the following statements about containers and virtual machines is correct?
 
 - Containers share an operating system (OS) kernel : correct
 - Virtual machines share an operating system (OS) kernel: wrong
 - Virtual machines must use the same operating system (OS) as the hypervisor :wrong
 - Containers each have their own kernel : wrong
 
- Which of the following elements are contained in an AWS Identity and Access Managment (IAM) policy? (Select THREE.)
+Which of the following elements are contained in an AWS Identity and Access Managment (IAM) policy? (Select THREE.)
 
 - Effect
 - Action
@@ -615,17 +615,17 @@ Which of the following statements about containers and virtual machines is corre
 - Resource
 - Image
 
- Users in a company are authenticated in the corporate network, and they want to use AWS services without signing in again. Which AWS authentication option should the company use?  
+Users in a company are authenticated in the corporate network, and they want to use AWS services without signing in again. Which AWS authentication option should the company use?
 
 - AWS Identity and Access Management (IAM) role -> correct
 - AWS Identity and Access Management (IAM) group -> wrong
 
-Which actions must be completed so resources in a public subnet can communicate with the internet?  
+Which actions must be completed so resources in a public subnet can communicate with the internet?
 
 - Attach an internet gateway to the virtual private cloud (VPC)
 - Create a route in a route table to the internet gateway.
 
- Which of the following components are NOT required to launch an Amazon EC2 instance? (Select TWO.) 
+Which of the following components are NOT required to launch an Amazon EC2 instance? (Select TWO.)
 
 - User data
 - Tenancy
@@ -636,40 +636,40 @@ What is a typical use case for Amazon Elastic Block Store (Amazon EBS)?
 
 - Block storage for an Amazon EC2 instance
 
- An employee at a healthcare facility is tasked with storing 7 years of patient information that is rarely accessed. Their boss wants them to consider one of the Amazon S3 storage tiers to store the information. Which storage tier should they use?  
+An employee at a healthcare facility is tasked with storing 7 years of patient information that is rarely accessed. Their boss wants them to consider one of the Amazon S3 storage tiers to store the information. Which storage tier should they use?
 
 - S3 Glacier Deep Archive
 
- Which database task is the customer's responsibility when using Amazon Relational Database Service (Amazon RDS)? 
+Which database task is the customer's responsibility when using Amazon Relational Database Service (Amazon RDS)?
 
 - Optimizing the database
 
-A Multi-Availability Zone database (DB) deployment is beneficial when a customer wants to increase the availability of their database. What are other benefits of a Multi-AZ deployment? 
+A Multi-Availability Zone database (DB) deployment is beneficial when a customer wants to increase the availability of their database. What are other benefits of a Multi-AZ deployment?
 
 - Automatic failover
 - Protect db performance
-What are the main components that make up Elastic Load Balancing (ELB)? 
- 
- * Rule, listener, target group
+  What are the main components that make up Elastic Load Balancing (ELB)?
+
+* Rule, listener, target group
 
 Which Elastic Load Balancing (ELB) load balancer type should be used for an application that uses a rule based on a website's domain to choose target groups?
 
 - Application Load Balancer
 
-
-*  X-Ray can help users quickly identify services by response times. X-Ray can find poor performance service. CloudWatch provides the context, including the logs and metrics necessary to study specific issues.
-*  Parameter Store allows externalization parameters, like API key. 
-  secure string provides data security by value encrypted at rest. 
-  Authorized access to the parameter control by IAM. 
+* X-Ray can help users quickly identify services by response times. X-Ray can find poor performance service. CloudWatch provides the context, including the logs and metrics necessary to study specific issues.
+* Parameter Store allows externalization parameters, like API key.
+  secure string provides data security by value encrypted at rest.
+  Authorized access to the parameter control by IAM.
   Parameter values can changed by authorized principals requiring a re-deployment of the function, although the function would require intelligence to re-read the parameter values.
-*  ElastiCache for Redis is a fast in-memory data store that provides sub-millisecond latency to power internet-scale applications. Data  not stored on the instance itself. This choice is ideal for ensuring that the session state information persists across devices.
-* Instead of using ARNs for the Lambda function in event  mappings, you can use an alias ARN. 
-*  A Lambda alias is a pointer to a specific Lambda function version.
-*  An ElastiCache cluster with a write-through strategy allow read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
-*  You can enable DynamoDB Streams on a table to create event that invokes an AWS Lambda function.
-*  If you enable DynamoDB Streams on a table, you can associate the stream Amazon Resource Name (ARN) with an Lambda function that you write. Immediately after an item in the table is modified, a new record appears in the table's stream. 
-  
+* ElastiCache for Redis is a fast in-memory data store that provides sub-millisecond latency to power internet-scale applications. Data not stored on the instance itself. This choice is ideal for ensuring that the session state information persists across devices.
+* Instead of using ARNs for the Lambda function in event mappings, you can use an alias ARN.
+* A Lambda alias is a pointer to a specific Lambda function version.
+* An ElastiCache cluster with a write-through strategy allow read requests to be redirected to ElastiCache efficiently. The strategy will allow for the most up-to-date data to be retrieved.
+* You can enable DynamoDB Streams on a table to create event that invokes an AWS Lambda function.
+* If you enable DynamoDB Streams on a table, you can associate the stream Amazon Resource Name (ARN) with an Lambda function that you write. Immediately after an item in the table is modified, a new record appears in the table's stream.
+
 #### 2000 course
+
 WHAT YOU'LL LEARN
 
 Set up the AWS SDK and developer credentials for Java, C#/.NET, Python, and JavaScript
@@ -680,196 +680,223 @@ Integrate applications and data by using AWS Lambda, Amazon API Gateway, Amazon 
 Use Amazon Cognito for user authentication
 Use Amazon ElastiCache to improve application scalability
 Leverage the CI/CD pipeline to deploy applications on AWS
-  
-
 
 </details>
 
 Images and content are all from below
 [Resources](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
 
-
-
 <details> 
     <summary> Containers </summary>
 
-* Containers run on OS level.
-* Single Hardware server host several containers they share underlying host system's OS kernel
-* In this way we can utilize more VMs on the same OS, the middle image rather than the old left side design. But there is redundancies same libraries need to download same Guest OS, so the containers the most left one came in
-* Container run time share `OS kernel`. Containers can share libraries if needed also can have its own libraries as well
-* `Docker` is virtualization platform. 
-* `image` is a read only immutable template with instruction for creating container. Running container is an instance of that image. 
-* `Image` is based on other images with some customization. 
-* `From` base layer of the container OS,
-* `Run yum -y update & yum -y install httpd` update OS and install apache
-*  `copy` copy over your system file to container,  `CMD` execute the code
+- Containers run on OS level.
+- Single Hardware server host several containers they share underlying host system's OS kernel
+- In this way we can utilize more VMs on the same OS, the middle image rather than the old left side design. But there is redundancies same libraries need to download same Guest OS, so the containers the most left one came in
+- Container run time share `OS kernel`. Containers can share libraries if needed also can have its own libraries as well
+- `Docker` is virtualization platform.
+- `image` is a read only immutable template with instruction for creating container. Running container is an instance of that image.
+- `Image` is based on other images with some customization.
+- `From` base layer of the container OS,
+- `Run yum -y update & yum -y install httpd` update OS and install apache
+- `copy` copy over your system file to container, `CMD` execute the code
 
-* Microservices are design pattern  that speed up deployment cycle, improves maintainability and scalability. 
-* Each service communicate via api operation and run as single independent service. Each service support single function which support multiple applications. 
-* In old fashion, adding more resources was difficult
-* Monolitic has risk in availability because many resources tightly coupled on single failure. 
-* Each service can scale independently, can update and deploy faster. 
-  * Decentralize of services: Each service can have different language framework which is more suited for the application
-  * smart endpoints, dumb pipes: service receive data must be smart to handle it. 
-  * Independent product not project: 
-  * Design for failure: services are resiliant hadnle
-  * Disposability: start fast, fail fast and reslease file handler fast
-  * Faciliates devops
-  * 
-</details> 
+- Microservices are design pattern that speed up deployment cycle, improves maintainability and scalability.
+- Each service communicate via api operation and run as single independent service. Each service support single function which support multiple applications.
+- In old fashion, adding more resources was difficult
+- Monolitic has risk in availability because many resources tightly coupled on single failure.
+- Each service can scale independently, can update and deploy faster.
+  - Decentralize of services: Each service can have different language framework which is more suited for the application
+  - smart endpoints, dumb pipes: service receive data must be smart to handle it.
+  - Independent product not project:
+  - Design for failure: services are resiliant hadnle
+  - Disposability: start fast, fail fast and reslease file handler fast
+  - Faciliates devops
+  - </details>
 
 <details> 
     <summary> Serverless Lambda </summary>
 
-* Improve cost of model, speed and innovation
-* Lamdba allows to bring your own code and have it run in response to events
+- Improve cost of model, speed and innovation
+- Lamdba allows to bring your own code and have it run in response to events
 
 #### Write Function
-* Use best practices, use repository to write your code in lambda. So not use management console for writing function
-* `Handler`: is like a main function, add function configuration, lambda-specific code and `No` business logic
-* `Controler` add business logic here
-* `Service` layer dealing with external tools that need to work with
-* `Cold Start` everytime lambda function is run, it needs time to bootstrap, this include executing libraries and dependencies. To reduce this time we should reduce size of libraries and dependencies
-* Spring in Java take long time to initialize. To use compile libraries `aws` provide staticllay linking some of libraries like node, python. It is linked from S3 to reduce time of dynamically 
+
+- Use best practices, use repository to write your code in lambda. So not use management console for writing function
+- `Handler`: is like a main function, add function configuration, lambda-specific code and `No` business logic
+- `Controler` add business logic here
+- `Service` layer dealing with external tools that need to work with
+- `Cold Start` everytime lambda function is run, it needs time to bootstrap, this include executing libraries and dependencies. To reduce this time we should reduce size of libraries and dependencies
+- Spring in Java take long time to initialize. To use compile libraries `aws` provide staticllay linking some of libraries like node, python. It is linked from S3 to reduce time of dynamically
 
 #### AWS SAM CLI
 
-* With these codes you can deploy
+- With these codes you can deploy
+
 ```bash
 sam package # it takes all code base and create a zip file archive ready to deploy to lambda using S3
-sam deploy # 
+sam deploy #
 ```
-#### Organize & Environment
-* Divide application into services. So each lambda service can have one or more functions
 
-* You can have for each user a development account, and each developer use their own credentials to submit their code to lambda, or have one share on different environments. 
-* Separate production and test/dev environments into different accounts
+#### Organize & Environment
+
+- Divide application into services. So each lambda service can have one or more functions
+
+- You can have for each user a development account, and each developer use their own credentials to submit their code to lambda, or have one share on different environments.
+- Separate production and test/dev environments into different accounts
 
 #### Testing Serverless application
 
-* Testing are usually is done locally by own dev environment, then remote integration test run against sandbox account, and finally it is automated pipeline running expected tasks against other variable and environments. 
+- Testing are usually is done locally by own dev environment, then remote integration test run against sandbox account, and finally it is automated pipeline running expected tasks against other variable and environments.
 
-* `Unit Test`: we keep all logic in controller, so we write unit test only for that. 
-* To mock up how other parts talks with lambda, we can use `DynamoDB local` and `LocalStack` on your local machine
-* Also you can have custom mocks. It is expensive 
-
+- `Unit Test`: we keep all logic in controller, so we write unit test only for that.
+- To mock up how other parts talks with lambda, we can use `DynamoDB local` and `LocalStack` on your local machine
+- Also you can have custom mocks. It is expensive
 
 #### Debug your code
-* We can't have inter
-* AWS SAM allows you run your lambda function on your own local using docker. This allows us to interactive with it. Then you can make API request using your browser.
-  
+
+- We can't have inter
+- AWS SAM allows you run your lambda function on your own local using docker. This allows us to interactive with it. Then you can make API request using your browser.
+
 </details> 
 <details> 
     <summary> EKS </summary>
 
-* EKS, create and manage k8 infrastructure across multiple zone to eliminate single point of failure. Also it can manage worker nodes. AWS support Native, upstream Kubernetes
-* It comes with ELB, VPC, IAM for role base access control. `EKS` allows us to `create cluster` and `delete a managed node group`. 
-* EKS is responsible for k8 control plan nodes like API server, schedular, forth
-* etc datastore
-* Consumer of EKS is responsible for:
-  * IAM
-  * Pod security
-  * runtime security
-  * network security
-  * security of the code inside image container
-* EKS requires permission to make calls to AWS APIs on your behalf to manage the cluster. This permission is controlled by the `IAM role` assigned to your cluster. AWS provides an IAM policy with the recommended permissions for this role.  IAM role assigned to the worker nodes which allow kubelet daemon on Amazon EKS talks with worker nodes
-* The IAM role used to create the cluster will have full permission to manage the cluster, which is more permission than is usually required. For this reason, best practice is that you create a specific IAM role just for deploying clusters. Create additional principals in IAM that map to more restrictive roles in RBAC for routine operations, following the principle of least privilege
+- EKS, create and manage k8 infrastructure across multiple zone to eliminate single point of failure. Also it can manage worker nodes. AWS support Native, upstream Kubernetes
+- It comes with ELB, VPC, IAM for role base access control. `EKS` allows us to `create cluster` and `delete a managed node group`.
+- EKS is responsible for k8 control plan nodes like API server, schedular, forth
+- etc datastore
+- Consumer of EKS is responsible for:
+  - IAM
+  - Pod security
+  - runtime security
+  - network security
+  - security of the code inside image container
+- EKS requires permission to make calls to AWS APIs on your behalf to manage the cluster. This permission is controlled by the `IAM role` assigned to your cluster. AWS provides an IAM policy with the recommended permissions for this role. IAM role assigned to the worker nodes which allow kubelet daemon on Amazon EKS talks with worker nodes
+- The IAM role used to create the cluster will have full permission to manage the cluster, which is more permission than is usually required. For this reason, best practice is that you create a specific IAM role just for deploying clusters. Create additional principals in IAM that map to more restrictive roles in RBAC for routine operations, following the principle of least privilege
 
 #### Kubernetes
-* Only kubernetes(not EKS) can manually `create deployment` and `get all namespaces`.
-* `Cluster` set of worker machines, called node, that runs containers.
-* `Node` has services necessary to run pods(1 or more) and communicate with control plane. Node is VM or actual machine
-* `Pod` Group of containers. Pod is the basic building block within Kubernetes for deployment, scaling, and replication.
-* ` Kubernetes service` Logical collection of pods and a means to access them
-* `Ephemeral volume` application in a pod have access to shared facilities which when pod dies they removed 
-* `Persistent volume` same as ephemeral but they don't depend on pods life cycle
-* `Namespace` One cluster can have different namespace for different teams to separete nodes they work
-* `Replica Set` number of pods running 
-* `Deployment` we describe desire state in deployment, then deployment change the current state to desire state
-* `Secrets` all confidential data save there, `ConfigMap` save all non confidential as key value pair
-* `Control Plan` manage the worker nodes and the pods in the cluster, EKS always control it
-* `kubectl` can communicate with the Kubernetes API, commands to create resources, view detailed information about the cluster and resources, and access troubleshooting tools
+
+- Only kubernetes(not EKS) can manually `create deployment` and `get all namespaces`.
+- `Cluster` set of worker machines, called node, that runs containers.
+- `Node` has services necessary to run pods(1 or more) and communicate with control plane. Node is VM or actual machine
+- `Pod` Group of containers. Pod is the basic building block within Kubernetes for deployment, scaling, and replication.
+- ` Kubernetes service` Logical collection of pods and a means to access them
+- `Ephemeral volume` application in a pod have access to shared facilities which when pod dies they removed
+- `Persistent volume` same as ephemeral but they don't depend on pods life cycle
+- `Namespace` One cluster can have different namespace for different teams to separete nodes they work
+- `Replica Set` number of pods running
+- `Deployment` we describe desire state in deployment, then deployment change the current state to desire state
+- `Secrets` all confidential data save there, `ConfigMap` save all non confidential as key value pair
+- `Control Plan` manage the worker nodes and the pods in the cluster, EKS always control it
+- `kubectl` can communicate with the Kubernetes API, commands to create resources, view detailed information about the cluster and resources, and access troubleshooting tools
 
 #### EKS Control Plan
-* EKS manage control plan for us. In standard kubernetes we are responsible for creating, maintaining control plan and nodes, but EKS does it for us.
-* Amazon EKS automatically manages the availability and scalability of the Kubernetes API servers and the etcd persistence layer for each cluster. EKS handle provision, scale and management of k8 control plane.
-* EKS automatically find and replace unhealthy nodes, we just connect to EKS, 
-* EKS uses `CloudFormation` in the background to build clusters based on the options you specify.
+
+- EKS manage control plan for us. In standard kubernetes we are responsible for creating, maintaining control plan and nodes, but EKS does it for us.
+- Amazon EKS automatically manages the availability and scalability of the Kubernetes API servers and the etcd persistence layer for each cluster. EKS handle provision, scale and management of k8 control plane.
+- EKS automatically find and replace unhealthy nodes, we just connect to EKS,
+- EKS uses `CloudFormation` in the background to build clusters based on the options you specify.
 
 #### EKS Data Plan Fargate
-* Managing infrastrucutre is difficult, by allowing Amazon EKS to manage some or all of your data plane, you can simplify your infrastructure and maintain standardization
-* `Fargate` manages the complete infrastructure of your Kubernetes data plane. You need to worry only about running your pods. There is no accessible to the lifecycle
-* One less automate EKS is  `managed node groups`, you still see resources in your AWS , such as EC2 instances and Auto Scaling groups. You get all of the control, security, and visibility, with less work. You can use SSH to to get into lifecycle
+
+- Managing infrastrucutre is difficult, by allowing Amazon EKS to manage some or all of your data plane, you can simplify your infrastructure and maintain standardization
+- `Fargate` manages the complete infrastructure of your Kubernetes data plane. You need to worry only about running your pods. There is no accessible to the lifecycle
+- One less automate EKS is `managed node groups`, you still see resources in your AWS , such as EC2 instances and Auto Scaling groups. You get all of the control, security, and visibility, with less work. You can use SSH to to get into lifecycle
 
 ### Networking
-* We have services some keep in public and some keep in private subnets in the same VPC. How EKS handle them? as below image. NAT Gateway is a tool to make connection between private subnets and other part of the cluster. 
-* Services stays at public subnet can directly accessible from internet 
+
+- We have services some keep in public and some keep in private subnets in the same VPC. How EKS handle them? as below image. NAT Gateway is a tool to make connection between private subnets and other part of the cluster.
+- Services stays at public subnet can directly accessible from internet
 
 ![networking](https://user-images.githubusercontent.com/7471619/245320572-20d71739-4a15-4c3a-8ed5-a088231f96d9.png)
-</details> 
+
+### Create Cluster
+
+- Before create cluster, make sure install `AWS CLI`, `kubectl` and `eksctl` (optional)
+
+##### Create Cluster using eksctl
+
+- `eksctl` a command line simplifies creation, this command can do:
+  - create IAM role for the cluster and nodes
+  - create dedicated VPC with CIDR 192.168.0.0/16
+  - create a cluster and node group
+  - install CoreDNS
+  - create kubernetes file for the cluster
+- eksctl translates the instructions in your configuration file to equivalent CloudFormation templates.
+- How do you change the AWS Region a cluster is created in by using eksctl? (Select TWO.)
+  - Use the --region flag when running the command.
+  - Use a customized cluster.yaml file.
+
+```javascript
+// install eksctl at linux host
+curl --silent --location "https://github.com/weaveworks/eksctl/release/download/
+sudo mv /tmp/eksctl /usr/location/bin
+// create cluster
+eksctl create cluster -f ./prod-cluster-config.yaml
+// use kubectl to check on the status of the nodes
+kubectl get nodes
+```
+
+- config file includes name, version, region, nodes, node min, node max, node type, version
+
+
+
+</details>
 
 #### Select CDRS
-* AWS suggested below CIDR blocks from the private IP address ranges:
-  * 10.0.0.0/8, -> for example: vpc1= 10.0.0.0/16, vpc2 = 10.1.0.0/16
-  * 172.16.0.0/12 -> for example: vpc3= 172.16.0.0/16, vpc4=172.17.0.0/16
-  * 192.168.0.0/16->  vpc5=192.168.0.0/16
 
-### Create Cluster 
-* Before create cluster, make sure install `AWS CLI`, `kubectl` and `eksctl` (optional)
-  * `eksctl` a command line simplifies creation, this command can do:
-    * create IAM role for the cluster and nodes
-    * create dedicated VPC with CIDR 192.168.0.0/16
-    * create a cluster and node group
-    * install CoreDNS
-    * create kubernetes file for the cluster
-  * 
-  * `Management Console` give us a GUI to create cluter
-  * `AWS CLI` offers most potential for customization  
-  
-* 
+- AWS suggested below CIDR blocks from the private IP address ranges:
 
+  - 10.0.0.0/8, -> for example: vpc1= 10.0.0.0/16, vpc2 = 10.1.0.0/16
+  - 172.16.0.0/12 -> for example: vpc3= 172.16.0.0/16, vpc4=172.17.0.0/16
+  - 192.168.0.0/16-> vpc5=192.168.0.0/16
 
-## <font color=orange> 4 main Domains for Exam  </font> 
+- `Management Console` give us a GUI to create cluter
+- `AWS CLI` offers most potential for customization
+
+## <font color=orange> 4 main Domains for Exam </font>
+
 ###### Scope
-* Different architectural pattern like event-driven, microservices, choreography, orchestration and fan out. You should code and best error handlers practices. 
-* Pattern should be fault tolerant such as retries with exponential backups, jitter and dead-letter queues
-* Method of requests, responses, integration request, integration response, enforce validation rule, over riding status code, mapping templates, stage, variable, caches, throttling. 
-* Dive deep into AWS Lambda developing, define config in lambda, such as memory, concurrency, timeout, runtime, handler, layers, extensions, triggers and destinations.
-* Make sure how to use, manage and datastore lifecycle, know different data caching services, caching strategies and make sure how to choose the best practice and how to encrypt data
+
+- Different architectural pattern like event-driven, microservices, choreography, orchestration and fan out. You should code and best error handlers practices.
+- Pattern should be fault tolerant such as retries with exponential backups, jitter and dead-letter queues
+- Method of requests, responses, integration request, integration response, enforce validation rule, over riding status code, mapping templates, stage, variable, caches, throttling.
+- Dive deep into AWS Lambda developing, define config in lambda, such as memory, concurrency, timeout, runtime, handler, layers, extensions, triggers and destinations.
+- Make sure how to use, manage and datastore lifecycle, know different data caching services, caching strategies and make sure how to choose the best practice and how to encrypt data
 <details> 
     <summary> Domain 1 Development  </summary>
 
-* AWS Well Architecture framework has 6 pillars:
-  * Security
-  * Cost Optimization
-  * Reliability
-  * Performance Efficiency
-  * Operational Excellence
-  * Sustainability
+- AWS Well Architecture framework has 6 pillars:
+  - Security
+  - Cost Optimization
+  - Reliability
+  - Performance Efficiency
+  - Operational Excellence
+  - Sustainability
 
 #### Design Strategy
-* Access
-* Usage Patterns
-* Hardware 
-* Pattern: what is development and deployment pattern
-* Code
+
+- Access
+- Usage Patterns
+- Hardware
+- Pattern: what is development and deployment pattern
+- Code
 
 #### Event Driven Design
-* It allows to decouple our services, what is difference between tightly coupled and loosely coupled components?
-* Event driven design promote use of microservices, many AWS service can act as event source since they generate event
-* It is scalable, resilience, agile and cost effective solution. SQS, SNS, EventBridge also help to create event driven app
 
-* Unlike monolithic app which process everything on the same memory on a single device, Event driven app communicate across network. 
-* Microservices allows you to get benefit of having the parts fail independently and write app code to handle those failures. It needs to have failure detection and automatic remediation. This Increase `reliability` and `reduce cost`. But it is not always safe to retry because that retry increase the load to the system. Instead of retry immediately, exponential backoff, which wait longer time after each try. It still can add load, so we can use message failure. We can use lambda to send invocations to other services like SQS, SNS. Or you can use AWS step function to separete rettries, backoff rates, max attemps, interval and timeouts. 
+- It allows to decouple our services, what is difference between tightly coupled and loosely coupled components?
+- Event driven design promote use of microservices, many AWS service can act as event source since they generate event
+- It is scalable, resilience, agile and cost effective solution. SQS, SNS, EventBridge also help to create event driven app
 
-* You can use orchestrators to keep track of state, overal execution and failures. 
-* Lambda or any messaging pattern help us to manage orchestrate workflow.
-* If functions are more complex we can use `Step Function` (state machine) to orchestrate workflow which can handle nested workflow logic, errors and retries
-* But if you want to coordinate state changes across multiple services, you can use `Amazon EventBridge`. 
-* `Fan out` If service published messages to multiple endpoints, SQS, HTTPs you can use. It replicas data to different services. 
-  
-* prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
-* 
+- Unlike monolithic app which process everything on the same memory on a single device, Event driven app communicate across network.
+- Microservices allows you to get benefit of having the parts fail independently and write app code to handle those failures. It needs to have failure detection and automatic remediation. This Increase `reliability` and `reduce cost`. But it is not always safe to retry because that retry increase the load to the system. Instead of retry immediately, exponential backoff, which wait longer time after each try. It still can add load, so we can use message failure. We can use lambda to send invocations to other services like SQS, SNS. Or you can use AWS step function to separete rettries, backoff rates, max attemps, interval and timeouts.
 
-  
-</details> 
+- You can use orchestrators to keep track of state, overal execution and failures.
+- Lambda or any messaging pattern help us to manage orchestrate workflow.
+- If functions are more complex we can use `Step Function` (state machine) to orchestrate workflow which can handle nested workflow logic, errors and retries
+- But if you want to coordinate state changes across multiple services, you can use `Amazon EventBridge`.
+- `Fan out` If service published messages to multiple endpoints, SQS, HTTPs you can use. It replicas data to different services.
+- prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
+-
+
+</details>
