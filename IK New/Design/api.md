@@ -106,9 +106,6 @@ user/comments?comment_id=123 -> give me all comments for this comment
 
 
 
-
-
-
 ## Design APIs
 ### Define resources first & define endpoint (means add action verbs)
 
@@ -155,4 +152,10 @@ user/comments?comment_id=123 -> give me all comments for this comment
   *  
   
   #### CacheAbility is core of RESTful API
-  * 
+
+
+
+### Scrum
+* Scrum is an agile framework for developing complex projects, includes:
+  * `Sprint planning`, `Daily Scrum`, `Sprint Review`, `Sprint Retroperspective` 
+
