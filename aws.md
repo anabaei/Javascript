@@ -899,6 +899,8 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 ### AWS Load Balance
 * The AWS Load Balancer Controller is a controller that manages Elastic Load Balancing (ELB) for a Kubernetes cluster. The load balancers can be Application Load Balancers when you create a Kubernetes Ingress or Network Load Balancers when you create a Kubernetes service of type LoadBalancer. An Application Load Balancer balances application traffic at Layer 7 (for example, HTTP or HTTPS) of the Open Systems Interconnection (OSI) model, while a Network Load Balancer balances network traffic at Layer 4 [for example, Transmission Control Protocol (TCP), User Datagram Protocol (UDP), and so forth]. Application Load Balancers can be used with pods that are deployed to nodes or to Fargate. Application Load Balancers can be deployed to public or private subnets. Network Load Balancers can load balance network traffic to pods deployed to Amazon EC2 IP and instance targets or to Fargate IP targets
 
+![im](https://user-images.githubusercontent.com/7471619/246299360-3da6b48c-1a0b-40eb-b6bb-755a62cc2391.png)
+
 
 
 </details>
