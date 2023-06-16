@@ -544,7 +544,7 @@ There are some reasons which we may not save all photos for example in EBS. EBS 
 ### Auto Scaling
 
 - 3 components of Auto Scaling: Launch template, scaling policies, Amazon EC2 Auto Scaling group
-- When one instance is overloaded, then it report metrics to cloudWatch, then cloud watch go to alarm state and ask more instance to have horizental scalability
+- When one instance is overloaded, then it report metrics to cloudWatch, then cloud watch go to alarm state and ask more instance to have horizontal scalability
 - To have it we need to go to EC2 dashboard
   - Select create launch template, select role, group, etc to say what to launch
   - Select auto scaling group to tell when and where, attach to the template you create
@@ -847,6 +847,58 @@ kubectl get nodes
 * `Kubernetes` has mechanisms to scale application workloads both vertically and horizontally
 
 ![im](https://user-images.githubusercontent.com/7471619/246274518-aaa79936-e01c-45be-a851-b1fd2af66b0d.png)
+
+
+* It adjusted new nodes with the number of nodes when some where fails. Pods failure can happen when no lack of resource or nodes are underutilized! 
+```bash
+# setup of nodes could be 
+2 min, 10 max, 2 desire # low demand
+2 min, 10 max, 10 desire # high demand
+2 min, 10 max, 6 desire # average 
+```
+* karpenter is another solution 
+
+#### Horizontal Pod AutoScale
+* It only scales number of  pod `instances` based on CPU utilization, memory utilization or any other metrics which you define in kubernetes. For example, below created HPA resource, which allows kubernetes when pass from 50% usage of CPU, scales up and when it is less scale down to min
+```bash
+kubectl autoscale deployment myapp --cpu-percent=50 --min=1 --max=10
+```
+#### Vertical Pod Autoscaler
+* This set up increase the amount of CPU or memory reservation for the pods. 
+
+* `metrics-server`, `cluster-autoscaler` are already installed, also `aws-node`, `coredns` and `kube-proxy` are installed as well.
+```bash
+# to display all clusters running
+kubectl get pods -o wide A
+# install php apache server as  a target server to activate scaling 
+# to see how new deployment is configured
+kubectl describe deployment php-apache  
+# Create HPA resources to increase/decrease of pods
+kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
+# 
+```
+
+### EKS Communication 
+* 3 type of communication:
+  * Container to Container:  There is same localhost address and only with different port they can talk with each other
+  * Pod to Pod: Each node allocated a range of ip addresses, which each pod takes one and the pods can find each other with those ip addresses
+  * Ingress to Cluster: `CNI` helps to Kubernetes pods to have the same IP address inside the pod as they do on the Amazon VPC network. Every pod has a real, routable IP address from the Amazon VPC and can easily communicate with other pods, nodes, or AWS services.
+
+### Ephemeral pods
+* When a pods die, k8 has an object called `service`, service is a tool to access pods. Instead of connecting to ip address of pods, we connect to service. `Service` check the health of pods constantly, if one pod die service replace it with new pod without changing ip address of that pod. 
+* Kubernetes has 4 types of service
+* `cluster IP` service, is static which maps to appropriate pods
+* `Node port` service, It connects to cluster IP.  It expose on each node using static port and can be access from outside by adding nodeport, cluster ip
+* `Load balance` service, balance traffic between nodes. It expose with `cloud provider LB`
+* less use `external name` service, maps internal ip address to external DNS. This is usefull when you don't want to have routing change 
+
+### Ingress
+* Ingress helps to route traffic based on routes to different services to reduce load, like /about goes to serviceA and /info goes to service2, Each service is a LB service
+
+
+### AWS Load Balance
+* The AWS Load Balancer Controller is a controller that manages Elastic Load Balancing (ELB) for a Kubernetes cluster. The load balancers can be Application Load Balancers when you create a Kubernetes Ingress or Network Load Balancers when you create a Kubernetes service of type LoadBalancer. An Application Load Balancer balances application traffic at Layer 7 (for example, HTTP or HTTPS) of the Open Systems Interconnection (OSI) model, while a Network Load Balancer balances network traffic at Layer 4 [for example, Transmission Control Protocol (TCP), User Datagram Protocol (UDP), and so forth]. Application Load Balancers can be used with pods that are deployed to nodes or to Fargate. Application Load Balancers can be deployed to public or private subnets. Network Load Balancers can load balance network traffic to pods deployed to Amazon EC2 IP and instance targets or to Fargate IP targets
+
 
 
 </details>
