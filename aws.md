@@ -883,7 +883,7 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
   * Container to Container:  There is same localhost address and only with different port they can talk with each other
   * Pod to Pod: Each node allocated a range of ip addresses, which each pod takes one and the pods can find each other with those ip addresses
   * Ingress to Cluster: `CNI` helps to Kubernetes pods to have the same IP address inside the pod as they do on the Amazon VPC network. Every pod has a real, routable IP address from the Amazon VPC and can easily communicate with other pods, nodes, or AWS services.
-
+* `CNI` is a plugin that allows Kubernetes pods to have the same IP address inside the pod as they do on the VPC network
 ### Ephemeral pods
 * When a pods die, k8 has an object called `service`, service is a tool to access pods. Instead of connecting to ip address of pods, we connect to service. `Service` check the health of pods constantly, if one pod die service replace it with new pod without changing ip address of that pod. 
 * Kubernetes has 4 types of service
@@ -897,10 +897,37 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 
 
 ### AWS Load Balance
+![im](https://user-images.githubusercontent.com/7471619/246299360-3da6b48c-1a0b-40eb-b6bb-755a62cc2391.png)
+* only Both NodePort and LoadBalancer are accessible from outside cluster
 * The AWS Load Balancer Controller is a controller that manages Elastic Load Balancing (ELB) for a Kubernetes cluster. The load balancers can be Application Load Balancers when you create a Kubernetes Ingress or Network Load Balancers when you create a Kubernetes service of type LoadBalancer. An Application Load Balancer balances application traffic at Layer 7 (for example, HTTP or HTTPS) of the Open Systems Interconnection (OSI) model, while a Network Load Balancer balances network traffic at Layer 4 [for example, Transmission Control Protocol (TCP), User Datagram Protocol (UDP), and so forth]. Application Load Balancers can be used with pods that are deployed to nodes or to Fargate. Application Load Balancers can be deployed to public or private subnets. Network Load Balancers can load balance network traffic to pods deployed to Amazon EC2 IP and instance targets or to Fargate IP targets
 
-![im](https://user-images.githubusercontent.com/7471619/246299360-3da6b48c-1a0b-40eb-b6bb-755a62cc2391.png)
 
+### Kubernetes persistent storage 
+* Application workloads requiring data persistence independent of the pod lifecycle require at least two Kubernetes objects: PV and PVC
+* Two objects persistent volume PV and persistent volume claim PVC are require for EKS
+* Data should not rely on running pods
+  * PV: `persistent volume`  is ephermal but its lifecycle not depend on pod,  
+  * PVC: `persistent volume claim` is a request for storage by cluster user, includes kind of storage, access, performance and how much storage is need
+*  AWS EBS and EFS are available
+
+
+### Deploy app to EKS
+* `kubectl` is good to deploy apps for testing but for microservices is not ideal for production because of poor scalability and high administration overhead.
+* CI: `Integration` Developers commits codes, passing initial testing, sent new version of code to delivery pipeline
+* CD: `Delivery` decouple your team and release independently of other teams. It includes, build, test and deploy tasks.
+  * `Commit Code` developers commit the code which initial pipeline
+  * `detect code & create image` if jenkine, a webhook detect the change, then it pulls the changes and run unit, integration and smoke test on them. If tests fail Jenkins notify the appropriate team. If pass Jenkin create new container image with new tags
+  * `push image` Jenkin push image to image repository like ECR, GCR or Docker container repository, after runs additional scan on security or vulnerability of images and build state
+  * `Deploy` A pipleline is activated when new image is ready to deploy, it is felexible on how to deploy image to EKS. One way is creating trigger to lambda funciton to tell it is ready to deploy to production
+  * Before deploy we can have `Helm` to create kubernetes manifest that will be use to deploy to EKS
+
+
+### Monitoring
+* 3 main area for monitoring
+* `Metrics` Metrics collect data regarding the health and performance of resources, the ability of sending alerts when key performance indicators run out of bounds is desireable
+* `Logs` Collect and aggregate logs file from resources 
+* `Trace` Traces follow the path of a request as it passes though different services, tracing helps to identify the root cause of performance issues and errors
+  
 
 
 </details>
