@@ -936,6 +936,12 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 ![pp](https://user-images.githubusercontent.com/7471619/246644086-0a37b07a-40e1-41c1-99f6-279ba91572e0.png)
 * Other than cloudwatch, we can use `Prometheos` It can collect and store metrics from kubernetes projects, `Prometheos agent` runs on DaemonSet, means one agent per worker node. Agents collect and ship data to Prometheos server
 
+
+### Service Mesh
+* App mesh checking when any pods is available and bring reliability. 
+* When communicating between services can make it complicated, then we can use service mesh. It controls the whole traffics. Service proxies can add additional identifiyers, metadata, and other configs to the original payloads. Also they validate request came in from network
+* 
+
 </details>
 
 #### Select CDRS
