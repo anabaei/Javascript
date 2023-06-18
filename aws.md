@@ -1017,6 +1017,8 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
     ]}
 ```
 ##### ECS Agent
+
+![ecs](https://user-images.githubusercontent.com/7471619/246684094-13c68c48-c17c-47c8-9358-4999fa337ae8.png)
 * When using `EC2 launch type` tasks host by `EC2 instances`
 * EC2 instances are groups in `EC2 clusters`. Clusters have the same region, but can be in diffrent or same zone (like the blue color in this image). Clusters (EC2 or ECS) are specific to each region.
 * Is responsible to start/stop tasks based on request from ECS. 
