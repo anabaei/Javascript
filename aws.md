@@ -983,6 +983,7 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
       *  `Fargate Launch type`: provides near serverless experience with infrastructure to support containers, so don't need about worry on infrastructures
       *  `EC2 Launch type`: you create manage clusters of EC2 instances to support containers, availability requirements. Don't need to write cluster management or configuration management systems, scaling management infrastrcuture,  
 
+
 ### Tasks
 * Tasks are atomic unit of deployment of ECS. 
 * Tasks can have one or more containers
@@ -991,7 +992,36 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 * Should I use task or services?
   * Task manage by ECS schedular, and is on demand workloads. 
   * Long running apps is better to use Service, since they have health management, and availability zone-aware
-
+* Task are defined at `Task defination` which is a json file. We can define one or more containers. Add `monunt volume and name`  
+* Each task can host by either EC2 run time or fargate 
+```javascript
+{
+  "requireCompatiities":["FARGATE"] // only if you want to use fargate launch type
+   "memory": 512, // define as whole if use FArgate
+   "cpu": 10, // deafine as whole if use fargate
+  "containerDefinitions": [ // define serveral containers inside this array
+    {
+      "name": "simple-app",
+      "image": "my-image:latest",
+      "memory": 512, //MB
+      "cpu": 10, // 1024 is one CPU
+      "portMappings": [
+        {
+          "containerPort": 80, // expose p80
+          "protocol": "tcp"
+        }
+      ],
+      "secrets": [],
+      "environment": []
+    },
+    ]}
+```
+##### ECS Agent
+* When using `EC2 launch type` tasks host by `EC2 instances`
+* EC2 instances are groups in `EC2 clusters`. Clusters have the same region, but can be in diffrent or same zone (like the blue color in this image). Clusters (EC2 or ECS) are specific to each region.
+* Is responsible to start/stop tasks based on request from ECS. 
+* ECS backplane is singulare control plane for all ECS.
+* 
 </details>
 
 
