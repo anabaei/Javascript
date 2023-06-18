@@ -928,7 +928,11 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 * `Logs` Collect and aggregate logs file from resources 
 * `Trace` Traces follow the path of a request as it passes though different services, tracing helps to identify the root cause of performance issues and errors
   
+###### CloudWatch
+* Cludwatch can configure to collect, aggregate, and visualize metrics and logs from EKS. CloudWatch Container Insights also provides diagnostic information, such as container restart failures, to help you isolate issues and resolve them quickly.
 
+###### Open Source tools
+* Other than cloudwatch, we can use `Prometheos` It can collect and store metrics from kubernetes projects, `Prometheos agent` runs on DaemonSet, means one agent per worker node. Agents collect and ship data to Prometheos server
 
 </details>
 
