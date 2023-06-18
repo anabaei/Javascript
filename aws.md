@@ -759,7 +759,7 @@ sam deploy #
 
 </details> 
 <details> 
-    <summary> EKS </summary>
+    <summary> EKS Amazon Elastic Kubernetes Service </summary>
 
 - EKS, create and manage k8 infrastructure across multiple zone to eliminate single point of failure. Also it can manage worker nodes. AWS support Native, upstream Kubernetes
 - It comes with ELB, VPC, IAM for role base access control. `EKS` allows us to `create cluster` and `delete a managed node group`.
@@ -940,10 +940,59 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 ### Service Mesh
 ![mesh](https://user-images.githubusercontent.com/7471619/246644580-61d97eb4-094c-43e2-b9a6-3adc536aa664.png)
 * App mesh checking when any pods is available and bring reliability. 
+* It connects services, secure network traffic using encryption, provide app performance visibility
 * When communicating between services can make it complicated, then we can use service mesh. It controls the whole traffics. Service proxies can add additional identifiyers, metadata, and other configs to the original payloads. Also they validate request came in from network
-* 
+
+### Defaults Ads-on EKS
+* When you install EKS the following install as default
+  * VPC CNI
+  * kube-proxy
+  * CoreDNS
+
+* Some other commonly installed third party tools are
+  * ingress controllers
+  * continuous delivery systems
+  * monitoring tools
+
+* When EKS manage add-on updates(Added)?
+  * When the add-on was installed using the `AWS Management Console` and `eksctl` with a configuration file
+
+
+##### Costs
+* Largest cost of EKS are on compute resources like using EC2 or Fargate.
+* Next less expensive is network tools like subnets and load balance
+* 3 strategy to purchase compute resources
+  * `On-demand`: This is a good choice for workloads with spikes in demand and good for `stateful` system with not tolerate interruption
+  * `reserved`: Savings Plans and Reserved Instances are good choices for `steady-state workloads` such as databases.
+  * `spot or fargate spot`: Take advantage of unused Amazon EC2 is good for without the commitment of Reserved Instances for `stateless`. Fargate works as long as they not hit the max cost you define. It is good for non-critical workloads like batch-processing, web crawling, CI/CD, Dev/Test Environment
 
 </details>
+
+* To manage containers we have ECS, Kubernetes and Docker Swarm
+<details>
+<summary> ECS Elastic Container Service</summary>
+
+* ECS is a container orchestration service that support docker container. ECS is easily integrated with IAM, cloudwatch, route53
+  
+* `Containers` are a form of virtualization which happen in OS level. Each running container is an instance of container image which is immutable object that can be store in public or private registry
+*  Images pull from a Container registery like ECR
+*  Create services based on provided config files
+*  Make services online
+   *  To bring service online we can select launch type:
+      *  `Fargate Launch type`: provides near serverless experience with infrastructure to support containers, so don't need about worry on infrastructures
+      *  `EC2 Launch type`: you create manage clusters of EC2 instances to support containers, availability requirements. Don't need to write cluster management or configuration management systems, scaling management infrastrcuture,  
+
+### Tasks
+* Tasks are atomic unit of deployment of ECS. 
+* Tasks can have one or more containers
+* Tasks can run stand alone or part of a Service.
+* Service can run multiple tasks and use LB to handle traffic on tasks. If one task fail or stop, service launch another instance of task.
+* Should I use task or services?
+  * Task manage by ECS schedular, and is on demand workloads. 
+  * Long running apps is better to use Service, since they have health management, and availability zone-aware
+
+</details>
+
 
 #### Select CDRS
 
