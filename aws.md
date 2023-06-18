@@ -972,6 +972,7 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 <details>
 <summary> ECS Elastic Container Service</summary>
 
+![ecs](https://user-images.githubusercontent.com/7471619/246681789-17202ef1-9b81-488e-bbd7-6f7889f25fdf.png)
 * ECS is a container orchestration service that support docker container. ECS is easily integrated with IAM, cloudwatch, route53
   
 * `Containers` are a form of virtualization which happen in OS level. Each running container is an instance of container image which is immutable object that can be store in public or private registry
