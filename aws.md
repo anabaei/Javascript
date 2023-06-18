@@ -982,11 +982,12 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
    *  To bring service online we can select launch type:
       *  `Fargate Launch type`: provides near serverless experience with infrastructure to support containers, so don't need about worry on infrastructures
       *  `EC2 Launch type`: you create manage clusters of EC2 instances to support containers, availability requirements. Don't need to write cluster management or configuration management systems, scaling management infrastrcuture,  
-
+* `Fargate` is the only service that manage all containers for us automatically
+* The best use of services(more than one task) is when we need to have a lung running app. If needed batch job so only one task was enough 
 
 ### Tasks
 * Tasks are atomic unit of deployment of ECS. 
-* Tasks can have one or more containers
+* Tasks can have one or more containers.
 * Tasks can run stand alone or part of a Service.
 * Service can run multiple tasks and use LB to handle traffic on tasks. If one task fail or stop, service launch another instance of task.
 * Should I use task or services?
@@ -1023,7 +1024,7 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 * EC2 instances are groups in `EC2 clusters`. Clusters have the same region, but can be in diffrent or same zone (like the blue color in this image). Clusters (EC2 or ECS) are specific to each region.
 * Is responsible to start/stop tasks based on request from ECS. 
 * ECS backplane is singulare control plane for all ECS.
-* 
+
 </details>
 
 
@@ -1048,7 +1049,21 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 - Dive deep into AWS Lambda developing, define config in lambda, such as memory, concurrency, timeout, runtime, handler, layers, extensions, triggers and destinations.
 - Make sure how to use, manage and datastore lifecycle, know different data caching services, caching strategies and make sure how to choose the best practice and how to encrypt data
 <details> 
-    <summary> Domain 1 Development  </summary>
+    <summary> Domain 1 Development  30% </summary>
+
+1.1: Develop code for apps host on AWS
+    * Use SDKs, API Credentials, keys to run app on EC2 instances
+    * Customizing network, manage resources
+    * Ensure you know how to write code for event-driven, microserveices, chrogeraphy, orchestration, fan out
+    * fault tolerate design pattern such as retry with exponential backoff, jitter and dead-letter queues
+    * How to create, maintain APIs, API actions with services like API Gateway, Lambda, S3, SQS, DynamoDB. Make sure you know the method of request, responses, integration request and responses, enforcing valid rules, caching, variables, 
+    * Design patterns
+1.2: Develop code for AWS Lambda
+    * Make sure you know how to confugure lambda functions by defining environmental variables and configs such as triggers
+  
+1.3: Use data store in app development
+  * Make sure you know how to use manage data store and how to use datacycle
+  * know caching strategies, databases consistently models, choose correct data base and how to encrypt data
 
 - AWS Well Architecture framework has 6 pillars:
   - Security
@@ -1058,8 +1073,10 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
   - Operational Excellence
   - Sustainability
 
-#### Design Strategy
 
+
+#### Design Strategy
+Ask these questions:
 - Access
 - Usage Patterns
 - Hardware
@@ -1081,6 +1098,5 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 - But if you want to coordinate state changes across multiple services, you can use `Amazon EventBridge`.
 - `Fan out` If service published messages to multiple endpoints, SQS, HTTPs you can use. It replicas data to different services.
 - prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
--
 
 </details>
