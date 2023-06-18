@@ -938,6 +938,7 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 
 
 ### Service Mesh
+![mesh](https://user-images.githubusercontent.com/7471619/246644580-61d97eb4-094c-43e2-b9a6-3adc536aa664.png)
 * App mesh checking when any pods is available and bring reliability. 
 * When communicating between services can make it complicated, then we can use service mesh. It controls the whole traffics. Service proxies can add additional identifiyers, metadata, and other configs to the original payloads. Also they validate request came in from network
 * 
