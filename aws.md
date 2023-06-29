@@ -1086,7 +1086,8 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 ```
 
 * Example: Running multiple services on one cluster as below
-IMAGE
+
+  ![images](https://user-images.githubusercontent.com/7471619/249657438-21ac7915-7e5b-4e5b-af4d-07f4950ea1d2.png)
 
 * First Service runs only on zone `us-east-1d` t2.small
 * Second service spreads on all zones 
