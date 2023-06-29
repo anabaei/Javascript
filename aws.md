@@ -1,4 +1,18 @@
-Monitoring# <font color=orange> AWS </font>
+
+#<font color=orange> AWS </font>
+
+#### <font color=orange> 4 main Domains for Exam </font>
+
+###### Scope
+
+- Different architectural pattern like event-driven, microservices, choreography, orchestration and fan out. You should code and best error handlers practices.
+- Pattern should be fault tolerant such as retries with exponential backups, jitter and dead-letter queues
+- Method of requests, responses, integration request, integration response, enforce validation rule, over riding status code, mapping templates, stage, variable, caches, throttling.
+- Dive deep into AWS Lambda developing, define config in lambda, such as memory, concurrency, timeout, runtime, handler, layers, extensions, triggers and destinations.
+- Make sure how to use, manage and datastore lifecycle, know different data caching services, caching strategies and make sure how to choose the best practice and how to encrypt data
+- 
+_________________________________________________________________
+###<font color=lightgreen> Essentials AWS </font>
 
 <details>
 <summary> Data center, Zone, Region, APIs </summary>
@@ -683,8 +697,9 @@ Leverage the CI/CD pipeline to deploy applications on AWS
 
 </details>
 
-Images and content are all from below
-[Resources](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
+_________________________________________________________________
+
+###<font color=lightgreen> Develop AWS </font>
 
 <details> 
     <summary> Containers </summary>
@@ -1025,11 +1040,66 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 * Is responsible to start/stop tasks based on request from ECS. 
 * ECS backplane is singulare control plane for all ECS.
 
+
+### How ECS places tasks into Container when we use EC2
+
+* Each task is an instance of task defination. Resources are indicated in task defination like cpu, memory, network
+* Placement Strategy: indicated there too
+  * Random: places tasks randomly against container instances
+  * Binpack: places tasks based on least amount of cpu, memory which minimize the resources use
+  * Spread: places tasks evenly based on availability zone
+* Placement Contraints: Biding
+  * DistinctInsatnces
+  * Memberof
+
+* for example at below if we have 3 regions us-east-1d, us-east-1a, us-east-1dus-east-1c it only define task for two of them exclude `us-east-1d` and only does t2.medium and t2.small ones.
+```javascript
+aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placement-constraints type="memberOf", expression='(
+  attribute:ecs.instance-type == t2.small or 
+  attribute:ecs.instance-type == t2.medium and
+  attribute:ecs.availability-zone != us-east-1d 
+)'
+```
+* For example at below `Service Defination`, 
+  * schedulare places task only on `t2` instances
+  * Spread those task among availability zones
+  * binpack the task under fewest number of instances by memory
+
+```javascript
+"cluster": "ecs-demo",
+"serviceName": "myService",
+"taskDefination": "my-app",
+"placementConstraints": [{
+  "type": "memberOf",
+  "expression": "attribute:ecs.instance-type matches t2.*"
+}]
+"placementStrategy":[
+  {
+    "type": "spread",
+    "field": "attribute:ecs.availability-zone"
+  },
+  {
+    "type": "binpack",
+    "field": "memory"
+  }
+]
+```
+
+* Example: Running multiple services on one cluster as below
+IMAGE
+
+* First Service runs only on zone `us-east-1d` t2.small
+* Second service spreads on all zones 
+
+
+
+
+
 </details>
 
 
-#### Select CDRS
-
+<details>
+<summary> Select CDRS </summary>
 - AWS suggested below CIDR blocks from the private IP address ranges:
 
   - 10.0.0.0/8, -> for example: vpc1= 10.0.0.0/16, vpc2 = 10.1.0.0/16
@@ -1038,16 +1108,11 @@ kubectl autoscale deployment php-apache --cpu-percentage=50 --min=1 --max=10
 
 - `Management Console` give us a GUI to create cluter
 - `AWS CLI` offers most potential for customization
+</details>
 
-## <font color=orange> 4 main Domains for Exam </font>
+_________________________________________________________________
 
-###### Scope
 
-- Different architectural pattern like event-driven, microservices, choreography, orchestration and fan out. You should code and best error handlers practices.
-- Pattern should be fault tolerant such as retries with exponential backups, jitter and dead-letter queues
-- Method of requests, responses, integration request, integration response, enforce validation rule, over riding status code, mapping templates, stage, variable, caches, throttling.
-- Dive deep into AWS Lambda developing, define config in lambda, such as memory, concurrency, timeout, runtime, handler, layers, extensions, triggers and destinations.
-- Make sure how to use, manage and datastore lifecycle, know different data caching services, caching strategies and make sure how to choose the best practice and how to encrypt data
 <details> 
     <summary> Domain 1 Development  30% </summary>
 
@@ -1100,3 +1165,8 @@ Ask these questions:
 - prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
 
 </details>
+
+
+
+
+[Images and content are all from below](https://explore.skillbuilder.aws/learn/course/1851/play/78733/aws-technical-essentials-111)
