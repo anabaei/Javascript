@@ -1063,8 +1063,9 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 * For example at below `Service Defination`, 
   * schedulare places task only on `t2` instances
   * Spread those task among availability zones
-  * binpack the task under fewest number of instances by memory
-
+  * `binpack` the task under fewest number of instances by memory
+  * `Constraints` are binding
+  * `Strategies` are best efford
 ```javascript
 "cluster": "ecs-demo",
 "serviceName": "myService",
@@ -1093,6 +1094,40 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 * Second service spreads on all zones 
 
 
+### How ECS Integrate with Other AWS Services 
+
+* Use `SQS` and `SNS` to send queue messaging and send messages
+* `Elastic Load Balancing` to have a lb
+* `Route S3` facilate for DNS service
+* `IAM` for access management, authentication and authorization
+* `Secret Manager` for manager encrypted secret keys
+* `API Gateway` to expose services
+* `Code Pipeline` CI/CD
+* `Cloud Watch` for monitoring login and collecting matrics, also Cloud watch has a feature to set specific amount of cpu, memory in services if it hit that auto scaling triggers. 
+* 
+* `ECR` container registery, image repository, images are encrypted based on IAM control access
+* `Microservice Design`: client access through `API Gateway` or `Route S3` to containerized applications. LB manages traffic to `ECS clusters` and `Amazon RDS`. ECR, IAM and Cloud watch 
+(link)[https://explore.skillbuilder.aws/learn/course/91/play/202/amazon-elastic-container-service-ecs-primer]
+
+* `CI/CD` there is source repository like github is called `codecommit` where developers commit their changes to it
+* `aws pipleline` notified via cloud watch of new changes and trigger execution of pipeline. 
+* the pipeline build a container using `aws codeBuild`, create an image and send it to ECR with a tag of build Id
+* the pipleline also initiate `cloudFormation` which defines ECS task defination and source. In fact it allows to update ECS
+* Then `ECS` fetches new Container from `ECR` and update old task with new one
+
+
+##### Blue/Green 
+* Is a strategy to deploy software update wiht lower risk by creating two seperate environment. 
+* Blue is the current running version of the app, green is new
+* Blue/green allow to test new features comming to our application without impacting the current running version. When green version satisfy us, we can reroute traffic from blue to green environment
+* Zero downtime, container freindly
+* `AWS CodeDeploy` allow us to define blue/green in aws. 
+* When a task services is updated then codedeploy make a copy of blue one and make it as green with new changes, And LB redirect traffic to green. Always we can roll back to blue. When auto testing completed the traffic moves to green service
+  
+### How Security Enforced on ECS Tasks
+* Each task has its own `IAM` role provide granular permission for service access. 
+* We have two EC2 instances, Each one has one TaskB and TaskA. TaskA allow to one EC2 access RDBS and TaskB allows to access S3. To add those roles to taskA and taskB, we need to already have defined roles with policies at `IAM` before
+* So taskB can't access to RDBS and taskA cant to S3 unless we add them to their policy roles.
 
 
 
