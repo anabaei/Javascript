@@ -1125,6 +1125,8 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 * When a task services is updated then codedeploy make a copy of blue one and make it as green with new changes, And LB redirect traffic to green. Always we can roll back to blue. When auto testing completed the traffic moves to green service
   
 ### How Security Enforced on ECS Tasks
+
+![taskB](https://user-images.githubusercontent.com/7471619/249971171-37f4c004-1710-435a-a129-fcb926b31441.png)
 * Each task has its own `IAM` role provide granular permission for service access. 
 * We have two EC2 instances, Each one has one TaskB and TaskA. TaskA allow to one EC2 access RDBS and TaskB allows to access S3. To add those roles to taskA and taskB, we need to already have defined roles with policies at `IAM` before
 * So taskB can't access to RDBS and taskA cant to S3 unless we add them to their policy roles.
