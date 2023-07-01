@@ -780,3 +780,77 @@ gcloud container clusters update Name
 <img width="835" alt="Screen Shot 2021-11-04 at 11 50 14 AM" src="https://user-images.githubusercontent.com/7471619/140375750-88de951a-6f09-4945-ba6b-57f19608dafa.png">
 
 
+
+
+# Docker
+
+* Dockerfile is a language for building container images
+
+```bash
+From ubunto
+```
+* `From` Pull image form Docker hub, Link to new image, go to next step
+* `Run touch /file.txt` create a container from new image, run touch command, go to next
+* `workdir` directory where we want to word
+* copy whatever you want to  ./ working directoy
+```bash
+# Copy files from
+docker COPY ./src /app/src
+```
+* Copy files from current directory where Docker file is located to the container image which is going to be built.
+* 
+### Create image from Docker
+
+
+* Below create a new image based on what you have in your docker file
+```bash
+# Copy files from
+docker COPY ./src /app/src
+docker build -t algofeilds/simple-image . 
+docker images
+docker rmi 78732   //remove an image using image id
+# Run, start your app from a container 
+docker run -p 4000:4000 algofeilds/simple-image
+docker ps # to show running container run for which port
+docker stop #dockerId
+docker kill #dockerId
+
+docker stats #name or id to give interesting data about docker
+
+docker push # push the image to docker repository
+docker pull # to pull from repository
+```
+* Compose allow you to work with different containers 
+
+#### Bad and Good Docker
+
+* Docker images should be kept as lightweight as possible to improve performance and reduce storage requirements. 
+```bash
+# Bad Practice
+COPY . /app
+
+# Better Practice
+COPY ./src /app/src
+COPY ./config /app/config
+```
+* Using the "latest" tag for base images in your Dockerfile can lead to unexpected changes and compatibility issues. 
+```bash
+# Bad Practice
+FROM nginx:latest
+
+# Better Practice
+FROM nginx:1.19
+```
+* Don't run containers as root user,  it is generally considered a security risk to run processes as the root user within a container. 
+```bash
+# Bad Practice
+FROM node:14
+RUN npm install -g package
+
+# Better Practice
+FROM node:14
+RUN groupadd -r appgroup && useradd -r -g appgroup appuser
+USER appuser
+RUN npm install -g package
+
+```

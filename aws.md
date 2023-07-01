@@ -731,9 +731,14 @@ _________________________________________________________________
 <details> 
     <summary> Serverless Lambda </summary>
 
+* Lambda is a serverless compute service to run your application. 
+* When you write your lambda function you specify 
 - Improve cost of model, speed and innovation
 - Lamdba allows to bring your own code and have it run in response to events
-
+* `stage variables`: 
+* `dead letter` 2 times lambda function retries then even it can wait for days to retry again, we can set it as well
+* 
+  
 #### Write Function
 
 - Use best practices, use repository to write your code in lambda. So not use management console for writing function
@@ -1109,12 +1114,37 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 * `Microservice Design`: client access through `API Gateway` or `Route S3` to containerized applications. LB manages traffic to `ECS clusters` and `Amazon RDS`. ECR, IAM and Cloud watch 
 (link)[https://explore.skillbuilder.aws/learn/course/91/play/202/amazon-elastic-container-service-ecs-primer]
 
+##### CI/CD
 * `CI/CD` there is source repository like github is called `codecommit` where developers commit their changes to it
 * `aws pipleline` notified via cloud watch of new changes and trigger execution of pipeline. 
 * the pipeline build a container using `aws codeBuild`, create an image and send it to ECR with a tag of build Id
 * the pipleline also initiate `cloudFormation` which defines ECS task defination and source. In fact it allows to update ECS
 * Then `ECS` fetches new Container from `ECR` and update old task with new one
+* `CI` is a software developer practice where developers regurarely merge their code into central repository when autmate build and test run successfully. 
+* `CD` is a practice where code build, test and deploy to test or staging. To deploy to production require manual confirmation. 
+  * At `Build` these tasks are execute:
+      * Compile code
+      * Check code style and standards
+      * Analyze complexity
+      * Validate dependencies
+      * Create Container image
+      * Run unit test
 
+  * At `test`:
+    * Functional test
+    * Integration test
+    * Regression test: checks changes or updates to the software do not introduce new bugs
+    * Acceptance test: validate whether the software meets the requirements and expectations
+    * Load test: test service under normal and peak load conditions.
+    * Security test: checks vulnerabilities and potential risks to ensure it is resistant to unauthorized access
+  
+* `microservices` A microservices architecture, is a design approach that builds an application as a set of loosely coupled services. Each service is designed for a set of capabilities and focuses on solving a specific business problem. Services do not need to share any of their code or implementation with other services. Any communication between individual components happens via well-defined APIs. These services can be assigned to fully accountable teams, and be developed, tested, an deployed independently of other services.
+
+* Build tools: Jenkins, Travis CI, AWS CodeBuild
+* Source control tools, repositories: Git, AWS CodeCommit
+* Deployment tools: AWS CodeDeploy, AWS CloudFormation, Jenkin
+* Pipeline automation tools: AWS CodePipeline, Jenkins, GitLab
+* Infrastructure automation tools: AWS CloudFormation, Terraform, AWS Elastic Beanstalk
 
 ##### Blue/Green 
 * Is a strategy to deploy software update wiht lower risk by creating two seperate environment. 
@@ -1130,8 +1160,9 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 * Each task has its own `IAM` role provide granular permission for service access. 
 * We have two EC2 instances, Each one has one TaskB and TaskA. TaskA allow to one EC2 access RDBS and TaskB allows to access S3. To add those roles to taskA and taskB, we need to already have defined roles with policies at `IAM` before
 * So taskB can't access to RDBS and taskA cant to S3 unless we add them to their policy roles.
-
-
+* `Secret Manager` allows you to use parameters, which in fact are functions return the secrets. We can attach IAM roles access to what secrets or Read/modify/access. Secrets are encrypted by `KMS` key management service. Also we can define policy for each secret manager
+* Daemon is a program runs in the background of the system. There is usually no UI or direct command to access it. They usually need low resource and run continuesly 
+* Each task can have its own IAM role and also each secret key can have its own policy as well
 
 </details>
 
@@ -1151,46 +1182,82 @@ aws ecs run-task --cluster ecs-demo --task-defination myapp --count 5 --placemen
 _________________________________________________________________
 
 
-<details> 
-    <summary> Domain 1 Development  30% </summary>
 
-1.1: Develop code for apps host on AWS
-    * Use SDKs, API Credentials, keys to run app on EC2 instances
-    * Customizing network, manage resources
-    * Ensure you know how to write code for event-driven, microserveices, chrogeraphy, orchestration, fan out
-    * fault tolerate design pattern such as retry with exponential backoff, jitter and dead-letter queues
-    * How to create, maintain APIs, API actions with services like API Gateway, Lambda, S3, SQS, DynamoDB. Make sure you know the method of request, responses, integration request and responses, enforcing valid rules, caching, variables, 
-    * Design patterns
+
+<details> 
+    <summary> Develp for host on AWS  </summary>
+
+  * It includes 6 pillars:
+    * `Security`, `Code Optimization`, `Reliability`, `Performance efficiently`, `Operational excellence`, `Sustainability`
+  
+  * Use SDKs, API Credentials, keys to run app on EC2 instances
+  * Customizing network, manage resources
+  * Ensure you know how to write code for event-driven, microserveices, chrogeraphy, orchestration, fan out
+  * fault tolerate design pattern such as retry with exponential backoff, jitter and dead-letter queues
+  * How to create, maintain APIs, API actions with services like API Gateway, Lambda, S3, SQS, DynamoDB. Make sure you know the method of request, responses, integration request and responses, enforcing valid rules, caching, variables, 
+  * `API GateWay`
+    * enforce validation roles
+    * mapping templates
+    * caching and throttling
+  * `Data streaming` aws kenesis, apache storm 
+  * `SDK`
+  * `Codestar`
+  * `testing` what services, sam, codepipeline,
+  * `cognito sync`: adds less complexity across multiple devisec 
+  * `DynamoDB SNS SQS MQ`: 
+  * `Step funciton`: we can use aysnc and sync functions in step functions
+  * `CloudFormation`: 
+  * `SAM` simplifies deployment and simplify APIs
+  * `item poten funciton` validate input data 
+  * `stateful` keep state using tools like sqs, they increase performance
+  * `stateless` in container, they are stateless 
+  * `How use sdk`
+  * `APIs in sdks`
+  * Microservices design patterns 
+    * ECS
+    * Lambda
+    * CloudFront
+    * Coginito
+    * API GATEWAY
+
+</details> 
+
+<details> 
+    <summary> Develp for Lambda  </summary>
+
 1.2: Develop code for AWS Lambda
     * Make sure you know how to confugure lambda functions by defining environmental variables and configs such as triggers
-  
+
+</details> 
+
+<details> 
+    <summary> Use data store in app development </summary>
+
 1.3: Use data store in app development
   * Make sure you know how to use manage data store and how to use datacycle
   * know caching strategies, databases consistently models, choose correct data base and how to encrypt data
 
-- AWS Well Architecture framework has 6 pillars:
-  - Security
-  - Cost Optimization
-  - Reliability
-  - Performance Efficiency
-  - Operational Excellence
-  - Sustainability
+</details> 
+
+<details> 
+    <summary> Questions </summary>
+
+-  Difference between `tightly coupled` and `loosely coupled` 
+
+- AWS serverless services such as `SQS`, `SNS`, `EventBridge` allow to code and build `event driven` applications which are `scalable`, `resilience`, `agile` and `cost effective` solutions. 
+- Tradeoffs of eventdriven: Event Driven apps communicate through networks
+-  when we have `microservice` you can take benefits of getting parts failed independently and handle Failures
 
 
+#### Handle Failures
 
-#### Design Strategy
-Ask these questions:
-- Access
-- Usage Patterns
-- Hardware
-- Pattern: what is development and deployment pattern
-- Code
+* Your application should have `failure detection`, `automatic remediation` the point is to build a resiliance application to stand failurs
+* Retries increases `reliability` , `reduce costs` but not good always for retries since so many retry increase load on system, so use exponential backoff which uses longer wait time. If backoffs retries still happening then use `jitter` to avoid overload from backoffs retries and contentions. 
+* `AWS step functions` seperates retries, backoffs rates, max attems, intervals and timeouts
 
-#### Event Driven Design
-
-- It allows to decouple our services, what is difference between tightly coupled and loosely coupled components?
-- Event driven design promote use of microservices, many AWS service can act as event source since they generate event
-- It is scalable, resilience, agile and cost effective solution. SQS, SNS, EventBridge also help to create event driven app
+* `How to add message failures` we can use Lambda to send invocation to other services like `SQS`, `EventBridge`, and `SNS`
+* If the work is more complex we can use `state machine` or `step funcitons` to orchestrate work felow 
+  
 
 - Unlike monolithic app which process everything on the same memory on a single device, Event driven app communicate across network.
 - Microservices allows you to get benefit of having the parts fail independently and write app code to handle those failures. It needs to have failure detection and automatic remediation. This Increase `reliability` and `reduce cost`. But it is not always safe to retry because that retry increase the load to the system. Instead of retry immediately, exponential backoff, which wait longer time after each try. It still can add load, so we can use message failure. We can use lambda to send invocations to other services like SQS, SNS. Or you can use AWS step function to separete rettries, backoff rates, max attemps, interval and timeouts.
@@ -1200,7 +1267,30 @@ Ask these questions:
 - If functions are more complex we can use `Step Function` (state machine) to orchestrate workflow which can handle nested workflow logic, errors and retries
 - But if you want to coordinate state changes across multiple services, you can use `Amazon EventBridge`.
 - `Fan out` If service published messages to multiple endpoints, SQS, HTTPs you can use. It replicas data to different services.
-- prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
+- Prevent duplicate, loss inconsistent data in lambda, you can add `item potent function` logic to lambda to reduce unnecessary API calls, code processing time, throttle and latency
+
+* `Questions` If you are builing a docker app using ECS,  and need to allow containers to access ports on the host container instance to send and recieve traffic using port mapping, which component of ECS should you confifure to implement this task ?
+* The container agent
+* The task defination
+* Agent 
+* Container instance
+
+* Learn how to use `AWS SDK` to reduce 
+* `Question`: Imagine your organization migrating to aws. You are responsible to build new serverless architecture that share memory and timeouts between resources such as Lambda, API Gateway and DynamoDB and deploy resources into single versional application.
+  * Which service you use?
+    * CloudFormation
+    * OpsWorks
+    * Elastic Beanstalk
+    * SAM
+
+
+##### Exponential backoff
+* This is a method to not retry immediately, it expontially increase the interval time of retrieving to avoid overloading our network using `jitter`
+
+#### Testing
+* What services we can use for testing 
+* `aws sam`, `code pipeline`, `cloudformation`
+* 
 
 </details>
 
