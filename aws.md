@@ -737,7 +737,52 @@ _________________________________________________________________
 - Lamdba allows to bring your own code and have it run in response to events
 * `stage variables`: 
 * `dead letter` 2 times lambda function retries then even it can wait for days to retry again, we can set it as well
-* 
+
+#### Synchronous invocation Lambda
+* When you invoke a function synchronously, Lambda runs the function and waits for a response.
+* Expect an immediate response
+* There are no built-in retries. You must manage your retry strategy within your application code
+* The following AWS services invoke Lambda synchronously:
+
+Amazon API Gateway
+Amazon Cognito
+AWS CloudFormation
+Amazon Alexa
+Amazon Lex
+Amazon CloudFront
+
+#### Asynchronous invocation Lambda
+* When you invoke a function asynchronously, events are queued and the requestor doesn't wait for the function to complete. This model is appropriate when the client doesn't need an immediate response
+* Need define destination to tell where it should send the data
+* The following AWS services invoke Lambda asynchronously: 
+
+Amazon SNS 
+Amazon S3
+Amazon EventBridge 
+
+#### Polling invocation Lambda
+* This invocation model is designed to integrate with AWS streaming and queuing based services with no code or server management. Lambda will poll (or watch) these services, retrieve any matching events, and invoke your functions. This invocation model supports the following services:
+
+Amazon Kinesis
+Amazon SQS
+Amazon DynamoDB Streams
+
+Lambda reads events from the following services:
+
+Amazon DynamoDB
+
+Amazon Kinesis
+
+Amazon MQ
+
+Amazon Managed Streaming for Apache Kafka (MSK)
+
+self-managed Apache Kafka
+
+Amazon SQS
+
+
+
   
 #### Write Function
 
