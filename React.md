@@ -674,21 +674,51 @@ root.render(<Garage />);
 <details>
         <summary>Webpack</summary>
 
+```javascript
+npm cache clean --force --global
+
+```
+
+* Webpack is primarily used in web development scenarios where you have a frontend application that needs to be bundled, optimized, and prepared for deployment to a browser environment
+
+* mainly in React and some cases in node where we need to have module systems or bundle assets in case we have server side rendering of css/html to optimize and minify your stylesheets, extract critical CSS
+  
+* Webpack if we don't use it we won't have:
+  * `Module System` only commonjs which is native system in javascript is available not more 
+  * `React` most of the time use `webpack` to allow 
+  * `Webpack` make sure dependencies on modules are installed
+  * `webpack` It optimize of javascript code to reduce the file size of javascript resulting in faster load timing
+  * Handle any type of assets like css image fonts and javascript, optimization and file hashing for caching, without webpack bundler need to manage assets manually
+  *  
 * Sources, [link1](https://www.youtube.com/watch?v=GU-2T7k9NfI)
 * `Webpack` takes bunch of assets including js, images, html, svg, css or less files and combine and bundle them into smaller group of files.(one file for js and one for css). It also `managing dependencies` and make sure which files should run first. Also webpack can transpile ES6 and ES7 to javascript format
 * `Webpack` in fact managing all our codes. A normal html page is like
-```html
-<html lang="en">
-  <header>
-    <link rel="stylesheet" href="main.css">
-  </header>
-  <body>
-    <h1>...</h1>
-    <script src="js/dom-loader.js"></script>
-    <script src="js/app.js"></script>
-  </body>
-</html>
+
+
+```javascript
+npm install webpack webpack-cli --save-dev
+// webpack.config.js
+const path = require('path');
+
+module.exports = {
+  entry: './index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
+  },
+  watch: true, // Enable watch mode in this case don't need to delete dist folder every time
+};
+// run the webpack
+npx webpack --config webpack.config.js
+npx webpack --config webpack.config.js --watch // using watch flag
+// now run the bundle code
+const path = require('path');
+const bundlePath = path.resolve(__dirname, 'dist', 'bundle.js');
+require(bundlePath);
+// finally
+node run.js
 ```
+
 * `dom-loader` access to elements of dom and store them into variables. For example
 ```javascript
 var secretButton = document.querySelector('#idNameOfButton')
