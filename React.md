@@ -674,10 +674,45 @@ root.render(<Garage />);
 <details>
         <summary>Webpack</summary>
 
-```javascript
-npm cache clean --force --global
+* Webpack is a build tool that allows us to take all of our assets and turn them into a production ready bundle. An alternative way to add links to scripts, css from an html files 
+* Webpack load assets into a page when it is needed
+* Minimize initial loading time for app
+* Avoid repeating of downloading resources for each page
+* Webpack transformation helps to 
+  * Convert SaSS or LeSS to CSS prior to production
+  * Convert ES6 to vanilla commonJS
 
+* No support of node.js 4
+* Webpack has two mode:
+  * dev mode: the speed of the build is optimized
+  * production mode: the size of the build is optimized
+
+* webpack 4+: Support for WebAssembly: means import/export any web assembly module
+  * you can load Russ, C++ and C
+
+```javascript
+npm init
+npm install webpack@4.28.4 --save-dev
+npm install webpack-cli@3.2.1 --save-dev
+npm i 
+npm i jquery --save
+dist: everything intended for distribution production
 ```
+*   s
+```javascript
+// at src/index.js
+const $ = require('jquery')
+$("#target").html("hello world")
+// at dist/index.html
+<!DOCTYPE html>
+         
+    <h1 id="target"> </h1>
+    <script src="main.js"></script>
+</html>
+```
+* 
+
+
 
 * Webpack is primarily used in web development scenarios where you have a frontend application that needs to be bundled, optimized, and prepared for deployment to a browser environment
 
@@ -729,6 +764,10 @@ var secrectParagraph = document.querySelector("#paragraphId")
 * Since we usually use JSX so our React is usign WEBPACK 
 * Webpack is a module bundler and is able to bundle up any front end assets you wanna icnlude and gives control how you bundling those different assets. JSX needs webpack to load. 
 * Webpack config tells bundle all js into one view html file. 
+
+
+* 
+
 </details>
 <details>
       <summary> JSX JavaScript XML </summary>
