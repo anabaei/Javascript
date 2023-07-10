@@ -710,7 +710,70 @@ $("#target").html("hello world")
     <script src="main.js"></script>
 </html>
 ```
-* 
+* we gonna use webpack to generate main.js.
+```javascript
+webpack // return command not find,
+// instead of running globally we can run it as below locally
+./node_modules/.bin/webpack
+// it is going to look into source folder (src) of the index file, and 
+// generate main.js inside dist folder
+npx webpack // does the same and result is the same as well, npx is package runner
+```
+* it is safe to delete main.js and run webpack to create new one
+* Now if we pull index.html inside dist, we should see all updates
+
+* We create `webpack.config.js` to not to write commands manually 
+```javascript
+const path = require('path') // set up the correct path file
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    fileame: 'main.js',
+    path: path.resolve(__dirname, 'dist')
+  }
+} 
+
+```
+* Now if you run `npx webpack` it does above without needing of adding script main.js inside `src/index.js`
+* customize webpack.config.js name as 
+```javascript
+npx webpack --config my.custom.webpack
+npx webpack -w // w is like nodemon to rerun webpack when file changes
+```
+* Webpack Loaders: Transpile `JSX`, `ECMAScript6` into `plain Javascript` using Babel Loader
+*  To install babel loader we need to install babel core and babel loader to load and then transpile code
+```javascript
+npm install babel-loader @babel/core --save-dev
+```
+* Then adjust webpack config to use babel
+```javascript
+// add 
+module: {
+  rules: [
+    {
+      test: /\.js$/, // means include all files which have js 
+      exclude: /(node_modules)/, // exclude node modules
+      use: {
+        loader: 'babel-loader', // use babel loader
+        options: {
+          presets: [
+            `@babel/preset-env`// you can add which browsers you want to list here
+          ]
+        }
+          
+      }
+    }
+  ]
+}
+```
+* Add babel/preset as well
+
+#### CSS Loader
+* npm i style-loader css-loader --save-dev
+* npm i url-loader --save-dev
+
+
 
 
 
