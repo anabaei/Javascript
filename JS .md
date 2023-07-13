@@ -3,6 +3,8 @@
 * [JavaScript Algorithm](https://github.com/trekhleb/javascript-algorithms)
 * [Regular Expressions](http://users.cs.cf.ac.uk/Dave.Marshall/Internet/NEWS/regexp.html)
 * [Create Component](https://medium.com/@BrodaNoel/how-to-create-a-react-component-and-publish-it-in-npm-668ad7d363ce)
+* [IK_link_christopher](https://docs.google.com/presentation/d/1zxzHpiEOhc_pAxNrK8yavSuv15IMA9Ru6ubl4KbdHxw/edit?pli=1#slide=id.g112f6017585_0_409)
+* [code_base_examples](https://codesandbox.io/s/ik-course-sty8g?file=/src/principles/reduce/problem.js)
   
   <details>
         <summary> Reducer </summary>
