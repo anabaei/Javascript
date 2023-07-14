@@ -1,5 +1,65 @@
 
 ## Definations
+
+* Flex Container
+* flex-flow
+* Flex-grow
+* flex-shrink
+* flex-wrap
+
+
+```html
+<div class="container">
+    <div class="item">1</div>
+    <div class="item2">2</div>
+    <div class="item">3</div>
+  </div>
+  <button id="reverse-btn">click</button>
+
+
+  <style>
+  .container {
+    background-color: lightgreen;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 10px;
+
+  }
+
+  .item2 {
+    flex-grow: 1;
+    flex-shrink: 4;
+    /* width: 350px;  */
+    flex-basis: 150px;
+    border: 1px solid black;
+    background-color: #eaeaea;
+    padding: 20px;
+}
+  .item {
+    flex-grow: 0;
+    /* width: 350px; */
+    flex-basis: 150px;
+    border: 1px solid black;
+    background-color: #eaeaea;
+    padding: 20px;
+  }
+
+  .reverse-columns {
+  flex-flow: row-reverse;
+}
+  </style>
+
+  <script>
+    const reverseBtn = document.getElementById("reverse-btn");
+const container = document.querySelector(".container");
+
+reverseBtn.addEventListener("click", function() {
+    container.classList.toggle("reverse-columns");
+});
+  </script>
+```
+
+
 * Main Axis is left to right of flex container in one row 
 * Main Start is the begining of flex container which ends to Main End
 * Lenght from Main start to Main End is knows as Main Size
