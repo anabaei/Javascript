@@ -1,11 +1,10 @@
 
 ## Definations
 
-* Flex Container
-* flex-flow
-* Flex-grow
-* flex-shrink
-* flex-wrap
+* Flex Container: is parent where we can define axis by flow and tell is wrap(means make it as a whole if shrink goes to next line) `flex-wrap` and `flex-flow`
+
+* Children: you can tell allow grow if space is available, `flex-grow` or become small by a rate `flex-shrink`
+
 
 
 ```html
