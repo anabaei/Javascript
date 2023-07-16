@@ -12,7 +12,7 @@
     <title>Document</title>
 </head>
 <header>
-    <div class="header-image">
+    <div class="header-image hide-on-small">
         header image 
     </div>
     <div class="profile">
@@ -33,16 +33,21 @@
 </nav>
 </nav>
 <body>
-    <div class="left-sidebar">
-        left side bar 
-    </div>
-    <div>
-        content 
+    <div class="content">
+        <div class="feed">
+            content 
+        </div>
+        <div class="left-side">
+            left side bar 
+        </div>
+        <div class="right-side">
+            Right side bar 
+        </div>
     </div>
 </body>
-<foot>
+<footer>
     footer 
-</foot>
+</footer>
 </html>
 
 <style>
@@ -52,13 +57,64 @@
   .header-image{
     background-color: aqua;
     height: 100px;
+    flex-shrink: 4;
   }
   .profile{
     display: flex;
+    flex-wrap: wrap;
   }
   .profile-picture{
-    flex-basis: 200px;
+    flex-basis: 300px;
+    margin: 2px;
+  }
+  .profile-details{
+    margin: 2px;
+    flex-basis: 300px;
+  }
+  
+  nav{
+    border: 1px solid black;
+    margin: 1px 5px;
+  }
+  nav a:hover {
+    padding: 4px;
+    color:blue;
+    font-weight: bold;
   }
 
+  @media (max-width: 400px) {
+    .hide-on-small{
+        display: none;
+    }
+  }
+
+  .content{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+  }
+
+  .left-side{
+    flex-grow: 1;
+    
+    background-color: blueviolet;
+ }
+ .feed{
+    flex-grow: 1;
+    
+ }
+ .right-side{
+    flex-grow: 1;
+    
+    background-color: rgb(211, 226, 43);
+ }
+ 
+
+
+ footer{
+    display: flex;
+    background-color: brown;
+ }
 
 </style>

@@ -1,6 +1,31 @@
 # 10 CSS challenges
 
 <details> 
+<summary> CSS </summary>
+
+#### Flex
+
+* `display: flex` indicate a parent of flex, you can control the direction of children, wrap them
+* `display-grow: 1` at each childeren you can say in what rate become bigger if space available
+* `display-shrink: 2` you can say when window hit minimum size it shrinks with speed of 2 rate compare with others
+* `Flex-basis` at children, is width and hight
+  * Flex-direction: row (default) children items are in a row and flex-basis indicates of width of each item
+  * Flex-direction: column, items are stack on eah other vertically and each children height is based on flex-basis
+
+* flex Shorthand
+```javascript
+flex: grow shrink basis
+```
+* `align-self`: `center`, `end`, `start`. Each child can be align vertically with axis. Default is row,so it would align each child with it
+
+### GRID
+* 
+
+
+
+</details>
+
+<details> 
 <summary> Responsive Layout </summary>
 
 * Build a responsive webpage layout that consists of a header, navigation menu, content section, and footer. The layout should adjust and stack elements appropriately when viewed on different screen sizes
