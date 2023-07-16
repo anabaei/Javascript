@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+    <main>
+        <article class="feed">Feed</article>
+        <aside class="side-nav">Nav</aside>
+        <aside class="side-ads">Ads</aside>
+    </main>  
+    <footer>
+        Footer
+    </footer>
+</body>
+</html>
+
+<style>
+    body{
+        display: flex;
+        /* means 100 % vertical hight */
+        min-height: 100vh; 
+        flex-direction: column; 
+    }
+    .feed{
+        background-color: yellow;
+        flex-grow: 1;
+        text-align: center; 
+    }
+    .side-nav{
+        background-color: lightblue;
+    }
+    .side-ads{
+        background-color: lightblue;;
+    }
+    main{
+        display: flex;
+
+        flex-direction: column;
+       /* it means this section grows as much as it can */
+        flex-grow: 1;
+    }
+    @media (max-width: 745px) {
+        .feed {
+            background-color: blueviolet;
+        }
+        .side-ads{
+            order: -1;
+        }
+        main{
+            width: 80%;
+            flex-direction: row;
+            margin: 0 auto;
+        }
+        aside{
+            flex: 0 0 20%;
+        }
+    }
+
+</style>
