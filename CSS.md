@@ -19,7 +19,43 @@ flex: grow shrink basis
 * `align-self`: `center`, `end`, `start`. Each child can be align vertically with axis. Default is row,so it would align each child with it
 
 ### GRID
+
+
+##### GRID Container Properties
+
+* `display`
+* `grid-template-columns: repeat(4, 1fr)`, `grid-template-rows: repeat(3, 1fr)`:  repeat means devide all rows to 4 columns and 3 rows, if no repeat it does only first row, column. Then in child you can tell which item how should stay
+*  `1fr 1fr` means two columns or rows with fractional unit
+
+* `grid-template-areas`: works for visualize people, you can tell by name of each area, as `grid-template-areas: "seebird seebird seebird" ". . . oct" ` first line is one seebird which takes 3 columns in one row, and next line is 3 empty space and one octapos. It is great way to say how each part we want to fill the space
+* `grid-auto-columns`,`grid-auto-rows`: It creates rows and columns if needed 
+* `grid gap`: rowgap columngap 
+* `align items | and justify items -`: need each its to be align with vertical axis or hcontent |`: if all items in containers are less than what needs to fill container, then it tells how to justify contents from top to down or center
+* `grid-auto-flow` column or row, this specifies the flow direction of grid items
+
+##### GRID Item Properties
+* `grid-column-start`, `grid-column-end`, `grid-row-start`,
+  `grid-row-end`
+* `grid-column: 2 / 4` starts from 2 ends at 4
+* `grid-column: 3 / span 2`: means starts from column 3 and span only 2 columns if available
+* `grid-column`: grid-column: 1/-1 : means start from row one to the last column
 * 
+* `grid-area`
+* `justify-self`: within a cell justify in - axis. This is for indivduals, we can do the same from parents for all using ` justify-items: center;`
+* `align-self` within a cell justify with | axis, same the parent one is `align-items`
+
+### Functions
+
+* `repeat(1fr, 1fr, 200px)` this function allows to  repeat one thing serveral times
+  * `grid-template-column: repeat(1fr, 1fr, 200px) 100px`this one created grids only first row has a 100px extra grid
+
+* `repeat(2, minmax(200px, 1fr))` : means keep 2 columns/rows, and never become smaller than 200, it means it can overlay if browser become smaller than 200px. 1fr means always keep one fraction of the grid
+
+#### autofit (no need to media anymore)
+
+* `repeat(autofit, minmax(200px, 1fr))`: this one dynamically add columns if there is space, it remove columns when each item has less than 200px width. so it is totally responsive. `autofill` doesn't fit to the whole row, and you can see empty space
+* 
+
 
 
 
