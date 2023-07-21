@@ -65,7 +65,7 @@ reverseBtn.addEventListener("click", function() {
 * Corss Axis is perpendicular to Main axis and just like main axis, cross axis has cross start and cross end ( top and below of the height of container)
 ## Flex
 * One container embrace all div inside it so we define two class as
-```style
+```javascript
 <style>
 .flex-container{
  display: flex; // remove it and try without it to see differences 
