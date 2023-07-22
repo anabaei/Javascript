@@ -16,8 +16,18 @@ npx webpack ./script.js
 npx webpack help --watch
 npx webpack version
 npx webpack configtest // to test config
-npx webpack init // to start create webpack config
+npx webpack init // to start create webpack config it creates alot of advanced objects which we may never use, so it is better manually create
 npx webpack serve // allows us to launch webpack development server 
 npx webpack --watch // it is like nodemon
 
 ```
+* webpack has a lot of options
+
+#### Base Config
+* webpack.config.js is the file we create
+```
+module.exports ={
+
+}
+```
+* `devtool` telling how the created file should be, `inline-source-map` is same as original and another `inline-cheap-source-map` is transformed
