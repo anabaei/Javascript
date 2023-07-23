@@ -6,7 +6,7 @@ function log(message){
 
 function addToCart(item){
     cart.push(item)
-    log("added ", item)
+    log("added some new", item)
 } 
 
 function removeFromCart(idx){
