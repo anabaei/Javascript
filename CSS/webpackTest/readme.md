@@ -228,4 +228,181 @@ module: {
 ```
 * `style-loader` takes css processed by `css-loader` injects css into javascript build, 
 * then import css into your index.js file, then webpack would know it
+
+#### SASS
+
+* sass loader
+```javascript
+npm i -D css-loader style-loader
+
+module: {
+  rules:[
+    test: /\.sass$/,
+    exclude: /node_modules/,
+    use: ['style-loader', 'css-loader', 'sass-loader'] // we want css loader process first then style loader that is why order is matter
+  ]
+}
+```
+##### Have CSS in seperate file at Dist
+* to have CSS in seperate file in production, 
+```javascript
+npm i -D mini-css-extract-plugin
+
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+plugins: [
+  new MiniCssExtractPlugin()
+]
+// you can pass fileName to give a name to the css file which is created in dist by mini css extract plugin
+```
+* When we use this plugin, we need to replace style-loader because style-loader add css into javascript files in dist, which we don't want it any more so the scss rule changes to 
+```javascript
+module: {
+  rules:[
+    test: /\.sass$/,
+    exclude: /node_modules/,
+    use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'] // we want css loader process first then style loader that is why order is matter
+  ]
+}
+```
+#### polyfills
+* To support old browsers we need to provide modern functionality to older browsers
+#### AutoPrefixer PostCSS
+* Adds browser specific prefixer standards to handle New CSS feature 
+* PostCss is a prerequisite for many css. like autoPrefixer
+* postcss needs to be added at use array as an array
+```javascript
+npm i -D postcss postcss-loader postcss-preset-env
+
+module: {
+  rules:[
+    test: /\.sass$/,
+    exclude: /node_modules/,
+    use: [MiniCssExtractPlugin.loader, 'css-loader', {
+      loader: 'postcss-loader',
+      options: {
+        postcssOptions: {
+          plugins: [
+            [["postcss-preset-env", {}]]
+          ]
+        }
+      }
+    },'sass-loader'] // we want css loader process first then style loader that is why order is matter
+  ]
+}
+```
+#### Images & Fonts
+* To have images or other assets inside built, we can copy assets directory and past it into build. There is a plugin for that
+```javascript
+// this plugin make copies during the build
+npm i -D copy-webpack-plugin
+
+const CopyPlugin = require('copy-webpack-plugin')
+// it creates images folder in dist and copy everything from image folder in it
+plugins: [
+  new CopyPlugin({
+    patterns: [{
+      from: './src/image', to: 'images'
+    }]
+  })
+]
+```
+* Assets Modules
+* `source` takes content of the file and tranlate it to string
+* `resource` copies files one by one and do improvement if needed
+* `inline` combine multiple files togather and allow us to improve performance
+```javascript
+import msg from './message.txt'
+// below convert 
+console.log(msg)
+
+module: {
+  rules:[
+    test: /\.txt$/,
+    type: "asset/source",
+// we want css loader process first then style loader that is why order is matter
+  ]
+}
+```
+* `images`in order to have images in built, first need to add below rule, then when webpack process index.html, if there where import images knows how to process them and create them into build
+* 
+```javascript
+module: {
+  rules:[
+    test: /\.(png|svg|jpeg)$/i,
+    type: "asset/resource",
+    // generate images inside image directory with the same name and extenstions then from index.html it knows where to get images and name won't change
+    generator: {
+      filename: "images/[name][ext]"
+    }
+// we want css loader process first then style loader that is why order is matter
+  ]
+}
+```
+* The path to images could be varied in html and build folder
+* `Html loader` is smart enough to recognize cdn from local resources assets.  
+```javascript
+module: {
+  rules:[
+    test: /\.html$/,
+    exclude: /node_modules/,
+    use: "html-loader"
+  ]
+}
+```
+* also we can have generator with hash and webpack totally understand it
+```javascript
+  generator: {
+      filename: "images/[name][ext]"
+    }
+```
+* `inline`  in stead of creating image folder, we can have inline which convert images to code and put it into html file as `test: /\.(png|svg|jpeg)$/i, type: "asset/resource",`
+##### Inline and Copy Assets
+* need to tell everything bigger than a certain size make it assets less than that make it inline
+```javascript
+module: {
+  rules:[
+    test: /\.(png|svg|jpeg)$/i,
+    type: "asset",
+    parser: {
+      dataUrlCondition: {
+        maxSize: 50* 1024 // 50kb
+      }
+    }
+    generator: {
+      filename: "images/[name][ext]"
+    }
+  ]
+}
+```
+##### Analyze Bundle
+* need to analyze bundle
+```javascript
+
+npm i -D webpack-bundle-analyze
+const  BundleAnalyzer = require('webpack-bundle-analyze').BundleAnalyzerPlugin
+
+plugins: [
+  new BundleAnalyzer()
+]
+```
+* Then build
+
+##### Bundle Proxy
+* To make a rest api, we can tell webpack, whenever you see a fetch request inside javascript, with `/api/` prefix, then send result to port 3000 server
+```javascript
+function getFetch(){
+  fetch('/api/users').then((res)=> res.json)
+}
+getFetch();
+
+// 
+add to devtool
+proxy: {
+  "/api":{
+    target: "http://localhost:3000",
+    pathRewrite: "^/api",
+  }
+}
+```
 * 
