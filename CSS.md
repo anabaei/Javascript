@@ -46,7 +46,7 @@ flex: grow shrink basis
 
 ### Functions
 
-* `repeat(1fr, 1fr, 200px)` this function allows to  repeat one thing serveral times
+* `repeat(1fr, 1fr, 200px)` this function allows to  repeat one thing several times
   * `grid-template-column: repeat(1fr, 1fr, 200px) 100px`this one created grids only first row has a 100px extra grid
 
 * `repeat(2, minmax(200px, 1fr))` : means keep 2 columns/rows, and never become smaller than 200, it means it can overlay if browser become smaller than 200px. 1fr means always keep one fraction of the grid
