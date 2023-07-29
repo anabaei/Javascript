@@ -46,6 +46,8 @@ flex: grow shrink basis
 
 ### Functions
 
+* minmax(300px, 1fr) it means it take advantage of keeping the width of the images to 300, when we minimize display and it hits 300 then it needs do something to keep it the min, if we added
+* 
 * `repeat(1fr, 1fr, 200px)` this function allows to  repeat one thing several times
   * `grid-template-column: repeat(1fr, 1fr, 200px) 100px`this one created grids only first row has a 100px extra grid
 
