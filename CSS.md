@@ -18,7 +18,13 @@ flex: grow shrink basis
 ```
 * `align-self`: `center`, `end`, `start`. Each child can be align vertically with axis. Default is row,so it would align each child with it
 
-### GRID
+### GRID Responsive
+
+* `auto-fit` is the trick,below code make responsive 
+```javascript
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+```
+* `auto-fill` doesn't the sketch that we expect
 
 
 ##### GRID Container Properties
@@ -33,6 +39,60 @@ flex: grow shrink basis
 * `align items | and justify items -`: need each its to be align with vertical axis or hcontent |`: if all items in containers are less than what needs to fill container, then it tells how to justify contents from top to down or center
 * `grid-auto-flow` column or row, this specifies the flow direction of grid items
 
+##### Change order of rows, columns
+* In order to change rows when squeezing window just say put sidebar in the 4th row
+```javascript
+@media (max-width:786px){
+  .main{
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+  .sidebar{
+    grid-row: 4;
+  }
+}
+```
+
+##### Sidebar 
+* In this case, there are 3 rows each one has max 70 px and more rows if added is auto
+```javascript
+ grid-template-rows:repeat(3,minmax(70px, 70px)) auto;
+```
+##### minmax Columns
+* show each item with min 300px and become big as possible, devide into as many columns as possible, if shrink it goes to next line
+```javascript
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+```
+* if convert it into 3 then it always has 3 and not going next line
+```javascript
+  grid-template-columns: repeat(3, minmax(300px, 1fr));
+```
+
+#### make full column nth
+* To make it full column 
+```javascript
+.box4{
+  grid-column: 1/-1;
+}
+```
+#### button
+* bootstrap button
+```javascript
+.button{
+  display: flex;
+  padding: .1rem;
+  align-items: center; 
+  justify-content: center;
+  font-size: 12px;
+  max-height: 40px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+```
+
 ##### GRID Item Properties
 * `grid-column-start`, `grid-column-end`, `grid-row-start`,
   `grid-row-end`
@@ -46,7 +106,9 @@ flex: grow shrink basis
 
 ### Functions
 
-* minmax(300px, 1fr) it means it take advantage of keeping the width of the images to 300, when we minimize display and it hits 300 then it needs do something to keep it the min, if we added
+* `repeat(3, 1fr 3fr 1fr)`: function means divide columns into to `3` columns, each column then would have specific size one is 1fr another is 3fr and etc.
+* 
+* `minmax(300px, 1fr)` it means it take advantage of keeping the width of the images to 300, when we minimize display and it hits 300 then it needs do something to keep it the min, if we added
 * 
 * `repeat(1fr, 1fr, 200px)` this function allows to  repeat one thing several times
   * `grid-template-column: repeat(1fr, 1fr, 200px) 100px`this one created grids only first row has a 100px extra grid
