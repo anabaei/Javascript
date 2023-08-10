@@ -15,11 +15,11 @@ Reliability: The broker ensures that messages are delivered reliably to interest
 
 Flexibility: New publishers and subscribers can be added or removed without impacting existing components, simplifying system changes.
 
-Asynchronous Communication: The pub-sub pattern allows for asynchronous communication, where publishers and subscribers operate independently and at their own pace.
+* Asynchronous Communication: The pub-sub pattern allows for asynchronous communication, where publishers and subscribers operate independently and at their own pace.
 
 Examples of popular message brokers and pub-sub systems include Apache Kafka, RabbitMQ, and Google Cloud Pub/Sub. These systems play a crucial role in building scalable and resilient distributed applications by enabling efficient communication and data sharing among various components.
 
-In a pub-sub system, the message broker facilitates communication between publishers and subscribers. Here's how it generally works:
+* In a pub-sub system, the message broker facilitates communication between publishers and subscribers. Here's how it generally works:
 
 #### Service mesh:
 * A service mesh like Istio or Linkerd can also provide a queue system through its built-in load balancing and service discovery features.
