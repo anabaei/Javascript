@@ -275,3 +275,11 @@ v -> {u:e, w:f}
 ```python
 adjacency_list = [[] for _ in range(n)]
 ```
+
+### Two dimension graph
+* A two dimension array is give as a graph find if there is a loop
+* make adjacent hashtable
+* recursively check each node neighbours, if reached to that node then it is loop otherwise no
+```javascript
+
+```
