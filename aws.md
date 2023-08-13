@@ -801,7 +801,8 @@ _________________________________________________________________
 
 * `stage variables`: 
 * `dead letter` 2 times lambda function retries then even it can wait for days to retry again, we can set it as well
-* `Event Driven` event driven architecture uses events to initiate actions. When an event occurs, information publish for other services to consume.  
+* `Event Driven` event driven architecture uses events to initiate actions. When an event occurs, information publish for other services to consume. 
+* Event-driven" refers to a programming or system design paradigm where actions or functionalities are triggered by events or occurrences. Instead of following a linear sequence of steps, the flow of the program or system is determined by the events that happen 
 
 #### Synchronous invocation Lambda
 * When you invoke a function synchronously, Lambda runs the function and waits for a response and expect an immediate response
