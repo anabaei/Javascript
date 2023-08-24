@@ -1,0 +1,240 @@
+
+ <details>
+        <summary> simple CRUD with Node.js</summary>
+
+* VS code -> Run npm start -> run code in debug terminal
+* `body-parser` -> parse body of request 
+* `express-rate-limit` rate limit to track number of req per client
+* `path`, you can join dir and file and it updated it based on unix or windows env
+* `fs` read files 
+* `winston` to manage and output log information, it supports writing files into database, console, remote servers, It has log levels like silly, warn, info, custom formating, handle async logging
+* `jsonwebtoken`: to use jwt.verify() to verify jwt. If need to validate with public key pass that function as params to verify as well 
+* `jwks-rsa` validate token jws using public key
+* `nodemon` monitor tools automatic
+* `mocha` good for node.js so need to use `chai` and `chai-http` to test and `jest` is zero config library good for react.
+```javascript
+curl -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Hello, POST request!"}' \
+  http://localhost:4001
+```
+```javascript
+  const files = fs.readdirSync(dir);
+
+  // Process each file and subdirectory
+  files.forEach((file) => {
+    const filePath = path.join(dir, file);
+    const stats = fs.statSync(filePath);
+```
+* `bodyParser` require to handle json in body
+```javascript
+const express = require('express');
+const bodyParser = require('body-parser')
+
+const app = express()
+app.use(bodyParser.json())
+
+app.post('/', (req, res)=>{
+    const body = req.body 
+    console.log(body)
+    res.send('something')
+})
+
+app.get('/json', (req, res)=>{
+    const jsonData = {message: 'newmmessage'}
+    res.json(jsonData.message)
+})
+
+app.listen(4001, ()=>{
+    console.log("running")
+})
+```
+* Put updateds entire resource or replace  but patch updates only certain amount of the data
+* At put if a field is not added into request it will updated it as null or default value
+* 
+
+ </details>
+
+ <details>
+        <summary>  EventEmitter</summary>
+
+* To implement event emiiter, need to create a class to extend the EventEmitter  class in node, define event handler using `on` and then create an event using `emit` 
+```javascript
+const express = require('express');
+const EventEmitter = require('events');
+
+const app = express();
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+
+myEmitter.on('customEvent', (message) => {
+  console.log(`Received message: ${message}`);
+});
+
+app.get('/', (req, res) => {
+  myEmitter.emit('customEvent', 'Hello from the server!');
+  res.send('Event emitted from the server.');
+});
+
+const PORT = 4001;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+</details>
+
+ <details>
+        <summary>  Simple Server with/no express</summary>
+
+* Without express 
+```javascript
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  if (req.url === '/') {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Hello, Node.js HTTP server!');
+  } else {
+    res.writeHead(404, { 'Content-Type': 'text/plain' });
+    res.end('Not Found');
+  }
+});
+
+const PORT = 3000;
+server.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+
+```
+* with express
+```javascript
+const express = require('express');
+
+const app = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello, Node.js Express server!');
+});
+
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server is listening on port ${PORT}`);
+});
+```
+ </details>
+
+  <details>
+        <summary>  Cluster Module</summary>
+
+* Cluster modules allows to create multiple instances of application, each instance operates as seperate process but shares same server port
+
+ </details>
+ <details>
+        <summary>  Memory Leak</summary>
+
+* If you 
+</details>   
+ <details>
+        <summary>  TypeScript</summary>
+
+* at params in function define type
+* next to variable type 
+* before opening funciton braces add type 
+* define interface or type to have type of objects, interfaces are using for objects and type are more for custom ones. 
+*  
+</details>    
+ <details>
+        <summary>  Monitoring Node</summary>
+
+* datadog allows to app monitoring, set alerts and realtime metrics
+* prometheus: 
+* aws cloud watch
+* ELK: elastic search logstach kibana. It is used to centralize logging and monitoring node.js, elasticsearch stors logs, logstash collects and process logs,and kibana provide visualization
+* 
+```javascript
+ complex and high-performance  solutions in a timely and cost-effective fashion.
+
+experience using Node with Typescript and nest.js on the serverside
+Relational and/or NoSQL databases experience
+
+Some frontend experience is good to have preferably using Angular or React
+Docker and Kubernetes 
+```
+</details> 
+ <details>
+        <summary> Caching </summary>
+
+* Using redis library to cache most frequent requests, 
+
+</details> 
+ <details>
+        <summary> microtasks vs macrotasks </summary>
+
+* Event loop handles async operation using async operation by callbacks, timers and I/O. microtasks(like promises) are in higher priority to executing.
+* 
+</details>
+ <details>
+        <summary> Reads files from directory </summary>
+
+* use `fs` to utilize `readdirSync` and `readdir` to travers directories. 
+```javascript
+const redis = require('redis');
+const client = redis.createClient();
+// Middleware to check cache before processing requests
+const checkCache = (req, res, next) => {
+  const { key } = req.params;
+
+  // Check if data exists in cache
+  client.get(key, (err, data) => {
+    if (err) throw err;
+
+    if (data !== null) {
+      res.send(`Data from cache: ${data}`);
+    } else {
+      next();
+    }
+  });
+};
+// Route to fetch and cache data
+app.get('/data/:key', checkCache, (req, res) => {
+  const { key } = req.params;
+  const data = `Data for key: ${key}`;
+
+  // Store data in cache
+  client.setex(key, 3600, data); // Expires in 1 hour (3600 seconds)
+
+  res.send(`Fetched and cached: ${data}`);
+});
+...
+
+```
+* 
+</details>
+
+ <details>
+        <summary> Partitioning vs Sharding </summary>
+
+* Sharding: is always using for distributed data across dbs based on some criteria like range of ids, range of hash values, or geographical
+* partitioning: is used for optimizng data storage, based on certain columns or range,  is easy no need hash tables and you can distribute data based on locations or users etc... Let's say we partition the "Employees" table by the "Department" column HR IT Sales Marketing, or months of joins
+
+</details>
+
+ <details>
+        <summary> Relational vs NoSql </summary>
+
+* `Relational` organize data into structured tables with rows and columns
+    * Followed fixed schemas
+    * each column has a data type
+    * 
+
+* `NoSQL` 
+    * use various format
+    * offer flexible or schema less data strucutre, 
+    * data save as json or bjosn
+    * better suited for large volumes of data
+    * 
+
+</details>
+
