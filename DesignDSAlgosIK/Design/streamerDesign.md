@@ -71,6 +71,7 @@ Stream processing is application generated data and instantly coming in.
 * `partition` each topic has one or more  partitions for scalability solutions, it has entity which allows to write
 * `consumer` read queues one by one which is called offseting
 * kafka is good for saving huge amount of data on daily like how many clicks on something happened but it is not good for making queries 
+
 ![kafka](https://github.com/anabaei/Javascript/assets/7471619/6407eb85-2cde-4ab7-91f8-3cc799547d11)
 
 # General approach
