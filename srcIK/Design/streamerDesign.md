@@ -73,10 +73,30 @@ Stream processing is application generated data and instantly coming in.
 * kafka is good for saving huge amount of data on daily like how many clicks on something happened but it is not good for making queries 
 
 
+# General approach
+* Ask questions and write functional requirements, in a way you are defining end points 
+* write down non functional requirements, 
+* Always try to draw a simple working first diagrams using microservices to let it work
+* half the rest scale, perfomance, availability 
+### Functional Requirements questions
+* How many users use the dashboard? number of users in total
+* How often metrics emitted? (in case desiging)
+* What is granularity? it means when we query thise data are in what time like in 1 min
+* what is acceptable latency, 1-2 seconds usually is okay for hot data
+* Is there a need to build alerting system, (if time exist)
+
+* Then go with a simple sketch 
+* Agent sent data, or generate data to stateless REST API server,
+* Then server queues data into queues like kafka
+* kafka send data to aggregate into server and save into database and cache (at cache we save garnularity which easily can retrieve from FE)
+* There is a need to look up by keys, Users need a specific cpu, ip data, the best way is using relational db which makes this queries faster
+* 
+* users can retrieve data from REST, rest either get data from cache or database
 
 
 
 
+* Multitendancies: each organization have their own policies, so dedicate infrastructure for each specific customer. One solution is have tenand id for each. But for some small customers we can clud them togather but we have to make sure data are not mix togather.  
 
 
 * create ui to handle 1000/s into queue in kafka, create topic in kafka for each one, use different instances and add sections, then consumer can read those data in order it receievs, we can send updated via socket or server sent event which needs a time interval in the backend 
