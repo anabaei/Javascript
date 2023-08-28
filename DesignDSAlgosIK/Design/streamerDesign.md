@@ -93,7 +93,7 @@ Stream processing is application generated data and instantly coming in.
 * 
 * users can retrieve data from REST, rest either get data from cache or database
 
-![src](<img width="1052" alt="Screenshot 2023-08-27 at 5 52 34 PM" src="https://github.com/anabaei/Javascript/assets/7471619/b3473f14-06f2-445f-8759-18f86d380230">)
+![src]("https://github.com/anabaei/Javascript/assets/7471619/b3473f14-06f2-445f-8759-18f86d380230")
 
 
 
