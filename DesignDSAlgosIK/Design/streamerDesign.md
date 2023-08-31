@@ -163,6 +163,10 @@ ts: of origination of metric
 * user make request with serviceId and we give them all metrics needed
 * user make request with serviceId and time range, it finds them and return 
 
+##### Dashboard
+
+* Dashboard can uses graphql, REST, grpc, settime req,  socket to get updated 
+* Dashboard FE should take care of, life cycle, lb, read and write consistently, storage
 
 * Cardinal data can be costly, cold storage after a specific of time
 
