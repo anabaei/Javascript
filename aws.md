@@ -3,6 +3,12 @@
 
 #### <font color=orange> 4 main Domains for Exam </font>
 
+###### IAM
+* login with16, Ma...!, 
+
+###### skillbuilder
+* aws skillbuulder -> 17, ..
+
 ###### Scope
 
 - Different architectural pattern like event-driven, microservices, choreography, orchestration and fan out. You should code and best error handlers practices.
