@@ -53,7 +53,16 @@ export default Component
  * She got it from [this](https://medium.com/@vigowebs/frequently-asked-react-js-interview-questions-and-answers-36f3dd99f486)
  * Read [this](https://www.codementor.io/blog/5-essential-reactjs-interview-questions-du1084ym1)
  </details>
+  <details>
+     <summary> How to update FE  </summary>
 
+* Live update typically involves using technologies like WebSockets or server-sent events (SSE) to push updates from the server to the client
+* One is setinterval at FE and set fetch data 
+* Also you can use graphql and subscribe to an event 
+* Pusher and Firebase Realtime Databas: it is good for mobile
+* MQTT is a lightweight messaging protocol designed for low-bandwidth, high-latency, or unreliable networks. It's commonly used in IoT 
+
+ </details>
  <details>
      <summary> Start Server Side React SSR NEXT </summary>
  
