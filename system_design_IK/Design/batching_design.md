@@ -80,4 +80,48 @@ Budget
 
 
 
-# Batch System Design 
+### Batch System Design 
+* Problem
+![search](https://private-user-images.githubusercontent.com/7471619/268529264-8e730a7e-95c4-4b3b-9b08-a92853830cbe.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTQ5ODY2MDksIm5iZiI6MTY5NDk4NjMwOSwicGF0aCI6Ii83NDcxNjE5LzI2ODUyOTI2NC04ZTczMGE3ZS05NWM0LTRiM2ItOWIwOC1hOTI4NTM4MzBjYmUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQUlXTkpZQVg0Q1NWRUg1M0ElMkYyMDIzMDkxNyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyMzA5MTdUMjEzMTQ5WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9MzY3YmQxYmU5NmE3Y2M1Njg5ZGMwZGE3Y2Q0ZmY5MTYyM2Y1NWYzNWIwZDdjMzVhY2FmYzc5MjQ5NWVhNDUxNSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.qKMbwQjBdcytttbvMu8TBXxcJUvGQnJ_z87HL5klkaY)
+* From above, the second to last bullet points are the ones which you had to ask interviewer if there weren't mentioned, so here APIs is clarified so only needs to spend `1-2` minutes 
+* Above it asked to design `just one` the search API. so the following questions should be asked. IF there are 10 APIs `don't` ask NFR for each API. 
+  * What would be response time of the API? fast
+  * How manay calls per/seconds? google has 100,000/seconds
+  * Consistently/availability? here is always `available` 
+
+* `Preprosessor` here means web crawlers which has done their jobs. 
+* `static pages` means pages are statics only
+##### NFRs
+* Ask generic NFRs like:
+ * Should the system be `available`?
+ * Should the system be `reliable` ?
+ * Should the system handle `hotstops`? it means if a loft of request call a service and cause perfomance issue. 
+ * Should the system be `Geo` distributed system ? the answer is `no`
+ * Should be secure? yes
+ * Because it is deep dive, so it skip step 2, 3 and dive deep into 4
+### Design building block
+* Compute intensive has two tier: `compute app` and `storage`
+* `App tier` is our web service, 
+* `In memory` compute tier which we create our code here, we don't need cache here since `compute engine` works as cach, 
+* `Hitting storage` takes 5,4 times more in hitting cache, and storage is more expensive to scale, and to protect data storage
+* `reverse index`: index usually is a key to give you document, but reverse index you give document to get which index or id of web is relevant to it. Here in case of term: webId, is called that
+* For example, netflix search:
+```
+Term: sorted List of content Ids
+```
+* `Yel` search
+```
+Term: sorted List of bissiness Ids
+```
+* `Amazon` search
+```
+Term: sorted List of product IDs
+```
+* This is how elastic search save data and do the `search`, elastic search throw whatever garbage is in the term and implement search based on the rest
+* `Data Strucutre`:  save it as `Hash Map`
+* `2:37`
+
+
+* Some brand names 
+![brandnames](https://private-user-images.githubusercontent.com/7471619/268531641-fccd51b2-c24c-421e-b6bb-97cd2c7590cb.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTQ5OTAyOTgsIm5iZiI6MTY5NDk4OTk5OCwicGF0aCI6Ii83NDcxNjE5LzI2ODUzMTY0MS1mY2NkNTFiMi1jMjRjLTQyMWUtYjZiYi05N2NkMmM3NTkwY2IucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQUlXTkpZQVg0Q1NWRUg1M0ElMkYyMDIzMDkxNyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyMzA5MTdUMjIzMzE4WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9YmQ1MzRlYjM5NTg5NzRmM2UxZjg5ZTY0YzRhZTE5Zjg0MTQxNzA0Yzk5ZmRiOWE5NDY1ZTJhN2FhODkyM2I1YiZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.7NxNKxErdfJexZk0hVjPDaAhcqyu1c2E3cqzqRvxQIY)
+* 
