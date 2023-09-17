@@ -64,6 +64,14 @@ like profile and messaging in linkedin
 Budget 
 ![batch](https://private-user-images.githubusercontent.com/7471619/268528304-c68beb7d-9c41-41b2-bffa-50265bc4ecf3.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTQ5ODUwOTQsIm5iZiI6MTY5NDk4NDc5NCwicGF0aCI6Ii83NDcxNjE5LzI2ODUyODMwNC1jNjhiZWI3ZC05YzQxLTQxYjItYmZmYS01MDI2NWJjNGVjZjMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQUlXTkpZQVg0Q1NWRUg1M0ElMkYyMDIzMDkxNyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyMzA5MTdUMjEwNjM0WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ZGMxNDJiMmM1ZTQzNGI1MjI3ZWE2MjhmNDc4NDU0NjkwODE3YmM1ZWYzY2E2YmQ1NzNkYjkyNDNjNDE5MzIwOSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.TN51tE4zvUX49SSP97RUmwelXv4M1FR_D3sqC5JrdWU)
 
+* If it is `Breath Oriented`, if APIs are clear by interviwer then need to spend 2-3 min to clarifing and asking questions, then spend time on bucketizing, umberella architecture then delegate dive deep services
+
+* If it is `Depth Oriented` means only one or two component you need to talk (online reserve), APIs are clear so only spend time 1-2 minutes on  clarifying quesitons, no time on bucketing, no need to umberella and no need to delegate or priotize, because there is only `one main` service. So directly go to `deep dive` technical  
+
+* As a product manager usually expected breath, but as software engineer it is expected depth.
+* 
+
+
 * To eveluate performance we consider 3 parts:
 * `Response Time`: Server Processing time + time spent on network trip to server and back: `300ms` is good, more than `1s` is bad
 * `Availability`:
