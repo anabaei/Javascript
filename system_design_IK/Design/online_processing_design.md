@@ -48,8 +48,9 @@
 * `View a Photo` If you see a photo from viewSrv, it needs to get data from likeSrv and commentSrv then pass it to the client
 * `Post a photo` if you post a photo your friends may not need to see it write a way, so it would first save it into DB then make request to fanout service which provide feeds for your freinds, and save into reverseIndex for `search service`.
 
+* it should take only `2 min`
+
 ![link](https://private-user-images.githubusercontent.com/7471619/268534490-f1d527af-6ac1-497f-9230-3d09b5b88cee.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTEiLCJleHAiOjE2OTQ5OTQ0ODYsIm5iZiI6MTY5NDk5NDE4NiwicGF0aCI6Ii83NDcxNjE5LzI2ODUzNDQ5MC1mMWQ1MjdhZi02YWMxLTQ5N2YtOTIzMC0zZDA5YjViODhjZWUucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQUlXTkpZQVg0Q1NWRUg1M0ElMkYyMDIzMDkxNyUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyMzA5MTdUMjM0MzA2WiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9ODM1MDFlYjA0MDM4OWEwMjBmMWY1YWNhNGEwZmRjYmRiZTI3ODZmMTc3NzE0N2NjZjFiZjE0NDljZmIxYjU5YSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QmYWN0b3JfaWQ9MCZrZXlfaWQ9MCZyZXBvX2lkPTAifQ.QOP_Ncg7amvGfZHl6eYfqKQOX4UXREGtcb0nIQ6QEyI)
 
-* 
-   
+* 1.45 sanjay online
 
