@@ -11,5 +11,5 @@ const words = ['ABCCED', 'SEE', 'ADFS', 'ABCESCFSADEE'];
 
 // word += board[row][col]
 // console.log(words.includes(wordList))
-
+// 
 console.log((words.some(w => w.startsWith(word))))
