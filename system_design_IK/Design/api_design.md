@@ -4,6 +4,8 @@
 * API is specification of possible interactions with an application
   * `External API` (open API):Public API which can be used by any developer
   * `Internal API` is internal communication between modules, 
+
+* What is REST
 #### Examples:
 * `https` example like common way 
 * Objects like what `AWS Python API` provides:
