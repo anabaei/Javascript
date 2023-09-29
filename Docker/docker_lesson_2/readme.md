@@ -12,6 +12,9 @@ environment:
   - runtime_env=env
 env_file:
   - ./.env 
+
+ports:
+ - hostport: containerport
 ``` 
 
 #### Volumes
@@ -30,4 +33,30 @@ volumes:
 * `docker compose down --volumes` it delete the volume
 * If you don't mention a name, the it create a volume by a random name  everytime docker-compose up 
 * 
+
+#### Depends on
+* depends on require when you want a service run before another one, like mysql and web, need to add depends_on: mysqldb then it runs database first in docker compose
+
+
+#### Profile
+* profile key word on each service tell won't run those services unless you specify the name of profile, 
+
+```
+storefornt:
+  build: .
+  ports:
+    - "80:80"
+  depends_on:
+    - database
+  profiles:
+    - store_front_service 
+```
+ * to run above need to run as `docker-compose --profile store_front_service up`
+ * if don't mention then it would be default profile
+ 
+
+
+
+
+
 
