@@ -59,9 +59,28 @@ docker build -t hello-world-node-image4 .
 ```
 * Run the image
 
+```
 docker run -d -p 3001:41 hello-world-node-image4
+```
 
+#### K8 Pods Service
+* Kubernetes pods service allow you to create pods from running containers and lable them for future use
+* K8 pods service is a yml file, has a neme to be addressed by services like load balancers or clusterIPs 
 
+```javascript
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-pod-1
+  labels:
+    app: my-app
+    environment: development
+spec:
+  containers:
+    - name: my-container
+      image: my-image
+```
+* spec: Specifies the specification for the Pod, including the containers to run within the Pod. In this case, it defines a single container named my-container and specifies the Docker image (my-image) to use for that container.
 
 #### Pods
 * Each Pod can have many containers which share same resources
@@ -69,7 +88,10 @@ docker run -d -p 3001:41 hello-world-node-image4
 * you can tell what containers should be in the pod by their name 
 * This yml file which is creating pod by giving it a name and label and tell which containers should work with, is called k8 manifest 
 * Need to run kubectl apply my-pod.yml to create pods
+
+```
 kubectl get pods -> to check the status of pods
+```
 
 ##### K8s flow
 *  Kubernetes Services are 3 primary type: lb, clusterIp, Nodeport

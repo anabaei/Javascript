@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  firstservice:
+    build: 
+      context: ../docker_lesson_1
+      args:
+        - region=us-east-1
+        - alice=0
+    ports:
+      - "1001:41" 
+    environment:
+      - runtime_env=development
+      - anyotherenv=amir
+
