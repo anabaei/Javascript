@@ -1,0 +1,8 @@
+baseUrl: $PRIMARY_SITE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: sfu
+primary: true
+siteGroup: 31de45d0-9166-436f-a65c-d2b45883da94 # sfu
+sortOrder: 1

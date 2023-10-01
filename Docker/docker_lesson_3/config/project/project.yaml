@@ -1,0 +1,22 @@
+dateModified: 1696198001
+email:
+  fromEmail: a@gmail.com
+  fromName: sfu
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    31de45d0-9166-436f-a65c-d2b45883da94: sfu # sfu
+    95bea359-8a92-4046-b8a1-9eb2508fab6f: Common # Common
+    6160af5e-9bf7-4845-893d-0afa4fbdcf66: sfu # sfu
+system:
+  edition: solo
+  live: true
+  name: sfu
+  schemaVersion: 4.5.3.0
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true
