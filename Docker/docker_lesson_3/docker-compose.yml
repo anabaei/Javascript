@@ -15,19 +15,31 @@ services:
       - 8080:8080
    # user: craft
     env_file: .env
-    environment:
-      XDEBUG_CONFIG: client_host=host.docker.internal
+    # environment:
+    #   XDEBUG_CONFIG: client_host=host.docker.internal
     volumes:
       - .:/app
 
   db:
    image: mysql:5.7  # Choose a MySQL version
    restart: always
+   ports:
+     - 3306:3306
    environment:
      MYSQL_ROOT_PASSWORD: password
      MYSQL_DATABASE: craft
      MYSQL_USER: craft
      MYSQL_PASSWORD: craft 
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - '8081:80'  # You can choose any available port on your localhost
+    environment:
+      PMA_HOST: db  # This should match the service name of your MySQL container
+      PMA_USER: craft
+      PMA_PASSWORD: craft
+
 volumes:
   craft:
 
