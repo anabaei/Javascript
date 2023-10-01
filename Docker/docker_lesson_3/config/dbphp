@@ -1,0 +1,11 @@
+return [
+    'driver' => 'mysql',
+    'server' => 'localhost',
+    'port' => '3306',
+    'database' => 'app',
+    'user' => 'mysql',  // Set the user to 'root'
+    'password' => 'pass',
+    'schema' => '',
+    'tablePrefix' => '',
+];
+
