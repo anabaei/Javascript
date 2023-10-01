@@ -1,0 +1,32 @@
+version: '3'
+services:
+  web:
+    image: 'flipbox/php:72-apache'
+    ports:
+      - '80:80'
+    volumes:
+      - './craft:/var/www/html'
+    environment:
+      ServerName: localhost
+      ENVIRONMENT: dev
+      DB_SERVER: localhost
+      DB_USER: root
+      DB_PASSWORD:
+      DB_DATABASE: app
+      XDEBUG_ON: 'yes'
+      XDEBUG_HOST: host.docker.internal
+      XDEBUG_IDEKEY: PHPSTORM
+      APACHE_DOCUMENT_ROOT: /var/www/html/web
+
+    depends_on:
+      - db
+    working_dir: /var/www/html/web
+  db:
+    image: 'mysql:5.7'
+
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_DATABASE: app
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 
+

@@ -1,0 +1,33 @@
+version: '3'
+services:
+  console:
+    image: craftcms/cli:8.0-dev
+    env_file: .env
+    volumes:
+      - .:/app
+    command:
+      - echo
+      - 'It rans and finished'
+  
+  web:
+    image: craftcms/nginx:8.0-dev
+    ports:
+      - 8080:8080
+    user: root
+    env_file: .env
+    environment:
+      XDEBUG_CONFIG: client_host=host.docker.internal
+    volumes:
+      - .:/app
+
+  db:
+   image: mysql:5.7  # Choose a MySQL version
+   restart: always
+   environment:
+     MYSQL_ROOT_PASSWORD: password
+     MYSQL_DATABASE: craft
+     MYSQL_USER: craft
+     MYSQL_PASSWORD: craft 
+volumes:
+  craft:
+
