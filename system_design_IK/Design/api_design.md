@@ -5,7 +5,8 @@
   * `External API` (open API):Public API which can be used by any developer
   * `Internal API` is internal communication between modules, 
 
-* What is REST
+* What is REST: 
+ REST is an architectural style for designing networked applications. It is Client-Server Architecture, Stateless, HTTP Methods 
 #### Examples:
 * `https` example like common way 
 * Objects like what `AWS Python API` provides:
