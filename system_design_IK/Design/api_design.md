@@ -7,6 +7,7 @@
 
 * What is REST: 
  REST is an architectural style for designing networked applications. It is Client-Server Architecture, Stateless, HTTP Methods 
+ * 
 #### Examples:
 * `https` example like common way 
 * Objects like what `AWS Python API` provides:
