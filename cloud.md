@@ -1,5 +1,11 @@
 ## Kubernetes
 
+- K8s are there to handle running containers inside pods
+- k8s services could label pods, which in this way we can grouping pods
+- k8 services with type of load balance can expose pods to external apis
+- also we can define ingress service which not only plays advance lb role but also can work closely with k8 service nodeport to expose pods
+- Before everything, need to define a pods service, which work as docker composer to run containers 
+
 - Kubernetes are orchestering containers which are running instances of applications that are defined in image
 - Registeries use to share container images, a famous registery is `docker` hub. Mayn people think container as docker container
 - `LXC` is linux native container and has been along for long time and docker is based on LXC container
