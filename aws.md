@@ -760,7 +760,7 @@ _________________________________________________________________
   * It scales automatically
   * It provides built-in code monitoring and logging via Amazon CloudWatch. 
 *  Lambda can rapidly launch as many copies of the function as needed to scale to the rate of incoming events.
-* new item to increase liability
+* new item to increase liabilityam
 *  `Define function`, `define event source to invoke function`, `define execution params like memory, timeout and concurrency` 
 *  `Lambda handler` an entry point to process events, Lambda calls it to initiate lambda function
 *  `Event Object` is meta data about the event that initiated lambda function
