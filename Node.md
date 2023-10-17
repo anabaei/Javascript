@@ -251,7 +251,8 @@ app.get('/data/:key', checkCache, (req, res) => {
 * to undo above, `git reset` to unstage everything
 * `git commit` to add into local repo
 * `git reset --soft HEAD^` to undo what you put on to stage
-*  `git reset HARD` to undo all changes 
+*  `git reset HARD` to undo all changes
+*  `git branch -m localv3` to rename current branch
 </details>
 
 
