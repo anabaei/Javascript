@@ -33,6 +33,7 @@ flex: grow shrink basis
 * `grid-template-columns: repeat(4, 1fr)`, `grid-template-rows: repeat(3, 1fr)`:  repeat means devide all rows to 4 columns and 3 rows, if no repeat it does only first row, column. Then in child you can tell which item how should stay
 *  `1fr 1fr` means two columns or rows with fractional unit
 
+#### Grid With Naming
 * `grid-template-areas`: works for visualize people, you can tell by name of each area, as `grid-template-areas: "seebird seebird seebird" ". . . oct" ` first line is one seebird which takes 3 columns in one row, and next line is 3 empty space and one octapos. It is great way to say how each part we want to fill the space
 * `grid-auto-columns`,`grid-auto-rows`: It creates rows and columns if needed 
 * `grid gap`: rowgap columngap 
