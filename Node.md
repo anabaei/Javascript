@@ -244,4 +244,17 @@ app.get('/data/:key', checkCache, (req, res) => {
     * 
 
 </details>
+ <details>
+        <summary> Git </summary>
+
+* `git add` put into staging
+* to undo above, `git reset` to unstage everything
+* `git commit` to add into local repo
+* `git reset --soft HEAD^` to undo what you put on to stage
+*  `git reset HARD` to undo all changes 
+</details>
+
+
+
+
 
