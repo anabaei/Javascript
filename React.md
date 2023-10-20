@@ -7,7 +7,7 @@ csrf vs xss Cross-site Request forgery vs Cross site scripting
 // if react is in bad state to start fresh
 rm -rf .cache dist
 ```
-
+* React as client side rendering tools is not a frameowrkt 
 * React, in its simplest form is a way to write modular, reusable code. A good example of [React](https://medium.com/@gwen_faraday/converting-a-react-app-to-react-native-d7df17968fc6) explanation
  * A good resource for beginner [promises](https://github.com/mattdesl/promise-cookbook)
  * A resource for JavaScript [Algoritms](https://github.com/trekhleb/javascript-algorithms)
