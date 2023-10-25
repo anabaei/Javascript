@@ -4,8 +4,8 @@
 * it build containers 
 * to expose to localhose port, you can mention ports:3001:41, we assume container port 41 is handling requests, so we can see it in localhost:3001
 
-### Docker Run
 
+### Docker Run
 * `Docker run` it runs container, it first check if the image exist locally, it doesn't find the image, it will pull it from Docker Hub then run.
 ```javascript
 docker run hello-world
