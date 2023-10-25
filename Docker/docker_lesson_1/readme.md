@@ -62,7 +62,7 @@ docker build -t hello-world-node-image4 .
 ```javascript
 docker run -d -p 3001:41 hello-world-node-image4
 ```
-#### 
+#### Run Commands inside Container when Run Container
 * `Docker run` it runs container
 * `--rm` it container remove when container stop working, good for cleaning up containers
 * `-v $(pwd):/app` this option indicate of volume mount, it maps current directory `$(pwd)` on host machine to `/app` directory within container
