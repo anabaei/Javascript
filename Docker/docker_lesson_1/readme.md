@@ -12,7 +12,27 @@ docker run hello-world
 ```
 
 
-### Dockerfile
+### Dockerfile Hello World
+
+```
+# Use the official "Hello World" image as the base image
+FROM hello-world
+
+# Set an environment variable (replace with your desired value)
+ENV MY_VARIABLE=my-value
+
+# Set proxy environment variables if needed
+# Example: HTTP and HTTPS proxy
+ENV http_proxy=http://your-proxy-server:port
+ENV https_proxy=http://your-proxy-server:port
+
+# Optionally, set no proxy for certain addresses or domains
+# ENV no_proxy=host1,host2,domain.com
+
+# Command to run the container (same as the base image)
+CMD ["./hello"]
+```
+
 * on top mention if there is a base image
 * tell where is a workdir in container
 ```
@@ -20,6 +40,8 @@ WORKDIR /app
 Copy app.js /app/app3.js
 Expose 41
 ```
+### Dockerfile Second Example
+
 * copy all files you think are require to container to run
 * Expose port 41 of container to the host 
 ```
