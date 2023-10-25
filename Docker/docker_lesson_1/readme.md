@@ -123,11 +123,9 @@ WORKDIR /app
 # Copy the current directory into the container
 COPY . /app
 
-# Set the user to the same user as the host
-RUN useradd -u 1000 -g 1000 user
 
-# Switch to the user
-USER user
+# Switch to the user, this user is known for almost all linux env
+USER www-data
 
 # Run the composer install command
 CMD ["composer", "install"]
