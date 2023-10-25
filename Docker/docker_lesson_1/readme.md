@@ -65,7 +65,7 @@ docker run -d -p 3001:41 hello-world-node-image4
 
 #### Run Commands inside Container when Run Container
 
-* `Docker run` it runs container
+* `Docker run` it runs container, it first check if the image exist locally, it doesn't find the image, it will pull it from Docker Hub then run.
 * `--rm` it container remove when container stop working, good for cleaning up containers
 * `-v $(pwd):/app` this option indicate of volume mount, it maps current directory `$(pwd)` on host machine to `/app` directory within container
 * To aoid permission issues when creating/modifying files inside container, sets userId and groupd Id. `--user $(id -u):$(id -g)` Here it matches from the host to the container
