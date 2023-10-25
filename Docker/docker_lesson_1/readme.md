@@ -4,6 +4,14 @@
 * it build containers 
 * to expose to localhose port, you can mention ports:3001:41, we assume container port 41 is handling requests, so we can see it in localhost:3001
 
+### Docker Run
+
+* `Docker run` it runs container, it first check if the image exist locally, it doesn't find the image, it will pull it from Docker Hub then run.
+```javascript
+docker run hello-world
+```
+
+
 ### Dockerfile
 * on top mention if there is a base image
 * tell where is a workdir in container
@@ -63,19 +71,18 @@ docker build -t hello-world-node-image4 .
 docker run -d -p 3001:41 hello-world-node-image4
 ```
 
-#### Run Commands inside Container when Run Container
+#### Commands inside Container when Run Container
 
-* `Docker run` it runs container, it first check if the image exist locally, it doesn't find the image, it will pull it from Docker Hub then run.
+* First use run to pull/run the contianer
+```javascript
+docker run --rm -v $(pwd):/app --user $(id -u):$(id -g) eyesore/composer install
+```
 * `--rm` it container remove when container stop working, good for cleaning up containers
 * `-v $(pwd):/app` this option indicate of volume mount, it maps current directory `$(pwd)` on host machine to `/app` directory within container
 * To aoid permission issues when creating/modifying files inside container, sets userId and groupd Id. `--user $(id -u):$(id -g)` Here it matches from the host to the container
 * `eyesore/composer` this is the name of docker image to run
 * `install1` this is the command that you want to run inside container
   
-```javascript
-docker run --rm -v $(pwd):/app --user $(id -u):$(id -g) eyesore/composer install
-```
-
 
 #### K8 Pods Service
 * Kubernetes pods service allow you to create pods from running containers and lable them for future use
