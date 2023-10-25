@@ -124,8 +124,8 @@ WORKDIR /app
 COPY . /app
 
 
-# Switch to the user, this user is known for almost all linux env
-USER www-data
+# Switch to the user, this user is known for almost all linux env, it is not always needed to create user in containers
+#USER www-data
 
 # Run the composer install command
 CMD ["composer", "install"]
