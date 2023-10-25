@@ -107,6 +107,36 @@ docker run --rm -v $(pwd):/app --user $(id -u):$(id -g) eyesore/composer install
 * To aoid permission issues when creating/modifying files inside container, sets userId and groupd Id. `--user $(id -u):$(id -g)` Here it matches from the host to the container
 * `eyesore/composer` this is the name of docker image to run
 * `install1` this is the command that you want to run inside container
+* If you want to rewrite above command into a dockerfile it would be like below
+```
+# Use the official PHP image as the base image
+FROM php:7.4-cli
+
+# Install required packages
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends git zip unzip && \
+    apt-get clean
+
+# Set the working directory
+WORKDIR /app
+
+# Copy the current directory into the container
+COPY . /app
+
+# Set the user to the same user as the host
+RUN useradd -u 1000 -g 1000 user
+
+# Switch to the user
+USER user
+
+# Run the composer install command
+CMD ["composer", "install"]
+```
+* Then run these two commands to build and run container
+```
+docker build -t my-composer-container .
+docker run --rm -v $(pwd):/app my-composer-container
+```
   
 
 #### K8 Pods Service
