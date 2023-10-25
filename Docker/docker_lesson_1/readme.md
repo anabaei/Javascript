@@ -14,6 +14,8 @@ docker run hello-world
 
 ### Dockerfile Hello World
 
+* Add http proxy, on docker file.
+* 
 ```
 # Use the official "Hello World" image as the base image
 FROM hello-world
@@ -33,6 +35,9 @@ ENV https_proxy=http://your-proxy-server:port
 CMD ["./hello"]
 ```
 
+
+### Dockerfile Second Example
+
 * on top mention if there is a base image
 * tell where is a workdir in container
 ```
@@ -40,8 +45,6 @@ WORKDIR /app
 Copy app.js /app/app3.js
 Expose 41
 ```
-### Dockerfile Second Example
-
 * copy all files you think are require to container to run
 * Expose port 41 of container to the host 
 ```
