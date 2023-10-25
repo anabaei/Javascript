@@ -54,14 +54,26 @@ server.listen(80, '0.0.0.0', () => {\n\
 ```
 #### Manually build and run image 
 * Build image 
-```
+```javascript
 docker build -t hello-world-node-image4 . 
 ```
 * Run the image
 
-```
+```javascript
 docker run -d -p 3001:41 hello-world-node-image4
 ```
+#### 
+* `Docker run` it runs container
+* `--rm` it container remove when container stop working, good for cleaning up containers
+* `-v $(pwd):/app` this option indicate of volume mount, it maps current directory `$(pwd)` on host machine to `/app` directory within container
+* To aoid permission issues when creating/modifying files inside container, sets userId and groupd Id. `--user $(id -u):$(id -g)` Here it matches from the host to the container
+* `eyesore/composer` this is the name of docker image to run
+* `install1` this is the command that you want to run inside container
+  
+```javascript
+docker run --rm -v $(pwd):/app --user $(id -u):$(id -g) eyesore/composer install
+```
+
 
 #### K8 Pods Service
 * Kubernetes pods service allow you to create pods from running containers and lable them for future use
