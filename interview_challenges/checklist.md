@@ -2,6 +2,7 @@
 # Checklist
 
 1- Sorting
+2- arrays 
 2- Trees
 3- Graphs
 3.5 - Dynamic programming
@@ -109,7 +110,7 @@ space: O(1)
 4+6/2 = 5, 4 + 6-4/2 = 5 
 
 merge sort 
-
+```javascript
 helper_merge(arr, start, end)
    
    if(arr.length<2)
@@ -159,6 +160,14 @@ qs(arr)
  
   helper_qs(arr, 0,arr.length)
 }
+```
+## Sample Questions
 
+### Array Manipulation
+<details> 
+  <summary> Move Zeros to Center </summary>
+
+
+</details>
 
 
