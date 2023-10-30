@@ -164,10 +164,78 @@ qs(arr)
 ## Sample Questions
 
 ### Array Manipulation
+
 <details> 
   <summary> Move Zeros to Center </summary>
 
+* Traverse array `[0, 2, 3, 0, 0, 4, 5, 0, 6]`, 
+* Find zeros length `const zeroCount = arr.filter(item => item===0 ).length;`
+* Create result array, define zeros left, then traverse via array push to result and finally add zeros to right
+* Time and space complexity is O(n).
+* To improve using O(1) spaces, we can use two pointers, 
+* `i` check index, if not equal to zero in leftzeros or right zeros zone, move `j` to right and swap with the first `0` occurance,
+* if it is in after leftzone index, then swap with the last index and decrease `j` by one
 
 </details>
+
+<details> 
+  <summary> Find all the words in any direction in 2d array, varicent </summary>
+
+* 
+
+</details>
+
+
+
+<details>
+   <summary> Move zeros to center in 2d array, varicent</summary>
+
+* Travers trough each row, col by col, if zero is not in the eachside zeros, then put zero there
+* 
+</details>
+
+<details>
+   <summary> Given a an array of objects find all possible ways they connect each other, aws</summary>
+
+* 
+
+</details>
+
+
+<details>
+   <summary> Given an array of monyes with values, give us change with biggest moneys </summary>
+
+* 
+</details>
+
+
+#### System
+
+<details>
+   <summary> Design a waiting room, aws</summary>
+
+</details>
+<details>
+   <summary> Design an app to show current location of cars </summary>
+
+</details>
+
+<details>
+   <summary> Design an live camera detector</summary>
+
+</details>
+
+#### FE
+
+<details>
+   <summary> Design a todo with modules which can inheritate from each other state using context</summary>
+
+</details>
+
+<details>
+   <summary> Design a list to retrieve from third pary and sort them b ased on name, date</summary>
+
+</details>
+
 
 
