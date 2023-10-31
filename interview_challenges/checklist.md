@@ -163,6 +163,26 @@ qs(arr)
 ```
 ## Sample Questions
 
+### FullStack 
+
+<details> 
+  <summary> Given a webpage, create accordions and sort lists amz </summary>
+
+</details>
+<details> 
+  <summary> Create Sort list based on the types, wmo </summary>
+
+</details>
+<details> 
+  <summary> Calculate average speed of two cars in specific time, wmo </summary>
+
+</details>
+<details> 
+  <summary> Rewrite select className but selecting items using classList, children element, class list combination  zlt</summary>
+
+</details>
+
+
 ### Array Manipulation
 
 <details> 
@@ -185,6 +205,30 @@ qs(arr)
 
 </details>
 
+<details> 
+  <summary> 3sum </summary>
+
+* 3 pointers one current, another travers from right end, another travers after i
+* Since it is sorted so we know when we should move which,
+* if left+right+ current > target => move right poiner to left, if bigger move left pointer to right
+* do while left < right
+* Need to sort input as 
+```
+arr.sort((a,b)=> a-b))
+```
+
+
+</details>
+
+<details>
+   <summary> TickTakToe</summary>
+
+* create 3*3 
+* input receive position with X:O
+* checkfunction:
+* There are 8 possible solutions, so 
+
+</details>
 
 
 <details>
