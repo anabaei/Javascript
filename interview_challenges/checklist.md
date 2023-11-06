@@ -199,6 +199,115 @@ qs(arr)
 </details>
 
 <details> 
+  <summary> Given numbers i,j, k ibm</summary>
+
+create a function to provide below question
+
+
+given three integers, i, j and k, a sequence sum to be value of i + (i+1) + (i+2) + (i+3) ... + j + (j-1) + (j-2) + (j-3) + .... + k(increment from i until it equals j, then decrement from j until it equals to k. 
+
+
+example
+I = 5, j =9, k=6 sum all values from I to j and k back to K: 5+6+7+8+9+8+7+6 = 56
+complete the function getSequeneceSum 
+
+I= 0, j = 5, k =-1  expected output should be 24
+
+</details>
+<details> 
+  <summary> Convert Integers to Roman Values </summary>
+
+*  write a function to get an integer convert to roman equivalent 
+```
+example numbers = [1,49,23]  output ["I", xlix, 'xxiii']
+
+xl.    1.   I. 40
+l.     2  II  50
+xc 3  III 90
+c  4 IV 100
+cd 5 V 400
+d 6 VI 500
+cm 7 VII 900
+m 8 VIII 1000 
+9 IX
+10 X
+
+```
+* Solutions
+```javascript
+"use strict";
+
+function intToRoman(num) {
+  const romanNumerals = [
+    { value: 1000, numeral: "M" },
+    { value: 900, numeral: "CM" },
+    { value: 500, numeral: "D" },
+    { value: 400, numeral: "CD" },
+    { value: 100, numeral: "C" },
+    { value: 90, numeral: "XC" },
+    { value: 50, numeral: "L" },
+    { value: 40, numeral: "XL" },
+    { value: 10, numeral: "X" },
+    { value: 9, numeral: "IX" },
+    { value: 5, numeral: "V" },
+    { value: 4, numeral: "IV" },
+    { value: 1, numeral: "I" },
+  ];
+
+  let result = "";
+  for (const numeral of romanNumerals) {
+    while (num >= numeral.value) {
+      result += numeral.numeral;
+      num -= numeral.value;
+    }
+  }
+
+  return result;
+}
+
+// Example usage:
+const numbers = [1, 49, 23];
+const romanNumerals = numbers.map(intToRoman);
+console.log(romanNumerals); // Output: ['I', 'XLIX', 'XXIII']
+
+```
+
+</details>
+
+
+<details> 
+  <summary> Convert selectByClass,  big companies </summary>
+
+* Write a function to replace selectByClass, imagine classes could be a combination of two or more words
+* Here is an example of body
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Body with a Div</title>
+    <style>
+        /* Example CSS for styling the div */
+        .my-div {
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-div">
+        <h1>Welcome to My Web Page</h1>
+        <p>This is a sample HTML body with a div element.</p>
+    </div>
+</body>
+</html>
+```
+* Rewrite functions to read body, select classes using classLists, not select byClass or other tools.
+
+
+</details>
+
+<details> 
   <summary> Find all the words in any direction in 2d array, varicent </summary>
 
 * 
