@@ -275,7 +275,37 @@ console.log(romanNumerals); // Output: ['I', 'XLIX', 'XXIII']
 </details>
 
 
+<details> 
+  <summary> Convert selectByClass,  big companies </summary>
 
+* Write a function to replace selectByClass, imagine classes could be a combination of two or more words
+* Here is an example of body
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTML Body with a Div</title>
+    <style>
+        /* Example CSS for styling the div */
+        .my-div {
+            background-color: lightblue;
+            padding: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="my-div">
+        <h1>Welcome to My Web Page</h1>
+        <p>This is a sample HTML body with a div element.</p>
+    </div>
+</body>
+</html>
+```
+* Rewrite functions to read body, select classes using classLists, not select byClass or other tools.
+
+
+</details>
 
 <details> 
   <summary> Find all the words in any direction in 2d array, varicent </summary>
