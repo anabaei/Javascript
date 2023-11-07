@@ -35,6 +35,49 @@ ENV https_proxy=http://your-proxy-server:port
 CMD ["./hello"]
 ```
 
+### Dockerfile first example
+
+* A docker-compose to run a dockerfile to execture simple sh command
+* At Dockerfile define command, using nginx which is common to create we server
+```javascript
+# Use the official NGINX image as the base
+FROM nginx:latest
+
+# Copy your custom shell script into the container
+COPY run.sh /usr/share/nginx/
+
+# Make your shell script executable (if needed)
+RUN chmod +x /usr/share/nginx/run.sh
+
+# Set the shell script as the entry point
+ENTRYPOINT ["/usr/share/nginx/run.sh"]
+```
+* Then create run.sh file at the same folder as
+```
+#!/bin/sh
+
+# Navigate to the application directory
+#cd /app
+ls
+
+# Install any application dependencies (if needed)
+mkdir ali
+ls
+```
+* Then build image and then run it to make sure works
+```
+docker build -t testrunimage .
+docker run -it testrunimage
+```
+* Then add it to docker-compose as
+```docker-compose.yml
+version: '3'
+services:
+  myapp:
+    image: testrunimage:latest
+```
+
+
 
 ### Dockerfile Second Example
 
