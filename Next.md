@@ -262,6 +262,7 @@ process.env.HELP_APP_URL
 * Go to folder and create a folder `api`  create index.js as
 * Everything in api folder never render to browser or client side, so is would be safe
 ```javascript
+// more context to add
 export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
