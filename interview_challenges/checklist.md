@@ -423,7 +423,10 @@ deleteNode(b);
 * Also another problem is we just replace node b with a new value, if in some cases there are other pointers to this node which expect to have the old value then it would be issue
 * the node c would be a dangling node then sence no node reach it out again (we basically duplicate it)
 
+##### Complexity
 
+* O(1) time and O(1) space
+* In-place operations like this can save time and/or space, but they're risky and can cause other parts of the surrounding system to break.
 </details>
 
 #### FE
