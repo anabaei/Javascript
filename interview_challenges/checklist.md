@@ -378,6 +378,54 @@ arr.sort((a,b)=> a-b))
 
 </details>
 
+#### Linked List
+
+<details>
+    <summary>
+    Delete a node
+    </summary>
+
+* Delete a node
+```javascript
+  class LinkedListNode {
+  constructor(value) {
+    this.value = value;
+    this.next = null;
+  }
+}
+
+  function  deleteNode(b){
+  
+    const nextnode = b.next;
+    if(nextnode.value){
+        b.value = nextnode.value;
+        b.next = nextnode.next;
+      
+    }
+    else(
+      console.log('cant delete node which is the last one with this technique')
+    )
+   
+} 
+
+const a = new LinkedListNode('A');
+const b = new LinkedListNode('B');
+const c = new LinkedListNode('C');
+
+a.next = b;
+b.next = c;
+
+deleteNode(b);
+```
+
+* Need to traverse via linkedlist, keep one pointer behind the current, find the value, from poiner b, changed the next value to the next value of pointer a
+* `Better Solution` Take the next node value and next and put it into the current node you want to delete. (we can't delete the last node with this technique), but we can create a null node and replace it in this case
+* Also another problem is we just replace node b with a new value, if in some cases there are other pointers to this node which expect to have the old value then it would be issue
+* the node c would be a dangling node then sence no node reach it out again (we basically duplicate it)
+
+
+</details>
+
 #### FE
 
 <details>
@@ -389,6 +437,8 @@ arr.sort((a,b)=> a-b))
    <summary> Design a list to retrieve from third pary and sort them b ased on name, date</summary>
 
 </details>
+
+
 
 
 
