@@ -332,6 +332,25 @@ arr.sort((a,b)=> a-b))
 <details>
    <summary> TickTakToe</summary>
 
+* There are unlimite of cakeTypes, make most of profit based on their values while considering you only have limited capacity
+```javascript
+const cakeTypes = [
+  { weight: 7, value: 160 },
+  { weight: 3, value: 90 },
+  { weight: 2, value: 15 },
+];
+
+const capacity = 20;
+
+maxDuffelBagValue(cakeTypes, capacity);
+// Returns 555 (6 of the middle type of cake and 1 of the last type of cake)
+```
+
+</details>
+
+<details>
+   <summary> TickTakToe</summary>
+
 * create 3*3 
 * input receive position with X:O
 * checkfunction:
@@ -423,7 +442,10 @@ deleteNode(b);
 * Also another problem is we just replace node b with a new value, if in some cases there are other pointers to this node which expect to have the old value then it would be issue
 * the node c would be a dangling node then sence no node reach it out again (we basically duplicate it)
 
+##### Complexity
 
+* O(1) time and O(1) space
+* In-place operations like this can save time and/or space, but they're risky and can cause other parts of the surrounding system to break.
 </details>
 
 #### FE
