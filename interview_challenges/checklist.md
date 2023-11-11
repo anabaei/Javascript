@@ -332,6 +332,25 @@ arr.sort((a,b)=> a-b))
 <details>
    <summary> TickTakToe</summary>
 
+* There are unlimite of cakeTypes, make most of profit based on their values while considering you only have limited capacity
+```javascript
+const cakeTypes = [
+  { weight: 7, value: 160 },
+  { weight: 3, value: 90 },
+  { weight: 2, value: 15 },
+];
+
+const capacity = 20;
+
+maxDuffelBagValue(cakeTypes, capacity);
+// Returns 555 (6 of the middle type of cake and 1 of the last type of cake)
+```
+
+</details>
+
+<details>
+   <summary> TickTakToe</summary>
+
 * create 3*3 
 * input receive position with X:O
 * checkfunction:

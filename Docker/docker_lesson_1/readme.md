@@ -1,3 +1,4 @@
+
 ### Docker-compose
 * Under services define any name to name containers
 * Under each service either it wants to build a container from a new image, so need to say build: and tell where dockerfile can be find, or it is already built in image and tell image: mysql like image name
@@ -193,4 +194,8 @@ spec:
 * ClusterIp: is default which allows internal IP address, that allows comunication between pods inside cluster
 * LoadBalancer: exposes k8 service externally, which communicate with client external LB. If you run it on premise it works as nodeport and a port is open now, then you need to use any of the node's IP addresses along with the allocated NodePort
 * NodePort: 
+
+### RED HAT Cache
+
+* At /var/www/html you can add cache script
 
