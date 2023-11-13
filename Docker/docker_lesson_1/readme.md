@@ -195,6 +195,8 @@ spec:
 * LoadBalancer: exposes k8 service externally, which communicate with client external LB. If you run it on premise it works as nodeport and a port is open now, then you need to use any of the node's IP addresses along with the allocated NodePort
 * NodePort: 
 
+* There are new changes
+
 ### RED HAT Cache
 
 * At /var/www/html you can add cache script
