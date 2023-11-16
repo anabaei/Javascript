@@ -451,14 +451,34 @@ deleteNode(b);
 #### FE
 
 <details>
-   <summary> Design a todo with modules which can inheritate from each other state using context</summary>
+   <summary>stup Design a todo with modules which can inheritate from each other state using context</summary>
 
 </details>
 
 <details>
-   <summary> Design a list to retrieve from third pary and sort them b ased on name, date</summary>
+   <summary>waymo Design a list to retrieve from third party and sort them b ased on name, date using REACT</summary>
 
 </details>
+
+<details>
+   <summary>amz Create Accordions using only html, javascript</summary>
+
+</details>
+
+<details>
+   <summary>amz Create a form, to submit infos, save them into an object, order them and display only html, javascript</summary>
+
+</details>
+
+<details>
+   <summary>ibm, convert a selectbyclass using classlist, when class is two or three words javascript</summary>
+
+</details>
+<details>
+   <summary>ibm, convert a an array of digits to roman numbers javascript</summary>
+
+</details>
+
 
 
 
