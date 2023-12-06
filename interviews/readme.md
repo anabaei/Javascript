@@ -11,7 +11,7 @@
 
 
 ## Item Exist in Array, indexof, Hashtable values, Set
-* Check if item exist in an  `array`
+* Check if item exist in an  `Hashtable`, `Array`, `Set`, find `index`, `values`
 ```javascript
 // Hashtable
 const myHashTable = {'apple': 'red','banana': 'yellow','orange': 'orange'};
