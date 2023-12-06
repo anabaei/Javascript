@@ -10,7 +10,47 @@
 5- React
 
 
+## Item Exist in Array, indexof, Hashtable values, Set
+* Check if item exist in an  `array`
+```javascript
+// Hashtable
+const myHashTable = {'apple': 'red','banana': 'yellow','orange': 'orange'};
+// Checking if a key exists using the in operator
+const hasApple = 'apple' in myHashTable; // true
+// Checking if 'red' values exists in the hash table
+const valuesArray = Object.values(myHashTable);
+const hasRed = valuesArray.includes('red'); //true
 
+// Array
+myArray.includes(item)
+myArray.indexOf(item) // give me index
+
+// Set
+const fruitSet = new Set(['apple', 'banana', 'orange']);
+fruitSet.has('apple'); // true
+```
+## Stack and Queue
+* Use `push(item)` and `pop()` makes array `Stack`
+* Use `push(item)` and `shift()` makes array to `queue`
+
+
+## Travers Arrays, Hashtable  Set
+* Hashtables and sets use `in` but arrays can use `in` which returns index and `of` which returns the actual item
+
+## Reducer
+* Convert Array to Object 
+```javascript
+const myArray = ['apple', 'banana', 'orange'];
+
+// Using reduce to convert array to an object
+const myObject = myArray.reduce((obj, item, index) => {
+  obj[index] = item;
+  return obj;
+}, {});
+
+console.log(myObject);
+// Output: { '0': 'apple', '1': 'banana', '2': 'orange' }
+```
 
 
 ### Sorting 
