@@ -1,5 +1,5 @@
 
--details- 
+<details> 
   <summary>  Steps to take In System Design </summary> 
 
 1- Gather functional requirements
@@ -41,14 +41,27 @@
     * 
 </details> 
 
--details- 
-  <summary>  Design a shortend url </summary> 
+<details> 
+  <summary>  Design a shortend url (bitly) </summary> 
 
 * Need to define two function requirements
   * Encode the current url
   * Decode the upcomping url and redirect to actual one
 * To Encode we can have:
-  * Predicted urls like below to convert to base64 any upcoming element:
+  * Predicted urls like below to convert to base64 any upcoming
+  
+* How to convert from base 10 to base 64.
+  * If it is character, convert to ASCII code, for example, 
+
+```javascript
+ // A -> base64
+ A is 65 in ASCII
+ 65%64 = 1 and 1 reminder -> 11 in base64
+// 12 -> base64
+
+```     
+
+   element:
 ```python
 def base10_to_base64(num):
     # Define the base 64 alphabet
@@ -92,13 +105,13 @@ SHA 3
 * If we enter one url several times we get the same result, to avoid it we can concat a counter or timestamp to the end of url, so hashed of it would be enique at the end
 * We can take first 36 bits and convert it to a 6 characters, but downside would be we could have more collisions
   
-#### Reduce time by Offline generating  (Key Generating Service)
+# Reduce time by Offline generating  (Key Generating Service)
 * We can pre-generate short urls, before getting long urls then match them togather. For this you can pregenerate short urls and put them into a queue waiting for upcoming requests.
 * This way we handle duplication, we can sort it because it is offline so it won't affect the overal speed
 * Downside is we need a lot of space to store it 
 </details> 
 
--details- 
+<details> 
   <summary>  Scale </summary> 
 
 #### Network Protocol
@@ -197,7 +210,7 @@ But still use variable instead in case if your calulcation is wrong your answere
 ```
 </details> 
 
--details- 
+<details> 
   <summary>  Calculate Sharding or partitioning </summary> 
 
 * 3 years is a good number for storage to keep
@@ -234,7 +247,7 @@ total dbs = 3 * 10 = 30 db machines
 ```
 </details> 
 
--details- 
+<details> 
   <summary>  Calculate Cache Tier </summary> 
 
 * Cache tier only store read data and not write data 
@@ -265,7 +278,7 @@ Uber want to hit rate of 98-99%, how much data should store in cache layer?
 
 </details> 
 
--details- 
+<details> 
   <summary>  Scale for Throughput (Handle Traffic) </summary> 
 
 * We should know the time in ms assume `X`, is needed to process a given request by a single thread on a local single cpu to do something like i/o on that server machine
@@ -321,7 +334,7 @@ App Server X = 1ms , 30000 rps
     * It goes through to db and return back to app server
 </details> 
 
--details- 
+<details> 
   <summary>  Performance optimization (SLI) </summary> 
 
  service level indicators to measure the performance of a scalable system are `Correctness`,`Availability`, `(system) Throughput` and `response time` 
@@ -367,7 +380,7 @@ if from 1000 request, one not successfully serverd
     * if you missed by 5 percent you get 45 days of free service
 </details> 
 
--details- 
+<details> 
   <summary>  Latency vs Response </summary> 
 
 * `Bandwidth` is the main ones that characterizing network performance, below we explain why:
@@ -404,7 +417,7 @@ Assume you want to download 25 MB image on 10 Mbps
 
 </details> 
 
--details- 
+<details> 
   <summary>  Reverse proxy and Forward Proxy </summary> 
 
 * Benefits of `Reverse Proxy`
@@ -433,7 +446,7 @@ Assume you want to download 25 MB image on 10 Mbps
 
 </details> 
 
--details-
+<details>
       <summary> DNS load balance </summary>
 
 * DNS load balancing is a technique used to distribute incoming traffic across multiple servers or data centers using the Domain Name System (DNS).
@@ -442,7 +455,7 @@ Assume you want to download 25 MB image on 10 Mbps
 
 </details>
 
--details- 
+<details> 
   <summary>  Load Balance </summary> 
 
 * `Increase throughput` to our service
@@ -471,7 +484,7 @@ Assume you want to download 25 MB image on 10 Mbps
 
 </details> 
 
--details- 
+<details> 
   <summary>  LB Global & Local </summary> 
 
 * LB has two big advantages:
@@ -495,7 +508,7 @@ Assume you want to download 25 MB image on 10 Mbps
   *  Each route get its own edges, create and adjacency list of it, use not BFS(because there is weight), Dijkstra algorithm to find closest destination ip address
 </details> 
   
--details- 
+<details> 
   <summary>  CRUD and Compaction Process on Disk </summary> 
 
 * CRUD operations are done on the disk
@@ -511,7 +524,7 @@ Assume you want to download 25 MB image on 10 Mbps
 * `Compaction Process`: traverse from the end of the file and see if there are repeatation delete them to create new file create. When this completed db switched to the new one
 </details> 
 
--details- 
+<details> 
   <summary>  Inconsistently, Leader & follower </summary> 
 
 * How we can scale a DB in microservices?
@@ -538,7 +551,7 @@ Assume you want to download 25 MB image on 10 Mbps
 </details> 
 
 
--details- 
+<details> 
   <summary>  Leaderless Data Replication and quorums W & R </summary> 
 
 * We can use democracy
@@ -570,7 +583,7 @@ Write into 2 machines
 
 </details> 
 
--details- 
+<details> 
   <summary>  CAP Theorem </summary> 
 
 * On distributed systems we can choose Availability or Consistently, based on our design. This is called CAP theorem
@@ -578,7 +591,7 @@ Write into 2 machines
 </details> 
 
 
--details- 
+<details> 
   <summary>  CDNs </summary> 
 
 * By having different data center around the world
@@ -618,7 +631,7 @@ Write into 2 machines
 * Network can be congested if we use other region DB for reading for big files like movies, the bandwidth would be issue
 * 
 </details> 
--details- 
+<details> 
   <summary> Cache Read and Write  </summary> 
 
 * CDNs helps availability and throughput
