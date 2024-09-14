@@ -19,7 +19,10 @@ Cloud Infrastrcuture
 * Private cloud is dedicating datacenter and infrastructure to a single user
 * Hybrid cloud is a mix of both. Ask a public cloud provider to allow users to choose where their data can sit
 * Multi cloud service,using more than one cloud service
-* 
+* Cloud computing: the practice of usisng on demand computing resources as services hosted over internet
+* Instance: a service resource that runs workloads in the cloud
+* Ephemeraliy: Things only exist for a short amount of time
+*  
 
 * Two main task:
 * Use infrastructure-as-code (IaS) to securely provision virtual machines, address
