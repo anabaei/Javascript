@@ -1,8 +1,25 @@
 # <font color=green> GCP </font> 
 <details>
 <summary>
-Cloud Security I
+Cloud Infrastrcuture
 </summary>
+
+### Redundancy
+* Zone: Is one or more datacenters, physical buildings to keep machines and networks and link to other datacenters.
+* Region: A group of Zones
+* Failure Domains: A resource that can fail without impacting availability of data
+* Failure Domains include zones and regions where data is duplicated to improve resiliency
+* Reundancy: A practice of having multiple copies of data in different locations to avoid single point failure
+
+### Latency
+* Latency is a time for data to travel from one location to another
+* 3 seconds 53% users leave website 
+
+* Public cloud shared datacenter
+* Private cloud is dedicating datacenter and infrastructure to a single user
+* Hybrid cloud is a mix of both. Ask a public cloud provider to allow users to choose where their data can sit
+* Multi cloud service,using more than one cloud service
+* 
 
 * Two main task:
 * Use infrastructure-as-code (IaS) to securely provision virtual machines, address
@@ -14,7 +31,7 @@ the configuration settings before deploying to the production environment.
 
 </details>
 
-
+* You wouldn't try to surg big waves before knowing how to swim
 
 <details>
 <summary>
