@@ -1,10 +1,20 @@
 # <font color=green> GCP </font> 
 <details>
 <summary>
-cloud shell
+Cloud Security I
 </summary>
-* New data
+* Two main task:
+● Use infrastructure-as-code (IaS) to securely provision virtual machines, address
+security concerns, and ensure the consistent deployment of cloud resources across
+cloud infrastructure.
+● Create and configure a virtual network in a test environment to explore the security of
+the configuration settings before deploying to the production environment.
+
+
 </details>
+
+
+
 <details>
 <summary>
 cloud shell
