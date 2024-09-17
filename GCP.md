@@ -1,7 +1,7 @@
 # <font color=green> GCP </font> 
 <details>
 <summary>
-Cloud Infrastrcuture
+Cloud Infrastrcuture Intro
 </summary>
 
 ### Redundancy
@@ -90,6 +90,13 @@ cloud infrastructure.
 * Create and configure a virtual network in a test environment to explore the security of
 the configuration settings before deploying to the production environment.
 
+
+</details>
+
+<details>
+<summary>
+Cloud Infrastrcuture Intro
+</summary>
 
 </details>
 
