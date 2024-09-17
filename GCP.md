@@ -21,9 +21,48 @@ Cloud Infrastrcuture
 * Multi cloud service,using more than one cloud service
 * Cloud computing: the practice of usisng on demand computing resources as services hosted over internet
 * Instance: a service resource that runs workloads in the cloud
-* Ephemeraliy: Things only exist for a short amount of time
-*  
+* Ephemeraliy: Things only exist for a short amount of time, it helps for flexibility 
+*  Assets in CSP scale quickly using ephemerality
 
+
+####  3 categories of CSP:
+* Compute: Computation perform by physical computer in remote env
+* Storage: Organization can keep access and maintain data on off-site, cloud based storage device 
+* Network: Network in the cloud run using software, sofware allow to change network design
+
+#### Virtualization & Hypervisor
+* Virtualization: is a technology that create virtual version of infrastructures like servers, storage and network
+* VM: Vistualization uses VM technique. VM contains their own Operatin Systems like windows linux, and a portion of underlying computers power
+* Hypervisor: in abstraction layer that stays between physical layer and VM, Abstraction is what seperate hardware and software, Hypervisor has 2 types
+* Hypervisor Type 1: Also known as bare metal: it replaces entire unerlying OS component directly it is more common,having direct access makes type 1 streamlined and secure 
+* Hypervisor Type 2: Also know as hosted: uses the computer OS and runs as an application over OS. It easier to install but need to take care of security and overhead of the underlying OS
+* Hypervisor distribute resources accross VMs
+* VMs: can have extra cpu, storage and memory
+* Advantages of VMs:
+* Portability: Makes VM useful for hybrid cloud env, where app resources share between on premise and cloud infrastructure, becuase each one are isolated and dev can move them via network
+* Scaleabilit: VM can scale down or up if dev need
+* Testing Environment: test code without affecting current infrastrucutre or users and can delete it after ward
+
+####  Serverless
+* Serverless computing is a cloud computing model where servers are abstracted from development. Serverless means servers and cmputations manages by CSP
+* Serverless has two types: Backend as a Service BaaS and Function as a service Faas
+* BaaS: CSPs manages all aspects VMs, containers and servers. Developers need to create FE, database, file storage and authentications
+* Faas: Is a type of serverless that runs functions. Functions are ephemeral, meaning they only exist for a short period of time. Google’s Cloud Functions is a serverless product t
+* Serverless benefits are scaleable and pay-as-you-go.
+* While organizations share responsibilities with their CSP, security professionals should be prepared to protect data and resource access in a serverless environment.
+
+#### Containers
+* Container: Is a software package that holds only the components necessary to execute a particulare application
+* Image: contains code and dependencies that an application require to run
+* Container Registery: keep all images, allow to download and upload images
+* Packaging software requires less memory and cpu since OS is not included
+* 3 container benefits:
+* portability: you can run each container run on different OS
+* Imuteablity: means object can not be changed. If container needs to change user needs to create new image and deploy.
+* Test Environment: Seperate responsibility among developers and operrational teams
+* 
+
+* 
 * Two main task:
 * Use infrastructure-as-code (IaS) to securely provision virtual machines, address
 security concerns, and ensure the consistent deployment of cloud resources across
