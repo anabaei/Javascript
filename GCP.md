@@ -89,14 +89,26 @@ security concerns, and ensure the consistent deployment of cloud resources acros
 cloud infrastructure.
 * Create and configure a virtual network in a test environment to explore the security of
 the configuration settings before deploying to the production environment.
-
+* Summary of this part is provided  [Here](https://github.com/user-attachments/files/17036225/CCS-C1-r-015-en-file-23.en.pdf)
 
 </details>
 
 <details>
 <summary>
-Cloud Infrastrcuture Intro
+Security Principles 
 </summary>
+
+* Defence in Depth: A layerd approach to volnurability management that reduce risk. Defence in depth uses different security controls to reduce risks
+
+### Security controls:
+* Identity Control: A measure to help authenticate user before they access to resource like network storage. One example is asked to add phone to have multi factor authentication 
+* Protective Control: A measure that protect access to resources and shield against malicious attacks, like firewalls antiviruses or policies that only authorize people can access
+* Network:A measure that helps protect access through network
+* Detective Control: A measure that use to identify suspiciouse activity if it occurs. For example an intrution detective system that monitors system activity and alert analyist if there is possible intruder. Google Cloud Security command Center is an example of intrution.
+* Respond: An application that automatically respond to security events. Via email could notify you
+* Recovery: Is measure that restore access and functionality in the event of failure. Where you can revert to backup after you attack
+
+### Shared Responsibilty Model: 
 
 </details>
 
@@ -112,7 +124,7 @@ cloud shell
 * Easy way to click on cloud shell button on the GCP console. The command line pops up with preinstalled SDKs. We can install SDK on laptop, on-premise service or virtual machines. SDK also available as docker image.
 * Can use REST API to get data from GCP. You need to enable apis you want first by using <font color=blue> APIs Explorer </font> . There are libraries to help us to do that called Google Apis Client Libraries. 
 * Quicklabs helps you to learn for free
-* Summary of this part is provided  [Here](https://github.com/user-attachments/files/17036225/CCS-C1-r-015-en-file-23.en.pdf)
+
 
 </details>
 
