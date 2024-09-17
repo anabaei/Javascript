@@ -62,6 +62,26 @@ Cloud Infrastrcuture
 * Test Environment: Seperate responsibility among developers and operrational teams
 * 
 
+#### Data Storage
+* Data storage is a solution enables users to keep access data on off site, cloud base storage
+* Data storage helps for redundancy, cost, security compare with keep data on premise
+* Redundancy: is the practice of distributing cloud resources across zones and regions
+* Security provides authentication, data encryption and access control
+Types of Data:
+* Structured Data: Data sotre in rows and columns and predefined Format, all data categorize into specific field, good for search
+* Unstrcutured Data: Data not organize in an easy identify way, images videos and documents
+##### Data Storage Types:
+* File Storage: Uses hierarchy of files in folders. It is good for small amount like family photos. It relies on repositories, a central place to download, store and share data.
+* Object Storage: keep unstructured data in Bucket, a virtual container that holds objects. Each Bucket has unique name, publick or private.
+* Block Storage: Data split into smaller blocks and each one store in different location to increase effiency. Each block has unique ID and when user retrive it blocks connected togather
+* 4 classes of Cloud Storage:
+* Standard: is use for hot data like mobile data which users frequently access or medical data
+* Nearline: Data that users access once a month
+* Coldline: Data users access each 90 days
+* Archive: Like data uses for disaster racovery
+
+* 
+
 * 
 * Two main task:
 * Use infrastructure-as-code (IaS) to securely provision virtual machines, address
