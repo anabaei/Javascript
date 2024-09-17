@@ -112,7 +112,8 @@ cloud shell
 * Easy way to click on cloud shell button on the GCP console. The command line pops up with preinstalled SDKs. We can install SDK on laptop, on-premise service or virtual machines. SDK also available as docker image.
 * Can use REST API to get data from GCP. You need to enable apis you want first by using <font color=blue> APIs Explorer </font> . There are libraries to help us to do that called Google Apis Client Libraries. 
 * Quicklabs helps you to learn for free
- 
+* Summary of this part is provided  [Here](https://github.com/user-attachments/files/17036225/CCS-C1-r-015-en-file-23.en.pdf)
+
 </details>
 
 <details>
