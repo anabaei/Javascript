@@ -165,12 +165,21 @@ Security Principles
  * This practice is a concern for IT staff because those products might be inadequately secured, leading to more vulnerabilities and security issues for the organization.
 
 ### IAM Policies
-* It is important to know who access to what. Identity and Access Management has 3 key part: Roles, Prinsiples, Policies
+* It is important to know who access to what. Identity and Access Management has 3 key part: `Roles`, `Prinsiples`, `Policies`
 * Roles: Collection of permission that can be applied to principales. Roles are a way to organize permissions of each prinipals
 * Principales : End users or application
 * Prinsipals assigned a role that grants permissions, rule policies
 * Granting a role a principle, transfer all permissions to the role
-* 
+* `Groups`: Organizations can use groups to combine users or service accounts together to more easily assign `access controls` for larger sets of accounts, instead of assigning individual access one-by-one
+* `Policies`: Organizations can set allow or deny policies that attach roles or deny permissions to resources.
+* An allow policy is a type of access a principal has.
+* A deny policy prevent principals from carrying out certain actions.
+* Best practice for IAM is to create an allow policy for Groups instead of multiple users
+
+* For example fo a team of 50 engineers:
+* Create a `group`, use `allow policy` to bind the group to a role, then assign the role to all engineers
+* I AM Policies [Reference](https://github.com/user-attachments/files/17051410/CCS-C1-r-020-en-file-38.en.pdf)
+ 
   
 </details>
 
