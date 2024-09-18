@@ -124,11 +124,54 @@ Security Principles
 
 ### Shared Responsibilty Model Challenges:
 
-* `Misconfiguration`: Leading cause of security breaches: To fix it
-* Need to monitor resource provisioning and use security policies
+* `Misconfiguration`: Leading cause of security breaches: To fix it need to `monitor resource provisioning`, `Incorporate automation and safe security policies`  and use security policies like `Properly manage IAM policies.`
+  
+* Use IAM policies, and principle of least privilage. Principle of least privilage  means security architecture grants minimum authorization needed to a principal to perform function
+* Another challenge is `Tracking regulation Changes while compnaies growth`.
+* `Stay up to Date in security`
+* Shared fate fill gaps in shared responsinility where CSP prvoides more secure services and guidance, like challenges `navigating changing regulations`, `determine how security controls overlap` and approch security as ongoing process
+
+#### Shared Fate:
+*  Shared Fate Created to increase the level of trust between the users of cloud services and the cloud service provider?
+* An approach that emphasize CSPs involve in customer entire security journey and offers resources to securly manage their environment
+* Ways to help are:
+* `Security Fundations for users`: list best practices for config and deploy Google services
+* `Landing Zones`:A modular and scalable configuration that enables organizations to adopt Google Cloud for their business needs. For a user that's new to the cloud, using a landing zone provides a starting point for adding identity provisioning, a resource hierarchy, and network and security controls.
+* `Mitigating Risk`: Risk manager is part of it, a tool that offers insight into your organization's technical risk posture. It lets us to generate report to evalute risk through out organization
+
+
+### Cloud Computing Models: IaaS, PassS and Saas
+
+* Infrastrcuture aaS: CSP has least responsibility in this model. It provides access to services, and customer manage all services like OS, Data Security, but maintating data center is not the job of customer. 
+* Platform aaS: CSP provides software resources, customers manage data and security and apps. Less operation responsibility
+* Software aaS: Customer only manage security content and access policies. Saas use when companies can't make their own apps like Gmail.
+* Faas: Serverless computing sepearate physical servers from development environment. No need to backend setup
+* IDaaS: Identity as service, use for multifactor authentication and single sign on. 
+* Firewall As service: helps organization to create secure network to block unathurize access
+
+### IaaS vs Paas
+* CSP provides on demands access to computing resources as as servers, storage
+* Scaleable, during pick time of school need to increase resource
+* Customer is responsible for secring data, Operating, access and authentication
+* `Lift and Shift` A migration model where workload moved to cloud with little and no modifications
+* `Paas` unlike Iaas at Paas customer is not responsible for Identity, Operations, Access and Authentication, Network security, data and content. Like Heroku, SAP, Lambda
+
+ ### SaaS
+ * SaaS is cloud hosted application over internet through web, mobile
+ * Is good when organization don't want to build their own app or infrastrucuter
+ * Customer responsible for securing their data and Access Policies
+ * Overhead is the use of execisve hardware or personal resources to accomplish a task
+ * Shadow IT: Shadow IT tends to occur when employees or teams use SaaS products without getting approval from IT teams first.
+ * This practice is a concern for IT staff because those products might be inadequately secured, leading to more vulnerabilities and security issues for the organization.
+
+### IAM Policies
+* It is important to know who access to what. Identity and Access Management has 3 key part: Roles, Prinsiples, Policies
+* Roles: Collection of permission that can be applied to principales. Roles are a way to organize permissions of each prinipals
+* Principales : End users or application
+* Prinsipals assigned a role that grants permissions, rule policies
+* Granting a role a principle, transfer all permissions to the role
 * 
-
-
+  
 </details>
 
 * You wouldn't try to surg big waves before knowing how to swim
