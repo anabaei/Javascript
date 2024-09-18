@@ -179,7 +179,11 @@ Security Principles
 * For example fo a team of 50 engineers:
 * Create a `group`, use `allow policy` to bind the group to a role, then assign the role to all engineers
 * I AM Policies [Reference](https://github.com/user-attachments/files/17051410/CCS-C1-r-020-en-file-38.en.pdf)
- 
+* `Federation` is a method of granting users and service accounts access to a cloud environment using IAM.
+* `Principals` are used to represent and assign roles to applications and users.
+* A `service account` is a non-human identity that is typically granted to a virtual machine, application, or service. Service accounts are granted IAM roles to perform certain actions.
+* Principle of `least privilege` involves granting only the minimal access and authorization required to complete a task or function
+* 
   
 </details>
 
