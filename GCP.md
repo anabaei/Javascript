@@ -110,6 +110,25 @@ Security Principles
 
 ### Shared Responsibilty Model: 
 
+* Shared Responsibilty Model: Is implicit and explicit agreement between client and CSP regarding shared accountability for security controls. Is an agreenment to say who is respobsilbe for what resources
+* Service Level Agreement `SLA`: Quantify the availability of Services
+* `CSP responsibilites`:
+* Physical infrastructure
+* Ensure Network and resource availability
+* `Customer Responsibilites`:
+* Configure services for security and compliance
+* Secure their own data
+*  Responsiblity varieis by vary industry framework and regulatory
+*  Inherited security controls: Demonstrate security posture
+*  Location also affect shared responsibilites
+
+### Shared Responsibilty Model Challenges:
+
+* `Misconfiguration`: Leading cause of security breaches: To fix it
+* Need to monitor resource provisioning and use security policies
+* 
+
+
 </details>
 
 * You wouldn't try to surg big waves before knowing how to swim
