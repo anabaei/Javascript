@@ -183,8 +183,30 @@ Security Principles
 * `Principals` are used to represent and assign roles to applications and users.
 * A `service account` is a non-human identity that is typically granted to a virtual machine, application, or service. Service accounts are granted IAM roles to perform certain actions.
 * Principle of `least privilege` involves granting only the minimal access and authorization required to complete a task or function
-* 
-  
+
+### Networking 
+* Router: Connect networks togather
+* Switches: A device that makes connections between devices by sending and receiving data
+* This process is called software-defined networking, or SDN
+* You define a routes by calling API, then API request access to the router for that organization
+* SDN scaleable, can monitor network activities
+* LB distribute traffic to appropriate service to stop overwhelms of a service
+* LB app: It is in Layer 7 OSI for http/https traffic, this layer connect you using app to the internet 
+* LB network. operate on layer 4 of OSI, this layer responsible for delivery and speed data between devices, The network load balancer handles traffic from the UDP and Transmission Control Protocol, or TCP. This means the load balancer takes information from a router and forwards it to the correct TCP or UDP server.
+ 
+
+### Firewall
+* Firewalls can also restrict specific incoming and outgoing network traffic
+* Firewall as a service (FWaaS) is a service model for cloud environments. Organizations can
+adopt FWaaS to help block unauthorized traffic on their network.
+* Always use the principle of least privilege. When creating firewall rules, only allow
+necessary traffic to traverse the network.
+● Use hierarchical firewall policies, which will allow your organization to apply firewall
+policies to the organization and folder levels. Invoking hierarchical policy structure
+promotes consistency across organizational resources and the firewalls that protect
+them.
+
+
 </details>
 
 * You wouldn't try to surg big waves before knowing how to swim
