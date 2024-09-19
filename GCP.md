@@ -205,6 +205,18 @@ necessary traffic to traverse the network.
 policies to the organization and folder levels. Invoking hierarchical policy structure
 promotes consistency across organizational resources and the firewalls that protect
 them.
+* `Firewall rules` define who can access to specific resource based on their IP address and help to inforce helping enforce the principle of least privilege for employees.
+* You can use VPN to connect VPC. it means users connect via one on-premise resource 
+* 
+
+### VPC
+* A virtual private cloud, or VPC, is a private cloud hosted within a public cloud, enabling organizations to use the public cloud’s resources while being completely isolated from other cloud users. It is like you reserve your seat in restourant
+* IN GCP, VPC are global resources means they are not attach to specific region or zone.
+* VPC helps to devide network to chunks called subnets (segmentation)
+* segmentation allow control network traffic
+* It seperate resources which should not talk with each other reduce attack surface
+* 
+* Module 2 resource [Here](https://github.com/user-attachments/files/17051994/CCS-C1-r-025-en-file-45.en.pdf)
 
 
 </details>
