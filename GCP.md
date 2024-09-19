@@ -107,6 +107,8 @@ Security Principles
 * Detective Control: A measure that use to identify suspiciouse activity if it occurs. For example an intrution detective system that monitors system activity and alert analyist if there is possible intruder. Google Cloud Security command Center is an example of intrution.
 * Respond: An application that automatically respond to security events. Via email could notify you
 * Recovery: Is measure that restore access and functionality in the event of failure. Where you can revert to backup after you attack
+* A cloud security analyst is asked to add protective controls to their organization’s defense in depth model. What controls should the analyst implement?
+* 
 
 ### Shared Responsibilty Model: 
 
@@ -220,6 +222,19 @@ them.
 
 
 </details>
+<details>
+<summary>
+Security Life Style
+</summary>
+
+### DevSecOps
+
+* Plan, Code, Build, Test, Release, Deploy, Operate
+* DevSecOps is a culture that consists of guidelines, best practices, and tools that development, operation, and security teams use to collaborate. development, operations, and security teams collaborate at the very beginning and throughout the development process.
+* With DevSecOps, security teams implement automated security tests from the start of the project, which means the operations team releases applications even faster.
+* DevSecOps culture also reinforces the security concept of shifting left. shift left means security check is done at the begining
+* Shifting left means include code analysis, change and compliance management, threat modeling, and security training.
+ </details>
 
 * You wouldn't try to surg big waves before knowing how to swim
 
