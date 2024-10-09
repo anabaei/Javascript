@@ -267,7 +267,8 @@ Security Life Style
   - test: stage detects any vulnerabilities and should trigger patching and redeployment
   - Build: Another security measure includes only limiting service accounts access to deploy builds, rather than individual human users.service account is a non-human identity
  
-  * 
+  * [security.pdf](https://github.com/user-attachments/files/17320004/CCS-C1-r-028-en-file-52.en.pdf)
+
 
  
  </details>
