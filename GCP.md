@@ -234,10 +234,50 @@ Security Life Style
 * With DevSecOps, security teams implement automated security tests from the start of the project, which means the operations team releases applications even faster.
 * DevSecOps culture also reinforces the security concept of shifting left. shift left means security check is done at the begining
 * Shifting left means include code analysis, change and compliance management, threat modeling, and security training.
+* `Waterfall approach` limitatitions: 
+   - Developer move one step to next
+   - returning to last step could lose developers lose their progress
+   - It has Six steps: 1- requirements, 2- design 3- develop 4- test 5- release 6- maintanence
+   - Drawbacks: 1- if tests fails other parts are stops and design or past steps need to revisit 2- one team is blocked project can't move
+   - One solution for water fall is software `pipeline` 
+*  `PipeLine` is a process that uses automation and tools to facilitate movement through each phase of the software development lifecycle.
+*  `software pipeline` includes
+   - Atuomation integration and testing: seamless security, testing through out lifecycle
+   - Code Validation
+   - Reporting Measures
+
+### CI/CD
+* It is most commonly applied pipeline methodology
+* An approach to build. validate and deployment process
+* `CI` Continously create and update code that's uploaded into shared repository (continouse integration). From validation tests and build process should be automatically
+* `CD` delivery: continuous release of software builds to a staging or testing environment. Like CI, CD is also run test and build after build succeed manual approval is required to push updated to PROD
+* `CD` deployement: Unlike Delivery, it automatically deploy builds to PROD in real time and manual approval is not required
+
+* CI/CD has 4 stages
+ - Source: devs push their code into repo, 
+ - Build: devs implement edits to source code this trigger build. After build it run tests
+ - Test: auto security tests, check new build 
+ - Deploy: it deploys withing an 1 min
+
+* `Security in CI/CD`
+  - Source stage: source code scan
+  - Build: In the build stage, the image is scanned for vulnerabilities and checked against policies.
+  - If the build passes this step, it continues to the image repository.
+  - After it measure IAM accessiblity on repository
+  - test: stage detects any vulnerabilities and should trigger patching and redeployment
+  - Build: Another security measure includes only limiting service accounts access to deploy builds, rather than individual human users.service account is a non-human identity
+ 
+  * 
+
+ 
  </details>
 
-* You wouldn't try to surg big waves before knowing how to swim
+ 
+---------------------------------
 
+You wouldn't try to surg big waves before knowing how to swim
+
+---------------------------------
 <details>
 <summary>
 cloud shell
