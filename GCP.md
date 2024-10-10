@@ -270,6 +270,32 @@ Security Life Style
   * [security.pdf](https://github.com/user-attachments/files/17320004/CCS-C1-r-028-en-file-52.en.pdf)
 
 
+### Software Supply Chain security
+* Includes people and tools, code scripts that play a part in software developmnet, which each one could be a target 
+* People: Any person with credentials to source code and system
+* Organization Policies: results of inadequate system access, insecure review cycles, ineffective approval and communication
+* Tech: libraires and packages can be thread when they are in use
+
+* `Security hardening` is the process of strengthening a system to reduce its vulnerabilities and attack surface. one way is to implement CI/CD volnurability check through pipeline
+* `SBOM` software bill of material. An SBOM is a machine-readable list of each piece of software and its components involved in the supply chain.
+* Possessing an SBOM also demonstrates to stakeholders that your project or organization not only applies security measures, but also follows compliance guidelines.
+
+### Security Frameworks Salsa
+* Salsa: supply chain level for software artifacts. SLSA improves security by outlining standards and controls that enhance the integrity of artifacts.
+* `Artifacts` An artifact is a digital object, like a file or image, that is used in the software development lifecycle.
+* SLSA’s framework revolves around three trust boundaries:
+  - build integrity: involves verifying the software uses the correct, original dependencies. 
+  - source integrity: It make sure the actual source devs are suing actually reflects the developer’s goals and intent and that any code modifications are easily traced and monitored.
+  - dependencies: The dependencies boundary requires that any dependencies used in an artifact are examined using security checks.
+  
+* Provenance is a description of the processes and tools used to build an artifact.
+* Along with levels and boundaries, SLSA recommends incorporating technical controls such as version control, vulnerability scanning, build verification, deployment policies, and artifact management.
+* `Salsa Pyramid`
+  - In L1, document provenance, organizations must meet minimum requirements for documenting the artifact’s provenance.
+  - With documentation standards met, advancing to L2 requires using a hosted build platform for managing builds.
+  - Finally, L3 dictates that the build platform used must provide protection against tampering with the artifact’s provenance.
+* 
+  
  
  </details>
 
