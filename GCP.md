@@ -302,7 +302,8 @@ Security Life Style
  * `Configuration drift` is unwanted resource’s configuration change
  * `PaC` enables developers to provision and manage their policies to meet organizational requirements
  * Automated vulnerability scanning provides developers with continuous feedback about security concerns and red flags that may lead to compliance errors.
- * 
+ * [Terraform](https://github.com/user-attachments/files/17321379/CCS-C1-r-031-en-file-58.en.pdf)
+
  </details>
 
  
