@@ -294,9 +294,15 @@ Security Life Style
   - In L1, document provenance, organizations must meet minimum requirements for documenting the artifact’s provenance.
   - With documentation standards met, advancing to L2 requires using a hosted build platform for managing builds.
   - Finally, L3 dictates that the build platform used must provide protection against tampering with the artifact’s provenance.
-* 
-  
- 
+
+ ### Iac Infrastructure as code
+ * Infrastructure as code, or IaC, is the practice of provisioning and managing infrastructure using reusable scripts.
+ * Iac are immuteable, means  outdated resources are torn down and replaced with an updated version instead of merely patching the issue
+ * configure IaC, called `declarative`. Remove manual configuration, it reduces config drift
+ * `Configuration drift` is unwanted resource’s configuration change
+ * `PaC` enables developers to provision and manage their policies to meet organizational requirements
+ * Automated vulnerability scanning provides developers with continuous feedback about security concerns and red flags that may lead to compliance errors.
+ * 
  </details>
 
  
