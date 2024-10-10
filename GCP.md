@@ -303,9 +303,37 @@ Security Life Style
  * `PaC` enables developers to provision and manage their policies to meet organizational requirements
  * Automated vulnerability scanning provides developers with continuous feedback about security concerns and red flags that may lead to compliance errors.
  * [Terraform](https://github.com/user-attachments/files/17321379/CCS-C1-r-031-en-file-58.en.pdf)
-
+ * You should explain to leadership that IaC tools may offer the ability to scan the environment for configuration drift and can help you detect invalid inputs in the build process. You should also explain that automation ensures developers consistently use the same configuration settings for provisioning infrastructure. IaC does not save security checks for the final step of the development process. With IaC, you can implement automated security checks from the beginning of the process, allowing developers to correct security issues before they become a larger problem.
+* `GitOps` is a framework that applies version control, collaboration, compliance, and CI/CD best practices to automate cloud infrastructure.
+  
  </details>
+<details>
+<summary>
+Roles and Responsibilities
+</summary>
 
+#### cloud security analysts
+
+Works include:
+1- `Information risk management` is the process of identifying, assessing, and minimizing potential threats to information assets. An organization can use this process to prioritize which tools to include in its budget and which assets it should protect. The more money an asset represents for a company, the more they should invest to protect it.
+  - Develop strategies for securing cloud assets
+  - plan security budget: determine which assets organization need to deploy
+
+2- `cloud security posture management` the process of monitoring and configuring cloud assets for security and compliance with best practices, regulations, and organization policy. Tools like GCP Security Command Center to find out what's going on on in cloud env. They check misconfiguration and volnurabilities to improve security posture
+  - `security posture` is an organization’s ability to manage its defense of critical assets and data and react to change.
+  - update and document 
+  -  As part of security posture management, analysts also communicate with non-technical audiences, including management and users.
+  -  Analysts use cloud security posture management tools, like Google Cloud Security Command Center, as centralized places to find and analyze information about what’s going on in the cloud environment
+
+3-  `Threat intelligence` includes the collection, analysis, and evaluation of cyberthreat information.
+   - cyberthreat: are techniques that a hacker use to damage
+   - Cloud security analysts use threat intelligence to stay ahead of potential attackers and respond to security incidents. Threat intelligence provides information about prior attacks and how others have responded to them.
+
+* When a cyberattack, breach, or other incident occurs, `cloud security analysts` are responsible for minimizing the impact on the organization and supporting the recovery process. know which assets are more vulnerable, 
+
+
+  
+ </details>
  
 ---------------------------------
 
