@@ -313,10 +313,8 @@ Security Life Style
 Roles and Responsibilities
 </summary>
 
-#### cloud security analysts
-
 * To response, an analysts needs to know the core products: computing, storage and network
-##### Responsibilites:
+### cloud security Responsibilites:
 * `mapping security concepts to cloud products` : it helps to identify potenrial attacks
 * `using tools to check vulnerability` for vm, network and containers and also check misconfiguration settings
 *  `use tools` to analyze threat detection and security compliance reports 
@@ -327,7 +325,14 @@ Roles and Responsibilities
   - then help to recover
   - then document what went down to allow in future 
 *   `test and evalute products` continously test products
-*   `stay up to date with security and tech` 
+*   As a cloud security analyst, communicating cloud security concepts to a non-technical audience is a core responsibility, you may train other devleopers
+*   `Security controls` are controls that safeguard cloud environments from threats and minimize the effects of harmful attacks, it includes firewalls and anti viruses
+*   Analysts configure and use security tools to closely monitor and log network activity in the cloud, then receive alerts when something appears out of place.
+*   Security analysts also use their skills to monitor and manage intrusion detection systems, or IDS, and intrusion protection systems, or IPS.
+*   Intrusion detection systems monitor your cloud system for threat actors trying to gain access, while intrusion protection systems proactively remove threats based on specific rules.
+*   `stay up to date with security and tech`
+  [cloud security respon.pdf](https://github.com/user-attachments/files/17356445/cloud.security.respon.pdf)
+
 Works include:
 1- `Information risk management` is the process of identifying, assessing, and minimizing potential threats to information assets. An organization can use this process to prioritize which tools to include in its budget and which assets it should protect. The more money an asset represents for a company, the more they should invest to protect it.
   - Develop strategies for securing cloud assets
@@ -344,8 +349,21 @@ Works include:
    - Cloud security analysts use threat intelligence to stay ahead of potential attackers and respond to security incidents. Threat intelligence provides information about prior attacks and how others have responded to them.
 
 * When a cyberattack, breach, or other incident occurs, `cloud security analysts` are responsible for minimizing the impact on the organization and supporting the recovery process. know which assets are more vulnerable, 
+Questions:
+* A cloud security analyst is responsible for improving their organization’s security posture. What two things might the analyst do to achieve this goal? Select two answers.
+* To continuously improve their organization’s security posture, cloud security analysts help decide which security products their organization should use and how to configure those security products. Cloud security analysts are responsible for identifying potential attack vectors for their organization’s cloud assets.
+* To continuously improve their organization’s security posture, cloud security analysts help decide which security products their organization should use and how to configure those security products. Cloud security analysts are also responsible for regularly testing security products to make sure they work properly.
+* Unusual behavior is detected on an organization’s network. What is the first step a cloud security analyst should take in responding?
+* Responding to a security incident starts with identifying if unusual behavior is an actual threat, or just a false positive. If it is a threat, analysts work to identify and contain it, which could include shutting down a virtual machine running malicious software.
+* Cloud security analysts prepare for audits by making sure they understand requirements, identifying gaps, and putting fixes in place. Cloud analysts may be involved in planning communication with users in the event of a security breach or other incident.
+### Security Ecosystem
 
-
+* Security Operations Center, or SOC, which detects and responds to cybersecurity incidents affecting the organization.
+* `cloud security architect` is a professional who designs and develops security controls and measures within an organization’s cloud infrastructure. They consider organiztion goals and security requirements
+* `cloud security engineer` is a professional who implements and manages secure cloud workloads and infrastructure.
+* `stakeholder` is a person or organization who can affect or be affected by a system.
+* a cloud security professional,  frequently be in charge of conveying important information to people who need it.
+* 
   
  </details>
  
