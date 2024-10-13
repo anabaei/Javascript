@@ -51,6 +51,7 @@ Cloud Infrastrcuture Intro
 * Serverless benefits are scaleable and pay-as-you-go.
 * While organizations share responsibilities with their CSP, security professionals should be prepared to protect data and resource access in a serverless environment.
 
+
 #### Containers
 * Container: Is a software package that holds only the components necessary to execute a particulare application
 * Image: contains code and dependencies that an application require to run
@@ -314,6 +315,19 @@ Roles and Responsibilities
 
 #### cloud security analysts
 
+* To response, an analysts needs to know the core products: computing, storage and network
+##### Responsibilites:
+* `mapping security concepts to cloud products` : it helps to identify potenrial attacks
+* `using tools to check vulnerability` for vm, network and containers and also check misconfiguration settings
+*  `use tools` to analyze threat detection and security compliance reports 
+*  `comunicate with organization` to prepar report to talk with organizations.
+*  `monitor infrastructure` using loggin to monitor unusall usage of network or computing
+*   `respond to security incident` like a malware infection or attempt to gain unauthorize access, if it is threat analyst needs to contain it
+  - to contain a threat we can shut down a vm,
+  - then help to recover
+  - then document what went down to allow in future 
+*   `test and evalute products` continously test products
+*   `stay up to date with security and tech` 
 Works include:
 1- `Information risk management` is the process of identifying, assessing, and minimizing potential threats to information assets. An organization can use this process to prioritize which tools to include in its budget and which assets it should protect. The more money an asset represents for a company, the more they should invest to protect it.
   - Develop strategies for securing cloud assets
