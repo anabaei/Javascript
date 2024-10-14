@@ -1,4 +1,4 @@
-# <font color=green> GCP </font> 
+# <font color=green> Intro to Cloud Security </font> 
 <details>
 <summary>
 Cloud Infrastrcuture Intro
@@ -426,6 +426,16 @@ gcloud compute networks subnets list --network=labnet
  * A cloud firewall can be an application or hardware, and it's essentially a resource that allows you to control traffic that comes in and out of a cloud environment It can allow you to create firewall rules, you can do things like filter out or block port 22 if you don't want SSH access into the cloud environment. It also allows you to sort of create rules that you can distribute to many different computers or many different services running on a cloud platform
  * 
  </details>
+
+
+# <font color=green> Strategies for Cloud Security Risk Management </font> 
+
+<details>
+<summary>
+cloud shell
+</summary>
+
+</details>
  
 ---------------------------------
 
