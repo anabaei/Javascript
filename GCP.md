@@ -411,7 +411,20 @@ gcloud compute networks subnets list --network=labnet
 ![vpc.pdf](https://github.com/user-attachments/files/17357954/vpc.pdf)
 
 * The Cloud Shell command group compute can be used to initiate the creation or manipulation of Google Cloud Compute Engine resources, like virtual machines. The gcloud command invokes the gcloud command-line tool.
-  
+
+ ### Interview tips by google pro
+
+ * Some dos when you're interviewing, feel comfortable understanding the question, which means please feel comfortable asking qualifying or clarifying questions.
+ * Repeat and re-articulate that question to make sure that you're actually answering the thing that was asked of you.
+ * And at the end of it, ask if that answers the question to make sure (chuckles) that you've actually articulated your point clearly.
+ * Questions you can ask:
+ * What's the environment like?
+ * What's the work-life balance like?"
+ * Hey, what's one of the big challenges that your team is working on right now?"
+ * what interests you in a career in cloud security?
+ * `Chris, my interest in cloud security is really comes down to how pervasive cloud security is in our day-to-Day lives, everything from streaming movies and video games, pretty much runs on the cloud these days. It's how technology's evolving to become more efficient and accessible and equitable for people around the world. So my interest in security for the cloud really comes down to making sure that all that information stays protected and safe.`
+ * A cloud firewall can be an application or hardware, and it's essentially a resource that allows you to control traffic that comes in and out of a cloud environment It can allow you to create firewall rules, you can do things like filter out or block port 22 if you don't want SSH access into the cloud environment. It also allows you to sort of create rules that you can distribute to many different computers or many different services running on a cloud platform
+ * 
  </details>
  
 ---------------------------------
