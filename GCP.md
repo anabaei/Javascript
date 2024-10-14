@@ -92,51 +92,6 @@ cloud infrastructure.
 the configuration settings before deploying to the production environment.
 * Summary of this part is provided  [Here](https://github.com/user-attachments/files/17036225/CCS-C1-r-015-en-file-23.en.pdf)
 
-### Common Tools
-
-* Tools are like: Linux, Terraform, reCAPTCHA, Wireshark, VirusTotal, and Lucidchart.
-
-#### Linux
-* open-source operating system, Linux uses `shell` environment as command line interpreter. The shell translates your commands so the computer can perform the instructed task.
-* With Linux, you can verify the status of each application in your infrastructure, review networking traffic, and filter access to non-production IPs and ports.
-
-#### Terraform
-*  Terraform is infrastructure-as-code tool.It enables you to automate the provisioning of cloud resources.
-*  Security teams can use Terraform to consistently create health checks and security enforcement policies across their infrastructure.
-
-* `eCAPTCHA` a risk analysis engine that detects and helps prevent spam and malicious behavior from happening on websites.
-* `Wireshark` is a packet analyzing tool that provides insight into your network. To identify suspicious activity, like data exfiltration.
-* `VirusTotal` is a website that analyzes files and URLs for malicious content like viruses, worms, trojans, and more. Security professionals use VirusTotal as an investigative tool.
-* `Lucidchart` a diagramming app helps users communicate and collaborate across teams.Cloud security analysts use this tool to help document security processes using visuals, For example, it’s common to create diagrams that show how information flows through a system, so that you can identify and implement the appropriate protection measures.
-
-### Cloud Shell
-* Cloud Shell, CLI where you interact with your cloud environment, Cloud Shell is accessible through a web browser, so you can use it anywhere, at any time.
-* Shell itself is temporary and will shut down after a period of inactivity.
-* Utilities like tools and commands are pre-installed
-* Cloud Shell uses the Google Cloud CLI, also called the gcloud CLI, to build and manage resources. gcloud perform tasks
-* VPCs provide network capabilities to resources like virtual machines or containers.
-
-#### Create VPC
-```
-gcloud compute networks create labnet --subnet -mode=custom
-```
-* labnet is the name of network it creates
-* subnets must have unique names, create subnet
-```
-gcloud compute networks subnets create labnet-sub --network=labnet \ Press Enter.
-Then, --range=10.10.0.0/28 \ Press Enter.
-```
-* list networks
-```
-gcloud compute networks list
-```
-* we can delete default network for security purposes
-* list subnets using the following command:
-```
-gcloud compute networks subnets list --network=labnet 
-```
-* 
-
 
 </details>
 
@@ -409,7 +364,53 @@ Questions:
 * `cloud security engineer` is a professional who implements and manages secure cloud workloads and infrastructure.
 * `stakeholder` is a person or organization who can affect or be affected by a system.
 * a cloud security professional,  frequently be in charge of conveying important information to people who need it.
-* 
+
+### Common Tools
+
+* Tools are like: Linux, Terraform, reCAPTCHA, Wireshark, VirusTotal, and Lucidchart.
+
+#### Linux
+* open-source operating system, Linux uses `shell` environment as command line interpreter. The shell translates your commands so the computer can perform the instructed task.
+* With Linux, you can verify the status of each application in your infrastructure, review networking traffic, and filter access to non-production IPs and ports.
+
+#### Terraform
+*  Terraform is infrastructure-as-code tool.It enables you to automate the provisioning of cloud resources.
+*  Security teams can use Terraform to consistently create health checks and security enforcement policies across their infrastructure.
+
+* `eCAPTCHA` a risk analysis engine that detects and helps prevent spam and malicious behavior from happening on websites.
+* `Wireshark` is a packet analyzing tool that provides insight into your network. To identify suspicious activity, like data exfiltration.
+* `VirusTotal` is a website that analyzes files and URLs for malicious content like viruses, worms, trojans, and more. Security professionals use VirusTotal as an investigative tool.
+* `Lucidchart` a diagramming app helps users communicate and collaborate across teams.Cloud security analysts use this tool to help document security processes using visuals, For example, it’s common to create diagrams that show how information flows through a system, so that you can identify and implement the appropriate protection measures.
+
+### Cloud Shell
+* Cloud Shell, CLI where you interact with your cloud environment, Cloud Shell is accessible through a web browser, so you can use it anywhere, at any time.
+* Shell itself is temporary and will shut down after a period of inactivity.
+* Utilities like tools and commands are pre-installed
+* Cloud Shell uses the Google Cloud CLI, also called the gcloud CLI, to build and manage resources. gcloud perform tasks
+* VPCs provide network capabilities to resources like virtual machines or containers.
+
+#### Create VPC
+```
+gcloud compute networks create labnet --subnet -mode=custom
+```
+* labnet is the name of network it creates
+* subnets must have unique names, create subnet
+```
+gcloud compute networks subnets create labnet-sub --network=labnet \ Press Enter.
+Then, --range=10.10.0.0/28 \ Press Enter.
+```
+* list networks
+```
+gcloud compute networks list
+```
+* we can delete default network for security purposes
+* list subnets using the following command:
+```
+gcloud compute networks subnets list --network=labnet 
+```
+![vpc.pdf](https://github.com/user-attachments/files/17357954/vpc.pdf)
+
+* The Cloud Shell command group compute can be used to initiate the creation or manipulation of Google Cloud Compute Engine resources, like virtual machines. The gcloud command invokes the gcloud command-line tool.
   
  </details>
  
