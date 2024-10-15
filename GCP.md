@@ -432,11 +432,100 @@ gcloud compute networks subnets list --network=labnet
 
 <details>
 <summary>
-cloud shell
+cloud security domain
 </summary>
 
+* The International Information System Security Certification Consortium, or ISC2, is a non-profit organization specializing in training and certifications for cybersecurity professionals
+* For ISC2, a `security domain` is a collection of tightly coupled security practices that address a specific security discipline. For example, domains help to ensure that you have the right processes, skills, and tooling There are six security domains 
+* Domain 1 focuses on cloud concepts, architecture, and design: Focuses on high-level security that aligns with your organization's objectives. To make sure specific design meets business needs 
+* Domain 2 consists of cloud data security: focuses on security of data within the cloud environment. It includes all procedures used in designing and implementing encryption, access controls, data loss prevention, and tokenization techniques and Controls are matched according to the value and sensitivity of data as well as relevant laws and regulations. It is like plumbing determine how data move into out and in of the system
+* Domain 3 addresses cloud platform and infrastructure security: It addresses the virtual and physical security threats to cloud infrastructure, including cloud infrastructure connections, cybersecurity, and the implementation of audit tools.
+* Domain 4 cloud application security: Focuses on how applications for the cloud environment should be built, released, and maintained. This might include investigating all cloud computing application security challenges
+* Domain 5 investigates cloud security operations: It covers how to securely operate the designed, built, and deployed environment, including how to respond to events and restore the environment to a secure state. This may include attacks, configuration mistakes, or even cloud provider outages. This domain could be compared to the person that is responsible for installing final safety features like alarm systems and smoke detectors after a building is built.
+* Domain 6 explores legal, risk, and compliance: It explores how cloud computing influences business risk management and how cloud security controls are audited. This domain is like an inspector that makes sure everything in a building complies with standards and regulations.
+  
+#### Security Vs Compliance
+* Security and compliance are complementary processes.
+* A strong security system makes it easier for an organization to meet compliance standards, because most of the necessary controls are already in place
+  
+* Security: includes systems and controls that protect an organization’s assets from threats. Security ensures confidentiality, integrity, and availability of the organization's services.
+* Method to ensure security
+- Mitigate threat:  using different types of controls, like firewalls,
+- strong password management tools, and multi-factor authentication; implement controls designed to prevent threat actors from impacting
+- provide guidelines for responding to a breach in a worst case scenario;
+
+* While security protects an organization, `compliance` is the process of adhering to internal and external standards and government regulations.
+* To be compliant, an organization must provide evidence that they are following the stated objective, like one of the standards, rules, regulations, or laws that apply to their business.
+* Compliance standards are not unique to a single organization.
+* The standards measure security protocols at a given point in time or over a specific period of time for any organization.
+* Compliance sets a minimum standard for security and establishes common ground for organizations.
+* The NIST CSF is a compliance framework that can easily be adapted across industries to create strong security programs.
+* These can include the International Organization for Standardization, or ISO, the National Institute for Standards and Technology
+* known as NIST, or a federal law, like the Health Insurance Portability and Accountability Act, or HIPAA.
+
+### Security Control
+* A security control is a safeguard designed to reduce specific security risks. Reducing the security risks in an organization means that you are trying to either reduce the impact from the threat or reduce the likelihood of that threat.
+* For example, if you encrypt data, you reduce the impact of a breach, because the attacker cannot see the data without the key.
+* `Cloud security controls` are measures that safeguard cloud environments from threats and minimize the effects of harmful attacks.
+* To achieve compliance and prove it, you should use built-in and third-party cloud security tools, and run reports on workloads.
+* The CSP automatically provides some controls for their customers, such as physical security, secure-by-design practices in software development, and strong security defaults on services, it also provides some controls
+* The NIST SP 800-53 provides a set of over 1,000 controls, separated into 20 groups called
+families, that support the development of secure information systems. Control families are
+important because they represent similar types of controls to help address a set of threats.
+
+### Risk and Compliance
+* `Risk` is the measure of how much a threat impacts the confidentiality, integrity, and availability of an asset.
+  - Data lost: When data deleted without authorization resulting by a threat actor 
+  - Data leakage: when data changed by unauthrize user. 
+  - Data corruption
+* `Threat` any situation or circumstance that can negatively impact assets.
+* `Vulnerabilities` are weaknesses that can be exploited by threat actors.
+*  `risk appetite` is the amount of risk an organization is willing to take and still meet organizational needs.
+*  To fully handle risk management, a security team needs to also assess security systems for vulnerability often on top of Meeting compliance requirements
+
+### Complians 3 areas 
+* The people, process, technology, or PPT
+* The PPT framework can help organizations meet their security and compliance goals.
+* To build a strong culture of compliance, it’s important to educate users and provide them with procedures.
+* The team can also create processes to ensure protocols are followed. Processes include how people should use new technology
+* Examples of effective processes include enforcing two-factor authentication, mandatory software updates, removing access rights from users who no longer need them, and implementing protocols for running scans and analyzing reports.
+* Technology: the security team adopts a monitoring tool to help meet compliance requirements.
+
+#### Command Center
+* Security Command Center is Google Cloud's centralized vulnerability and threat reporting service. It evaluates an organization's security and data attack surface, provides asset inventory and discovery, and identifies misconfigurations, vulnerabilities, and threats.
+* Benefits:
+- improving security posture: by finding security misconfigurations and volunrabilities in environment
+- detecting and uncovering threats: 
+- assessing and managing risk: using attack path simulation to discover and shut down possible pathways that threat actors can use to access and compromise cloud resources.
+* The key features of Security Command Center are threat prevention, threat detection, and attack path simulation.
+  - Threat prevention can also uncover misconfigurations and find common web application vulnerabilities to quickly resolve issues with best practices.
+  - Threat detection protects an organization’s resources by detecting threats to cloud services like Google Compute Engine, Google Kubernetes Engine, BigQuery, Cloud SQL, and more.
+  - Attack path simulation helps pinpoint where and how an organization’s Google Cloud environment could be attacked.
+
+### Cloud Security Control
+* `cloud security controls` are measures that safeguard cloud environments from threats by reducing the likelihood and impact of harmful attacks
+* There are three types of cybersecurity controls:
+  - technical: hardware and software protect assets
+  - administrative: policies, procedures, and guidelines put into place to protect assets
+  - physical: Physical controls include any concrete means of preventing or detecting unauthorized access to facilities, systems, or assets, like gates and locks, or key cards to enter a building.
+* `threat modeling` is the process of identifying assets, their vulnerabilities, and how each is exposed to threats.
+* An organization can transfer risk by buying a cyber insurance policy that helps cover this risk or transferring the risk to the user in the terms of a service agreement.
+* By threat modeling and checking that you’ve met compliance control standards, you can implement the necessary controls to reduce risk to an acceptable level.
+##### Steps 
+- Identify controls: start with threat modeling to identify controls you should implement. This way find specific thread and choose best control to elimiate it
+- Develop implementation plan: Need to develop policies on how and who can access to resources, buy keys physical or remote
+- Test:
+- Monitor and maintain
+- Record process in teams security plan doc
+
 </details>
- 
+<details>
+<summary>
+ Risk management frameworks, regulations, and industry standards
+ </summary>
+
+
+ </details>
 ---------------------------------
 
 You wouldn't try to surg big waves before knowing how to swim
