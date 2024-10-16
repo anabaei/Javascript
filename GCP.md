@@ -524,11 +524,50 @@ important because they represent similar types of controls to help address a set
  Risk management frameworks, regulations, and industry standards
  </summary>
 
+* A `risk management framework` is a set of practices, processes, and technologies that enable an organization to identify, assess, analyze, and manage risk within an organization. Frameworks are tools 
+* Here are some examples of industry standard frameworks.
+  - The National Institute of Standards and Technology, better known as NIST: The NIST or CSF, is a voluntary framework that outlines a risk-based approach for governing security, privacy, and cyber supply-chain risk management. The CSF provides an outline of best practices to help an organization decide where to focus their time and money for cybersecurity protection.
+  - The International Organization for Standardization, or ISO, 27001: main goal is to protect the confidentiality, integrity, and availability of information
+  -  Confidentiality: only authorized persons have the right to access information.
+  -  Integrity: only authorized persons can change the information.
+  -  And availability: the information must be accessible to authorized persons whenever it is needed.
+  - System and Organization Controls 2, referred to as SOC 2:can help the organization assess the third-party system’s security, developed by aicpa, the AICPA’s Trust Services Criteria to build trust and confidence for clients about a third-party service provider's system. a third-party service organization uses to process client’s data and the confidentiality and privacy of the information the system processes.
 
+#### Data protection 
+
+* `Data privacy` focuses on an individual’s rights to be in control of how and when their data is accessed and used.
+* GDPR and CPRA put laws into place that grant consumers, as data subjects, certain rights regarding the use of their personal information.
+* Data protection helps
+  - enforce policies and regulations,
+  - prevent unauthorized access,
+  - focus on keeping information safe from attackers,
+  - ensure that data is protected from unauthorized intervention and access,
+  - safeguard collected data is closely tied to security controls.
+
+#### NIST 
+* NIST Privacy Framework was developed to help improve privacy risk management for an organization's data
+* The NIST cybersecurity framework is a tool that a cloud surety team can use for data protection.
+* The NIST Privacy Framework has three parts: core, profiles, and implementation tiers
+* `core` is a set of privacy protection activities and desired outcomes that allows for communicating prioritized privacy protection activities and outcomes across the organization.
+* `Profiles` represent the privacy outcomes the organization aims to achieve. To develop a profile, an organization will review the functions, categories, and subcategories of the framework, and decide which functions are the most important to focus on.
+* `implementation tiers` provide context on how an organization views privacy risk and indicates if the organization has adequate processes and resources in place to manage that risk.
+* The NIST Privacy Framework was developed to help improve privacy risk management for an organization's data. It is an international framework that strives to create a common language for international cooperation on privacy. The NIST Privacy Framework can help organizations meet their privacy obligations with the right selection of security controls and data protection practices.
+
+### GDPR, FedRAMP
+* The Federal Risk and Authorization Management Program, or FedRAMP, is a government-wide program that provides a consistent approach to security assessment, authorization, and continuous monitoring for cloud products and services in the United States.
+*  Health Insurance Portability and Accountability Act, or HIPAA: a US federal law for healthcare organizations. The Privacy Rule focuses on the use and sharing of all PHI, by what are known as “covered entities.
+*  `Covered entities` include healthcare providers, healthcare plans, healthcare clearinghouses and their healthcare business associates.
+*  When applying industry-specific standards, organizations should consider the types of data they work with and the jurisdictions they operate in. They should also consider which standards apply to their industry, whether they will be working with governments, and whether their workloads will be in the cloud, on-premises, or a combination of both.
+*  The General Data Protection Regulation (GDPR) includes regulations that protect the personal data and privacy of the residents of the European Union. All member states of the EU, and international organizations handling EU resident data, are obliged to follow the regulations set out by the GDPR.
+*  All federal government agencies and non-federal government organizations providing services to the United States government are able to leverage the additional security provided by FedRAMP. Agencies or organizations handling sensitive data may also be required to use FedRAMP-authorized cloud services.
+*  FedRAMP’s purpose is to ensure compliance of third-party cloud services for U.S. government users handling sensitive data. All federal government agencies and non-federal government organizations providing services to the federal government in the United States are able to leverage the additional security provided by FedRAMP.
+
+  
  </details>
 ---------------------------------
 
 You wouldn't try to surg big waves before knowing how to swim
+The skill that I think is most important for cybersecurity practitioners is a willingness to understand that you don't know everything.
 
 ---------------------------------
 <details>
