@@ -629,11 +629,9 @@ Compliance Life Cycle
 * Security guardrails are broad rules that prevent an insecure or not-policy-aligned action, but guardrails are not as narrow and directed as policy rules. For example, developers might be allowed to launch services that cannot be exposed to the public internet The control that prevents that exposure is the guardrail.
 * Security controls used at the workload level are applied to a collection of resources or code that delivers business value, like a customer-facing application. Security controls used at the platform level are applied to a common environment for running applications, like operating systems, programming languages, and runtime environments.
 
-
-[compliance report1.pdf](https://github.com/user-attachments/files/17406186/compliance.report1.pdf)
-[compliance report 2.pdf](https://github.com/user-attachments/files/17406176/compliance.report.2.pdf)
-
-
+* [compliance report.pdf](https://github.com/user-attachments/files/17406211/compliance.report.pdf)
+* [compliance report1.pdf](https://github.com/user-attachments/files/17406186/compliance.report1.pdf)
+* [compliance report 2.pdf](https://github.com/user-attachments/files/17406176/compliance.report.2.pdf)
 
  </details>
 ---------------------------------
