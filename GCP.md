@@ -92,9 +92,6 @@ cloud infrastructure.
 the configuration settings before deploying to the production environment.
 * Summary of this part is provided  [Here](https://github.com/user-attachments/files/17036225/CCS-C1-r-015-en-file-23.en.pdf)
 
-[compliance report 2.pdf](https://github.com/user-attachments/files/17406176/compliance.report.2.pdf)
-
-
 </details>
 
 <details>
@@ -587,8 +584,6 @@ important because they represent similar types of controls to help address a set
 Risk management framework: A set of practices, processes, and technologies that enable an
 organization to identify, assess, analyze, and manage risk within an organization
 
-[compliance report1.pdf](https://github.com/user-attachments/files/17406186/compliance.report1.pdf)
-
 
  </details>
 
@@ -635,6 +630,8 @@ Compliance Life Cycle
 * Security controls used at the workload level are applied to a collection of resources or code that delivers business value, like a customer-facing application. Security controls used at the platform level are applied to a common environment for running applications, like operating systems, programming languages, and runtime environments.
 
 
+[compliance report1.pdf](https://github.com/user-attachments/files/17406186/compliance.report1.pdf)
+[compliance report 2.pdf](https://github.com/user-attachments/files/17406176/compliance.report.2.pdf)
 
 
 
