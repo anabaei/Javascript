@@ -562,7 +562,77 @@ important because they represent similar types of controls to help address a set
 *  All federal government agencies and non-federal government organizations providing services to the United States government are able to leverage the additional security provided by FedRAMP. Agencies or organizations handling sensitive data may also be required to use FedRAMP-authorized cloud services.
 *  FedRAMP’s purpose is to ensure compliance of third-party cloud services for U.S. government users handling sensitive data. All federal government agencies and non-federal government organizations providing services to the federal government in the United States are able to leverage the additional security provided by FedRAMP.
 
-  
+### Risk Management Standards
+* The Payment Card Industry Data Security Standard, or `PCI DSS`, is a widely accepted set of policies and procedures intended to optimize the security of credit, debit, and cash card transactions.
+* PCI DSS also protects cardholders against misuse of their personal information.
+* The PS SSC set the standards for payment security.
+* The PCI DSS applies to any organization that accepts, transmits, or stores any cardholder data, regardless of the size of the organization, or the number of transactions.
+* the payment brands are responsible for enforcing PCI DSS compliance, not the PCI council.
+* All merchants will fall into one of four merchant levels based on transaction volume over a 12-month period.
+  - Level1: applies to merchants that process over six million card transactions per year by any method, including online, in store, or by phone.
+  - Level2: to merchants that process one to six million card transactions per year.
+  - Level 3 applies to merchants that process 20,000 to 1 million ecommerce transactions per year.
+  - level 4 applies to merchants processing fewer than 20,000 ecommerce transactions per year, and any other merchant processing up to 1M card transactions per year.
+ 
+  * 3 ongoing steps a cloud security team follows to adhere to the PCI DSS
+    - assess means to identify all locations of cardholder data, and analyze processes and IT assets for vulnerabilities that could expose cardholder data.
+    - Second, repair means to fix the identified vulnerabilities, You can do this by securely removing any unnecessary cardholder data and implementing secure business processes.
+    - And third, report means to document assessment and remediation details, and submit compliance reports to the bank and card brands you do business with.
+   
+* `ISO 27001` is an international framework that focuses on information security management systems.
+  - Confidentiality (only authorized people), integrity (data not change by mistake or lost) and avaialability (organization and users can access data everytime)
+  - 
+Risk management framework: A set of practices, processes, and technologies that enable an
+organization to identify, assess, analyze, and manage risk within an organization
+
+ </details>
+
+ <details>
+<summary>
+Compliance Life Cycle
+</summary>
+
+* The compliance lifecycle is a continuous lifecycle to help organizations comply with frameworks, industry standards, and internal organizational systems
+* According to ISO 27001, the four stages of the compliance lifecycle are `plan`, `implement`, `monitor`, and `report`.
+* NIST defines governance as the policies, procedures, and processes to manage and monitor an organization’s regulatory, legal, risk, environmental, and operational requirements that inform the management of cybersecurity risk.
+* A `gap assessment` identifies the processes and controls that currently meet the organization’s obligations, and the areas that need to be addressed.
+  - The planning process might involve evaluating controls, assets, and processes that are already in place This stage often involves a gap assessment.
+  - In implementing stage, you will implement measures, like controls and processes, that will help you meet your compliance goals.
+  - It is important to monitor the system to evaluate the effectiveness of the controls that were put into place
+  - Report stage, your organization must measure compliance by running reports and control checks.
+
+#### Cloud Security Control
+
+* Let’s explore common types of cloud security controls, including preventative, detective, and corrective controls.
+*  service level are applied to storage, computing, and networking.
+* workload level are applied to a collection of resources or code that delivers business value, like a customer facing application.
+* platform level are applied to a common environment for running applications, like operating systems, programming languages, and runtime
+
+* `cloud security controls`
+  - deterent controls:  which serve as a barrier to a potential attacke, ex:  a passphrase, which is more complex than a traditional password, is difficult and time consuming to crack. The added difficulty may deter an attacker. An example of a deterrent control against an insider attack is a company-wide policy stating the appropriate use of company assets and the consequences of nonadherence.
+  - preventative controls, which manage, strengthen and protect assets; For example, you write code that disables unnecessary ports to ensure there are less entry points for attackers reducing the attack surface.
+  - corrective controls, which reduce the aftereffects of an attack; For example, a corrective control could be a piece of code that corrects or repairs damage after unwanted or unauthorized activity and then notifies administrators of this action. Corrective controls are like an alarm that automatically calls the police in the event of an intrusion.
+  - detective controls, which identify or detect an attack. Antivirus software and network or service monitoring are examples of detective controls. Even billing
+  - A compensating control is a control to mitigate a risk that cannot be fully addressed by the organization's existing security controls. Compensating controls are usually used when the organization is unable to implement a specific control because of technical or business constraints.
+  - The PCI Security Standards Council, or SSC, provides guidelines that are helpful for creating and implementing compensating controls.
+
+#### Control Mapping process
+* Mapping controls in the cloud ensures that all the necessary controls meet regulatory obligations and secure the cloud.
+* To complete the control mapping process, an organization must identify controls; map required controls to cloud security benchmarks, standards, requirements, regulations, and rules; identify the controls
+* When using a spreadsheet to map controls, choose appropriate control titles, domain categories, and descriptions to identify related controls
+* Then, conduct an inventory of all assets, including hardware, software, and data. And then group controls by type of asset.
+* After mapping, identify the controls that aren’t mapped and assess which ones need to be implemented.
+* Next, it’s time to perform a platform and service level assessment.
+  - Once you confirm your controls are fully mapped, gather any needed supporting information.
+  - Once the documents are ready, the IT team or supporting organization will review all provided information in an official platform assessment
+* Finally, implement guardrails using policy initiatives, using built-in or third-party tooling.
+* Security guardrails are broad rules that prevent an insecure or not-policy-aligned action, but guardrails are not as narrow and directed as policy rules. For example, developers might be allowed to launch services that cannot be exposed to the public internet The control that prevents that exposure is the guardrail.
+* Security controls used at the workload level are applied to a collection of resources or code that delivers business value, like a customer-facing application. Security controls used at the platform level are applied to a common environment for running applications, like operating systems, programming languages, and runtime environments.
+
+
+
+
+
  </details>
 ---------------------------------
 
