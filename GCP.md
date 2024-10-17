@@ -633,7 +633,77 @@ Compliance Life Cycle
 * [compliance report1.pdf](https://github.com/user-attachments/files/17406186/compliance.report1.pdf)
 * [compliance report 2.pdf](https://github.com/user-attachments/files/17406176/compliance.report.2.pdf)
 
+
+ ### Cloud Security Audit
+
+ * Audit test cloud environment to ensure controls are in place to protect assets
+ -  A `cloud audit` is an assessment of the cloud environment that is usually conducted by a third party.
+ -  It results in a set of findings that describe how well an organization is meeting the audit standards, and it also provides ideas for improvement.
+ -  The audit plan includes the controls auditors will be evaluating for in the audit.
+ -  Audit focus on security controls,security controls are safeguards designed to reduce specific security risks.
+ -  Another benefit is contractual compliance and insurability.
+ -  Two of the biggest challenges of audit are time and resources.
+ -  Without an accredited auditor, your organization will not be certified or receive an official `SOC 2` letter.
+
+##### What covered in a cloud audit:
+
+* `cloud security procedures and policies`: The auditor will evaluate current cloud security policies.
+*  `access control`: assess access controls to ensure they are adequately implemented.  strong password standards and policies, multifactor authentication, privileged access management, and least privilege principle for all cloud assets.
+*  `network segregation`: They search for evidence that network is segregated in accordance with standard, as outlined in the audit plan.
+*  `data protection`: They verify that data is encrypted at rest and in transit using effective cryptographic algorithms. Auditors also ensure that data loss prevention tools are in place.
+*  `loggin and monitoring`: to verify that all required actions are logged and that critical activities are monitored.
+*  `incident response`: verify that the organization is prepared to respond to incidents by reviewing the incident response processes.
+*  A `security audit` can be internal or external, and includes an evaluation of various areas of control. The intent of an internal audit is to provide the board audit committee and stakeholders, like the CFO, evidence that internal controls are appropriately applied.
+*  The purpose of an external audit may be to become certified in a standard, like ISO 27001.
+*  `Security assessments`, however, are less complex. They only scan the company’s technological systems and identify flaws. Security assessments usually consist of an automated scan to ensure that controls are in place as intended.
+
+* Audit best practice:
+- study the audit requirements and make a plan to pass the audit.
+- identify asset and control inventory, such as control mappings, components, connections, functionality, and the people accountable.
+- assess your cloud architecture.
+- be sure to identify points of contact to work with auditors, and ensure their schedule has availability.
+- test run your own internal audit. The single best practice for audit preparation is to do an internal test audit using the exact testing criteria outlined in the audit plan.
+- gather evidence and prepare reports on the existing security controls.
+
+#### Control inheritance
+
+* Control inheritance is the process of using controls or compliance certifications and audits that are already provided by a cloud service provider.
+* Lack of internal compliance may result in a less secure cloud environment.
+* Lack of external compliance may result in a failure to secure or retain a commercial relationship with a business, or incur fines and penalties by a regulatory body.
+* Frameworks are consensus agreements that outline the minimum acceptable level of security.
+* Recognizing and adapting inherited controls to business requirements will enable you to achieve compliance within your organization.
+* Once you understand industry requirements, legal requirements, and commercial expectations, you can choose frameworks and or compliance certification programs to help guide your cloud security team.
+* `Noncompliance` is the failure to follow standards and regulations that are set by internal standards and policy, or external laws and regulations.
+* Negative organizational impacts include:
+  - financial loss,
+  - legal risk,
+  - reputational loss,
+  - talent loss.
+* An organization that is not in compliance may be subject to legal risks like imprisonment of its leaders, fines, and shareholder and customer lawsuits.
+
+#### Infrastructure as code, Policy as code
+* Infrastructure as code or IaC, is the practice of automating and managing infrastructure using reusable scripts.
+* When you apply IaC, you’ll likely experience stronger security, faster incident recovery, and improved accountability.
+* Policy as code, or PaC, is the use of code to define, manage, and automate policies, rules, and conditions using a high-level programming language.
+* PaC allows you to write continuous assessment checks against the infrastructure to determine that it’s secure and compliant, and remains that way.
+  - Efficiency: a security team can share policies and automatically enforce them, rather than manually.
+  - Speed: security team operations are faster when the team automatically enforces policies.
+  - Visibility: it’s easier for all stakeholders to understand what’s happening in the system.
+  - Collaboration: PaC provides a clear and uniform way of managing policies, and so simplifies collaboration, not only within the same team, but also between different departments or teams.
+  - Accuracy: when a security team automatically enforces policies, there’s less risk in making a mistake.
+  - Version control: if your team keeps track of policy files as they change, PaC makes it
+  - Testing and validation: with PaC, it’s easier for a security team to utilize automated auditing software to check that the code is valid and doesn’t have any gaps or errors.
+
+  * Pac Activity
+  [pac activity review.pdf](https://github.com/user-attachments/files/17424778/pac.activity.review.pdf)
+
+
+  
+ 
  </details>
+
+ 
+   
 ---------------------------------
 
 You wouldn't try to surg big waves before knowing how to swim
