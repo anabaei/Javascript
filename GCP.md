@@ -92,6 +92,8 @@ cloud infrastructure.
 the configuration settings before deploying to the production environment.
 * Summary of this part is provided  [Here](https://github.com/user-attachments/files/17036225/CCS-C1-r-015-en-file-23.en.pdf)
 
+[compliance report 2.pdf](https://github.com/user-attachments/files/17406176/compliance.report.2.pdf)
+
 
 </details>
 
