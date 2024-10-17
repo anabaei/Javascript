@@ -587,6 +587,9 @@ important because they represent similar types of controls to help address a set
 Risk management framework: A set of practices, processes, and technologies that enable an
 organization to identify, assess, analyze, and manage risk within an organization
 
+[compliance report1.pdf](https://github.com/user-attachments/files/17406186/compliance.report1.pdf)
+
+
  </details>
 
  <details>
