@@ -647,6 +647,8 @@ Compliance Life Cycle
 
 ##### What covered in a cloud audit:
 
+An organization is preparing for a cloud security audit, security controls should they check for compliance with audit standards are:
+
 * `cloud security procedures and policies`: The auditor will evaluate current cloud security policies.
 *  `access control`: assess access controls to ensure they are adequately implemented.  strong password standards and policies, multifactor authentication, privileged access management, and least privilege principle for all cloud assets.
 *  `network segregation`: They search for evidence that network is segregated in accordance with standard, as outlined in the audit plan.
@@ -693,13 +695,19 @@ Compliance Life Cycle
   - Accuracy: when a security team automatically enforces policies, there’s less risk in making a mistake.
   - Version control: if your team keeps track of policy files as they change, PaC makes it
   - Testing and validation: with PaC, it’s easier for a security team to utilize automated auditing software to check that the code is valid and doesn’t have any gaps or errors.
+* Pac Activity [pac activity review.pdf](https://github.com/user-attachments/files/17424778/pac.activity.review.pdf)
 
-  * Pac Activity
-  [pac activity review.pdf](https://github.com/user-attachments/files/17424778/pac.activity.review.pdf)
+Questions/Answers
+* Using threat intelligence to assist in the analysis of risk is an example of a Risk Assessment control.
+* The Awareness and Training control focuses on establishing security education policies and procedures related to awareness and training.
+* The Access Control policy focuses on granting or denying privileges to users.
+* The reputational risks of non-compliance include a loss of customers’ trust, which can lead to lost business. Reputational risks also include damage to the brand’s reputation with stakeholders, partners, and the general public.
+* PaC is easy for stakeholders to check, making it easier for them to understand what is happening in the system. PaC also improves accuracy because policies are automatically enforced. PaC also makes it easier for a security team to utilize automated auditing software to check that the code is valid and doesn’t have any gaps or errors.
 
+* [module 3 glossory.pdf](https://github.com/user-attachments/files/17426720/module.3.glossory.pdf)
+* [CCS-C2-act-005c-en-file-58.en (1).pdf](https://github.com/user-attachments/files/17426721/CCS-C2-act-005c-en-file-58.en.1.pdf)
 
   
- 
  </details>
 
  
