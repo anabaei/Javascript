@@ -706,18 +706,109 @@ Questions/Answers
 
 * [module 3 glossory.pdf](https://github.com/user-attachments/files/17426720/module.3.glossory.pdf)
 * [CCS-C2-act-005c-en-file-58.en (1).pdf](https://github.com/user-attachments/files/17426721/CCS-C2-act-005c-en-file-58.en.1.pdf)
-
-  
+ 
  </details>
 
- 
-   
+<details>
+<summary>
+Cloud tools for risk management and compliance
+</summary>
+
+
+* MITRE is a not-for-profit organization that conducts research to support government agencies in several fields, including cybersecurity.
+* The National Vulnerability Database, or NVD, is a publicly accessible repository of data about known system and software vulnerabilities created and updated by the National Institute for Standards and Technology, or NIST
+* The primary purpose of using a CVE® identifier is to streamline communication and sharing of vulnerability information. Its purpose is to standardize the name of vulnerabilities, not to develop fixes or patches.
+* NVD uses:
+- vulnerability management: The vulnerabilities in the NVD are categorized based on their unique CVE® numbers. The NVD also contains information about vulnerabilities’ severity, whether fixes or patches have been created to address them, and how much potential they have to affect systems.
+- security measurement: 
+- compliance
+* The Open Web Application Security Project, or OWASP is a foundation that creates guidelines and frameworks for securing software.  The OWASP Top Ten is a regularly updated report of critical security risks for web applications.
+* OWASP created the Top Ten by researching common risks that make it easier for attackers to target web applications, like misconfigured security settings, or insecurely designed applications. Cloud security analysts use the Top Ten to guide their security testing efforts, minimize vulnerabilities in cloud environments, and assess risks.
+* The purposes of the Open Web Application Security Project (OWASP®) Top Ten are to guide security testing efforts and minimize vulnerabilities in cloud environments. It does not focus on highlighting high-profile security breaches, but on identifying critical web application security risks as a reference to help organizations improve their security posture.
+
+### Multicloud CSPM
+
+* Multicloud is a strategy of using more than one cloud service provider.
+* Cloud security posture management, or CSPM, is the process of monitoring and configuring cloud assets for security and compliance with best practices, regulations, and organization policy. using multi clouds allow to get best of each ones
+* CSPM tools automatically scan cloud assets and alert security teams if a potential issue is found.
+- CSPM provides a centralized place to ensure the right policy actions and controls are in effect and alert you to events within the multicloud environment.
+- They also help keep the whole environment secure and in line with compliance standards.
+* For example, CSPM tools can also automate threat response by automatically isolating assets that may have been compromised until the security team has a chance to address them.
+
+Tools:
+##### Palo Alto Prisma Cloud
+* `Palo Alto Prisma Cloud` is a cloud-native application protection platform, or CNAPP.
+* `Prisma Cloud` secures cloud-native applications through the stages of the development process.
+* Prisma Cloud works by taking in configuration data, user activity, and network traffic from across an organization’s cloud environments. 
+* Using this data, Palo Alto Prisma Cloud provides visibility across the hybrid or multicloud environment.
+* It also provides security assessments and compliance monitoring.
+* Prisma Cloud can also integrate with external services to help provide remediation.
+* Prisma Cloud provides identity and access management, or IAM, capabilities to help your organization maintain least-privilege access.
+
+##### Crowdstrike Falcon Cloud
+* Next, Crowdstrike Falcon Cloud is a cloud-native endpoint protection platform.
+* It’s designed to protect endpoints, including desktops and laptops, servers, and virtual machines.
+* Like other CSPMs, Falcon CloudFalcon Cloud also uses machine learning, or ML, and artificial intelligence, or AI, threat detection algorithms to analyze activity and respond to potentially malicious behavior in real time. uses threat intelligence to detect potential threats in an organization’s cloud assets.
+
+  
+* `Orca scans` cloud workloads and identities and provides visual graphs of potential attack paths.
+* Another agentless CSPM, Checkpoint Cloudguard, uses rules and queries written in a unique, human-readable syntax called Governance Specification Language.
+* And finally, the Netskope Cloud Security Platform is a CSPM tool that has a unique focus on data security and data loss prevention.
+* 
+##### Security Command Center
+
+* Security Command Center, or SCC, is Google Cloud's centralized vulnerability and threat reporting service with CSPM features.
+* Security Command Center scans your organization’s cloud infrastructure, helping you prevent, detect, investigate, and respond to threats throughout your organization’s cloud environment.
+
+* `SCC features`:
+- You can use SCC’s assets feature to carry out an asset inventory review to help you discover and view your resources and policies in near-real time.
+- This tool also provides asset tracking, so you can identify new, modified, or deleted assets.
+- Real time notification
+- Security Health Analytics service, which can identify misconfigured virtual machines, containers, networks, storage buckets, and IAM policies.
+- And second is the Web Security Scanner service, which automatically detects vulnerabilities in App Engine, Google Kubernetes Engine (or GKE), and Compute Engine applications.
+- `Web Security` Scanner provides two main types of vulnerability scanning:
+   	- managed scans: Managed scans are configured and managed by SCC, and manage basic vulnerability detection for projects across the organization.
+   	- custom scans: You can configure custom scans to provide more granular information about vulnerabilities in individual projects.
+- The `Event Threat Detection service` scans your Cloud Logging stream for potential threats based on threat intelligence features, or information about known or potential threats.
+- The Container Threat Detection service scans for potential compromises of GKE containers.
+- And the Virtual Machine Threat Detection service scans for potentially malicious applications running in virtual machines, or VMs, or Compute Engine
+- Beside thread detection, SCC can scan our cloud for violations of certain compliance frameworks. It recommends fixes for any violations found.
+- SCC also integrates with other data sources to provide more details about your cloud security posture. For example, Cloud Armor analyzes traffic to help protect cloud assets from DDoS and common OWASP attacks.
+- Sensitive Data Protection scans storage buckets and databases for sensitive and regulated data, and provides recommendations to secure it.
+
+* SCC is available in two tiers: standard, or no cost, and premium.
+  - The standard tier provides Security Health Analytics, including identifying high-severity threat detection.
+  - The premium tier builds on the functionality of the standard tier, including the Security Health Analytics service with the addition of PCI and CIS Benchmark reporting support.
+  - The premium tier also includes Web Security Scanner, along with Event Threat Detection, Container Threat Detection, and VM Threat Detection.
+
+### Mange Risks in cloud by using tools
+* There are a few tools included in the Google Security Command Center, or SCC,that you can use to improve your organization’s security posture and compliance. Risk Manager is a risk assessment and management service within Google Cloud SCC.
+* When it’s time for your organization to purchase cyber insurance, you can send Risk Manager reports directly to cyber insurance carriers
+* `Policy Analyzer` lets you know which users, service accounts, and domains can access which cloud resources, and helps you achieve least-privilege access.
+* `Role-binding reports` include sets of one or more members and identities, known as principals, who have a permission or role granted by the cloud security team.
+* `Assured Workloads`, is a tool that manages the security and compliance of Google Cloud workloads. Assured Workloads also provides data residency controls at rest or in use.
+- If your compliance obligations require you to store data in certain geographic locations, Assured Workloads automatically restricts data storage to the regions you designate.
+- Assured Workloads’ personnel data access controls help make sure only authorized Google personnel can access your data.
+- Authorized personnel can include people within the physical area of your compliance program, and who satisfy the required background checks.
+- Assured Workloads also provides monitoring and alerts to organization policy changes that break compliance.
+
+* ![guid with image on risk management.pdf](https://github.com/user-attachments/files/17441723/guid.with.image.on.risk.management.pdf)
+* [Cloud tools for risk management.pdf](https://github.com/user-attachments/files/17441724/Cloud.tools.for.risk.management.pdf)
+
+
+
+</details>
+
+
 ---------------------------------
 
 You wouldn't try to surg big waves before knowing how to swim
 The skill that I think is most important for cybersecurity practitioners is a willingness to understand that you don't know everything.
 
 ---------------------------------
+
+# <font color=green> Cloud other Infos </font> 
+
 <details>
 <summary>
 cloud shell
