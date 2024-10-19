@@ -857,15 +857,102 @@ QA:
 
 </details>
 
+# <font color=green> Identify and Protect Against Threats </font> 
+
 <details>
 <summary>
-cloud shell
+ Fundamentals 
 </summary>
+At this course, we learn tools and techninuqe to protect your organization's data and infrastructure. After completing this material, you’ll be on your way to becoming an effective and knowledgeable cloud security expert who is capable of addressing challenges and protecting an organization's cloud assets.
 
-* 
+## Identity Management
+
+* `Identity management` is a core component for access control in cloud environments. Combining identity and network controls strengthens the defense of cloud environments.
+* Organizations GS+ uses multitude of service providers,  this diversity, while offering flexibility and choice, also requires a unified approach to managing user identities and access control.
+* Centralized and consistent identity management is essential for several reasons.
+-  you streamline access control when you have multiple platforms and services in play and centralize the process of granting, modifying, and revoking access to resources —as opposed to managing these resources in separate environments.
+-  you enhance security when you minimize vulnerable systems by consolidating access controls and preventing potential breaches.
+-  you improve compliance when you fulfill requirements to meet compliance rather than when you just focus on implementing controls on data access and user authentication.
+-  you simplify administration when you provide a single interface for managing users, groups, and permissions across many systems in your environments.
+-  you save operational and resource costs when you centralize multiple identity management systems into a single identity platform.
+
+### key concepts in identity management
+
+* `Role-based access control`, or RBAC, is a method of controlling access to resources based on the roles assigned to users. This helps ensure users only have permissions and access to the resources necessary for their job.
+* `Single sign-on`, or SSO, is a technology that combines several different logins into one. It simplifies the authentication process by allowing users to access multiple applications using a single set of credentials. This minimizes the risk of password fatigue, which is when users feel overwhelmed by the number of different login credentials they need to manage.
+* `Multifactor authentication`, or MFA, is a security measure that requires a user to verify their identity in two or more ways to access a system or network.
+* `Identity and access management services, or IAM`, is a collection of processes and technologies that help organizations manage digital identities in their environment.These services enable you to create, manage, and delete users and groups, and assign and enforce access policies.
+
+- [IAM BEST GRAPH.pdf](https://github.com/user-attachments/files/17446644/IAM.BEST.GRAPH.pdf)
+
+### Authentication, authorization, and auditing AAA
+
+* AAA describes a security framework that is used to verify the identity of users or groups in systems and grant them access based on their privileges.
+* `Authentication` is the process of verifying who someone is. MFA significantly reduces the risk of unauthorized access, as malicious actors would need multiple forms of authentication to breach the system.
+* `Authorization` is the concept of granting access to specific resources in a system. One form of authorization is role-based access control, or RBAC. RBAC streamlines the process for administrators, allowing them to manage permissions collectively rather than individually.
+* `Auditing` is the process of recording and reviewing system activity to ensure compliance with security policies and identifying potential security breaches. Auditing also helps identify potential security threats and vulnerabilities. there are several types of audits that can be conducted:
+  - Compliance audits: Compliance audits ensure that the organization is complying with the relevant laws and regulations.
+  - Security audits: Security audits assess the security posture of the information system.
+  - Operational audits: Operational audits evaluate the effectiveness and efficiency of the system's operations.
+* An audit is only effective when its objectives are clearly defined from the beginning. These objectives should be specific, measurable, achievable, relevant, and time-bound called SMART goals.
+* Tool we need is The Triple A framework which provides a comprehensive and effective approach to ensure the confidentiality, integrity, and availability of cloud resources.
+
+### Security principles
+
+* As a cloud security professional, `credential management` is a good place to start. The risks associated with unauthorized access to data are primarily because of inadequate credential management practices.
+* Users in organization need to constantly change their passowrds, users can also use a password manager to securely store and manage their credentials.
+* `Secret management`: Secrets are sensitive information like Application Programming Interface, or API keys, passwords, and certificates that are used to authenticate and authorize access to systems.
+* Best practices for managing secrets include using a centralized secret management tool, strong encryption methods to protect them, and regular rotation of API keys, passwords, and certificates.
+* `Non-interactive service` These accounts are created for automated processes and services and are often overlooked. If not properly managed, they can provide an easy entry point for malicious actors to infiltrate your systems. To mitigate this risk, it's important to regularly review and audit these accounts, rotate keys associated with service accounts regularly, and limit their privileges. GS+
+
+### security protocols
+mTLS, OAuth, and OpenID are three common protocols that provide secure communication between different systems and services.
+* `mTLS`, or mutual Transport Layer Security, is a protocol that provides mutual authentication and encryption between servers. It's a variation of the Transport Layer Security, or TLS protocol, that secures communication between a client and a server. With mTLS, both the client and the server authenticate each other, ensuring that the communication is secure and private.
+* `Open Authorization, or OAuth`, is a method that allows users to grant applications access to their information on other sites or systems without the need to share their passwords. Open Authorization, or OAuth, is a method that allows users to grant applications access to their information on other sites or systems without the need to share their passwords. can use OAuth to securely authorize the application to access your account without sharing your credentials.
+* `OpenID` is a protocol that is used for single sign-on functionality, allowing users to authenticate once and access multiple services. The process involves the user authenticating with an identity provider in exchange for an identifier. This identifier can then be used on another site or service, without the user having to authenticate on that site or service for a second time. This simplifies the login process for users and reduces the risk of password fatigue and credential reuse.
+
+## Access Control Types 
+
+* Access Control ensures that only authorized individuals can access data and resources.
+* `discretionary`, `mandatory`, and `role-based` access controls.
+- `Discretionary access control`, or DAC, a security model where the owner of the data or resource has the discretion to grant or revoke access to other users. For example, in Google Drive, it’s possible to share only view access with an individual to one specific file, while simultaneously providing edit access to a different file. These varying levels of access —from partial to full— from the owner of the files, are discretionary. DAC can be implemented using access control lists, or ACLs for each user or group
+- `mandatory access control`, or MAC, which is a strict security model in which access is granted based on predefined security policies. In a cloud environment, MAC can be implemented using security labels or tags which are assigned to both data and users.
+-  `Role-based access control`, or RBAC. RBAC is a method of controlling access to resources based on the roles assigned to users.
+-  `Attribute-based access control`, or ABAC is a security model where access is granted based on attributes like user, resource, and environment. 
+
+* `policies` can be based on a variety of attributes, like the user's job title, the sensitivity level of the data, or even the current day and time. Implementing ABAC in a cloud environment typically involves setting up a policy decision point, or PDP, and a policy enforcement point, or PEP.
+* The PDP evaluates policies and makes access decisions, while the PEP enforces those decisions by granting or denying access to the resources.
+* Remember IAM allows you to manage users, groups, roles, and permissions across your cloud environment. Along with IAM, organizations must also consider policies and resource hierarchies.
+
+#### best practices for implementing access controls
+
+* Apply the principle of least privilege, giving users only the permissions they need to perform their tasks
+* Separate duties to minimize the risk of unauthorized access or actions
+* Regularly audit access controls in your cloud environment to ensure access permissions are up to date.
+
+### Types of Perimeter Protection
+
+* `perimeter protection` refers to the security measures implemented at the edge of a network or system to defend against unauthorized access and cyber threats. several types of perimeter defenses that can be implemented to protect a cloud environment
+- Identity and context-based access is increasingly becoming the first line of defense because it offers a robust security solution compared to traditional methods.
+- Firewalls typically are only for internal networks and can help prevent lateral movement within the system.
+- Intrusion detection systems, or IDSs, monitor network traffic, check for signs of suspicious activity, and alert administrators when detected.
+- Intrusion detection and prevention systems, or IDPSs, monitor network traffic for signs of malicious activity and either alert the administrator, or actively block the threat, or both
+- Virtual private networks, or VPNs, create a secure, encrypted tunnel for data to travel between
+-  Access control lists, or ACLs, restrict access to resources in the cloud, ensuring that only authorized users have access to specific data or services.
+#### Trust boundaries
+* Without clearly defined trust boundaries, your network is at risk of unauthorized access, data breaches, and other security issues. Establishing trust boundaries can help you better manage access to sensitive data and identify potential vulnerabilities.
+* These best practices can be categorized into three primary areas: improve cloud network security, monitor and control access, and maintain security policies and training
+- `improve cloud network security`: Implement network architecture that always requires user authentication. Segment networks, use microperimeters, and apply context-aware access controls and define trust boundaries between network zones based on risk and required access controls.
+- ` monitor and control access`: Regularly review and update firewall rules. Deploy cloud-based IDS IPS solutions for protection, and implement secure remote access solutions, and enforce strong authentication methods.
+- `audit and update IAM policies for least privileges, train employees `  on cloud security best practices, and enforce strong password policies and multifactor authentication, or MFA.
+
+* Fire wall rules [firewall rules.pdf](https://github.com/user-attachments/files/17447708/firewall.rules.pdf)
+* Trust [Trust boundaries.pdf](https://github.com/user-attachments/files/17447709/Trust.boundaries.pdf)
+* [Cloud access control in action.pdf](https://github.com/user-attachments/files/17447711/Cloud.access.control.in.action.pdf)
+
 
 </details>
----------------------------------
+------------------------------------------------------------
 
 * My advice, dig into a specific topic, explore it until you reach a stopping point, build a solution to highlight your learning, and then show it off on the internet.
 * Maintaining a portfolio of simple to complex projects is a highly valuable tool in showcasing your individual journey.
