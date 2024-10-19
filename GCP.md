@@ -794,14 +794,82 @@ Tools:
 
 * ![guid with image on risk management.pdf](https://github.com/user-attachments/files/17441723/guid.with.image.on.risk.management.pdf)
 * [Cloud tools for risk management.pdf](https://github.com/user-attachments/files/17441724/Cloud.tools.for.risk.management.pdf)
+QA:
+* Which states of data does Assured Workloads control? in use and At rest
+* What are Google Cloud's default settings for data encryption? in transit * at rest
 
+### applying for cyber insurance using Google’s Risk Protection
+* Buying cyber insurance can be challenging because it’s usually seen as difficult to underwrite
+* `underwrite` Underwriting is an insurer’s process of pricing an insurance policy.
+* it difficult for insurance companies to decide whether they will insure an organization, how much the policy will cover, and what the cost will be. To make it easy Google developed the `Risk Protection Program`, a solution that provides insurance carriers with information about an organization’s level of risk.
+* The Risk Protection Program sends data from Risk Manager directly to Google’s insurance carrier partners to help make underwriting cyber insurance easier and more accurate.
+* Here are the `Risk Protection Program` steps
+-  the organization must generate a `Risk Manager report`. Risk Manager reports provide centralized recommendations an organization can use to minimize risk.
+-  then sends it to the insurance carrier.
+-  Next, the insurance carrier sends a specialized security questionnaire to the organization to fill in any details about the organization’s security posture.
+-  The insurance carrier then uses this information to complete the underwriting process.
+-  Then, they send a quote back to the organization through a broker based on the amount of risk the organization carries.
+
+* `Cloud Protection+` is a specialized insurance policy developed by Google in collaboration with insurance carriers and is available through the Risk Protection Plan.
+  - Cloud Protection+ helps cover losses to the insured organization’s computer systems or the critical IT systems of third-party IT providers.
+  - The policy is based on underwriting that recognizes the security posture and investments of both the insured and Google.
+
+###  shared fate
+The shared fate model emphasizes a strong collaborative relationship between the customer (Jennifer's team) and their cloud service provider to manage risks effectively. This collaboration helps both parties understand and address security concerns, ensuring a more secure cloud environment.
+
+* shared fate, a model of how cloud service providers and their customers depend on each other to keep cloud assets secure.
+- The CSP is responsible for the security of the cloud infrastructure and services they provide. including physical and Operating systems
+- The customer is responsible for securing resources in the cloud by configuring resources, managing IAM, and securing applications running in the cloud.
+  
+* Shared responsiblity may cause some issues: For example, your cloud security team may be unsure whether default settings on cloud products are right for the organization’s needs.
+* In a `shared fate model`, the CSP plays a more involved role throughout the customer’s journey in the cloud.
+* The shared fate model also includes secure-by-default settings. This means that cloud resources come with robust security settings.
+* The CSP regularly tests controls in place on their cloud services to make sure everything’s working as it should.
+* Cyber insurance can assist in retrieving data and cover financial losses. This could include retrieving lost or corrupted data after a cyber attack.
+
+* A `cloud organizational policy` is a set of restrictions, or constraints on a specific cloud service or a list of services.
+* Organizational policy addresses what resource configurations are allowed in an organization or in a specific set of resources.
+* You can also set organizational policies using `tags`. Tags let you define groups of resources throughout a hierarchy and assign constraints to all resources in the group.
+* And, since organizational policies can prevent unnecessary resources from being created, they can be used to control costs.
+
+### constraint types
+* list: List constraints are rules that allow or disallow a set of values, and are useful when you need to specify the characteristics of resources created within your environment.
+* boolean: Boolean constraints are constraints that are either enforced or not enforced for a resource. This is known as the disable automatic role.
+
+* The `editor` role includes a large number of permissions, and can pose a security risk if an account is compromised. Using the constraint: `disable automatic role grants` to default service accounts,” you can prevent new service accounts from automatically receiving the editor role when they’re created. This lets you choose which permissions to grant to service accounts either manually or by adding additional constraints to your organizational policy.
+
+### Organization Policy Service
+* Organization Policy Service gives you centralized control over organization policies throughout your resource hierarchy.
+* And it lets you choose resource configurations to allow and enforce in your cloud environment.
+* You can get all the permissions needed to set constraints using Organization Policy Service by asking your administrator to grant you the Organization Policy Administrator role. To be able to delete define or create constrains
+* A `constraint` is a restriction against a Google Cloud service, or a list of services.
+* The domain-restricted sharing constraint limits the set of identities that can be used in identity and access management, or IAM Policies. You can use this constraint to limit resource sharing to a specific Google domain or set of domains.
+* Other constraints that can help keep service accounts secure include disable service account, or SA, key creation, disable SA key upload, or limit lifetime of service account keys.
+* For example, you may work at an organization that falls under data residency requirements. You can use a list constraint to specify the set of locations where cloud resources can be created, and data can be stored. If someone in your organization attempts to create a resource in a location that isn’t on the list, they’ll get an error, the resource will not be created, and the attempt will be logged.
+* 
+QA:
+- What is a cloud organizational policy? A set of restrictions or constraints on cloud services
+- Security Health Analytics identifies misconfigured virtual machines, containers, networks, storage buckets, and Identity and Access Management (IAM) policies.
+
+* [resources module 2.pdf](https://github.com/user-attachments/files/17446333/resources.module.2.pdf)
+* [Glossary terms from module 4.pdf](https://github.com/user-attachments/files/17446336/Glossary.terms.from.module.4.pdf)
 
 
 </details>
 
+<details>
+<summary>
+cloud shell
+</summary>
 
+* 
+
+</details>
 ---------------------------------
 
+* My advice, dig into a specific topic, explore it until you reach a stopping point, build a solution to highlight your learning, and then show it off on the internet.
+* Maintaining a portfolio of simple to complex projects is a highly valuable tool in showcasing your individual journey.
+* 
 You wouldn't try to surg big waves before knowing how to swim
 The skill that I think is most important for cybersecurity practitioners is a willingness to understand that you don't know everything.
 
