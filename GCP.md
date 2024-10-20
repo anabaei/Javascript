@@ -1001,15 +1001,26 @@ Traditional access control models, like role-based access control, or RBAC, and 
 * zero trust policies using key access control mechanisms. hese mechanisms include: identity and access management, or IAM, multifactor authentication, or MFA, microsegmentation, and network access control, or NAC.
 * `Microsegmentation` is a security technique that divides a network into smaller, isolated segments to limit unauthorized access and reduce the potential attack surface. This approach ensures that even if an attacker gains access to one segment, they can’t easily move within the network. 
 * Network access control, or NAC, is a security solution that enforces policy-based access control to network resources, ensuring that only authorized devices and users can access the network. NAC's core function doesn't just stop at policy enforcement; it extends to identification, monitoring, and control of devices and users on the network.
-  
+
+* [zero trust policy.pdf](https://github.com/user-attachments/files/17449173/zero.trust.policy.pdf)
+
+QA:
+* How does centralized and consistent identity management enhance security? Select two answers? By preventing potential breaches and By consolidating access controls
+* A company wants to assess the current state of their security system, identify any possible weaknesses, threats, or vulnerabilities, and receive recommendations to enhance their system protections. Which type of audit should the company conduct?  Security audit
+* OpenID will reduce password fatigue and credential reuse.
+* Deploy a firewall with access control rules that limit only the development team's IP addresses to access the development team's servers. If A small software development company has multiple departments. Due to the sensitive nature of the projects handled by the development team
+* The company's focus changes from securing the network perimeter to implementing granular access control over individual resources. when A company decides to implement zero trust security architecture in their network
 
 </details>
 
+<details>
+<summary>
+Threat and Asset management
+</summary>
 
+* 
 
-
-
-
+</details>
 
 
 ------------------------------------------------------------
