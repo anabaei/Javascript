@@ -950,8 +950,68 @@ mTLS, OAuth, and OpenID are three common protocols that provide secure communica
 * Trust [Trust boundaries.pdf](https://github.com/user-attachments/files/17447709/Trust.boundaries.pdf)
 * [Cloud access control in action.pdf](https://github.com/user-attachments/files/17447711/Cloud.access.control.in.action.pdf)
 
+* `src_port` - This is the source port number that's assigned to your computer. According to Internet Assigned Numbers Authority (IANA) standards, this is typically a random port number between 49152-65535.
+* direction - The rule's traffic direction can be either ingress or egress, here it is INGRESS which means the action will apply to incoming traffic.
+
+
+## Common Attack Vector
+
+`Attack vectors` are pathways attackers use to penetrate security defenses. Guidelines of using attack vectors
+- gain insight into attack vectors that are vital for network and system security.
+- once you gain insight into attack vectors, pinpoint potential vulnerabilities, and effectively defend against targeted attacks.
+- Next, we’ll discuss strategies using countermeasures to help you overcome common attack vectors that impact perimeter and boundary protections
+
+* Malicious actors may use social engineering tactics that exploit human mistakes to gain access to sensitive data or valuables. Examples of social engineering are phishing, vishing, smishing, and spear phishing attacks.
+- These types of social engineering attacks involve the use of digital communications to trick people into revealing sensitive data or deploying malicious software.To counter this, you can implement user training and email security measures.
+
+* password attacks are a widespread threat that usually involve brute force techniques in which attackers use trial and error to reveal private information.
+- To significantly improve security, strengthen your password policies and incorporate multifactor authentication.
+
+* Cybercriminals might also exploit vulnerable software by taking advantage of known vulnerabilities.
+- To counteract this, it's crucial to regularly patch and update software, and use vulnerability scanning tools.
+
+* Then, there's malware, or software designed to harm devices or networks, which infiltrate and compromise systems.
+- To combat malware, use advanced malware protection solutions and regularly update your software.
+
+* distributed denial of service, or DDoS attacks, are a type of denial of service attack that uses multiple devices or servers located in different locations to flood the target network with unwanted traffic
+- To protect your company from these attacks, deploy DDoS mitigation services and monitor network traffic
+
+QA:
+* A large real estate company has become aware of multiple attempts by cybercriminals to exploit their software vulnerabilities. What steps will protect their client data and prevent financial loss? 
+- Implementing user training and email security measures, deploying DDoS mitigation services, and monitoring network traffic can protect the company’s client data and help avoid financial loss.
+* Methods that improve cloud network security include defining trust boundaries based on risk and required access controls, segmenting networks, and applying context-aware access controls.
+
+### Zero Trust
+Traditional access control models, like role-based access control, or RBAC, and discretionary access control, or DAC, were designed with the assumption that everything within the network perimeter could be trusted. Zero trust is based on the principle of "never trust, always verify."
+* This means that every user, device, or system must be authenticated and authorized before accessing any resources or data. This approach assumes that any user or device, whether inside or outside the network perimeter, could be compromised. So, every access request must be validated and authorized on a case-by-case basis.
+* `Granular access` control allows for more defined control over access, as permissions can be granted or restricted based on specific conditions.
+
+ `core principles of zero trust`:
+ 
+  - The first principle is verify explicitly: This means that every access request must be authenticated and authorized before access is granted to any resource.
+  - The second principle is apply least-privilege access: This means that users, devices, and systems should only be granted the minimum access necessary to perform their tasks.
+  - The third principle is assume breach: Organizations embracing zero trust should operate under the assumption that a breach has already happened or will happen, and design their security measures accordingly.
+
+* Another critical aspect of zero trust is the use of `context-aware access controls`. Context-aware access controls are decisions about granting or denying access to resources, based on the user's identity and contextual information like location, device, and behavior patterns.
+* CASBs act as intermediaries between cloud service users and cloud service providers, enabling organizations to enforce security policies and maintain visibility over cloud-based activities. By incorporating ZTP, CASBs can restrict access to sensitive data based on user identity, device, and context, ensuring that trust is not automatically granted.
+* `SASE platforms`, on the other hand, combine network and security functions into a single, cloud-based service. By integrating ZTP with SASE, organizations can apply adaptive security policies based on real-time context, like user identity, device, location, and application.
+* Both CASBs and SASE platforms play an important role helping organizations implement ZTP by providing granular access controls, continuous monitoring, and adaptive security policies based on context.
+
+##### How to implement Zero trust
+* zero trust policies using key access control mechanisms. hese mechanisms include: identity and access management, or IAM, multifactor authentication, or MFA, microsegmentation, and network access control, or NAC.
+* `Microsegmentation` is a security technique that divides a network into smaller, isolated segments to limit unauthorized access and reduce the potential attack surface. This approach ensures that even if an attacker gains access to one segment, they can’t easily move within the network. 
+* Network access control, or NAC, is a security solution that enforces policy-based access control to network resources, ensuring that only authorized devices and users can access the network. NAC's core function doesn't just stop at policy enforcement; it extends to identification, monitoring, and control of devices and users on the network.
+  
 
 </details>
+
+
+
+
+
+
+
+
 ------------------------------------------------------------
 
 * My advice, dig into a specific topic, explore it until you reach a stopping point, build a solution to highlight your learning, and then show it off on the internet.
