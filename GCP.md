@@ -1015,8 +1015,22 @@ QA:
 
 <details>
 <summary>
-Threat and Asset management
+Threat, Asset, vulnerability Remediation and Posture managements
 </summary>
+
+
+### Threat Management
+* A `threat management strategy` is a comprehensive plan that addresses the various types of cyber threats an organization may face. The key components of an effective threat management strategy are prevention, detection, response, and recovery.
+- `Prevention` involves implementing security controls to prevent cyber attacks from occurring in the first place. This includes firewalls, endpoint protection software, and access controls.
+- `Detection` involves monitoring systems and networks for any signs of suspicious activity.
+- This includes intrusion detection systems, log analysis, and security information and event management, or SIEM, systems.
+- `Response` involves quickly identifying and containing any cyber attacks that occur. This could include incident response plans, communication protocols, and emergency response teams.
+- `Recovery` involves restoring systems and data to their pre-attack state. This could include backups and disaster recovery plans.
+
+* Challenges to implement threat
+- One of the biggest challenges is the constantly evolving nature of cyber threats. As soon as you think you’ve handled one threat, another emerges.
+- Another challenge is the lack of resources and expertise in the field of threat management
+- There is the challenge of balancing security with productivity.
 
 * 
 
@@ -1027,9 +1041,8 @@ Threat and Asset management
 
 * My advice, dig into a specific topic, explore it until you reach a stopping point, build a solution to highlight your learning, and then show it off on the internet.
 * Maintaining a portfolio of simple to complex projects is a highly valuable tool in showcasing your individual journey.
-* 
-You wouldn't try to surg big waves before knowing how to swim
-The skill that I think is most important for cybersecurity practitioners is a willingness to understand that you don't know everything.
+* You wouldn't try to surg big waves before knowing how to swim
+The skill that I think is most important for cybersecurity practitioners is a willingness to understand that you don't know everything. 
 
 ---------------------------------
 
