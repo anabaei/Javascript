@@ -1199,6 +1199,7 @@ Cloud architecture is pretty complex, and there’s a lot you need to do to keep
 * Because the cluster-admin role grants unlimited access, never grant cluster-admin access to any users or teams that don’t need high-level access.
 * Also, avoid aggregating or combining privileges.
   
+</details>
 
 <details>
 <summary>
