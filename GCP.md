@@ -1138,6 +1138,12 @@ Cloud architecture is pretty complex, and there’s a lot you need to do to keep
 * The hypervisor allows one host computer to share its memory, processing, and other resources to support multiple virtual machines.
 * A container is a software package that holds only the components necessary to execute a particular application.
 * Both containers and virtual machines let you use isolated environments for running software services. A virtual machine has its own guest operating system, like Linux, running on top of a host operating system. A benefit of using a virtual machine is that the hypervisor is allowed access to utilize the host's hardware.
+* A pod uses shared resources and a specification on how to run containers.
+* Pods are grouped by container clusters.
+* A pod uses shared resources and a specification on how to run containers.
+* Pods are grouped by container clusters.
+* Container clusters are dynamic systems that manage and place containers, grouped in pods.
+* Container clusters run on nodes, along with all the interconnections and communication channels.
 * Containers hold only the dependencies they need, but they don’t have access to their own hardware. A benefit to containers is that they’re lightweight, meaning they use a lot less memory than virtual machines.
 * You can also use Docker to create, deploy, and manage your containers. Docker has its own command-line interface, and builds the containers based on your needs. You can use this interface to interact with Docker in a terminal.Your commands are then sent to a program running in the background called the Docker Daemon. The Docker Daemon manages the containers, and the images those containers are created from.
 * One critical element of containers is that they share the kernels of their hosts instead of having their own kernels.
@@ -1153,7 +1159,7 @@ Cloud architecture is pretty complex, and there’s a lot you need to do to keep
 * Nodes are the physical or virtual machines where the performance takes place, akin to the school buildings hosting multiple classrooms.
 * Just as a school building may have many classrooms, a node can have many pods running within it, providing the stage for the orchestra -containers- to perform.
 * A layered file system is another important element of containers. When you make a new container, there’s one new container layer that new commands and files can be written to. So, any new commands, such as run or copy, that you give to the running container are written to the container layer. Each layer of a container is built on another layer to form an image. After the layers are put together, you get a final image.
-* 
+
 
 
 
@@ -1188,7 +1194,10 @@ Cloud architecture is pretty complex, and there’s a lot you need to do to keep
 *  Even a popular, commonly-used container library can contain thousands of images with malware. This malware might include cryptocurrency miners, back doors, website redirectors, and DNS hijackers.
 *  You can use drift prevention to keep your container immutable, meaning no new executables can be added.
 *  A software bill of materials, or SBOM, is a machine-readable list of each piece of software and its components involved in the supply chain.
-
+* Imagine a container is about to be deployed, but it has vulnerabilities that violate a policy. If a violation of the policy is found during orchestration, deployment will be stopped.
+* Role-based Access Control, or RBAC is a type of identity and access management, or IAM, that is central to Kubernetes operations. It involves a template or permission set that determines who can execute what, and where it can be executed.
+* Because the cluster-admin role grants unlimited access, never grant cluster-admin access to any users or teams that don’t need high-level access.
+* Also, avoid aggregating or combining privileges.
   
 
 
