@@ -1206,6 +1206,22 @@ Cloud architecture is pretty complex, and there’s a lot you need to do to keep
 Data Protection and Privacy
 </summary>
 
+* Data at rest is stored on servers, databases, mobile devices, physical drives, or in the cloud.
+* At rest data includes intellectual property, employee and customer personal information, financial documents, contracts, and other types of data, like healthcare data.
+* Data in transit. This is data that is moving between two places, like between a cloud provider and your site, or between two services.
+* Data in use is data that’s being accessed by one or more users. Data in use includes, but is not limited to data that is being processed, erased, read, or accessed.
+
+#### Data Encryption
+* Data encryption is the process of converting data from a readable format to an encoded format.
+* The Advanced Encryption Standard, or AES is the world standard encryption tool that helps protect data at rest.
+* AES is a tool that converts data to unintelligible cybertext and back into its original form with the proper key.
+* Encryption helps keep data protected with data encryption keys, or DEKs.
+* Another way to protect data at rest is to break it into chunks for storage. Each of these chunks get their own DEKs.
+* You can use Transport Layer Security or TLS to encrypt data in transit to keep it secure.
+* TLS is a security protocol that encrypts data transmitted between two communicating applications.
+* Confidential computing is the protection of data in use with hardware-based Trusted Execution Environment, or TEE.  To encrypt data, a TEE offers a secure and isolated environment that prevents unauthorized access, or modification of applications and data, while they are in use.
+* A TEE is secured through embedded encryption keys and only authorized code can utilize these keys.
+
 * 
 
 </details>
