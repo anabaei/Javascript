@@ -1124,6 +1124,76 @@ Lab:
 - Cloud Web Security Scanner toolbar, click + New scan.
 - 
 </details>
+
+
+<details>
+<summary>
+Principles of architecture , module 3
+</summary>
+Cloud architecture is pretty complex, and there’s a lot you need to do to keep it secure. Automation can support you in this process.
+
+
+#### Virtualization
+* The hypervisor is software that serves as an abstraction layer that sits between the physical computer and the virtual machine, allowing the creation and management of virtualized computing environments.
+* The hypervisor allows one host computer to share its memory, processing, and other resources to support multiple virtual machines.
+* A container is a software package that holds only the components necessary to execute a particular application.
+* Both containers and virtual machines let you use isolated environments for running software services. A virtual machine has its own guest operating system, like Linux, running on top of a host operating system. A benefit of using a virtual machine is that the hypervisor is allowed access to utilize the host's hardware.
+* Containers hold only the dependencies they need, but they don’t have access to their own hardware. A benefit to containers is that they’re lightweight, meaning they use a lot less memory than virtual machines.
+* You can also use Docker to create, deploy, and manage your containers. Docker has its own command-line interface, and builds the containers based on your needs. You can use this interface to interact with Docker in a terminal.Your commands are then sent to a program running in the background called the Docker Daemon. The Docker Daemon manages the containers, and the images those containers are created from.
+* One critical element of containers is that they share the kernels of their hosts instead of having their own kernels.
+* The kernel is the component of an operating system that manages processes and memory.
+* containers share the host’s kernel, so if the host is vulnerable to an exploit, an infected container can attack the kernel’s vulnerability.
+* This means that the host kernel needs to be up-to-date, and all the libraries in the containers need to be patched.
+* K8 Kubernetes is a platform for automating deployment, scaling, and managing containers. If a container goes down, Kubernetes will start a new one using automation.
+* Kubernetes also includes built-in commands to deploy applications, scale up and down for changing needs, monitor applications, and roll out changes.The Kubernetes platform handles a lot of the work that goes into application management, runs health checks against services, and replaces stalled containers when they’re unhealthy.
+* Containers are like the musicians in an orchestra or students in a music class.
+* Kubernetes groups containers into pods, which are like the classrooms or music halls within the school where the orchestra practices.
+* They are shared spaces that house multiple containers, similar to classrooms accommodating students with various roles.
+* These pods enable containers to work closely together, sharing resources like power and the local network, much like students sharing facilities within the same room.
+* Nodes are the physical or virtual machines where the performance takes place, akin to the school buildings hosting multiple classrooms.
+* Just as a school building may have many classrooms, a node can have many pods running within it, providing the stage for the orchestra -containers- to perform.
+* A layered file system is another important element of containers. When you make a new container, there’s one new container layer that new commands and files can be written to. So, any new commands, such as run or copy, that you give to the running container are written to the container layer. Each layer of a container is built on another layer to form an image. After the layers are put together, you get a final image.
+* 
+
+
+
+#### DevSecOps
+* Policy as code is the use of code to define, manage, and automate policies, rules, and conditions using a high-level programming language. Cloud professionals build policy into infrastructure to help manage policy.
+* Development Operations, or DevOps, consists of practices designed to increase the frequency of delivery and reduce lead time. When security is incorporated, it’s called Development Security Operations or DevSecOps.
+* With the DevSecOps model, policy as code and other security measures are incorporated throughout the operations and development process.
+* DevSecOps employs automation tools to automate several security processes. Some of these processes include: Continuous integration and continuous deployment, or CI/CD, the version control system, continuous testing, continuous monitoring, containerization, orchestration, and configuration management and deployment.
+* Another benefit to consider when using policy as code is avoiding violations and penalties in order to comply with government and industry standards.
+	
+#### Defence strategies
+* One of the ways to protect your assets is to apply authentication between each component.
+* Rate limiting is a method that prevents an operation’s frequency from exceeding a set limit or value. This will help you avoid overusing services or overloading them beyond use.
+* TTL time to live, This will help secure your cloud, leaving less data available for possible attacks
+* Multilevel Security:
+-  Access controls are security controls that manage access, authorization, and accountability of information. To do this, you need to determine how sensitive your data is and assign access based on its classification.
+-  Other aspects of multilevel security include using data sensitivity and classification together with IAM.
+
+* `Ephemerality` is the concept that things only exist for a short amount of time.
+* `Immutability` is the concept of being unable to change an object after it is created and assigned a value.
+
+#### Secure Containers
+*  don’t put anything in your container that you don’t need.
+*  use verified or signed images.
+*  never grant unnecessary privileges.
+*  avoid problems by using namespaces to group services for your application, and to isolate applications in your container clusters.
+*  use role-based access controls, or RBAC to prevent unauthorized access.
+*  scan each image you use to make sure there are no vulnerabilities or misconfigurations.
+*  Vulnerability scanning is another process that can help you find any vulnerabilities in your container images.
+*  Security threats: Using container runtime security can help you detect abnormal behavior, and stop a threat by isolating a container on a different network.
+*  When your container has a container layer, it can write to that layer and make changes. A container layer is a writable space in a container. That’s container drift.
+*  Even a popular, commonly-used container library can contain thousands of images with malware. This malware might include cryptocurrency miners, back doors, website redirectors, and DNS hijackers.
+*  You can use drift prevention to keep your container immutable, meaning no new executables can be added.
+*  A software bill of materials, or SBOM, is a machine-readable list of each piece of software and its components involved in the supply chain.
+
+  
+
+
+</details>
+
 <details>
 <summary>
 -----------
