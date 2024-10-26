@@ -1200,6 +1200,15 @@ Cloud architecture is pretty complex, and there’s a lot you need to do to keep
 * Also, avoid aggregating or combining privileges.
   
 
+<details>
+<summary>
+Data Protection and Privacy
+</summary>
+
+* 
+
+</details>
+
 
 </details>
 
