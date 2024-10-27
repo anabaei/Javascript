@@ -1222,7 +1222,93 @@ Data Protection and Privacy
 * Confidential computing is the protection of data in use with hardware-based Trusted Execution Environment, or TEE.  To encrypt data, a TEE offers a secure and isolated environment that prevents unauthorized access, or modification of applications and data, while they are in use.
 * A TEE is secured through embedded encryption keys and only authorized code can utilize these keys.
 
+* Data classification is the process of analyzing data to determine its sensitivity and value.
+* Lower sensitivity levels represent less of a risk for organizations like
+* Medium: At a marketing company, an associate sends an internal memo with a little information about the company, along with meeting notes on an advertising plan outline
+* High sensitivity data includes information like personal financial data, legal documentation, and company secrets.
+
+* Cloud security professionals use tags as a consistent way to document and classify data. Tags are custom metadata fields you can attach to a data entry to provide context to people authorized to access the data.
+* Let’s review an example of a customized PII tag
+  The first line of code is the label for the tag and it has the letters PII.The next line of code is the first metadata pair; it verifies that the value is true. The last line of code has the second metadata pair and it identifies the type of PII as a social security number, or SSN.
+```
+pii 
+has_pii: true
+type_pii: ssn
+```
+* The tag classifies this information as high sensitivity, making it easier for security controls to locate.
+* When you make your tags, you can use tag templates, or reusable structures to rapidly create new tags.
+* You can make a template by putting together metadata values in fields.
+
+### Data governance 
+* Data governance is a set of processes that ensures that data assets are managed throughout an organization. These processes are everything an organization does to ensure data is private, accurate, secure, available, and usable.
+* `Data stewards` are subject matter experts who are responsible for collecting and managing data, and preserving the quality of the data.
+* Usually, data quality is judged on six dimensions: accuracy, completeness, consistency, timeliness, validity, and uniqueness.
+  - Data is accurate when it can be confirmed with a verifiable source. like email
+  - Data is complete when there is enough data to deliver meaningful decisions and inferences.
+  - Data is consistent when data stored and used at multiple instances matches the values across various records. If a specific customer's name is spelled differently in each database, the data is not consistent. 
+  - Data timeliness means that the data is available when the user needs it.
+  - And data is unique when there are minimal overlaps or duplicates. Consider a salon customer who uses an online form to make two appointments for the same service, at the same time, on the same day.
+
+* Data quality means your data is complete, accurate, available when you need it, and fits with the organization’s requirements. GS+
+
+###  data sovereignty, residency
+
+* Data sovereignty means data stored in a physical location has to follow the regulations of that geographic location. To comply with data sovereignty, data professionals need to know what data they have and where their data resides.
+* Data residency refers to the physical or geographic location of an organization's data or information. Once data is moved, stored, or processed within a particular geographic location, it is subject to the laws, customs, and expectations of that specific location.
+* Sometimes there’s a need to keep sensitive data within the borders of a particular country to enhance data security.
+* Data localization is the requirement that all data generated within a country's borders remain within those borders.
+* This is so important, because data localization helps countries safeguard the data of their citizens and organizations in their territory.
+* Data governance helps organizations comply with and reinforces data sovereignty.
+* The organization could even create an organizational policy to use as a preventative guardrail.
+* As a reminder, guardrails are the policies, procedures, and processes to manage and monitor an organization’s regulatory, legal, risk, environmental, and operational requirements. It’s often helpful for organizations to check with their cloud provider to figure out if there’s a policy the organization can use.
+* When an organization uses location constraints in their policy, they can limit where their resources are deployed and maintained to make sure that they meet sovereignty requirements.
+
+###  data discovery
+* Data discovery is the process of searching, identifying, and analyzing large amounts of data within an organization to uncover hidden patterns, relationships, and insights.
+* During data discovery, organizations can flag data that is subject to governmental sovereignty laws and regulations.
+* Then, they can use data governance to ensure they’re in compliance with those regulations.
+* Organizations use data discovery to check for the dimensions of data quality, including the accuracy, completeness, consistency, timeliness, validity, and uniqueness of data.
+* The organization needs to keep track of this data and know how the data is collected, where it is collected from, and where it’s stored. GS+
+* At various stages of the data lifecycle, you can use a data loss prevention engine -also known as a DLP engine- to filter and search for sensitive data. You can also use DLP to inspect, mask, or remove sensitive data once it’s discovered.
+
+### Data retention
+* Data retention is the process of storing data, including how long it needs to be stored.
+* GS+, A data retention period is the length of time an organization keeps information.
+* A data retention policy helps determine: What data needs to be stored, and where the data should be stored.
+
+- Valid and unique data helps enhance data quality by minimizing duplications. Valid data matches specific criteria, and unique data has fewer duplicates or overlaps.
+- Data in cloud storage is stored globally, not locally. This makes it challenging to manage data localization.
+- The CIO should consider that different kinds of data may need different policies. A data retention policy should be flexible and based on an organization's needs.
+- Anna should recommend a bucket-based policy. By implementing a bucket-based policy, the retention period for data is clearly defined, and data can only be deleted or replaced once it has exceeded the set retention period. This approach allows for both consistent enforcement and flexible management of stored data.
+- Data discovery is like a bank teller finding where customers' money is stored. The same way a bank teller locates a customer's savings, data discovery identifies and locates sensitive or regulated data.
+
+### A business continuity plan, also called a BCP
+
+While BCPs focus on keeping a business going during a disruption, DRPs focus on recovering assets and data after the disruption.
+* A business continuity plan, also called a BCP, is a document that outlines the procedures to sustain business operations during and after a significant disruption. A disaster recovery plan, or DRP, is an important part of each business’ continuity plan.
+* A DRP is a plan that allows an organization’s security team to outline the steps needed to minimize the impact of a security incident.
+
+* Departments throughout an organization usually collaborate to create a BCP, with each department planning for their own operations.
+- The first step in building a business continuity plan is to determine the most critical apps and data for business function. For example, let’s say you’re helping create the BCP for your employer, a financial institution. If your online banking app goes down, your customers won’t be able to access their accounts from their phones -this means the banking app is a high priority. 
+- A recovery time objective, or RTO, is the target time allowed for the recovery of a service in the event of a disaster. The services most critical to your organization’s operations should have the shortest RTOs.
+- A recovery point objective, or RPO, is the maximum acceptable length of time during which data might be lost from an application due to a major incident. GS+
+- The third step in developing a business continuity plan is to conduct a risk assessment to identify what risks could affect your resources.
+- This plan should include solutions to recover your operations as soon as possible, including steps to restore backup data.
+
+* Suddenly, a message appears telling you that sensitive customer data has been encrypted and you need to pay a large sum of money to unlock it. You realize the data storage has been infected with ransomware.
+  - Let’s explore how business continuity planning can help the company solve this problem.
+  - Your business plan also lists acceptable amounts of downtime for each of those resources.
+  - Because the ransomware attack affected sensitive customer data, your plan only allows for one hour of downtime.
+  - Your risk assessment identified that a ransomware attack could affect your data storage, so you have a disaster recovery plan in place.
+  - The disaster recovery plan portion of your BCP contains information about each team member’s role.
+  - Another colleague is responsible for shutting down cloud resources affected by the ransomware.
+  - Meanwhile, you are responsible for getting the data back online.
+  - Because the data affected by the ransomware has a short acceptable downtime, your team has worked with your cloud service provider to back it up to another site.
+  - You’re able to reach out to your CSP and access the backed-up data, which hasn’t been affected by the ransomware.
+* The recovery time objective (RTO) is the maximum acceptable time period for an application to be offline. Establishing RTOs is essential in a business continuity plan, as it helps minimize disruptions and provides a target for how quickly systems must be restored following a data center shutdown.
+* The final step of BCP is to test and update the BCP and the disaster recovery plan (DRP) regularly. BCP testing should include role-plays of different situations with everyone in the company.
 * 
+
 
 </details>
 
