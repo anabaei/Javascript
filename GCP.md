@@ -1307,13 +1307,106 @@ While BCPs focus on keeping a business going during a disruption, DRPs focus on 
   - You’re able to reach out to your CSP and access the backed-up data, which hasn’t been affected by the ransomware.
 * The recovery time objective (RTO) is the maximum acceptable time period for an application to be offline. Establishing RTOs is essential in a business continuity plan, as it helps minimize disruptions and provides a target for how quickly systems must be restored following a data center shutdown.
 * The final step of BCP is to test and update the BCP and the disaster recovery plan (DRP) regularly. BCP testing should include role-plays of different situations with everyone in the company.
+
+### 
+
+</details>
+
+<details>
+<summary>
+Detect, Respond, and Recover from Attacks
+</summary>
+
+### Security Operations
+
+* SecOps, is the practice of combining people, processes, and technology to effectively protect an organization's data and infrastructure. High-level goals of SecOps include detecting, preventing, and mitigating threats in real time.
+* In cloud security, SecOps consists of several key components, including logging and monitoring, incident detection, incident response, and incident recovery. SecOps includes:
+- Logging and monitoring are essential for maintaining visibility in your cloud environment. By collecting, analyzing, and storing logs, security professionals can identify potential security threats, track changes, and monitor user activities.
+- Incident detection is the process of identifying and addressing security threats in the cloud environment.  This process includes analyzing log data, correlating events, and prioritizing incidents based on severity and potential impact. By detecting incidents promptly, security professionals can minimize the damage and prevent further escalation.
+- Incident response is the process of identifying, investigating, and mitigating security incidents promptly and effectively. This includes assembling a response team, containing the threat, investigating the root cause, and communicating with stakeholders.
+- Incident recovery is the process of restoring affected systems and data to their normal state. 
+
+#### Tools for Secops
+* Cloud’s Security Command Center, or SCC; Chronicle SIEM, Chronicle SOAR, VirusTotal, and Mandiant Threat Intelligence.
+- SCC This tool is an on-guard security specialist for all things Google Cloud. SCC also identifies security findings, keeps an inventory of cloud assets, and even scans web applications for security threats.
+- SIEM  This tool provides actionable security insights in real time. Chronicle’s SIEM tool takes massive amounts of machine data and translates it into helpful security information.
+- Chronicle also offers the Security Orchestration, Automation, and Response solution, or SOAR. This tool gives teams the power to fight common threats by using automated response workflows. From managing alerts and cases, to deploying incident response playbooks, SOAR ensures security teams are able to shift from detection to response quickly.
+- VirusTotal, This service is an online detector used to identify malicious content. Just submit files or URLs to VirusTotal and it will analyze them using various tools, like antivirus engines and website scanners. VirusTotal also uses analysis tools to detect viruses, worms, or trojans.
+- Mandiant's Threat Intelligence: Mandiant’s Threat Intelligence helps security professionals understand the tactics, techniques, and procedures used by global threats before they occur.
+
+##### Thread Detection Tools:
+* Google Cloud Security Command Center,SCC which can help you gain visibility into your cloud resources, and detect potential security threats.
+- It provides insights, alerts, and recommendations to enhance incident detection and response.
+* Google Cloud Logging and Monitoring. This tool enables you to collect, analyze, and visualize logs and metrics from your cloud infrastructure, allowing you to identify suspicious activities and potential security incidents.
+* Tools included in the Google Chronicle Security Operations Suite.Chronicle SIEM, SOAR, and threat intelligence provide security professionals with the ability to detect, respond, and analyze incidents from several different sources.
+
+#### Vulnerability Management
+
+* Vulnerability management is the process of finding and patching vulnerabilities.
+- In vulnerability management, the red team and blue team play crucial roles.
+- A red team is a group of ethical hackers who mimic potential adversaries in order to examine the security defenses of an organization.
+- The blue team is a group responsible for defending the organization's systems and networks from simulated attacks.  The blue team focuses on monitoring, detection, incident response, and recovery to ensure your organization's security remains robust.
+- Penetration testing, or pen testing, is a simulated attack that helps identify vulnerabilities in systems, networks, websites, applications, and processes.
+* Example GS+ Imagine this scenario: A healthcare organization initiates a penetration test on their patient portal. The objective is to assess the security of patient data. The penetration test found a vulnerability that allowed unauthorized access to an insecure Application Programming Interface, or API, linked to the patient portal. Despite the organization having detection protocols in place, the unauthorized access to the API went undetected.
+- As a result, the organization adds additional security measures including encryption, adjusted access controls, and more robust authentication.
+- They also initiate a reassessment of their security event log coverage, monitoring for better incident detection and response.
+- Finally, the organization commits to conducting frequent security audits for real-time evaluations.
+
+* Tabletop These exercises aim to replicate emergency security situations and are grounded in the organization's current policies, plans, and procedures. The main objectives of tabletop exercises include fostering a deeper understanding of concepts, pinpointing strengths and weaknesses, and driving changes in policies and procedures.
+* Tabletop exercises replicate emergency situations, allowing the organization to test its readiness in real-world scenarios. While tabletop exercises can indeed help pinpoint weaknesses, they do not do so by exploiting these weaknesses. This is a characteristic of penetration testing.
+
+
+#### Incident Detection
+* Incident detection is the process of identifying and addressing security threats in the cloud environment. The focus of incident detection is to spot anything out of the ordinary, like strange patterns and abnormal events. For example, this could include a user login from a new physical location. Analyzers should answer these questions for incidents:
+-  What are the indicators of compromise associated with this incident?
+-  What is the potential impact?
+-  What critical systems or resources are affected?
+-  Has the incident spread to other systems?
+-  And, what evidence should be collected to help my team?
+* Answers to these questions can strengthen your team’s ability to respond effectively to these types of incidents.
+
+#### Incident Management
+* Effective incident management helps minimize the impact of security incidents, enables you to quickly identify and repair vulnerabilities, and also ensures that your organization remains compliant with regulations and industry standards.
+*  Incident management  helps organizations identify, analyze, and respond to security incidents in a timely and efficient way.
+* NIST framework, provides guidelines and best practices for a structured approach to handling security incidents. You can use this framework to guide YOUR response to security incidents. It consists of four phases: preparation, detection and analysis, containment, eradication and recovery, and finally, post-incident activity.
+- `Preparation`: This includes everything an organization needs to do before a security incident occurs. During this initial phase, an organization develops an incident response plan, defines policies, assigns roles and responsibilities, and identifies critical assets. Clear roles and responsibilites
+- `Detection`: The goal of this phase is to identify security incidents early on by collecting and analyzing data using monitoring and logging. For example, a user might report an issue, or a security monitoring solution might generate an alert. In Google Cloud, you can use tools like Security Command Center, Cloud Logging, Cloud Monitoring, Chronicle SIEM, Error Reporting, and Stackdriver Trace to detect anomalies, trigger alerts, and analyze logs. With detection tools, you can configure alerting policies to notify you when a specific event happens, like an admin login from an unusual location. For example, examining any logins before the alert, and monitoring any changes, like role assignments or unusual configuration changes after the alert. During the investigation, it's also helpful to ask questions that can triage the incident. Some types of questions include how the alert was initially detected, the timing of detection, what logs are accessible, and if there are signs of ongoing unauthorized access.
+monitoring and alerting tools like Google Cloud Monitoring and Grafana can help identify potential security threats in real time. Recognize it. Security tool integrations. like SIEM. tools like Century make sure it scalate to right place. 
+- `containment, eradication and recovery`: After the incident has been correctly identified, any compromised systems need to be contained to limit impact. Recovery actions are then performed to return operations to normal, ensuring that all systems are functioning as expected. There are several cloud tools that you can use to enable containment, eradication, and recovery actions. By leveraging Google Cloud's capabilities, you can isolate the resources that have been affected using Virtual Private Cloud, or VPC firewalls, with the Cloud Security Scanner. Also, identity and access management, or IAM, plays a key role in the containment and removal of an attacker in cloud environments. By leveraging IAM features, you can address the security concerns identified during the Detection and Analysis phase. This includes actions like disabling compromised accounts, revoking suspicious OAuth tokens, and blocking untrustworthy IP addresses.
+
+* Google Cloud Backup and DR Service is a complete disaster recovery solution safeguarding data, applications, and digital assets. It ensures system restoration post-disaster, verifies backups for readiness, and offers configurable on-demand and scheduled backups.
+* You also need to be careful while restoring systems to avoid the accidental reintroduction of malicious elements like backdoors, compromised accounts, or command and control —or C2— elements.
+- post-incident activity. Once the threat has been successfully contained, you can perform post-incident activities such as conducting a postmortem analysis, documenting the incident, and implementing changes to prevent similar incidents in the future. Google Cloud's Cloud Audit Logs and Cloud Security Command Center's continuous monitoring and recommendations are valuable resources in understanding the actions leading to the incident and identifying improvements.
+* Google Cloud's Cloud Audit Logs can help you understand the actions that led to the incident and identify areas for improvement.
+* You can also use Cloud Security Command Center's continuous monitoring and recommendations to proactively improve your security posture and prevent future incidents.
+
+#### Intrusion Detection
+
+* using intrusion Detection Systems, you can detect when unauthorized access is taking place.
+* An IDS works much like a security camera system in a bank. The security cameras monitor the physical environment for any suspicious activity. Cloud IDS actively uses IDS principles to enhance security by detecting network threats, managing in the cloud, having thorough security, keeping full traffic visibility, meeting customer compliance, focusing on main threats, finding disguised apps, and providing efficient performance.
+- detecting network threats, Cloud IDS identifies intrusive and obstructive behavior throughout both network and application layers.
+- Cloud IDS identifies concealed malware hidden in various file formats and web content.
+- managing in the cloud, Cloud IDS allows you to manage your systems in a way that best suits your needs.
+- Cloud IDS integrates with Palo Alto Networks' threat detection capabilities to provide a broad security range.
+- Cloud IDS, equipped with Google Cloud's Packet Mirroring, actively expands its reach beyond standard internet traffic. It includes communication within and between Virtual Private Clouds, or VPCs. This enhancement allows for efficient detection of suspicious lateral movements that could suggest the presence of potential intruders, significantly strengthening cloud security.
+- Cloud IDS actively helps customers meet compliance standards by providing strong network threat detection. Using advanced algorithms, it identifies risks in real time and supports businesses in adhering to required standards.
+- With customizable options, Cloud IDS adjusts to unique risk levels and ensures constant network security, maximizing threat detection while minimizing false alerts.
+- Providing efficient performance is at the core of Cloud IDS capabilities.
+  
+#### signature 
+* A signature actively checks packet patterns for any malicious activity using factors like IP addresses, used ports, types of protocol, and payload details.
+* In network security, a signature database should be regularly maintained and updated. The signatures in this database are designed to identify specific patterns in network traffic that may indicate malicious. When network traffic is analyzed, it's compared to these signatures.
+* This Python dictionary is evaluating network traffic from a specific source IP address, utilizing the TCP , protocol to make requests at the destination port 80, and carrying a payload labeled as exploit_payload.
+* Anomaly-based detection is an alternative to signature-based detection that involves creating a normal baseline for network activity. This baseline is then used as a standard for comparison to identify activities that aren’t part of normal network operations. It keeps a constant watch on all the network traffic, comparing it against a baseline of regular or average network activity.
+* Anomaly-based detection is an effective strategy when dealing with new or unidentified threats that may not have an identifiable signature.
+* The next two NIST phases are to quarantine the system with the miner, and eliminate the miner and restore the system. Launching a post-activity session about the miner is a post-incident activity that should only take place after containment, eradication, and recovery.
+
+#### Logs 
+
 * 
 
-
 </details>
 
-
-</details>
 
 <details>
 <summary>
@@ -1328,7 +1421,12 @@ While BCPs focus on keeping a business going during a disruption, DRPs focus on 
 * Maintaining a portfolio of simple to complex projects is a highly valuable tool in showcasing your individual journey.
 * You wouldn't try to surg big waves before knowing how to swim
 The skill that I think is most important for cybersecurity practitioners is a willingness to understand that you don't know everything. 
-
+* I would say what interests me the most about jobs in cloud cybersecurity is the fact that you're continuously learning.
+* with perimeter protection, this is essentially your security measures that
+* With the second, with trust boundaries, that's essentially trying to separate or separate your trusted and untrusted environments.
+* The impact that I had on the project was essentially to act as one of the security gates to make sure that there were proper security requirements put in place and practices before we actually went through with full migration.
+* Imagine you're asked to explain the key components of a threat and vulnerability management strategy to a business leader with not a lot of technical experience.? So there are four components that I would highlight to explain a effective threat vulnerability management strategy. The first being prevention, the second being detection, the third being response, and the fourth being recovery So there are four components that I would highlight to explain a effective threat vulnerability management strategy.
+*  I perform threat simulations to help make Alphabet and its users safe.
 ---------------------------------
 
 # <font color=green> Cloud other Infos </font> 
