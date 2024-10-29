@@ -1401,8 +1401,61 @@ monitoring and alerting tools like Google Cloud Monitoring and Grafana can help 
 * Anomaly-based detection is an effective strategy when dealing with new or unidentified threats that may not have an identifiable signature.
 * The next two NIST phases are to quarantine the system with the miner, and eliminate the miner and restore the system. Launching a post-activity session about the miner is a post-incident activity that should only take place after containment, eradication, and recovery.
 
-#### Logs 
+### Logs 
 
+- First, a log is a record of events that occur within an organization’s systems.
+- Second, log analysis is the process of examining logs to identify events of interest.
+- Third, logging is the recording of events occurring on computer systems and networks.
+- And fourth, log management is the process of collecting, storing, analyzing, and disposing of log data.
+
+* There are several ways logs can be used:
+- log analysis analyzes logs for patterns
+- Setting up monitoring alerts based on specific log
+- Maintaining retention policies ensures logs are retained for the required duration
+- And threat detection proactively detects and mitigates security threats based on log data
+
+* By analyzing logs, security teams can identify suspicious patterns, detect potential security breaches, and investigate incidents.
+
+* Types of logs include: admin activity audit logs, data access audit logs, system event audit logs, and policy denied audit logs.
+- Admin activity audit logs provide a view into the activities of administrators and other authorized individuals. who did what and when a database forexample
+-  Data access audit logs record API calls that create, modify, or read user-provided data.
+-  System event audit logs report changes to your system's configurations and settings.
+-  Policy denied audit logs capture instances where requests were denied because of existing IAM policies. Unauthorized access by users can be fined here any failed requests
+
+* Logs follow a lifecycle that includes generation, storage, analysis, and eventual expiration.
+* Log retention is an important part of the log lifecycle as it's used to preserve logs for a specific period to meet regulatory requirements and facilitate historical research.
+* Retained logs can be used to investigate past incidents, identify trends, and improve security posture.
+* Users also might choose to save their logs to cold storage or store them offline.
+
+  
+* Security Information and Event Management, or SIEM systems, like Chronicle, can aggregate logs from different sources, providing a centralized platform for log analysis and security monitoring.
+
+* Chronicle SIEM and SOAR are two tools that can enhance your essential skills. These tools collect and correlate data, organizing it in a way that makes it easier to decipher.  Functions like intelligent threat detection, customizable alerts, and visualization give you new insights into security operations.
+* These include collaboration features, incident tracking, and comprehensive reporting tools.
+
+
+## Alerts and Notifications
+With these insights and strategies, you’ll be prepared to start implementing alert management systems in your Security Operations, or SecOps.
+
+* There are some common alert types to consider for a cloud environment.
+- First is unusual network traffic.
+- Second is suspicious login activity.
+- Third is policy violations.
+
+* A `false positive` is an alert that incorrectly detects the presence of a threat. Here are the essential steps for managing false positives more efficiently.
+- First, refine alert parameters by adjusting them to align with your organization's specific risk tolerance and security posture.
+- audit regularly.
+- collaborate across teams.
+- apply feedback and utilize it
+- use automation like AI and machine learning to spot false positives.
+
+#### Querying alerts
+
+* `Querying alerts` is the act of scanning through numerous security alerts from your cloud infrastructure to identify possible threats.
+* Effective querying allows you to identify important alerts in real time, prioritize high-impact issues, streamline response to incidents, and enhance proactive security posture.
+* Chronicle Security Information and Event Management, or SIEM, tool improves search efficiency and threat analysis by enhancing alert filters.  These filters focus on specific details, like event categories, severity levels, or time frames to narrow down search results.
+* Chronicle SIEM also offers refined features, like customized filtering criteria, adaptable event correlation, and machine learning-based insights to simplify data management.
+* The most common filters include alert title, source, destination, severity, and time.
 * 
 
 </details>
@@ -1417,6 +1470,9 @@ monitoring and alerting tools like Google Cloud Monitoring and Grafana can help 
 
 ------------------------------------------------------------
 
+* 
+* Some core workplace skills include: high attention to detail, critical thinking skills, effective time management skills, solid communication skills, and adaptability and curiosity.
+* Communication skills include clearly articulating findings and insights, collaborating with team members and stakeholders, and writing comprehensive reports and documentation.
 * My advice, dig into a specific topic, explore it until you reach a stopping point, build a solution to highlight your learning, and then show it off on the internet.
 * Maintaining a portfolio of simple to complex projects is a highly valuable tool in showcasing your individual journey.
 * You wouldn't try to surg big waves before knowing how to swim
