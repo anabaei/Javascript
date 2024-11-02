@@ -1452,10 +1452,20 @@ With these insights and strategies, you’ll be prepared to start implementing a
 #### Querying alerts
 
 * `Querying alerts` is the act of scanning through numerous security alerts from your cloud infrastructure to identify possible threats.
-* Effective querying allows you to identify important alerts in real time, prioritize high-impact issues, streamline response to incidents, and enhance proactive security posture.
+* Effective querying allows you to
+  - identify important alerts in real time,
+  - prioritize high-impact issues,
+  - streamline response to incidents,
+  - enhance proactive security posture.
 * Chronicle Security Information and Event Management, or SIEM, tool improves search efficiency and threat analysis by enhancing alert filters.  These filters focus on specific details, like event categories, severity levels, or time frames to narrow down search results.
-* Chronicle SIEM also offers refined features, like customized filtering criteria, adaptable event correlation, and machine learning-based insights to simplify data management.
+* Chronicle SIEM also offers refined features, like
+  - customized filtering criteria,
+  - adaptable event correlation,
+  - machine learning-based insights to simplify data management.
 * The most common filters include alert title, source, destination, severity, and time.
+* Chronicle SIEM provides better alert filter performance, and stronger threat detection and analysis.
+* It’s important to consistently update your filters to stay aware of new risks and technological updates.
+* Chronicle SIEM provides machine learning-based insights to simplify data management in handling cloud security events. Chronicle SIEM enhances alert filters by focusing on certain details, not by including broader, undefined queries. This improves efficiency and precision in searching for and analyzing threats.
 * 
 
 </details>
