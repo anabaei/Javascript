@@ -1506,8 +1506,104 @@ Detection Skills
 - communicating any configuration changes, 
 - contributing to a culture of continuous learning and improvement.
 
-* 
 
+## Security Monitoring
+* Security monitoring is a systematic process of surveilling systems to detect and handle potential security breaches or incidents.
+* Alert systems and tools serve as early warning systems by delivering timely notifications about suspicious activities. GS+
+#### Tools
+* Google Cloud's Security Command Center provides a centralized view of all of the assets in your Google Cloud environment, helping you identify and address potential security issues.
+* Google Cloud’s Cloud Logging is a fully managed service that allows security professionals to store, search, analyze, monitor, and alert on logging data and events. They can leverage Cloud Logging to track activities and uncover evidence of potential issues.
+* Cloud Monitoring is a service that collects metrics, events, and other data from Google Cloud, and other applications and systems. As a security monitoring tool, it creates insights about the environment so that cloud security professionals can detect security threats early on.
+* Chronicle is a tool that's designed to retain, analyze, and search data. Chronicle combines the features of security information and event management, or SIEM, and security orchestration, automation, and response, or SOAR.
+- As a SIEM tool, Chronicle collects and analyzes data to detect security threats like malware.
+- As a SOAR tool, Chronicle can be used to automate incident response actions using playbooks.
+* VirusTotal is a service that analyzes suspicious files, domains, URLs, and IP addresses for malicious content. VirusTotal integrates with Chronicle to support security professionals in their investigations by providing threat context and reputation data relating to suspicious artifacts.
+* Cloud Logging is a key component for lots of cloud security activities.
+  - You want to identify whether there are any log entries that indicate that the individual accessed any sensitive data.
+  - In this scenario, you could use Cloud Logging to query for log entries from the cloud application that the individual accessed.
+  - Along with Cloud Logging, you can use Security Command Center, or SCC, for proactive security monitoring.
+* SCC is a security solution that helps organizations improve their security posture by detecting threats and managing risk.
+* SCC can detect whether cloud assets are misconfigured and vulnerable to attack, helping you mitigate security issues.
+* Event Threat Detection: provides continuous monitoring of a cloud environment to identify and alert you to any potential threats.
+- Event Threat Detection works by analyzing logs from the Cloud Logging platform.
+- It analyzes log entries using built in detection rules.
+- These detection rules then provide security systems with instructions on identifying malicious activity.You can choose which types of detection rules you want to use based on your organization's security needs.
+- An example of a built-in detection rule is a rule that's used to identify and block suspicious account logins.
+
+## Indicating of Compromise IOCS
+* IOCS are like smoke , Indicators of compromise, or IoCs, are observable evidence that suggests signs of a potential security incident. IoCs appear as events or signs that suggest a potential security breach has occurred in a network or system.
+- Artifacts like hash values, IP addresses, domain names, or tools can be associated with malicious activity like fingerprints
+* five general best practices on how to manage indicators of compromise: proactive monitoring, thorough investigations, risk assessment, timely response, and documentation.
+- proactive monitoring: This could include configuring and fine tuning detection rules to identify anomalies, and actively monitor the activity in a cloud environment
+- thorough investigation: that way, you can apply context to its surrounding events to determine if it's benign or malicious. Make sure to be thorough, methodical, and avoid reaching quick conclusions during your investigation. GS+
+- Risk assessment, it’s important to identify the systems and data that could be affected by the detected IoC.
+- timely response: Your response might include anything from patching a vulnerability to initiating an incident response process.
+- documentation.: Clear documentation helps security teams share and access knowledge.It’s also a crucial practice that can help improve both future investigations and the overall incident response processes.
+#### Tools for IOCS
+* Google Cloud's Chronicle SIEM and VirusTotal are two solutions that can be combined to help identify and respond to IoCs.
+* Chronicle's integration with VirusTotal then lets you investigate IoCs in more detail by providing threat context, reputation data, and information about the relationship between files, URLs, and domains.
+* Along with Chronicle and VirusTotal, Security Command Center offers key features like security services and integrated partner tools that can help you identify and manage threats.
+* Alert prioritization will help the security team deal with critical threats quickly. Threat hunting tools use alert prioritization to prioritize alerts based on severity. This prioritization helps security teams focus their efforts on the most pressing issues.
+
+#### Threat hunting
+* Threat hunting is a proactive method of identifying previously unknown threats within a network. Threat hunting can help you, as a cloud security professional, actively search for these types of threats in your environment. Malicious actors often find entryways and pivot points in a cloud environment so they can remain undetected.
+- First, threat hunting helps mitigate security threats. Threat hunting helps mitigate security threats by identifying issues in your organization's systems and networks, so that you can take action to prevent them from causing more damage. 
+- Second, threat hunting helps teams respond faster to potential threats.actively analyzing network traffic for malicious content, and gathering data to investigate incidents and improve defenses.
+- third, threat hunting helps inform business objectives. This not only helps intercept possible threats, it also provides insight into the current state of an organization’s security.
+
+#### Threat hunting Tools
+* MITRE ATT&CK is a framework used to understand and approach threats. It provides security professionals with a common language to outline and understand attacks. This is done through its knowledge base of attackers' tactics, techniques, and procedures, also known as TTPs. TTPs are based on actual, observed security incidents from known threat actor groups.
+- Tactics describe a malicious actor's reason for performing an action or technique. In threat hunting, tactics can be used to identify the different phases of an attack. For example The goal of initial access is gaining access into a system or network.
+- Techniques build on top of tactics by describing the specific actions a malicious actor used to accomplish their goal. For example, malicious actors can exploit unknown weaknesses in public-facing applications to gain initial access into a cloud environment.
+- procedures are the specific implementation of a technique. For example, a procedure can be the specific system or application vulnerability an attacker uses to gain access to a network, like a SQL injection. This is like a heist team using a bolt cutter to open the lock in the underground access tunnel which allows them access to the zoo.
+
+* Tools like `Chronicle SIEM` can be used to hunt for threats and automatically add more context to alerts so that you can better understand and respond to them. For example, MITRE ATT&CK is one of the frameworks you can apply to threat hunting along with Chronicle.
+- Threat hunting tools offer benefits in many ways such as through automated detection, which leverages machine
+- Threat hunting tools also use alert prioritization to prioritize alerts based on severity, enabling you to deal with critical threats quickly.
+- Pattern recognition is used to analyze patterns in data that may indicate a cyberattack, even if the pattern is subtle or complex.
+- With historical analysis, threat hunting tools analyze past activity, which can reveal threats that have been latent or overlooked.
+
+## power of aggregation and correlation.
+* Aggregation is the process of collecting and consolidating diverse forms of data.
+* Google Cloud's Chronicle is an example of a SIEM tool that aggregates data from a variety of sources, like logs from firewalls and data loss prevention tools. Aggregation collects massive volumes of data. So, how do organizations make sense of it all? This can be done through correlation.
+* Correlation is the relationship between two or more security events. It involves comparing security events, adding context, and making connections between the events. Correlation can be used to address suspicious login attempts. For example, imagine a user logs into an account using a new device, triggering a security alert. user's commonly used IP address, the date and time of the login, and the user's past login behavior. 
+* Normalization involves the processing of raw data for consistent formatting.
+
+## query effectively.
+* One common method is regular expression, or RegEx, which is a sequence of characters that forms a pattern. When analyzing logs in cloud environments, you can use RegEx to search through log data and extract any relevant information you need.
+- For example, imagine you’re given an authentication log with thousands of lines of events, and need to find out if there were any failed SSH login attempts.You can use RegEx to specifically search only for entries containing the SSH protocol and port number, along with any failed login attempts.
+```
+LogName =~ "^ssh"
+```
+- LogName we want to search it
+- =~ means regex begins
+- The quotations are used in RegEx syntax to match a specific string.
+- The caret symbol is used in RegEx to match the beginning of a string. This means it will only find log entries that start with the string ssh.
+
+* Square brackets are used to match a range of characters. For example, the brackets here enclose the characters abc.
+```
+[abc]
+```
+* Similar to a wildcard, periods are used to match any single character. It will return match results for text like dig, dog, and dug.
+```
+d.g
+```
+* \s matches any whitespace character like a space or tab. In this example, \s is between small and coffee. This means RegEx will only match for text that has a space or tab between the words small and coffee.
+```
+small\scoffee
+```
+* \d matches any digit from 0 to 9. This will match a string that starts with a digit. The curly brackets contain the number of digits you want to match, which in this case, is 5 digits.
+```
+^\d{5}
+```
+* UDM is a data model used to process and store data. UDM is kind of like a filing cabinet that's used to organize files or, in this case, aggregated log data. Just like a filing cabinet uses clear labeling to identify the contents of a file, UDM organizes data and attaches UDM fields to it to represent important data points.
+* With Chronicle, you can perform a UDM search. 
+
+module 2 ends.
+
+## 
+
+</details>
 
 
 <details>
