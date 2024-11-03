@@ -1312,9 +1312,11 @@ While BCPs focus on keeping a business going during a disruption, DRPs focus on 
 
 </details>
 
+# <font color=green> Detect, Respond, and Recover from Attacks </font> 
+
 <details>
 <summary>
-Detect, Respond, and Recover from Attacks
+Security Operations
 </summary>
 
 ### Security Operations
@@ -1376,9 +1378,7 @@ monitoring and alerting tools like Google Cloud Monitoring and Grafana can help 
 
 * Google Cloud Backup and DR Service is a complete disaster recovery solution safeguarding data, applications, and digital assets. It ensures system restoration post-disaster, verifies backups for readiness, and offers configurable on-demand and scheduled backups.
 * You also need to be careful while restoring systems to avoid the accidental reintroduction of malicious elements like backdoors, compromised accounts, or command and control —or C2— elements.
-- post-incident activity. Once the threat has been successfully contained, you can perform post-incident activities such as conducting a postmortem analysis, documenting the incident, and implementing changes to prevent similar incidents in the future. Google Cloud's Cloud Audit Logs and Cloud Security Command Center's continuous monitoring and recommendations are valuable resources in understanding the actions leading to the incident and identifying improvements.
-* Google Cloud's Cloud Audit Logs can help you understand the actions that led to the incident and identify areas for improvement.
-* You can also use Cloud Security Command Center's continuous monitoring and recommendations to proactively improve your security posture and prevent future incidents.
+- post-incident activity. Once the threat has been successfully contained, you can perform post-incident activities such as conducting a postmortem analysis, documenting the incident, and implementing changes to prevent similar incidents in the future. Google Cloud's Cloud Audit Logs and Cloud Security Command Center's continuous monitoring and recommendations are valuable resources in understanding the actions leading to the incident and identifying improvements. Google Cloud's Cloud Audit Logs can help you understand the actions that led to the incident and identify areas for improvement. You can also use Cloud Security Command Center's continuous monitoring and recommendations to proactively improve your security posture and prevent future incidents.
 
 #### Intrusion Detection
 
@@ -1466,9 +1466,48 @@ With these insights and strategies, you’ll be prepared to start implementing a
 * Chronicle SIEM provides better alert filter performance, and stronger threat detection and analysis.
 * It’s important to consistently update your filters to stay aware of new risks and technological updates.
 * Chronicle SIEM provides machine learning-based insights to simplify data management in handling cloud security events. Chronicle SIEM enhances alert filters by focusing on certain details, not by including broader, undefined queries. This improves efficiency and precision in searching for and analyzing threats.
-* 
+
+* [Event Thread detection.pdf](https://github.com/user-attachments/files/17608439/Event.Thread.detection.pdf)
+* [Create Log Alerts.pdf](https://github.com/user-attachments/files/17608440/Create.Log.Alerts.pdf)
+
+
 
 </details>
+
+
+<details>
+<summary>
+Detection Skills
+</summary>
+
+## Lockheed Martin’s Cyber Kill Chain® framework.
+* Lockheed Martin’s Cyber Kill Chain® framework defines the steps of a successful cybersecurity attack. Each attack provides an opportunity for defenders to understand an attacker's mindset, strategy, and goals. There are 7 steps in Lockheed Martin’s Cyber Kill Chain® that need to be completed in order for an attacker to successfully complete an attack.
+* An advanced persistent threat is an adversary that possesses sophisticated levels of expertise, significant resources, and achieves its objectives through multiple attack vectors.
+* The 7 steps of the Cyber Kill Chain® are reconnaissance, weaponization, delivery, exploitation, installation, command and control, and actions on objectives.
+- Reconnaissance, the attacker focuses on gathering information. This includes gathering information like employee names and job titles, email addresses, and information about the target's infrastructure, like the services or operating systems being used.
+- Weaponization, the attacker prepares their attack by using tools to create a deliverable malicious payload, like malware.
+- Delivery, the attacker officially launches their attack. This might be done by sending a malicious email to the target, or by performing social engineering.
+- Exploitation, The goal of this step is for the attacker to gain access to the target. They can do this by exploiting a software vulnerability. They get access to the target's system
+- Installation: The goal of this step is for the attacker to maintain access to the target's system without the target knowing. They can do this by installing backdoors into the system. Backdoors allow an attacker to bypass security measures and conceal their access.
+- Common command and control: The goal of this step is for the attacker to be able to remotely control the target's system. channels an attacker might use include web, DNS, or email protocols.
+- Actions on objectives: During this step, they can collect and exfiltrate data, destroy systems, or worse
+
+## False Positive & False Negative
+* A false positive is an alert that incorrectly detects the presence of a threat.
+* Alert fatigue GS+ is the result of "all noise and no signal" in security environments. Alert fatigue happens when there are so many alerts that need to be addressed, it overwhelms a security team.
+* They can also increase exposure to attacks because real threats are being misjudged. These misjudged threats are called `false negatives`.
+* False positives can be created from a range of situations, like
+  - misconfigurations in tools and systems,
+  - overengineered detection strategies,
+  - even unaccounted changes within the cloud environment
+* False positive reduction strategies include
+- continuously testing and fine-tuning security systems,
+- consistently monitoring logs and alerts,
+- communicating any configuration changes, 
+- contributing to a culture of continuous learning and improvement.
+
+* 
+
 
 
 <details>
