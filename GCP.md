@@ -1532,6 +1532,7 @@ The skill that I think is most important for cybersecurity practitioners is a wi
 * The impact that I had on the project was essentially to act as one of the security gates to make sure that there were proper security requirements put in place and practices before we actually went through with full migration.
 * Imagine you're asked to explain the key components of a threat and vulnerability management strategy to a business leader with not a lot of technical experience.? So there are four components that I would highlight to explain a effective threat vulnerability management strategy. The first being prevention, the second being detection, the third being response, and the fourth being recovery So there are four components that I would highlight to explain a effective threat vulnerability management strategy.
 *  I perform threat simulations to help make Alphabet and its users safe.
+  
 ---------------------------------
 
 # <font color=green> Cloud other Infos </font> 
