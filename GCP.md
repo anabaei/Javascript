@@ -1600,11 +1600,20 @@ small\scoffee
 * With Chronicle, you can perform a UDM search. 
 
 module 2 ends.
+</details>
+<details>
+<summary>
+   Incident Responses, Attack Mitigation
+</summary>
 
-## 
+* As a cybersecurity professional, this digital evidence helps you understand what happened, how it happened, and who might be responsible.
+
+## Incident Responses
+* 
+
+
 
 </details>
-
 
 <details>
 <summary>
