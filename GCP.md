@@ -1609,10 +1609,146 @@ module 2 ends.
 * As a cybersecurity professional, this digital evidence helps you understand what happened, how it happened, and who might be responsible.
 
 ## Incident Responses
-* 
+* You can think of yourself a bit like a detective on an investigation.
+* cybersecurity incidents allows cybersecurity professionals to ensure that impacted systems have integrity, and that evidence is available for a follow-on investigation or to analyze how the incident occurred. Some examples include: IP addresses, malware, logs, file hashes, and bad behavior.
+* As a cybersecurity professional, this digital evidence helps you understand what happened, how it happened, and who might be responsible.
+* `The chain of custody` refers to the process of documenting and preserving evidence in a way that maintains its integrity and establishes a clear timeline for handling.
+* `preserving evidence` some available tools
+- Cloud storage: which you can use for secure and resilient data storage;  
+- Google Backup helpful for storage and recovery;
+- Google Workspace, which supports documentation, collaboration, and secure file sharing.
 
+## How to preserve evidence 
+* Preserved evidence must be undamaged, unaltered, and documented.
+* The chain of custody is the process of keeping track of evidence as it progresses through an investigation.
+* Organizations can then use that evidence to meet legal, insurance, or regulatory requirements.
+* Proper documentation and collection of evidence helps organizations limit damage, prevent further losses, and comply with regulations.
 
+#### Keys legal and ethical best practices
+* First, be aware of legal and ethical requirements.
+* Second, balance the need for evidence with privacy rights
+* Third, collect only what's necessary.
+* And fourth, destroy evidence when no longer needed.
 
+### Incident lifecycle
+* Investigating incidents involves three phases: identification, incident control, and iterate improvement.
+* The first phase, identification, is the phase that new cybersecurity professionals interact with the most. The goal of identification is to provide a foundation of evidence that the team can build from and not have to go back and repair. When identifying and defining the incident in the identification phase, you'll address questions like: What logs, alerts, or events have I observed that make up this incident? how can I be sure this is a true incident and not a false positive?
+* Examples of this evidence include virtual machine logs or container operating system logs. When preserving evidence, it’s crucial to enforce strict access control management and encryption policies for data at rest and in transit.
+*  Logs from any system or device in the cloud are critical.
+*  A challenge unique to evidence preservation in the cloud is the unique lifespan and scalability of cloud resources. The automatic deletion of data in the cloud is not a unique challenge
+
+### Tools 
+* Cloud Logging and Cloud Monitoring are often used for evidence collection and analysis, These tools help collect, store, and analyze log data from a wide range of sources, allowing you to identify and investigate security incidents.
+* Cloud Storage also supports evidence preservation. In Cloud Storage, identity and access management provides appropriate access controls to secure evidence storage.
+* Google Cloud provides secure storage solutions for storing evidence. BigQuery and Chronicle SIEM are services used within the Google Cloud ecosystem for handling large datasets and logs. They use secure identity and access management to ensure the preservation of evidence, but they are not standalone evidence storage solutions.
+
+### Incident Response Process
+* Security orchestration, automation, and response or SOAR is a collection of applications, tools, and workflows that use automation to respond to security events.
+* Security information and event management or SIEM is an application that collects and analyzes log data to monitor critical activities in an organization.
+* The incident response process has 3 phases.
+- The first phase is identification. In this phase, you start an incident report because potential vulnerabilities and incidents have been identified. The SIEM and SOAR tools are very helpful in this phase. For example, SIEM tools collect information from sources in your network. Then, the tools use a set of rules to detect and understand the information so it can be presented to security analysts.
+- Incident control: The main idea is to control the incident’s impact. First, you should coordinate with your team and then resolve the issue. You want to make sure that everyone understands what's been discovered, and its impact. Next, you work to resolve the incident, limit ongoing damage, fix the underlying issues, and restore normal operations. Additionally, in the identification and incident control phases, the SOAR tools are useful for other aspects of incident response.
+- iterate improvement: This is the phase in which you improve your security practices by learning from what caused this incident to occur. This enables your organization to improve processes, make plans for continuous improvement, and prevent a similar incident in the future.
+
+When using a SOAR program like Google’s Chronicle SOAR, workflows are automated, and alerts are automatically analyzed, so there can be an appropriate response. For Example: 
+- A SOAR program notifies your team about events connected to a phishing campaign. Your team now has the opportunity to get insight into the attack, learn from it, and mitigate similar attacks in the future.
+- In a DDoS attack, your team uses SOAR to collaborate in real time to share information about impacted systems, attack patterns, and mitigation strategies. You use that information to coordinate with your team, assign tasks, and enable the team to quickly contain and mitigate the DDoS attack.
+
+### Incident Identification
+* Incident identification involves recognizing potential security threats based on alerts, log data, and other indicators.
+* Triaging alerts means categorizing and filtering the alerts based on specific criteria. GS+. When you prioritize alerts, you need to consider questions that help you focus on severity, potential impact, and urgency.
+* Once you've triaged and prioritized alerts, you get ready to assess the alert by gathering information and evidence related to the potential incident. This might include reviewing logs, analyzing network traffic, or examining user activity.
+* If you discover multiple related alerts and indicators of compromise, your analysis most likely indicates a true incident.
+* Second is verification. If you find evidence of intrusion, the verification likely indicates a true incident.
+* Sometimes, an incident may be flagged as a false positive —and discarded based on the team’s current understanding— only to be revealed as a true positive once more information is available.
+* In incident response, you prepare for potential incidents, detect and analyze them when they occur, and take appropriate actions to minimize the damage. During an incident response process, effective coordination often determines if the response is successful or not.
+* After discovering unauthorized access, the first action they should take is to create an incident report detailing the initial events observed. Implementing an action plan comes after the security operations professional reports and documents the initial incident
+* In the context of cloud security incident response, a playbook is a set of pre-set responses or automated procedures. They are predesigned action plans to respond to specific security incidents and can feature automated actions or scripts.
+
+### effective coordination
+* You manage resources so that all systems and people are communicating effectively.
+* You streamline communication so that everyone knows where they are in the incident response process, and what they are responsible for.
+* You ensure a timely response to security incidents, so that everyone knows what’s happening now and what to do next.
+* First, you need to set clear goals and objectives
+* Next, you need to define roles and responsibilities, ensuring everyone knows what to do.
+* After that, you establish communication channels, ensuring everyone can stay connected and share information when needed.
+* Then, you track progress to ensure the team is moving forward.
+* it’s important to keep stakeholders informed.
+
+#### Roles 
+* The Incident Manager oversees the entire process.
+* The Lead Investigator implements response measures and analyzes the incident documentation and evidence to determine what caused the incident.
+* The Communication Lead clearly communicates the progress and resolution of security incidents externally and internally.
+* The Technical Specialists are experts in network security, malware analysis, or cloud infrastructure.
+
+[Guide to log queries.pdf](https://github.com/user-attachments/files/17693287/Guide.to.log.queries.pdf)
+
+ * SOAR tools facilitate coordination between team members, help assign tasks, and track progress. They streamline the communication and collaboration process to help the team focus on containment, eradication, and recovery, thereby minimizing the incident's impact.
+
+### Documentation
+* In a security context, key documentation includes precise and accurate incident reports, evidence logs, and action plans. These documents are foundational to the cybersecurity integrity of organizations across all industries.
+* Documentation provides insight into what has happened in the past, direction on what to do now, and what should be done in the future.
+* Similar types of information might include system events, timestamps, conversations, and changes observed during the incident investigation.
+* Preservation of evidence is also critical when the incident documentation includes sensitive information like system vulnerabilities, recent security breaches, and users with elevated privileges.
+* A playbook is a manual that provides details about any operational action.
+* Imagine you’re investigating unauthorized access to a Google Cloud Storage bucket.
+- First, you create an incident report with the initial events, their timestamps, and all impacted systems.
+- Next, you document the evidence, including logs from Cloud Logging, and store them securely.
+- Finally, you put a plan into action to mitigate the incident's impact, ensuring that the team has access to your findings.
+* Documentation helps to improve communication with your team, encourages accurate decision-making, and supports the continuous improvement of your organization. GS+ To have impact, documentation must be accurate, clear, consistent, and timely. 
+* Those elements are incident summaries, timelines, technical findings, actions taken, lessons learned, and recommendations for improvement. GS+
+* The incident summary is where you include a quick overview of the incident, including information about how the incident occurred, its severity, and any other relevant context.
+* After the timeline and technical findings have been presented, the next documentation element typically describes the team’s actions.
+* When describing the team’s actions, pre-defined processes or automated responses, also known as playbooks, are included in the document.
+* To document lessons learned, the team would have reviewed the incident to understand and record what went well and what caused the incident. GS+
+* You should provide actionable information.
+* Another tip is to maintain a consistent format and structure across all documents.
+*  you need to store information in a secure location.
+
+* Documentation such as an executive summary provides a quick overview of an incident so that people can quickly access the highlights of the incident and focus on what is important. An executive summary does not outline the roles and responsibilities of the security team.
+
+### Actionable Alert
+* Keep in mind that events happen whenever there’s an observed change in normal operations. Actionable alerts can turn into incidents based on what happens in the event.
+* An incident is a violation or imminent threat of violation of computer security policies, acceptable use policies, or standard security practices.
+#### Tools
+* The Security Command Center is a security posture and risk management platform that gives insight into configuration vulnerabilities and incoming threats.
+* Cloud Logging is a Google Cloud-managed platform that allows you to store, search, analyze, monitor, and alert on logging data and events. Alerts can be ingested from many cloud platform vendors, and also from on-premise resources.
+* Chronicle SIEM collects security data and helps you identify the highest priority threats.
+
+* When starting an incident response process, it's important to first capture the event or alert. This requires you to think about the information, its impact, where it came from, and how it affects normal operations.
+* Playbooks help in cloud security by streamlining incident investigations. They help in simplifying and streamlining incident response, but they do not fully automate the response.
+* In the event of a phishing incident, an alert from a security solution acts as the trigger that initiates the playbook's actions. The playbook blocks the malicious IP addresses associated with the attack, and resets the passwords of accounts that have been compromised. While notifying users could be a part of a playbook's actions, it does not send out a mass email.
+* An alert from a security solution is the trigger that initiates the playbook's actions. The use of a playbook may result in an efficient response, but the alert itself does not ensure this efficiency. The alert acts as a trigger, initiating the start of the predefined actions in the playbook.
+
+### security orchestration
+* Chronicle SOAR is Google Cloud’s security orchestration, automation, and response platform.
+* To harness the power of these tools, SOAR platforms work with a playbook, which is a manual that provides details about any operational action.
+* Think of playbooks like a musical score that everyone follows to play in harmony. In incident response, playbooks provide predefined procedures that guide security teams through investigating and resolving incidents. This enables fast incident response, helping free up time for security teams.
+- playbookd help you automate repetitive tasks to save time and improve efficiency, and ensure consistency by requiring that teams consistently take all necessary steps.
+- Playbooks also help to improve collaboration between security teams.
+- They provide a common framework for communication and action.
+- Playbooks also help security teams reduce risk by automating tasks prone to human error.
+- playbooks improve compliance by ensuring that security teams follow all necessary procedures.
+-  you can build playbooks into your SOAR tool.
+
+* Chronicle playbooks begin with a trigger.
+- Then, there's the action. The action conducts an operation.For example, for a phishing incident, you might want to define an action like blocking the suspicious IP address that sent the phishing email.
+- Lastly, there's the flow. The flow determines the progress of the playbook. For example, imagine your organization receives an alert about a possible phishing email. You can use a playbook in Chronicle SOAR that automates each manual step involved in the incident response process of a phishing alert.This response process includes identifying and blocking malicious IP addresses, alerting the affected users, and resetting compromised passwords. Instead of having to toggle between different security platforms to perform an action, you simply let the playbook do its work.
+- It's a simple flowchart with steps.Each step defines the triggers, actions, and the flow of the playbook.
+
+* Security analysts still need to customize and monitor playbooks to ensure they follow the correct process and that they’re effective in incident response.
+* In addition, security analysts may need to take manual actions that are not automated, such as investigating alerts or communicating with stakeholders.
+
+* SOAR playbook, keep in mind a few best practices.
+- make a plan.
+- build with strategy.
+- iterate. Learn from past incidents, and continuously refine and adapt playbooks to ensure they stay effective.
+
+* [orcheetrating soar.pdf](https://github.com/user-attachments/files/17693812/orcheetrating.soar.pdf)
+* [incident report.pdf](https://github.com/user-attachments/files/17693814/incident.report.pdf)
+* [Documenttaion in practice.pdf](https://github.com/user-attachments/files/17693821/Documenttaion.in.practice.pdf)
+
+* End of Module 3
 </details>
 
 <details>
