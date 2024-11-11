@@ -1768,6 +1768,26 @@ Recovery Plan
 * Business continuity, or BC, is an organization’s ability to maintain their everyday productivity by establishing a risk disaster recovery plan. 
 * [System Revocery Steps.pdf](https://github.com/user-attachments/files/17693971/System.Revocery.Steps.pdf)
 
+### BCDR
+* business continuity and disaster recovery are like a safety net. They’re critical in security operations because they ensure that when disaster strikes, business operations are active, and data remains safe and accessible.
+* These tools can range from BCDR plan builders, and backup and restore utilities to sophisticated software that handles data center failovers.
+* These tools can also help you make and execute a plan to restore your systems and get data back online.
+* They ensure you can continue normal operations and continue serving your users without any interruption.
+* BCDR ensures your operations continue despite unexpected disasters or threats.
+#### BCDR in Google Cloud
+* Google Cloud BCDR tools help with key aspects of business continuity and disaster recovery. For example, you can test and establish backup and recovery processes, test data management, and verify a documented backup plan.
+* First, you isolate the affected system —like a server or virtual machine— and terminate the ransomware task.
+* Then, you restore the system to the most recent recovery point from the last unaffected backup.
+#### BCDR tool in Google Cloud
+* Google Cloud Backup and DR is a backup and disaster recovery solution that enables organizations to quickly recover data, so that they can continue running critical business operations.
+* For example, how often to back up your data, how long to retain the backups, and where and how to replicate the backups.
+* Once you've created your backup plan, you can restore your data whenever you need to with just a couple of clicks.
+* After the security team successfully contains the ransomware, you use the backup plan to quickly find and deploy a backup that has not been infected with ransomware.
+#### Disaster Recovery Plan, or DRP
+* For example, it’s important to consider how backups will be set up through replication, what your measures of success during a recovery are, and what happens if there's a failover. You’ll also need to test the plan and have maintenance strategies.
+* First is replication, or the process of continuously creating copies of data to multiple locations to support availability. Replication is vital to any disaster recovery plan because it helps ensure that data can be quickly restored.
+* In a disaster recovery plan, you need to decide how much data can be lost, and how long systems can be down.
+* Next, let's examine failover, which helps protect systems from failure.
 
 </details>
 
