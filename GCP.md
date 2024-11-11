@@ -1750,7 +1750,28 @@ When using a SOAR program like Google’s Chronicle SOAR, workflows are automate
 
 * End of Module 3
 </details>
+<details>
+<summary>
+Recovery Plan
+</summary>
 
+* A recovery plan is like a roadmap. This roadmap isn't just about returning to where you were before the disaster. A recovery plan isn't a static document.Instead, it evolves over time as you learn from past incidents and adapt to new threats.
+* Responsibilities during the execution of a recovery plan include assessing the situation, supporting the decision-making processes, communicating with stakeholders, and running specific recovery procedures.
+* It guides you to quarantine parts of the system that have been infected, eliminate the ransomware, restore the data from backups, get the system back online, and prevent significant downtime while resolving the issue that allowed it to happen.
+* Take the opportunity to analyze what went wrong, why it went wrong, and how you can prevent it in the future. GS+
+
+### Recovery Process
+* With services like Google Cloud Backup and Google Cloud Disaster Recovery, you can quickly restore your data and applications.
+* Plus, Google Cloud Storage and Persistent Disk keep your data safe and secure, so you won't have to worry about losing any of your data.
+* After restoring your system, it's important to ensure that all components are functioning properly. Platforms like the Google Cloud Operations suite can help.
+* It's an excellent tool for maintaining your system's functionality and for confirming functionality after restoring your system.
+* Business continuity, or BC, is an organization’s ability to maintain their everyday productivity by establishing a risk disaster recovery plan. 
+* [System Revocery Steps.pdf](https://github.com/user-attachments/files/17693971/System.Revocery.Steps.pdf)
+
+
+</details>
+
+# <font color=green> ------ </font> 
 <details>
 <summary>
 -----------
