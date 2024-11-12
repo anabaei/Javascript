@@ -1470,7 +1470,50 @@ With these insights and strategies, you’ll be prepared to start implementing a
 * [Event Thread detection.pdf](https://github.com/user-attachments/files/17608439/Event.Thread.detection.pdf)
 * [Create Log Alerts.pdf](https://github.com/user-attachments/files/17608440/Create.Log.Alerts.pdf)
 
+### Disaster Recovery
+Different types of recovery options.
+* Backup restoration is a common practice and recovery option security professionals use to recreate a system from its most recent stable backup.
+* Another recovery option is redundancy, which is the practice of having multiple copies of data in different locations to avoid a single point of failure.
+* To support backup and restore efforts, cloud providers offer failover and redundancy services. These services manage heavy traffic loads using load balancers. Load balancers improve the performance of services or applications by distributing network traffic across resources.
+* Another recovery option is warm standby. With this strategy, a duplicate system is always running in the cloud, but on a much smaller scale. The duplication is fully configured and operational, so in case of a disaster, security professionals can scale up this system to run quickly.
 
+### DRP
+* A DRP is like a to-do list that includes the details you need when a security disaster occurs. A DRP also includes measures of success.
+* The success of a recovery effort is not only when a business returns to normal operations, but how quickly the recovery happens and what data is lost when the system is down. These measures of success are known as recovery point objectives, or RPOs, and recovery time objectives, or RTOs.
+* As a security professional, an RPO informs how often you backup your systems and how you use redundancy.
+* A recovery point objective, RPO, is the maximum acceptable length of time during which data might be lost from an application due to a major incident.
+* Recovery time objective, RTO, is the target time allowed for the recovery of a service in the event of a disaster.
+* When all else fails, a well-constructed DRP ensures that business operations can continue.
+#### DRP Components
+* The first component of a DRP is roles and responsibilities. Having an established list of roles and responsibilities ensures your team knows how to communicate and collaborate with other employees, vendors, and customers.
+* The second component of a Disaster Recovery Plan is critical systems, applications, data, and resources. The DRP should include documentation of which systems, applications, data, and other resources are most critical for business continuity, and how to bring them back online when they’re down.
+* The third DRP component is to make plans for testing and optimization. It’s important that your team continues to test and update its strategy to address ever-evolving threats and business needs.
+* The fourth DRP component is a risk assessment. A risk assessment considers strategies for potential hazards and the necessary resources to resume business operations.The assessment should include clearly defined recovery point objectives and recovery time objectives. Remember, a recovery point objective, or RPO, is the point in time to which data must be recovered after a disruption occurs. How much data can be lost before it starts to impact the company? GS+
+* To figure out the answer, they’ll ask questions like, How long can business operations dependent on a specific system be down?
+* And how quickly does the system need to be operational before the impact becomes severe?
+* disaster recovery plan.  the team activates the cloud-hosted DRP, which outlines the steps the team needs to follow to recover critical cloud resources. It’s the safety net when everything else fails. With it everyone on the team knows their roles and responsibilities, and collaborates effectively to get servers and systems back online.
+
+### BC vs DR
+* Business continuity, or BC, is an organization’s ability to maintain their everyday productivity by establishing a risk disaster recovery plan.
+* Disaster recovery, or DR, is a strategic and systematic approach to recovering essential infrastructure and systems when a disaster happens.
+* Security professionals often refer to these two concepts together as BCDR.
+Similarities:
+* First, both plans start with a risk assessment. A risk assessment helps you and your team identify threats, and evaluate their impact. This can also help you thoroughly document and set up a priority list.
+* Next, a business impact analysis is necessary for you and your team to identify which critical operations need to be prioritized when a disaster happens.
+* And finally, organizations use strategic planning to outline various disaster scenarios so they can focus their efforts on minimizing disruption, recovering lost information, and restoring regular business operations as soon as possible.
+* Both plans consider what systems need to be prioritized and how to address prioritized systems during a disaster.
+
+### BCDR Tools 
+* BCDR tool is a powerful asset that provides additional assurance that your systems can get back up and running quickly after a disaster.
+* Google Cloud’s automation features allow for automatic backups and failover systems. This key feature ensures that your data remains intact and your operations continue functioning, even when disaster strikes.
+
+### Stakeholders Roles in DRP
+Because they’re usually the decision makers, stakeholders should be prepared to participate when security disasters happen.
+* The first group includes executive stakeholders. They establish the budget and outline the strategic course of action for recovery. A Chief Information Officer, or CIO, is an executive stakeholder.They consider business requirements and technological capabilities, so they’re ultimately accountable for a successful recovery.
+* Operational stakeholders work with executive stakeholders to ensure that recovery plans meet the organization's requirements.
+* Technical stakeholders form the first line of defense in the event of a disaster. They document and mitigate risks and address any issues that arise.
+
+* A successful disaster recovery plan depends on the coordination and communication of its dedicated stakeholders.
 
 </details>
 
