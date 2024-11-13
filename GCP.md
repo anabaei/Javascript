@@ -1832,14 +1832,28 @@ Recovery Plan
 * In a disaster recovery plan, you need to decide how much data can be lost, and how long systems can be down.
 * Next, let's examine failover, which helps protect systems from failure.
 
+* End of module 4
 </details>
 
-# <font color=green> ------ </font> 
+# <font color=green> Focused Career</font> 
 <details>
 <summary>
------------
+Careers
 </summary>
+	
+* For example, they need to log activities and configure alerts so they’re notified of suspicious actions. In this case, I guide them step-by-step to ensure they’re logging the correct activities, configuring their alerts correctly, and ensuring that Google Cloud security recommendations are applied.
+* First, cloud cybersecurity analysts are expected to plan, configure, document, and monitor cloud security solutions.
+* Second, cloud security analysts use dedicated tools to check for vulnerabilities and respond to threats as needed.
+* And finally, cloud security analysts are expected to stay up-to-date on security and technology developments, and cyber threats to promote a culture of security throughout the organization.
+* Hiring managers use your portfolio to evaluate your technical skills, like your experience in securing cloud environments and addressing threats, and skills like problem-solving and analysis.
+* Your portfolio is also a place to detail your communication and documentation skills, especially your ability to communicate technical concepts to non-technical audiences.
 
+
+
+### capstone project
+* Because the project is similar to actual workplace tasks, completing it will give you a preview into what a cloud security job might be like. Plus, it will show future employers that you have what it takes to succeed in a cloud security role. As a cloud security professional, no two days will be the same. You’ll likely deal with challenges on short notice, and as a new employee, you’ll be presented with problems that you may have never seen before. GS+
+* 
+	
 </details>
 
 ------------------------------------------------------------
